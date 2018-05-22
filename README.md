@@ -1,7 +1,7 @@
 # In-flight-entertainment-system
 Java2 Group Project
 
-5.22
+5.22+1
 
 ### 实现功能
 
