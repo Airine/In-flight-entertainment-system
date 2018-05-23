@@ -1,5 +1,6 @@
 package com;
 
+import com.view.LoginController;
 import com.view.RootLayoutController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,9 @@ import java.io.IOException;
 public class MainApp extends Application {
     private Stage primaryStage;
     private AnchorPane rootLayout;
+
+
+    public AnchorPane getRootLayout(){return  rootLayout;}
 
     @Override
     public void start(Stage primaryStage) {
@@ -40,6 +44,29 @@ public class MainApp extends Application {
             System.out.print(e.getMessage());
         }
     }
+
+
+  public void login(){
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class
+                    .getResource("view/Login.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Login");
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+            LoginController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+
+            dialogStage.showAndWait();//只能用户主动关闭
+        }catch (Exception e){
+            e.getStackTrace();
+        }
+  }
+
 
     public static void main(String[] args) {
         launch(args);
