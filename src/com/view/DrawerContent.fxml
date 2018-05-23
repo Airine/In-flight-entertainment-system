@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="drawerBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="393.0" prefWidth="188.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.DrawerContentController">
+   <children>
+      <ImageView fitHeight="148.0" fitWidth="153.0" opacity="0.99" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../resources/shulilogo.png" />
+         </image>
+         <VBox.margin>
+            <Insets left="30.0" />
+         </VBox.margin>
+      </ImageView>
+      <JFXButton prefHeight="83.0" prefWidth="191.0" style="-fx-background-color: #CCCCCC;" text="设置">
+         <font>
+            <Font size="25.0" />
+         </font></JFXButton>
+      <JFXButton layoutX="10.0" layoutY="160.0" prefHeight="83.0" prefWidth="191.0" style="-fx-background-color: #CCCCCC;" text="设置2">
+         <font>
+            <Font size="25.0" />
+         </font></JFXButton>
+      <JFXButton layoutX="10.0" layoutY="243.0" prefHeight="78.0" prefWidth="188.0" style="-fx-background-color: #CCCCCC;" text="退出">
+         <font>
+            <Font size="25.0" />
+         </font></JFXButton>
+   </children>
+</VBox>
