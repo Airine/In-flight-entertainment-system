@@ -2,12 +2,36 @@
 
 <?import com.jfoenix.controls.JFXDrawer?>
 <?import com.jfoenix.controls.JFXHamburger?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" style="-fx-background-color: #607B8B;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.RootLayoutController">
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" style="-fx-background-color: #F8F8FF;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.RootLayoutController">
    <children>
-      <JFXHamburger fx:id="hamburger" layoutX="14.0" layoutY="14.0" onMouseClicked="#handlehamburger" stylesheets="@Red.css" />
-      <JFXDrawer fx:id="drawer" defaultDrawerSize="190.0" layoutY="46.0" prefHeight="398.0" prefWidth="100.0" />
+      <AnchorPane prefHeight="44.0" prefWidth="640.0" style="-fx-background-color: #2BB7B3;">
+         <children>
+            <JFXHamburger fx:id="hamburger" onMouseClicked="#handlehamburger" prefHeight="44.0" prefWidth="55.0" style="-fx-background-color: #003F43;" stylesheets="@Red.css" />
+            <ImageView fitHeight="44.0" fitWidth="44.0" layoutX="250.0" opacity="0.5" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0">
+               <image>
+                  <Image url="@../../resources/icon/homepage.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="44.0" fitWidth="44.0" layoutX="350.0" opacity="0.5" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="0.0">
+               <image>
+                  <Image url="@../../resources/icon/live.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="44.0" fitWidth="44.0" layoutX="450.0" opacity="0.5" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <image>
+                  <Image url="@../../resources/icon/customerservice.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="playpane" layoutY="44.0" prefHeight="437.0" prefWidth="640.0" style="-fx-background-color: #F5FFFA;">
+         <children>
+            <JFXDrawer fx:id="drawer" defaultDrawerSize="190.0" layoutY="23.0" prefHeight="336.0" prefWidth="92.0" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

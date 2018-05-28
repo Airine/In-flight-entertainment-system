@@ -6,19 +6,22 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane opacity="0.67" prefHeight="304.0" prefWidth="383.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.LoginController">
+<AnchorPane opacity="0.67" prefHeight="304.0" prefWidth="383.0" style="-fx-background-color: #FFB6C1;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.LoginController">
    <children>
-      <JFXTextField focusColor="#09b6bc" layoutX="80.0" layoutY="54.0" prefHeight="34.0" prefWidth="227.0" promptText="Username:" AnchorPane.bottomAnchor="216.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="54.0">
-         <font>
-            <Font name="Verdana" size="13.0" />
-         </font>
-      </JFXTextField>
-      <JFXPasswordField focusColor="#09b6bc" layoutX="80.0" layoutY="135.0" prefHeight="34.0" prefWidth="223.0" promptText="Password:" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0">
-         <font>
-            <Font size="13.0" />
-         </font>
-      </JFXPasswordField>
+      <AnchorPane prefHeight="249.0" prefWidth="383.0">
+         <children>
+            <JFXTextField focusColor="#09b6bc" prefHeight="34.0" prefWidth="223.0" promptText="Username:" AnchorPane.bottomAnchor="216.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="54.0">
+               <font>
+                  <Font name="Verdana" size="13.0" />
+               </font>
+            </JFXTextField>
+            <JFXPasswordField focusColor="#09b6bc" prefHeight="34.0" prefWidth="223.0" promptText="Password:" AnchorPane.bottomAnchor="135.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="135.0">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </JFXPasswordField>
+         </children>
+      </AnchorPane>
       <JFXButton buttonType="RAISED" layoutX="80.0" layoutY="211.0" prefHeight="34.0" prefWidth="83.0" ripplerFill="WHITE" style="-fx-background-color: #2196f3;" text="Login" textFill="WHITE" />
       <JFXButton buttonType="RAISED" layoutX="220.0" layoutY="211.0" prefHeight="34.0" prefWidth="83.0" ripplerFill="WHITE" style="-fx-background-color: #2196f3;" text="Sign up" textFill="WHITE" />
    </children>

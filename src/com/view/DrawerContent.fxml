@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="drawerBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="393.0" prefWidth="191.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.DrawerContentController">
+<VBox fx:id="drawerBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="393.0" prefWidth="191.0" style="-fx-background-color: #FFB6C1;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.DrawerContentController">
    <children>
       <ImageView fx:id="userImage" fitHeight="148.0" fitWidth="153.0" onMouseClicked="#handleClickedImage" opacity="0.99" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -17,18 +18,75 @@
             <Insets left="30.0" />
          </VBox.margin>
       </ImageView>
-      <JFXButton fx:id="button1" layoutX="10.0" layoutY="181.0" onAction="#handlebutton1" prefHeight="81.0" prefWidth="190.0" style="-fx-background-color: #CCCCCC;" text="设置1">
-         <font>
-            <Font size="25.0" />
-         </font>
-      </JFXButton>
-      <JFXButton fx:id="button2" layoutX="10.0" layoutY="160.0" prefHeight="81.0" prefWidth="190.0" style="-fx-background-color: #CCCCCC;" text="设置2">
-         <font>
-            <Font size="25.0" />
-         </font></JFXButton>
-      <JFXButton fx:id="button3" layoutX="10.0" layoutY="243.0" prefHeight="83.0" prefWidth="190.0" style="-fx-background-color: #CCCCCC;" text="退出">
-         <font>
-            <Font size="25.0" />
-         </font></JFXButton>
+      <AnchorPane onMouseClicked="#handlebutton1" prefHeight="46.0" prefWidth="191.0">
+         <children>
+            <ImageView fitHeight="46.0" fitWidth="46.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/icon/my.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="46.0" layoutY="2.0" prefHeight="46.0" prefWidth="145.0" text="User" textAlignment="CENTER" textFill="#ed6c00">
+               <font>
+                  <Font name="Monospaced Regular" size="34.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="46.0" prefWidth="191.0">
+         <children>
+            <ImageView fitHeight="46.0" fitWidth="46.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/icon/my.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="46.0" layoutY="2.0" prefHeight="46.0" prefWidth="145.0" text="User" textAlignment="CENTER" textFill="#ed6c00">
+               <font>
+                  <Font name="Monospaced Regular" size="34.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="46.0" prefWidth="191.0">
+         <children>
+            <ImageView fitHeight="46.0" fitWidth="46.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/icon/my.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="46.0" layoutY="2.0" prefHeight="46.0" prefWidth="145.0" text="User" textAlignment="CENTER" textFill="#ed6c00">
+               <font>
+                  <Font name="Monospaced Regular" size="34.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="46.0" prefWidth="191.0">
+         <children>
+            <ImageView fitHeight="46.0" fitWidth="46.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/icon/my.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="46.0" layoutY="2.0" prefHeight="46.0" prefWidth="145.0" text="User" textAlignment="CENTER" textFill="#ed6c00">
+               <font>
+                  <Font name="Monospaced Regular" size="34.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="46.0" prefWidth="191.0">
+         <children>
+            <ImageView fitHeight="46.0" fitWidth="46.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/icon/my.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="46.0" layoutY="2.0" prefHeight="46.0" prefWidth="145.0" text="User" textAlignment="CENTER" textFill="#ed6c00">
+               <font>
+                  <Font name="Monospaced Regular" size="34.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
    </children>
 </VBox>

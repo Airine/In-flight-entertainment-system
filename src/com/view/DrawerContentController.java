@@ -38,7 +38,7 @@ public class DrawerContentController {
     }
     @FXML
     private void handlebutton1() {
-        AnchorPane rootLayout= rootLayoutController.getMainApp().getRootLayout();
+        AnchorPane rootLayout= rootLayoutController.getPlaypane();
         JFXFillTransition transition=new JFXFillTransition();
         transition.setDuration(Duration.millis(5000));
         transition.setRegion(rootLayout);

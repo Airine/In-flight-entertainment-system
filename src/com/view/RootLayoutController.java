@@ -20,6 +20,9 @@ public class RootLayoutController {
     private AnchorPane mainPane;
 
     @FXML
+    private AnchorPane playpane;
+
+    @FXML
     private JFXHamburger hamburger;
 
     @FXML
@@ -42,6 +45,7 @@ public class RootLayoutController {
     }
     public MainApp getMainApp(){return mainApp;}
     public void setVBox(VBox box) {this.box=box;}
+    public AnchorPane getPlaypane(){return playpane;}
     @FXML
     private void initialize(){
         try {
