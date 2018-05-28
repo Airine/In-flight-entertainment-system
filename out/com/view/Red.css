@@ -1,0 +1,8 @@
+.jfx-button {
+     -jfx-button-type: RAISED;
+     -fx-background-color: black;
+     -fx-text-fill: white;
+}
+.jfx-hamburger StackPane {
+   -fx-background-color: #8DB6CD;
+}
