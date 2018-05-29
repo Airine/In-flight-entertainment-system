@@ -20,7 +20,13 @@ public class RootLayoutController {
     private AnchorPane mainPane;
 
     @FXML
-    private AnchorPane playpane;
+    private AnchorPane musicpage;
+
+    @FXML
+    private AnchorPane playpage;
+
+    @FXML
+    private AnchorPane homepage;
 
     @FXML
     private JFXHamburger hamburger;
@@ -33,7 +39,6 @@ public class RootLayoutController {
 
     private  HamburgerNextArrowBasicTransition transition;
     private VBox box;//抽屉栏
-     private AnchorPane homePage;//主页面
 
 
     /**
@@ -45,8 +50,9 @@ public class RootLayoutController {
     }
     public MainApp getMainApp(){return mainApp;}
     public void setVBox(VBox box) {this.box=box;}
-    public void setHomePage(AnchorPane page){this.homePage=page;}
-    public AnchorPane getPlaypane(){return playpane;}
+    public void setHomePage(AnchorPane page){this.homepage=page;}
+    public AnchorPane getHomepage() { return homepage; }
+
     @FXML
     private void initialize(){
         try {
@@ -54,7 +60,7 @@ public class RootLayoutController {
             transition.setRate(-1);
 
          initDrawerContent();
-         initHomePage();
+//         initHomePage();
         }catch (Exception e){
             e.getStackTrace();
         }
@@ -93,11 +99,16 @@ public class RootLayoutController {
 
           HomePageController HomePageController=loader.getController();
             HomePageController.setRootLayoutController(this);
-            playpane=mainPane;
         }catch(IOException e){
             e.printStackTrace();
         }
     }
+    public void notVisible(){
+      musicpage.setVisible(false);
+      homepage.setVisible(false);
+      playpage.setVisible(false);
+    }
+
     @FXML
     private void handlehamburger(){
             transition.setRate(transition.getRate()*-1);
@@ -106,6 +117,22 @@ public class RootLayoutController {
             drawer.close();
         else
             drawer.open();
+    }
+
+    @FXML
+    private void seeHomepage(){
+     notVisible();
+      homepage.setVisible(true);
+    }
+    @FXML
+    private void seePlaypage(){
+        notVisible();
+        playpage.setVisible(true);
+    }
+    @FXML
+    private void setMusicpage(){
+        notVisible();
+        musicpage.setVisible(true);
     }
 
     @FXML

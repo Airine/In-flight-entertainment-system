@@ -38,13 +38,13 @@ public class DrawerContentController {
     }
     @FXML
     private void handlebutton1() {
-        AnchorPane playpane= rootLayoutController.getPlaypane();
+        AnchorPane homepage= rootLayoutController.getHomepage();
         JFXFillTransition transition=new JFXFillTransition();
         transition.setDuration(Duration.millis(5000));
-        transition.setRegion(playpane);
+        transition.setRegion(homepage);
         if(!clicked){
             transition.setFromValue(Color.WHITE);
-            transition.setToValue(Color.RED);
+            transition.setToValue(Color.BLACK);
             transition.play();
             clicked=true;
         }else {
