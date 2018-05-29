@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -32,6 +33,10 @@ public class MainApp extends Application {
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("视频");
+        this.primaryStage.setWidth(640);
+        this.primaryStage.setHeight(480);
+        this.primaryStage.initStyle(StageStyle.TRANSPARENT);//隐藏窗口
+        this.primaryStage.setResizable(false);//不能改变窗口大小
         this.primaryStage.getIcons().add(new Image("resources/shulilogo.png"));
         initRootLayout();
     }
@@ -81,6 +86,9 @@ public class MainApp extends Application {
         }
   }
 
+  public void closeWindows(){
+        primaryStage.close();
+  }
 
     public static void main(String[] args) {
         launch(args);

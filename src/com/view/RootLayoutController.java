@@ -108,5 +108,9 @@ public class RootLayoutController {
             drawer.open();
     }
 
+    @FXML
+    private void handleClose(){
+        mainApp.closeWindows();
+    }
 
 }
