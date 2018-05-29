@@ -26,6 +26,8 @@ public class MainApp extends Application {
         this.openLogin = openLogin;
     }
 
+    public Stage getPrimaryStage() { return primaryStage; }
+
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;

@@ -28,10 +28,7 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="playpane" layoutY="44.0" prefHeight="437.0" prefWidth="640.0" style="-fx-background-color: #F5FFFA;">
-         <children>
-            <JFXDrawer fx:id="drawer" defaultDrawerSize="190.0" layoutY="23.0" prefHeight="336.0" prefWidth="92.0" />
-         </children>
-      </AnchorPane>
+      <AnchorPane fx:id="playpane" layoutY="44.0" prefHeight="436.0" prefWidth="640.0" style="-fx-background-color: red;" />
+      <JFXDrawer fx:id="drawer" defaultDrawerSize="190.0" layoutY="44.0" prefHeight="436.0" prefWidth="92.0" AnchorPane.topAnchor="44.0" />
    </children>
 </AnchorPane>
