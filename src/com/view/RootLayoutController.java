@@ -97,7 +97,7 @@ public class RootLayoutController {
                     .getResource("view/HomePage.fxml"));
             this.setHomePage(loader.load());
 
-          HomePageController HomePageController=loader.getController();
+            HomePageController HomePageController=loader.getController();
             HomePageController.setRootLayoutController(this);
         }catch(IOException e){
             e.printStackTrace();

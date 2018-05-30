@@ -36,7 +36,7 @@ public class SQLiteJDBC {
     }
 
     public static Connection connectToDB(){
-        Connection connection = null;
+        Connection connection;
         try {
             Class.forName(JDBC_DRIVER);
             connection = DriverManager.getConnection(DB_URL);
@@ -51,7 +51,7 @@ public class SQLiteJDBC {
     }
 
     public static void runSQLstatement(Connection connection, String sql) {
-        Statement statement = null;
+        Statement statement;
         try {
             Class.forName(JDBC_DRIVER);
 
@@ -64,7 +64,7 @@ public class SQLiteJDBC {
     }
 
     public static ResultSet runSQLquery(Connection connection, String sql) {
-        Statement statement = null;
+        Statement statement;
         try {
             Class.forName(JDBC_DRIVER);
 
