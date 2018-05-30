@@ -1,5 +1,6 @@
 package com;
 
+import com.model.User;
 import com.view.LoginController;
 import com.view.RootLayoutController;
 import javafx.application.Application;
@@ -15,6 +16,9 @@ import java.io.IOException;
 import static com.util.Tool.loadUsers;
 
 public class MainApp extends Application {
+
+    public static User mainUser;
+
     private Stage primaryStage;
     private AnchorPane rootLayout;
     private Boolean login=false,openLogin=false ;//判断是否已经登陆过，如果已经打开登陆窗口，或者已经登陆，就不能再打开登陆窗口
