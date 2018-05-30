@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="drawerBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="436.0" prefWidth="92.0" style="-fx-background-color: #FFB6C1;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.DrawerContentController">
+<VBox fx:id="drawerBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="436.0" prefWidth="280.0" style="-fx-background-color: #FFB6C1;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.DrawerContentController">
    <children>
       <Pane prefHeight="67.0" prefWidth="92.0">
          <children>
@@ -19,7 +19,7 @@
             </ImageView>
          </children>
       </Pane>
-      <JFXButton onAction="#handleClickedImage" prefHeight="46.0" prefWidth="191.0" text="User" textFill="GREY">
+      <JFXButton onAction="#handleLogin" prefHeight="46.0" prefWidth="191.0" text="User" textFill="GREY">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
@@ -49,7 +49,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton layoutX="10.0" layoutY="151.0" prefHeight="46.0" prefWidth="191.0" text="User" textFill="GREY">
+      <JFXButton layoutX="10.0" layoutY="151.0" prefHeight="46.0" prefWidth="280.0" text="User" textFill="GREY">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
@@ -124,7 +124,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton layoutX="10.0" layoutY="307.0" prefHeight="46.0" prefWidth="191.0" text="User" textFill="GREY">
+      <JFXButton layoutX="10.0" layoutY="307.0" onAction="#handleSetting" prefHeight="46.0" prefWidth="191.0" text="User" textFill="GREY">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
