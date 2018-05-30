@@ -35,7 +35,7 @@ public class SQLiteJDBC {
         }
     }
 
-    private static Connection connectToDB(){
+    public static Connection connectToDB(){
         Connection connection = null;
         try {
             Class.forName(JDBC_DRIVER);
@@ -50,7 +50,7 @@ public class SQLiteJDBC {
         return null;
     }
 
-    private static void runSQLstatement(Connection connection, String sql) {
+    public static void runSQLstatement(Connection connection, String sql) {
         Statement statement = null;
         try {
             Class.forName(JDBC_DRIVER);
@@ -63,7 +63,7 @@ public class SQLiteJDBC {
         }
     }
 
-    private static ResultSet runSQLquery(Connection connection, String sql) {
+    public static ResultSet runSQLquery(Connection connection, String sql) {
         Statement statement = null;
         try {
             Class.forName(JDBC_DRIVER);
