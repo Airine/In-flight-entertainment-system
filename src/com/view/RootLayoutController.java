@@ -50,7 +50,7 @@ public class RootLayoutController {
     }
     public MainApp getMainApp(){return mainApp;}
     public void setVBox(VBox box) {this.box=box;}
-    public void setHomePage(AnchorPane page){this.homepage=page;}
+    public void setHomePage(AnchorPane page){homepage.getChildren().setAll(page);}
     public AnchorPane getHomepage() { return homepage; }
 
     @FXML
@@ -60,7 +60,7 @@ public class RootLayoutController {
             transition.setRate(-1);
 
          initDrawerContent();
-//         initHomePage();
+         initHomePage();
         }catch (Exception e){
             e.getStackTrace();
         }
