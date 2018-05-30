@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="436.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.MusicPageController">
+   <children>
+      <JFXCheckBox layoutX="366.0" layoutY="209.0" text="这个是音乐界面" />
+   </children>
+</AnchorPane>
