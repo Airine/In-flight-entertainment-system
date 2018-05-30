@@ -145,7 +145,7 @@ public class MovieControl extends BorderPane {
         Label spacer2 = new Label("  ");
         mediaBar.getChildren().add(spacer2);
         
-        Image image = new Image(getClass().getResourceAsStream("fullScreen.png"));
+        Image image = new Image("resources/icon/fullScreen.png");
         final Button fullScreenButton = new Button();
         ImageView imageView = new ImageView(image);
         imageView.setPreserveRatio(true);
