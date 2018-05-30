@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="304.0" maxWidth="383.0" minHeight="267.0" minWidth="383.0"  opacity="0.67" prefHeight="267.0" prefWidth="383.0" style="-fx-background-color: #5F9EA0;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.LoginController">
+   <children>
+      <AnchorPane layoutY="-15.0" prefHeight="275.0" prefWidth="383.0">
+         <children>
+            <ImageView fitHeight="34.0" fitWidth="36.0" layoutX="76.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/icon/login_user.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="34.0" fitWidth="36.0" layoutX="76.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/icon/login_secret.png" />
+               </image>
+            </ImageView>
+            <JFXTextField fx:id="user_name" focusColor="#09b6bc" layoutX="118.0" onInputMethodTextChanged="#getUsernameChanged" prefHeight="28.0" prefWidth="185.0" promptText="Username:" AnchorPane.bottomAnchor="216.0" AnchorPane.leftAnchor="118.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="54.0">
+               <font>
+                  <Font name="Verdana" size="13.0" />
+               </font>
+            </JFXTextField>
+            <JFXPasswordField focusColor="#09b6bc" layoutX="118.0" onInputMethodTextChanged="#getPwChanged" prefHeight="28.0" prefWidth="185.0" promptText="Password:" AnchorPane.bottomAnchor="135.0" AnchorPane.leftAnchor="118.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="135.0">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </JFXPasswordField>
+            <JFXButton fx:id="Login" buttonType="RAISED" onMousePressed="#pressLoginButton" onMouseReleased="#releaseLoginButton" layoutX="88.0" layoutY="208.0" prefHeight="34.0" prefWidth="83.0" ripplerFill="WHITE" style="-fx-background-color: #2196f3;" text="Login" textFill="WHITE" />
+            <JFXButton fx:id="Sign" buttonType="RAISED" onMousePressed="#pressSignButton" onMouseReleased="#releaseSignButton" layoutX="220.0" layoutY="208.0" prefHeight="34.0" prefWidth="83.0" ripplerFill="WHITE" style="-fx-background-color: #2196f3;" text="Sign up" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
