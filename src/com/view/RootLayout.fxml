@@ -18,10 +18,10 @@
             </ImageView>
             <ImageView fitHeight="44.0" fitWidth="44.0" layoutX="350.0" onMouseClicked="#seePlaypage" opacity="0.5" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="0.0">
                <image>
-                  <Image url="@../../resources/icon/playon.png" />
+                  <Image url="@../../resources/icon/playon (1).png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="44.0" fitWidth="44.0" layoutX="450.0" onMouseClicked="#seeMusicpage" opacity="0.5" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <ImageView fitHeight="44.0" fitWidth="44.0" layoutX="450.0" onMouseClicked="#setMusicpage" opacity="0.5" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
                <image>
                   <Image url="@../../resources/icon/customerservice.png" />
                </image>
@@ -33,8 +33,9 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="homepage" layoutX="10.0" layoutY="54.0" prefHeight="436.0" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="44.0" />
-      <JFXDrawer fx:id="drawer" defaultDrawerSize="280.0" layoutX="0.0" layoutY="44.0" prefHeight="436.0" prefWidth="280.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="360.0" AnchorPane.topAnchor="44.0" />
-      <AnchorPane fx:id="SettingPane" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="280.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="44.0" />
+      <AnchorPane fx:id="musicpage" layoutX="10.0" layoutY="54.0" prefHeight="436.0" prefWidth="640.0" style="-fx-background-color: black;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="44.0" />
+      <AnchorPane fx:id="playpage" layoutX="10.0" layoutY="54.0" prefHeight="436.0" prefWidth="640.0" style="-fx-background-color: green;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="44.0" />
+      <AnchorPane fx:id="homepage" layoutX="10.0" layoutY="54.0" prefHeight="436.0" prefWidth="640.0" style="-fx-background-color: red;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="44.0" />
+      <JFXDrawer fx:id="drawer" defaultDrawerSize="190.0" layoutY="44.0" prefHeight="436.0" prefWidth="92.0" AnchorPane.topAnchor="44.0" />
    </children>
 </AnchorPane>

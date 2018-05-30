@@ -19,6 +19,11 @@ public class RootLayoutController {
     @FXML
     private AnchorPane mainPane;
 
+    @FXML
+    private AnchorPane musicpage;
+
+    @FXML
+    private AnchorPane playpage;
 
     @FXML
     private AnchorPane homepage;
@@ -29,15 +34,12 @@ public class RootLayoutController {
     @FXML
     private JFXDrawer drawer;
 
-    @FXML
-    private AnchorPane SettingPane;
-
     //和主应用连接
     private MainApp mainApp;
 
     private  HamburgerNextArrowBasicTransition transition;
     private VBox box;//抽屉栏
-    public AnchorPane homeP,musicP,playerP;
+
 
     /**
      * 设置主应用
@@ -50,8 +52,7 @@ public class RootLayoutController {
     public void setVBox(VBox box) {this.box=box;}
     public void setHomePage(AnchorPane page){homepage.getChildren().setAll(page);}
     public AnchorPane getHomepage() { return homepage; }
-    public void setSettingPane(AnchorPane pane ){SettingPane.getChildren().setAll(pane);}
-    public AnchorPane getSettingPane(){return SettingPane;}
+
     @FXML
     private void initialize(){
         try {
@@ -60,8 +61,6 @@ public class RootLayoutController {
 
          initDrawerContent();
          initHomePage();
-         initMusicPage();
-         initPlayerPage();
         }catch (Exception e){
             e.getStackTrace();
         }
@@ -96,86 +95,44 @@ public class RootLayoutController {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class
                     .getResource("view/HomePage.fxml"));
-           homeP=loader.load();
-          HomePageController HomePageController=loader.getController();
+            this.setHomePage(loader.load());
+
+            HomePageController HomePageController=loader.getController();
             HomePageController.setRootLayoutController(this);
-            setHomePage(homeP);
         }catch(IOException e){
             e.printStackTrace();
         }
     }
-
-    public void initMusicPage(){
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class
-                    .getResource("view/MusicPage.fxml"));
-            musicP = loader.load();
-            MusicPageController musicPageController = loader.getController();
-            musicPageController.setRootLayoutController(this);
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-    }
-    public void initSettingPage(){
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class
-                    .getResource("view/SettingPage.fxml"));
-            AnchorPane setting = loader.load();
-           SettingPageController settingPageController = loader.getController();
-         settingPageController.setRootLayoutController(this);
-         setSettingPane(setting);
-        }catch (IOException e){
-            e.printStackTrace();
-        }
+    public void notVisible(){
+      musicpage.setVisible(false);
+      homepage.setVisible(false);
+      playpage.setVisible(false);
     }
 
-    public void initPlayerPage(){
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class
-                    .getResource("view/PlayerPage.fxml"));
-            playerP = loader.load();
-            PlayerPageController playerPageController = loader.getController();
-            playerPageController.setRootLayoutController(this);
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-    }
-    public void setSettingVisible(){
-        getSettingPane().setVisible(true);
-    }
-    public void homePageNotSee(){
-        homepage.setVisible(false);
-    }
-    public void homePageSee(){
-        homepage.setVisible(true);
-    }
     @FXML
     private void handlehamburger(){
             transition.setRate(transition.getRate()*-1);
             transition.play();
-        if(drawer.isOpened()) {
+        if(drawer.isOpened())
             drawer.close();
-            homePageSee();
-            SettingPane.setVisible(false);
-        }
         else
             drawer.open();
     }
 
     @FXML
     private void seeHomepage(){
-  setHomePage(homeP);
+     notVisible();
+      homepage.setVisible(true);
     }
     @FXML
     private void seePlaypage(){
-        setHomePage(playerP);
+        notVisible();
+        playpage.setVisible(true);
     }
     @FXML
-    private void seeMusicpage(){
-        setHomePage(musicP);
+    private void setMusicpage(){
+        notVisible();
+        musicpage.setVisible(true);
     }
 
     @FXML

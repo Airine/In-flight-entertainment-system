@@ -4,9 +4,9 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="436.0" prefWidth="640.0" style="-fx-background-color: green;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.HomePageController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: green;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.HomePageController">
    <children>
-      <JFXProgressBar layoutX="365.0" layoutY="324.0" prefHeight="5.0" />
-      <Label layoutX="386.0" layoutY="277.0" text="这是homepage，现在在测试" />
+      <JFXProgressBar layoutX="200.0" layoutY="291.0" />
+      <Label layoutX="221.0" layoutY="244.0" text="这是homepage，现在在测试" />
    </children>
 </AnchorPane>
