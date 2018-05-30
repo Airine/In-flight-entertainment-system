@@ -33,8 +33,6 @@ public class LoginController {
     }
     public Stage getDialogStage() { return dialogStage; }
 
-    private static boolean user_flag; // 这个用来判断user_name存不存在
-
     @FXML
     private void initialize(){
     }
@@ -71,7 +69,7 @@ public class LoginController {
             if (!user.verifyPassword(user_pwText)){
                 user_pw_warning.setText("Wrong password");
             } else {
-                setCloseAction();
+                dialogStage.close();
                 mainUser = user;
             }
         }
@@ -100,7 +98,6 @@ public class LoginController {
         String input = user_name.getText()+keyEvent.getCharacter();
         System.err.println(input);
         if(getUser(input) != null) {
-            user_flag = true;
             Sign.setButtonType(JFXButton.ButtonType.FLAT);
             Sign.setDisable(true);
             user_name_warning.setText("Username exists");
@@ -111,4 +108,7 @@ public class LoginController {
         }
     }
 
+    public void getPwTyped(KeyEvent keyEvent) {
+        user_pw_warning.setText("");
+    }
 }

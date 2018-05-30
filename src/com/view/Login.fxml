@@ -33,7 +33,7 @@
                   <Font name="Verdana" size="13.0" />
                </font>
             </JFXTextField>
-            <JFXPasswordField fx:id="user_pw" focusColor="#09b6bc" layoutX="118.0" onInputMethodTextChanged="#getPwChanged" prefHeight="28.0" prefWidth="185.0" promptText="Password:" AnchorPane.bottomAnchor="135.0" AnchorPane.leftAnchor="118.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="135.0">
+            <JFXPasswordField fx:id="user_pw" focusColor="#09b6bc" layoutX="118.0" onInputMethodTextChanged="#getPwChanged" onKeyTyped="#getPwTyped" prefHeight="28.0" prefWidth="185.0" promptText="Password:" AnchorPane.bottomAnchor="135.0" AnchorPane.leftAnchor="118.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="135.0">
                <font>
                   <Font size="13.0" />
                </font>
