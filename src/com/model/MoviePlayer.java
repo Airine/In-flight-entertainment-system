@@ -2,6 +2,7 @@ package com.model;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
@@ -38,7 +39,8 @@ public class MoviePlayer extends Application {
             primaryStage.setTitle("Embedded Media Player");
             primaryStage.setScene(scene);
             primaryStage.show();
-            primaryStage.setFullScreenExitHint("Press ESC to exit\nPress the PLAY button to replay.");
+            primaryStage.setFullScreenExitHint("Press FULL SCREEN button to exit\nPress the PLAY button to replay.");
+            primaryStage.setFullScreenExitKeyCombination(KeyCombination.keyCombination("ctrl+s"));
 
         } catch (IOException e) {
             e.printStackTrace();
