@@ -8,11 +8,15 @@ public class User {
     private String password;
     private int setting;
 
+    public User(){
+
+    }
+
     public User(int id, String name, String password, int setting) {
-        this.id = id;
-        this.name = name;
-        this.password = password;
-        this.setting = setting;
+        setId(id);
+        setName(name);
+        setPassword(password);
+        setSetting(setting);
     }
 
     public boolean verifyPassword(String password){
@@ -31,4 +35,19 @@ public class User {
         return setting;
     }
 
+    private void setId(int id) {
+        this.id = id;
+    }
+
+    private void setName(String name) {
+        this.name = name;
+    }
+
+    private void setPassword(String password) {
+        this.password = password;
+    }
+
+    private void setSetting(int setting) {
+        this.setting = setting;
+    }
 }

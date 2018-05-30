@@ -12,6 +12,8 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
+import static com.util.Tool.loadUsers;
+
 public class MainApp extends Application {
     private Stage primaryStage;
     private AnchorPane rootLayout;
@@ -62,7 +64,7 @@ public class MainApp extends Application {
     }
 
 
-  public void login(){
+    public void login(){
         try {
             if(!login && !openLogin) {
                 FXMLLoader loader = new FXMLLoader();
@@ -86,13 +88,14 @@ public class MainApp extends Application {
         }catch (Exception e){
             e.getStackTrace();
         }
-  }
+    }
 
-  public void closeWindows(){
+    public void closeWindows(){
         primaryStage.close();
-  }
+    }
 
     public static void main(String[] args) {
+        loadUsers();
         launch(args);
     }
 }

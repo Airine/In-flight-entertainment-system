@@ -1,18 +1,21 @@
 package com.util;
 
-import com.model.User;
+import com.model.*;
 import static com.util.SQLiteJDBC.*;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Tool {
 
-    public static List<User> users;
+    private static List<User> users = new LinkedList<>();
 
-    private static void loadUsers(){
+    public static void loadUsers(){
         Connection connection = connectToDB();
 
 
@@ -28,7 +31,8 @@ public class Tool {
                 int setting = rs.getInt("user_setting");
                 // 输出数据
 
-                users.add(new User(id,name,pw,setting));
+                User u = new User(id,name,pw,setting);
+                users.add(u);
 
                 System.out.print("ID: " + id);
                 System.out.print(", Name: " + name);
@@ -46,8 +50,15 @@ public class Tool {
         }
     }
 
-    private static User login(String user_name, String pw){
-//        User tempt = users.stream().findFirst(user -> )
-        return null;
+    public static User getUser(String user_name){
+        List<User> tempt = users.stream()
+                            .filter(user -> Objects.equals(user.getName(), user_name))
+                            .collect(Collectors.toList());
+        if (tempt.size()!=1) return null;
+        else return tempt.get(0);
+    }
+
+    public static void setUsers(List<User> users) {
+        Tool.users = users;
     }
 }

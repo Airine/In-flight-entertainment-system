@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="304.0" maxWidth="383.0" minHeight="267.0" minWidth="383.0"  opacity="0.67" prefHeight="267.0" prefWidth="383.0" style="-fx-background-color: #5F9EA0;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.LoginController">
+<AnchorPane maxHeight="304.0" maxWidth="383.0" minHeight="267.0" minWidth="383.0" opacity="0.67" prefHeight="267.0" prefWidth="383.0" style="-fx-background-color: #5F9EA0;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.LoginController">
    <children>
       <AnchorPane layoutY="-15.0" prefHeight="275.0" prefWidth="383.0">
          <children>
@@ -27,18 +27,18 @@
                   <Image url="@../../resources/icon/login_secret.png" />
                </image>
             </ImageView>
-            <JFXTextField fx:id="user_name" focusColor="#09b6bc" layoutX="118.0" onInputMethodTextChanged="#getUsernameChanged" prefHeight="28.0" prefWidth="185.0" promptText="Username:" AnchorPane.bottomAnchor="216.0" AnchorPane.leftAnchor="118.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="54.0">
+            <JFXTextField fx:id="user_name" focusColor="#09b6bc" layoutX="118.0" layoutY="55.0" onInputMethodTextChanged="#getUsernameChanged" onKeyTyped="#getUsernameTyped" prefHeight="28.0" prefWidth="185.0" promptText="Username:" AnchorPane.bottomAnchor="215.0" AnchorPane.leftAnchor="118.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="55.0">
                <font>
                   <Font name="Verdana" size="13.0" />
                </font>
             </JFXTextField>
-            <JFXPasswordField focusColor="#09b6bc" layoutX="118.0" onInputMethodTextChanged="#getPwChanged" prefHeight="28.0" prefWidth="185.0" promptText="Password:" AnchorPane.bottomAnchor="135.0" AnchorPane.leftAnchor="118.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="135.0">
+            <JFXPasswordField fx:id="user_pw" focusColor="#09b6bc" layoutX="118.0" onInputMethodTextChanged="#getPwChanged" prefHeight="28.0" prefWidth="185.0" promptText="Password:" AnchorPane.bottomAnchor="135.0" AnchorPane.leftAnchor="118.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="135.0">
                <font>
                   <Font size="13.0" />
                </font>
             </JFXPasswordField>
-            <JFXButton fx:id="Login" buttonType="RAISED" onMousePressed="#pressLoginButton" onMouseReleased="#releaseLoginButton" layoutX="88.0" layoutY="208.0" prefHeight="34.0" prefWidth="83.0" ripplerFill="WHITE" style="-fx-background-color: #2196f3;" text="Login" textFill="WHITE" />
-            <JFXButton fx:id="Sign" buttonType="RAISED" onMousePressed="#pressSignButton" onMouseReleased="#releaseSignButton" layoutX="220.0" layoutY="208.0" prefHeight="34.0" prefWidth="83.0" ripplerFill="WHITE" style="-fx-background-color: #2196f3;" text="Sign up" textFill="WHITE" />
+            <JFXButton fx:id="Login" buttonType="RAISED" layoutX="88.0" layoutY="208.0" onMouseClicked="#clickLoginButton" onMousePressed="#pressLoginButton" onMouseReleased="#releaseLoginButton" prefHeight="34.0" prefWidth="83.0" ripplerFill="WHITE" style="-fx-background-color: #2196f3;" text="Login" textFill="WHITE" />
+            <JFXButton fx:id="Sign" buttonType="RAISED" layoutX="220.0" layoutY="208.0" onMousePressed="#pressSignButton" onMouseReleased="#releaseSignButton" prefHeight="34.0" prefWidth="83.0" ripplerFill="WHITE" style="-fx-background-color: #2196f3;" text="Sign up" textFill="WHITE" />
          </children>
       </AnchorPane>
    </children>
