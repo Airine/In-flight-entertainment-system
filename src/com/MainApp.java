@@ -73,6 +73,7 @@ public class MainApp extends Application {
                 Stage dialogStage = new Stage();
                 openLogin=true; //打开了窗口就不能再打开了
                 dialogStage.setTitle("Login");
+                dialogStage.setResizable(false);
                 dialogStage.initOwner(primaryStage);
                 Scene scene = new Scene(page);
                 dialogStage.setScene(scene);
