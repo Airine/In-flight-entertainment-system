@@ -18,7 +18,7 @@
             </ImageView>
             <ImageView fitHeight="44.0" fitWidth="44.0" layoutX="350.0" onMouseClicked="#seePlaypage" opacity="0.5" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="0.0">
                <image>
-                  <Image url="@../../resources/icon/playon%20(1).png" />
+                  <Image url="@../../resources/icon/playon (1).png" />
                </image>
             </ImageView>
             <ImageView fitHeight="44.0" fitWidth="44.0" layoutX="450.0" onMouseClicked="#setMusicpage" opacity="0.5" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
