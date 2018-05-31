@@ -86,7 +86,9 @@ public class MainApp extends Application {
                 controller.setMainApp(this);
                 controller.setDialogStage(dialogStage);
                 controller.setCloseAction();
+                dialogStage.initStyle(StageStyle.TRANSPARENT);//隐藏窗口
                 dialogStage.showAndWait();//只能用户主动关闭
+
             }
         }catch (Exception e){
             e.getStackTrace();

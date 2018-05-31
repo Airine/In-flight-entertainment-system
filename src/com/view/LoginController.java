@@ -34,6 +34,9 @@ public class LoginController {
     public Stage getDialogStage() { return dialogStage; }
 
     @FXML
+    private JFXButton close;
+
+    @FXML
     private void initialize(){
     }
 
@@ -43,13 +46,17 @@ public class LoginController {
      * @param
      * @return
      */
-    public   void setCloseAction(){
+    public  void setCloseAction(){
         dialogStage.setOnCloseRequest(windowEvent -> {
             mainApp.setOpenLogin(false);
         });
     }
 
-
+    @FXML
+    public void handleClose(){
+        dialogStage.close();
+        mainApp.setOpenLogin(false);
+    }
 
     public void pressLoginButton(MouseEvent mouseEvent) {
         Login.setButtonType(JFXButton.ButtonType.FLAT);

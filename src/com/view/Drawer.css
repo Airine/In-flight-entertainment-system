@@ -10,3 +10,16 @@
 #userPane{
  -fx-background-color: #ee5253;
 }
+
+#image{
+-fx-font-size:  5px;
+-fx-background-radius:100;
+-fx-background-color:red;
+
+}
+
+#signout{
+-fx-background-radius:100;
+  -fx-font-size:  5px;
+   -fx-background-color:#A9A9A9;
+}
