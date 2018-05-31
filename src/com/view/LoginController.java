@@ -86,7 +86,7 @@ public class LoginController {
 
     public void getUsernameChanged(InputMethodEvent inputMethodEvent) {
         String input = user_name.getText();
-        System.err.println(input);
+//        System.err.println(input);
     }
 
     public void getPwChanged(InputMethodEvent inputMethodEvent) {
@@ -96,7 +96,7 @@ public class LoginController {
 
     public void getUsernameTyped(KeyEvent keyEvent) {
         String input = user_name.getText()+keyEvent.getCharacter();
-        System.err.println(input);
+//        System.err.println(input);
         if(getUser(input) != null) {
             Sign.setButtonType(JFXButton.ButtonType.FLAT);
             Sign.setDisable(true);

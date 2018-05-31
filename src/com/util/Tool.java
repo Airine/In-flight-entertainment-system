@@ -33,12 +33,12 @@ public class Tool {
 
                 User u = new User(id,name,pw,setting);
                 users.add(u);
-
-                System.out.print("ID: " + id);
-                System.out.print(", Name: " + name);
-                System.out.print(", Pw: " + pw);
-                System.out.print(", Setting: " + setting);
-                System.out.print("\n");
+//
+//                System.out.print("ID: " + id);
+//                System.out.print(", Name: " + name);
+//                System.out.print(", Pw: " + pw);
+//                System.out.print(", Setting: " + setting);
+//                System.out.print("\n");
             }
 
             if (connection!=null) {
