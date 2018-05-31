@@ -100,7 +100,7 @@ public class LoginController {
         if(getUser(input) != null) {
             Sign.setButtonType(JFXButton.ButtonType.FLAT);
             Sign.setDisable(true);
-            user_name_warning.setText("Username exists");
+//            user_name_warning.setText("Username exists");
         } else {
             Sign.setButtonType(JFXButton.ButtonType.RAISED);
             Sign.setDisable(false);
