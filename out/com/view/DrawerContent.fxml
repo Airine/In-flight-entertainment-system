@@ -10,16 +10,16 @@
 
 <VBox fx:id="drawerBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="436.0" prefWidth="280.0" style="-fx-background-color: #FFB6C1;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.DrawerContentController">
    <children>
-      <Pane prefHeight="67.0" prefWidth="92.0">
+      <Pane id="userPane" prefHeight="142.0" prefWidth="280.0" stylesheets="@Drawer.css">
          <children>
-            <ImageView fitHeight="67.0" fitWidth="63.0" layoutX="16.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="14.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../resources/shulilogo.png" />
                </image>
             </ImageView>
          </children>
       </Pane>
-      <JFXButton onAction="#handleLogin" prefHeight="46.0" prefWidth="191.0" text="User" textFill="GREY">
+      <JFXButton onAction="#handleLogin" prefHeight="49.0" prefWidth="280.0" stylesheets="@Drawer.css" text="User" textFill="GREY">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
@@ -34,7 +34,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton onAction="#handlebutton1" prefHeight="46.0" prefWidth="191.0" text="User" textFill="GREY">
+      <JFXButton onAction="#handlebutton1" prefHeight="49.0" prefWidth="280.0" stylesheets="@Drawer.css" text="User" textFill="GREY">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
@@ -49,7 +49,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton layoutX="10.0" layoutY="151.0" prefHeight="46.0" prefWidth="280.0" text="User" textFill="GREY">
+      <JFXButton layoutX="10.0" layoutY="151.0" prefHeight="49.0" prefWidth="280.0" stylesheets="@Drawer.css" text="User" textFill="GREY">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
@@ -64,7 +64,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton layoutX="10.0" layoutY="151.0" prefHeight="46.0" prefWidth="191.0" text="User" textFill="GREY">
+      <JFXButton layoutX="10.0" layoutY="151.0" prefHeight="49.0" prefWidth="280.0" stylesheets="@Drawer.css" text="User" textFill="GREY">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
@@ -79,7 +79,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton layoutX="10.0" layoutY="243.0" prefHeight="46.0" prefWidth="191.0" text="User" textFill="GREY">
+      <JFXButton layoutX="10.0" layoutY="307.0" prefHeight="49.0" prefWidth="280.0" stylesheets="@Drawer.css" text="User" textFill="GREY">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
@@ -94,37 +94,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton layoutX="10.0" layoutY="289.0" prefHeight="46.0" prefWidth="191.0" text="User" textFill="GREY">
-         <font>
-            <Font name="Arial" size="12.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="30.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
-               <viewport>
-                  <Rectangle2D />
-               </viewport>
-               <image>
-                  <Image url="@../../resources/icon/login_user.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <JFXButton layoutX="10.0" layoutY="307.0" prefHeight="46.0" prefWidth="191.0" text="User" textFill="GREY">
-         <font>
-            <Font name="Arial" size="12.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="30.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
-               <viewport>
-                  <Rectangle2D />
-               </viewport>
-               <image>
-                  <Image url="@../../resources/icon/login_user.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <JFXButton layoutX="10.0" layoutY="307.0" onAction="#handleSetting" prefHeight="46.0" prefWidth="191.0" text="User" textFill="GREY">
+      <JFXButton layoutX="10.0" layoutY="307.0" onAction="#handleSetting" prefHeight="49.0" prefWidth="280.0" stylesheets="@Drawer.css" text="User" textFill="GREY">
          <font>
             <Font name="Arial" size="12.0" />
          </font>

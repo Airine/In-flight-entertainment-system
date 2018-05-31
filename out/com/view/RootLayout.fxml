@@ -11,9 +11,9 @@
 
 <AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: #F8F8FF;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.RootLayoutController">
    <children>
-      <AnchorPane prefHeight="44.0" prefWidth="640.0" style="-fx-background-color: #2BB7B3;">
+      <AnchorPane id="mainBar" prefHeight="44.0" prefWidth="640.0" stylesheets="@bar.css">
          <children>
-            <JFXHamburger fx:id="hamburger" onMouseClicked="#handlehamburger" prefHeight="44.0" prefWidth="55.0" style="-fx-background-color: #003F43;" stylesheets="@Red.css" />
+            <JFXHamburger fx:id="hamburger" onMouseClicked="#handlehamburger" prefHeight="44.0" prefWidth="55.0" stylesheets="@bar.css" />
             <ImageView fitHeight="44.0" fitWidth="44.0" layoutX="209.0" onMouseClicked="#seeHomepage" opacity="0.5" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="310.0" AnchorPane.topAnchor="0.0">
                <image>
                   <Image url="@../../resources/icon/homepage.png" />
@@ -34,11 +34,11 @@
                   <Image url="@../../resources/icon/close.png" />
                </image>
             </ImageView>
-            <HBox layoutX="72.0" prefHeight="30.0" prefWidth="194.0" style="-fx-background-radius: 25; -fx-background-color: gray;" AnchorPane.bottomAnchor="8.0" AnchorPane.topAnchor="8.0">
+            <HBox id="searchBox" layoutX="72.0" prefHeight="30.0" prefWidth="194.0" stylesheets="@bar.css" AnchorPane.bottomAnchor="8.0" AnchorPane.topAnchor="8.0">
                <children>
-                  <JFXTextField focusColor="RED" prefHeight="22.0" prefWidth="159.0" promptText="Search">
+                  <JFXTextField id="searchText" focusColor="#ffffff00" prefHeight="22.0" prefWidth="159.0" promptText="Search" unFocusColor="#ffffff00">
                      <HBox.margin>
-                        <Insets />
+                        <Insets top="3.0" />
                      </HBox.margin>
                      <padding>
                         <Insets left="10.0" />
