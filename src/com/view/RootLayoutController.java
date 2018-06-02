@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Line;
 
 import java.awt.event.MouseEvent;
 import java.io.IOException;
@@ -19,6 +20,14 @@ public class RootLayoutController {
     @FXML
     private AnchorPane mainPane;
 
+    @FXML
+    private Line homeline;
+
+    @FXML
+    private Line playline;
+
+    @FXML
+    private Line musicline;
 
     @FXML
     private AnchorPane homepage;
@@ -81,6 +90,7 @@ public class RootLayoutController {
             DrawerContentController drawerContentController=loader.getController();
             drawerContentController.setRootLayoutController(this);
             drawer.setSidePane(box);
+            drawer.setVisible(false);
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -100,6 +110,7 @@ public class RootLayoutController {
           HomePageController HomePageController=loader.getController();
             HomePageController.setRootLayoutController(this);
             setHomePage(homeP);
+            homeline.setVisible(true);
         }catch(IOException e){
             e.printStackTrace();
         }
@@ -159,23 +170,35 @@ public class RootLayoutController {
         if(drawer.isOpened()) {
             drawer.close();
             homePageSee();
-            SettingPane.setVisible(false);
         }
-        else
+        else {
+            drawer.setVisible(true);
             drawer.open();
+        }
     }
 
     @FXML
     private void seeHomepage(){
-  setHomePage(homeP);
+     setHomePage(homeP);
+     musicline.setVisible(false);
+     playline.setVisible(false);
+     homeline.setVisible(true);
     }
     @FXML
     private void seePlaypage(){
         setHomePage(playerP);
+        musicline.setVisible(false);
+        playline.setVisible(true);
+        homeline.setVisible(false);
+
     }
     @FXML
     private void seeMusicpage(){
         setHomePage(musicP);
+        musicline.setVisible(true);
+        playline.setVisible(false);
+        homeline.setVisible(false);
+
     }
 
     @FXML

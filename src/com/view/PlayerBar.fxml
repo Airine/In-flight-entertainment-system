@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXSlider?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="48.0" prefWidth="640.0" style="-fx-background-color: F5F5F7;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.PlayerBarController">
+   <children>
+      <JFXSlider fx:id="ProgressBar" accessibleRole="BUTTON" cache="true" layoutX="158.0" layoutY="17.0" opacity="0.8" prefHeight="14.0" prefWidth="283.0" value="1.0">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </JFXSlider>
+      <Label layoutX="93.0" layoutY="17.0" prefHeight="15.0" prefWidth="60.0" text="当前时间" textAlignment="CENTER" />
+      <Label layoutX="447.0" layoutY="17.0" prefHeight="15.0" prefWidth="60.0" text="总时间" textAlignment="CENTER" />
+      <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="508.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="14.0" AnchorPane.topAnchor="14.0">
+         <image>
+            <Image url="@../../resources/icon/sound1.png" />
+         </image>
+      </ImageView>
+      <JFXSlider fx:id="volume" layoutX="536.0" layoutY="18.0" prefHeight="14.0" prefWidth="81.0" AnchorPane.bottomAnchor="17.0" AnchorPane.topAnchor="17.0" />
+      <ImageView fx:id="PlayOrStop" fitHeight="28.0" fitWidth="28.0" layoutX="5.0" layoutY="10.0" onMouseClicked="#handlePlayOrStop" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="601.0" AnchorPane.topAnchor="10.0">
+         <image>
+            <Image url="@../../resources/icon/vediostop.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

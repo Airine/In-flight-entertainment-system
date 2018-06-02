@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDrawer?>
 <?import com.jfoenix.controls.JFXHamburger?>
 <?import com.jfoenix.controls.JFXTextField?>
@@ -8,33 +9,30 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: #F8F8FF;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.RootLayoutController">
    <children>
       <AnchorPane id="mainBar" prefHeight="44.0" prefWidth="640.0" stylesheets="@bar.css">
          <children>
-            <JFXHamburger fx:id="hamburger" onMouseClicked="#handlehamburger" prefHeight="44.0" prefWidth="55.0" stylesheets="@bar.css" />
-            <ImageView fitHeight="44.0" fitWidth="44.0" layoutX="209.0" onMouseClicked="#seeHomepage" opacity="0.5" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="310.0" AnchorPane.topAnchor="0.0">
+            <JFXHamburger fx:id="hamburger" onMouseClicked="#handlehamburger" opacity="0.8" prefHeight="44.0" prefWidth="55.0" stylesheets="@bar.css" />
+            <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="330.0" layoutY="6.0" onMouseClicked="#seeHomepage" opacity="0.8" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="330.0" AnchorPane.rightAnchor="289.0" AnchorPane.topAnchor="6.0">
                <image>
-                  <Image url="@../../resources/icon/homepage.png" />
+                  <Image url="@../../resources/icon/order.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="44.0" fitWidth="44.0" layoutX="350.0" onMouseClicked="#seePlaypage" opacity="0.5" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="380.0" AnchorPane.topAnchor="0.0">
+            <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="407.0" layoutY="5.0" onMouseClicked="#seePlaypage" opacity="0.8" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="410.0" AnchorPane.rightAnchor="208.0" AnchorPane.topAnchor="5.0">
                <image>
-                  <Image url="@../../resources/icon/playon.png" />
+                  <Image url="@../../resources/icon/player.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="44.0" fitWidth="44.0" layoutX="450.0" onMouseClicked="#seeMusicpage" opacity="0.68" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="450.0" AnchorPane.topAnchor="0.0">
+            <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="490.0" layoutY="4.0" onMouseClicked="#seeMusicpage" opacity="0.8" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="490.0" AnchorPane.rightAnchor="129.0" AnchorPane.topAnchor="4.0">
                <image>
-                  <Image url="@../../resources/icon/customerservice.png" />
+                  <Image url="@../../resources/icon/music6.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="44.0" fitWidth="44.0" onMouseClicked="#handleClose" opacity="0.45" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
-               <image>
-                  <Image url="@../../resources/icon/close.png" />
-               </image>
-            </ImageView>
-            <HBox id="searchBox" layoutX="72.0" prefHeight="30.0" prefWidth="194.0" stylesheets="@bar.css" AnchorPane.bottomAnchor="8.0" AnchorPane.topAnchor="8.0">
+            <HBox id="searchBox" layoutX="74.0" layoutY="9.0" prefHeight="30.0" prefWidth="194.0" stylesheets="@bar.css" AnchorPane.bottomAnchor="7.0" AnchorPane.topAnchor="9.0">
                <children>
                   <JFXTextField id="searchText" focusColor="#ffffff00" prefHeight="22.0" prefWidth="159.0" promptText="Search" unFocusColor="#ffffff00">
                      <HBox.margin>
@@ -54,6 +52,14 @@
                   </ImageView>
                </children>
             </HBox>
+            <JFXButton buttonType="RAISED" layoutX="603.0" layoutY="11.0" onMouseClicked="#handleClose" opacity="0.8" prefHeight="20.0" prefWidth="20.0" ripplerFill="BLACK" style="-fx-background-radius: 50%; -fx-background-color: #F5F5F5;" text=" ">
+               <font>
+                  <Font size="6.0" />
+               </font>
+            </JFXButton>
+            <Line fx:id="homeline" endX="-65.0" fill="WHITE" layoutX="431.0" layoutY="41.5" startX="-100.0" stroke="WHITE" visible="false" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="330.0" AnchorPane.rightAnchor="287.0" />
+            <Line fx:id="playline" endX="-65.0" layoutX="508.5" layoutY="41.5" startX="-100.0" stroke="WHITE" visible="false" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="408.0" AnchorPane.rightAnchor="210.0" />
+            <Line fx:id="musicline" endX="-65.0" layoutX="519.0" layoutY="52.0" startX="-100.0" stroke="WHITE" visible="false" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="490.0" AnchorPane.rightAnchor="128.0" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="homepage" layoutX="10.0" layoutY="54.0" prefHeight="436.0" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="44.0" />

@@ -1,10 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXSlider?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="436.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.MusicPageController">
    <children>
-      <JFXCheckBox layoutX="366.0" layoutY="209.0" text="这个是音乐界面" />
+      <AnchorPane layoutX="6.0" prefHeight="244.0" prefWidth="640.0" style="-fx-background-color: #ee5253;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Label layoutX="7.0" layoutY="149.0" prefHeight="69.0" prefWidth="219.0" text="音乐名" textFill="WHITE">
+               <font>
+                  <Font name="Consolas" size="45.0" />
+               </font>
+            </Label>
+            <JFXToggleButton layoutX="522.0" layoutY="195.0" prefHeight="58.0" prefWidth="118.0" text="循环播放" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+      <JFXSlider layoutX="60.0" layoutY="366.0" prefHeight="14.0" prefWidth="520.0" value="1.0" />
+      <JFXButton layoutX="302.0" layoutY="289.0" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 50%; -fx-background-color: red;" text="| |" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="385.0" layoutY="289.0" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 50%; -fx-background-color: red;" text="&gt;" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="213.0" layoutY="289.0" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 50%; -fx-background-color: red;" text="&lt;" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>
