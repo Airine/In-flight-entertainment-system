@@ -170,6 +170,8 @@ public class RootLayoutController {
         if(drawer.isOpened()) {
             drawer.close();
             homePageSee();
+            drawer.setVisible(false);
+            getSettingPane().setVisible(false);
         }
         else {
             drawer.setVisible(true);
