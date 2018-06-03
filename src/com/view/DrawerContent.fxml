@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
@@ -12,9 +13,19 @@
    <children>
       <Pane id="userPane" prefHeight="142.0" prefWidth="280.0" stylesheets="@Drawer.css">
          <children>
-            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="14.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+            <Pane prefHeight="49.0" prefWidth="280.0" style="-fx-background-color: #F08080;">
+               <children>
+                  <JFXButton id="signout" buttonType="RAISED" layoutX="259.0" layoutY="7.0" prefHeight="15.0" prefWidth="15.0" stylesheets="@Drawer.css" text=" " />
+               </children>
+            </Pane>
+            <Label layoutX="166.0" layoutY="63.0" opacity="0.56" prefHeight="37.0" prefWidth="100.0" text="石原里美" textFill="WHITE">
+               <font>
+                  <Font name="Arial Black" size="21.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../resources/shulilogo.png" />
+                  <Image url="@../../resources/shiyuan.png" />
                </image>
             </ImageView>
          </children>
