@@ -18,6 +18,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
@@ -45,13 +46,33 @@ public class HomePageController {
     @FXML
     private void initialize(){
         ArrayList<Node> children = new ArrayList<>();
-        for (int i = 0; i < 100; i++){
-            MovieItem mv =new MovieItem(100,100);
-            children.add(mv);
-        }
-        HomeMasonryPane.getChildren().addAll(children);
-        HomeScrollPane.setContent(HomeMasonryPane);
 
+        for (int i = 0; i < 5; i++){
+//           try {
+//               FXMLLoader loader = new FXMLLoader();
+//               loader.setLocation(MainApp.class
+//                       .getResource("view/MovieItem1.fxml"));
+//               AnchorPane mv=loader.load();
+               MovieItem mv=new MovieItem(148,281);
+               children.add(mv);
+//           }catch (IOException e){
+//               e.printStackTrace();
+//           }
+        }
+      HomeMasonryPane.getChildren().addAll(children);
+        HomeMasonryPane.setHSpacing(40);
+        HomeMasonryPane.setVSpacing(15);
+        HomeMasonryPane.setStyle("-fx-background-color:#EED5D2;");
+        HomeScrollPane.setContent(HomeMasonryPane);
+        //封面图
+        ImageView imageView=new ImageView("resources/moviepage.png");
+       imageView.setFitWidth(640);
+       imageView.setFitHeight(192);
+//       Label label=new Label("Enjoy you movies");
+//       label.setStyle("-fx-font-size:  20px;    -fx-text-fill: white;");
+//       HomeScrollPane.getBottomBar().getChildren().add(label);
+        HomeScrollPane.getMainHeader().getChildren().add(imageView);
+       HomeScrollPane.getCondensedHeader().setStyle("-fx-background-color:#EED5D2;");
 
 
 

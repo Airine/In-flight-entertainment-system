@@ -9,6 +9,8 @@ import javafx.animation.Timeline;
 import javafx.beans.binding.Bindings;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -28,15 +30,18 @@ public class MovieItem extends StackPane {
         JFXDepthManager.setDepth(this, 1);
 
         //create content
-        StackPane header = new StackPane();
-        //上面那一块的颜色
-        String headerColor = getDefaultColor((int) ((Math.random() * 12) % 12));
-        header.setStyle("-fx-background-radius: 5 5 0 0; -fx-background-color: " + headerColor);
-        VBox.setVgrow(header, Priority.ALWAYS);
+//        StackPane header = new StackPane();
+//        //上面那一块的颜色
+//        String headerColor = getDefaultColor((int) ((Math.random() * 12) % 12));
+//        header.setStyle("-fx-background-radius: 5 5 0 0; -fx-background-color: " + headerColor);
+//        VBox.setVgrow(header, Priority.ALWAYS);
+        ImageView imageView=new ImageView("resources/movieitem1.png");
+        imageView.setFitWidth(190);
+        imageView.setFitHeight(224);
         StackPane body = new StackPane();
-        body.setMinHeight(100);
+        body.setMinHeight(73);
         VBox content = new VBox();
-        content.getChildren().addAll(header, body);
+        content.getChildren().addAll(imageView, body);
         body.setStyle("-fx-background-radius: 0 0 5 5; -fx-background-color: rgb(255,255,255,0.87);");
 
         // create button
@@ -44,7 +49,7 @@ public class MovieItem extends StackPane {
         button.setButtonType(JFXButton.ButtonType.RAISED);
         button.setStyle("-fx-background-radius: 40;-fx-background-color: " + getDefaultColor((int) ((Math.random() * 12) % 12)));
         button.setPrefSize(40, 40);
-        button.setRipplerFill(Color.valueOf(headerColor));
+//        button.setRipplerFill(Color.valueOf(headerColor));
         button.setScaleX(0);
         button.setScaleY(0);
 
@@ -57,8 +62,8 @@ public class MovieItem extends StackPane {
         glyph.setSize(20, 20);
         button.setGraphic(glyph);
         button.translateYProperty().bind(Bindings.createDoubleBinding(() -> {
-            return header.getBoundsInParent().getHeight() - button.getHeight() / 2;
-        }, header.boundsInParentProperty(), button.heightProperty()));
+            return imageView.getBoundsInParent().getHeight() - button.getHeight() / 2;
+        }, imageView.boundsInParentProperty(), button.heightProperty()));
         StackPane.setMargin(button, new Insets(0, 12, 0, 0));
         StackPane.setAlignment(button, Pos.TOP_RIGHT);
 
