@@ -9,6 +9,7 @@ import javafx.animation.Timeline;
 import javafx.beans.binding.Bindings;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Priority;
@@ -22,22 +23,18 @@ import java.util.Random;
 import static javafx.animation.Interpolator.EASE_BOTH;
 
 public class MovieItem extends StackPane {
+    ImageView imageView;//电影图片
+    Label title ;//电影标题
 
-    public MovieItem(double width, double height){
+    public MovieItem(double width, double heigh, String url, String title){
         Random rd =new Random(12);
         this.setPrefWidth(width);
-        this.setPrefHeight(height);
+        this.setPrefHeight(heigh);
         JFXDepthManager.setDepth(this, 1);
 
-        //create content
-//        StackPane header = new StackPane();
-//        //上面那一块的颜色
-//        String headerColor = getDefaultColor((int) ((Math.random() * 12) % 12));
-//        header.setStyle("-fx-background-radius: 5 5 0 0; -fx-background-color: " + headerColor);
-//        VBox.setVgrow(header, Priority.ALWAYS);
-        ImageView imageView=new ImageView("resources/movieitem1.png");
-        imageView.setFitWidth(190);
-        imageView.setFitHeight(224);
+        imageView=new ImageView(url);
+        imageView.setFitWidth(100);
+        imageView.setFitHeight(50);
         StackPane body = new StackPane();
         body.setMinHeight(73);
         VBox content = new VBox();

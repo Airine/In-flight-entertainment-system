@@ -17,6 +17,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -47,21 +48,21 @@ public class HomePageController {
     private void initialize(){
         ArrayList<Node> children = new ArrayList<>();
 
-        for (int i = 0; i < 5; i++){
-//           try {
-//               FXMLLoader loader = new FXMLLoader();
-//               loader.setLocation(MainApp.class
-//                       .getResource("view/MovieItem1.fxml"));
-//               AnchorPane mv=loader.load();
-               MovieItem mv=new MovieItem(148,281);
-               children.add(mv);
-//           }catch (IOException e){
-//               e.printStackTrace();
-//           }
+        for (int i = 0; i <15; i++){
+           try {
+              Label sort=new MovieSortItem("电影分类");
+               children.add(sort);
+
+           }catch (Exception e){
+               e.printStackTrace();
+           }
         }
+
+        //设置平面间距信息
       HomeMasonryPane.getChildren().addAll(children);
-        HomeMasonryPane.setHSpacing(40);
-        HomeMasonryPane.setVSpacing(15);
+     HomeMasonryPane.setHSpacing(8);
+     HomeMasonryPane.setVSpacing(10);
+
         HomeMasonryPane.setStyle("-fx-background-color:#EED5D2;");
         HomeScrollPane.setContent(HomeMasonryPane);
         //封面图
