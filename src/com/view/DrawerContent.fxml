@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import javafx.geometry.Insets?>
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -30,95 +34,100 @@
             </ImageView>
          </children>
       </Pane>
-      <JFXButton onAction="#handleLogin" prefHeight="49.0" prefWidth="280.0" stylesheets="@Drawer.css" text="User" textFill="GREY">
+      <JFXButton alignment="BASELINE_LEFT" onAction="#handleLogin" prefHeight="39.0" prefWidth="280.0" stylesheets="@Drawer.css" text="升级会员" textFill="GREY">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="30.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="26.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                <viewport>
                   <Rectangle2D />
                </viewport>
                <image>
-                  <Image url="@../../resources/icon/login_user.png" />
+                  <Image url="@../../resources/icon/money.png" />
                </image>
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton onAction="#handlebutton1" prefHeight="49.0" prefWidth="280.0" stylesheets="@Drawer.css" text="User" textFill="GREY">
+      <JFXButton alignment="BASELINE_LEFT" onAction="#handlebutton1" prefHeight="39.0" prefWidth="280.0" stylesheets="@Drawer.css" text="我的收藏" textFill="GREY">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="30.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="30.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                <viewport>
                   <Rectangle2D />
                </viewport>
                <image>
-                  <Image url="@../../resources/icon/login_user.png" />
+                  <Image url="@../../resources/icon/star.png" />
                </image>
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton layoutX="10.0" layoutY="151.0" prefHeight="49.0" prefWidth="280.0" stylesheets="@Drawer.css" text="User" textFill="GREY">
+      <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="151.0" prefHeight="39.0" prefWidth="280.0" stylesheets="@Drawer.css" text="定时关闭" textFill="GREY">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="30.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="30.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                <viewport>
                   <Rectangle2D />
                </viewport>
                <image>
-                  <Image url="@../../resources/icon/login_user.png" />
+                  <Image url="@../../resources/icon/timer.png" />
                </image>
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton layoutX="10.0" layoutY="151.0" prefHeight="49.0" prefWidth="280.0" stylesheets="@Drawer.css" text="User" textFill="GREY">
+      <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="151.0" prefHeight="39.0" prefWidth="280.0" stylesheets="@Drawer.css" text="个性主题" textFill="GREY">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="30.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="28.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <viewport>
                   <Rectangle2D />
                </viewport>
                <image>
-                  <Image url="@../../resources/icon/login_user.png" />
+                  <Image url="@../../resources/icon/theme.png" />
                </image>
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton layoutX="10.0" layoutY="307.0" prefHeight="49.0" prefWidth="280.0" stylesheets="@Drawer.css" text="User" textFill="GREY">
-         <font>
-            <Font name="Arial" size="12.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="30.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
-               <viewport>
-                  <Rectangle2D />
-               </viewport>
+      <HBox id="hbox" prefHeight="49.0" prefWidth="280.0" stylesheets="@Drawer.css">
+         <children>
+            <ImageView fitHeight="26.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets left="14.0" top="5.0" />
+               </HBox.margin>
                <image>
-                  <Image url="@../../resources/icon/login_user.png" />
+                  <Image url="@../../resources/icon/night.png" />
                </image>
             </ImageView>
-         </graphic>
-      </JFXButton>
-      <JFXButton layoutX="10.0" layoutY="307.0" onAction="#handleSetting" prefHeight="49.0" prefWidth="280.0" stylesheets="@Drawer.css" text="User" textFill="GREY">
-         <font>
-            <Font name="Arial" size="12.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="30.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
-               <viewport>
-                  <Rectangle2D />
-               </viewport>
+            <Label prefHeight="37.0" prefWidth="157.0" text="夜间模式" textFill="#ceced0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="4.0" top="2.0" />
+               </HBox.margin>
+            </Label>
+            <JFXToggleButton minHeight="10.0" prefHeight="31.0" prefWidth="74.0" text=" ">
+               <HBox.margin>
+                  <Insets top="4.0" />
+               </HBox.margin>
+            </JFXToggleButton>
+         </children>
+      </HBox>
+      <AnchorPane id="buttomPane" prefHeight="80.0" prefWidth="280.0" stylesheets="@Drawer.css">
+         <children>
+            <Label layoutX="40.0" layoutY="45.0" prefHeight="29.0" prefWidth="56.0" text="关于我们" />
+            <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="16.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../resources/icon/login_user.png" />
+                  <Image url="@../../resources/icon/about.png" />
                </image>
             </ImageView>
-         </graphic>
-      </JFXButton>
+         </children>
+      </AnchorPane>
    </children>
 </VBox>

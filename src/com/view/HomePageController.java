@@ -49,9 +49,9 @@ public class HomePageController {
     private void initialize(){
         ArrayList<Node> children = new ArrayList<>();
 
-        for (int i = 0; i <15; i++){
+        for (int i = 0; i <30; i++){
            try {
-              StackPane sort=new MovieItem(100,180,"resources/movieitem1.png","电影分类");
+              StackPane sort=new MovieItem(100,180,"resources/movieitem.png","电影分类");
                children.add(sort);
 
            }catch (Exception e){

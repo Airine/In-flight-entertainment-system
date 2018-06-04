@@ -6,11 +6,21 @@
 
 }
 
+#buttomPane{
+  -fx-background-color:F5F5F7;
+}
 
 #userPane{
  -fx-background-color: #ee5253;
 }
 
+#hbox{
+ -fx-background-color:F5F5F7;
+}
+#modify{
+ -fx-font-size:  1px; //字体大小
+  -fx-background-radius: 50%;//圆角半径
+}
 #image{
 -fx-font-size:  5px;
 -fx-background-radius:100;

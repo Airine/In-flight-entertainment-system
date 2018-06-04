@@ -14,9 +14,9 @@
 
 <AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: #F8F8FF;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.RootLayoutController">
    <children>
-      <AnchorPane id="mainBar" prefHeight="44.0" prefWidth="640.0" stylesheets="@bar.css">
+      <AnchorPane id="mainBar" prefHeight="44.0" prefWidth="640.0" stylesheets="@bar.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <JFXHamburger fx:id="hamburger" onMouseClicked="#handlehamburger" opacity="0.8" prefHeight="44.0" prefWidth="55.0" stylesheets="@bar.css" />
+            <JFXHamburger fx:id="hamburger" layoutX="3.0" onMouseClicked="#handlehamburger" opacity="0.8" prefHeight="44.0" prefWidth="48.0" stylesheets="@bar.css" AnchorPane.leftAnchor="3.0" />
             <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="330.0" layoutY="6.0" onMouseClicked="#seeHomepage" opacity="0.8" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="330.0" AnchorPane.rightAnchor="289.0" AnchorPane.topAnchor="6.0">
                <image>
                   <Image url="@../../resources/icon/order.png" />

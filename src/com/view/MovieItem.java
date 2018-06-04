@@ -23,8 +23,7 @@ import java.util.Random;
 import static javafx.animation.Interpolator.EASE_BOTH;
 
 public class MovieItem extends StackPane {
-    ImageView imageView;//电影图片
-    Label title ;//电影标题
+
 
     public MovieItem(double width, double height, String url, String title){
         this.setPrefWidth(width);
@@ -66,6 +65,7 @@ public class MovieItem extends StackPane {
                         + "528.571-225.714-92.571q-21.143-8-22.857-31.429-1.143-22.857 18.286-33.714l950.857-548.571q8.571-5.143 18.286-5.143"
                         + " 11.429 0 20.571 6.286z",
                 Color.WHITE);
+
         glyph.setSize(20, 20);
         button.setGraphic(glyph);
         button.translateYProperty().bind(Bindings.createDoubleBinding(() -> {
