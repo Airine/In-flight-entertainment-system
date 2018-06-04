@@ -17,13 +17,14 @@ public class MovieSortItem extends Label {
          this.setText(title);
          this.setStyle("-fx-background-color: "+getDefaultColor((int)(Math.random()*12)%12));
         ImageView imageView= new ImageView("resources/moviepage.png");
-//        imageView.setFitWidth(80);
-//        imageView.setFitHeight(30);
-//         this.setGraphic(imageView);
-         this.setPrefHeight(60);
+        imageView.setFitWidth(80);
+        imageView.setFitHeight(80);
+         this.setGraphic(imageView);
+         this.setPrefHeight(80);
          this.setPrefWidth(80);
-         this.setMinSize(80,60);
-         this.setMaxSize(80,60);
+//         this.setMinSize(80,60);
+//         this.setMaxSize(80,60);
+         JFXDepthManager.setDepth(this, 3);
      }
     private String getDefaultColor(int i) {
         String color = "#FFFFFF";
