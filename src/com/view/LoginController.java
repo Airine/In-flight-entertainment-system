@@ -6,7 +6,6 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.model.User;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -14,7 +13,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import static com.MainApp.mainUser;
-import static com.util.Tool.getUser;
+import static com.util.DataLoader.getUser;
 
 
 public class LoginController {

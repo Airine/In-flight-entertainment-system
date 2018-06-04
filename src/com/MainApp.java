@@ -13,7 +13,7 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
-import static com.util.Tool.loadUsers;
+import static com.util.DataLoader.loadUsers;
 
 public class MainApp extends Application {
 
