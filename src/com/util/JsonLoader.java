@@ -8,7 +8,7 @@ public class JsonLoader {
 
 
     public static void main(String args[]){
-        System.out.println(getJsonValue("en", "loginDialog", "password"));
+        System.out.println(getJsonValue("cn", "loginDialog", "login"));
     }
 
     private static JSONTokener loadData(String fileName){

@@ -38,7 +38,6 @@ public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("视频");
         this.primaryStage.setWidth(640);
         this.primaryStage.setHeight(480);
         this.primaryStage.initStyle(StageStyle.TRANSPARENT);//隐藏窗口
