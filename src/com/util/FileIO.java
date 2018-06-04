@@ -4,9 +4,10 @@ import java.io.*;
 
 public class FileIO {
 
-    public void saveDataToFile(String fileName,String data) {
+    private static final String folderPath = "src/resources/json/";
+    public static void saveDataToFile(String fileName,String data) {
         BufferedWriter writer = null;
-        File file = new File("d:\\"+ fileName + ".json");
+        File file = new File(""+ fileName + ".json");
         Boolean flag;
         //如果文件不存在，则新建一个
         if(!file.exists()){
@@ -35,9 +36,9 @@ public class FileIO {
         System.out.println("文件写入成功！");
     }
 
-    public String getDatafromFile(String fileName) {
+    public static String getDatafromFile(String fileName) {
 
-        String Path="d:\\" + fileName+ ".json";
+        String Path= folderPath + fileName+ ".json";
         BufferedReader reader = null;
         StringBuilder laststr = new StringBuilder();
         try {
