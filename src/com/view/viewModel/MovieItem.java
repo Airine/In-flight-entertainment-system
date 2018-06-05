@@ -1,4 +1,4 @@
-package com.view;
+package com.view.viewModel;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.effects.JFXDepthManager;
@@ -9,6 +9,7 @@ import javafx.animation.Timeline;
 import javafx.beans.binding.Bindings;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Priority;
@@ -23,50 +24,55 @@ import static javafx.animation.Interpolator.EASE_BOTH;
 
 public class MovieItem extends StackPane {
 
-    public MovieItem(double width, double height){
-        Random rd =new Random(12);
+
+    public MovieItem(double width, double height, String url, String title){
         this.setPrefWidth(width);
         this.setPrefHeight(height);
         JFXDepthManager.setDepth(this, 1);
 
-        //create content
-//        StackPane header = new StackPane();
-//        //上面那一块的颜色
-//        String headerColor = getDefaultColor((int) ((Math.random() * 12) % 12));
-//        header.setStyle("-fx-background-radius: 5 5 0 0; -fx-background-color: " + headerColor);
-//        VBox.setVgrow(header, Priority.ALWAYS);
-        ImageView imageView=new ImageView("resources/movieitem1.png");
-        imageView.setFitWidth(190);
-        imageView.setFitHeight(224);
+        // create content
+        StackPane header = new StackPane();
+        String headerColor = getDefaultColor(13);
+        header.setPrefHeight(140);
+        header.setStyle("-fx-background-radius: 5 5 0 0; " +
+//                "-fx-background-color: " + headerColor +
+                "-fx-background-image: url(\"" + url + "\");" +
+                "-fx-background-position: center;" +
+                "-fx-background-repeat: no-repeat;" +
+                "-fx-background-size: 100% 100%;" +
+                "-fx-moz-background-size: 100% 100%;");
+        VBox.setVgrow(header, Priority.ALWAYS);
         StackPane body = new StackPane();
-        body.setMinHeight(73);
+        body.setMinHeight(height-140);
         VBox content = new VBox();
-        content.getChildren().addAll(imageView, body);
+        content.getChildren().addAll(header, body);
         body.setStyle("-fx-background-radius: 0 0 5 5; -fx-background-color: rgb(255,255,255,0.87);");
+
 
         // create button
         JFXButton button = new JFXButton("");
         button.setButtonType(JFXButton.ButtonType.RAISED);
         button.setStyle("-fx-background-radius: 40;-fx-background-color: " + getDefaultColor((int) ((Math.random() * 12) % 12)));
         button.setPrefSize(40, 40);
-//        button.setRipplerFill(Color.valueOf(headerColor));
+        button.setRipplerFill(Color.valueOf(headerColor));
         button.setScaleX(0);
         button.setScaleY(0);
-
         SVGGlyph glyph = new SVGGlyph(-1,
                 "test",
-                "M402.746 877.254l-320-320c-24.994-24.992-24.994-65.516 0-90.51l320-320c24.994-24.992 65.516-24.992 90.51 0 24.994 24.994 "
-                        + "24.994 65.516 0 90.51l-210.746 210.746h613.49c35.346 0 64 28.654 64 64s-28.654 64-64 64h-613.49l210.746 210.746c12.496 "
-                        + "12.496 18.744 28.876 18.744 45.254s-6.248 32.758-18.744 45.254c-24.994 24.994-65.516 24.994-90.51 0z",
+                "M1008 6.286q18.857 13.714 15.429 36.571l-146.286 877.714q-2.857 16.571-18.286 25.714-8 4.571-17.714 4.571-6.286 "
+                        + "0-13.714-2.857l-258.857-105.714-138.286 168.571q-10.286 13.143-28 13.143-7.429 "
+                        + "0-12.571-2.286-10.857-4-17.429-13.429t-6.571-20.857v-199.429l493.714-605.143-610.857 "
+                        + "528.571-225.714-92.571q-21.143-8-22.857-31.429-1.143-22.857 18.286-33.714l950.857-548.571q8.571-5.143 18.286-5.143"
+                        + " 11.429 0 20.571 6.286z",
                 Color.WHITE);
+
         glyph.setSize(20, 20);
         button.setGraphic(glyph);
         button.translateYProperty().bind(Bindings.createDoubleBinding(() -> {
-            return imageView.getBoundsInParent().getHeight() - button.getHeight() / 2;
-        }, imageView.boundsInParentProperty(), button.heightProperty()));
+            return header.getBoundsInParent().getHeight() - button.getHeight() / 2;
+        }, header.boundsInParentProperty(), button.heightProperty()));
         StackPane.setMargin(button, new Insets(0, 12, 0, 0));
         StackPane.setAlignment(button, Pos.TOP_RIGHT);
-
 
         Timeline animation = new Timeline(new KeyFrame(Duration.millis(240),
                 new KeyValue(button.scaleXProperty(),
@@ -75,13 +81,18 @@ public class MovieItem extends StackPane {
                 new KeyValue(button.scaleYProperty(),
                         1,
                         EASE_BOTH)));
-        animation.setDelay(Duration.millis(5000));
+        animation.setDelay(Duration.millis( 5000));
         animation.play();
         this.getChildren().addAll(content, button);
+//        this.setStyle("-fx-border-style: solid;" +
+//                "-fx-border-width: 10px;"+
+//                "-fx-border-width-left: 20px;"+
+//                "-fx-border-color: transparent;");
+        this.setStyle("-fx-padding: 20px 0px 0px 20px;");
 
     }
     private String getDefaultColor(int i) {
-        String color = "#FFFFFF";
+        String color;
         switch (i) {
             case 0:
                 color = "#8F3F7E";
@@ -123,6 +134,7 @@ public class MovieItem extends StackPane {
                 color = "#4E6A9C";
                 break;
             default:
+                color = "#000000";
                 break;
         }
         return color;

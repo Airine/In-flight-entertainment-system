@@ -28,26 +28,74 @@ public class DrawerContentController {
 
     @FXML
     private JFXButton button3;
+
+    @FXML
+    private JFXButton user_icon;
+
     private boolean clicked =false;
 
     private  RootLayoutController rootLayoutController;
+
     public void setRootLayoutController(RootLayoutController rootLayoutController){
         this.rootLayoutController=rootLayoutController;
     }
 
+    @FXML
+    public void initialize(){
+        String url = "resources/shiyuan.png";
+        user_icon.setStyle(
+                "-fx-background-image: url(\"" + url + "\");" +
+                "-fx-background-position: center;" +
+                "-fx-background-repeat: no-repeat;" +
+                "-fx-background-size: 100% 100%;");
+    }
 
-
-
-  @FXML
-  private  void handleSetting(){
-        rootLayoutController.initSettingPage();
-        rootLayoutController.setSettingVisible();
-        rootLayoutController.homePageNotSee();
-  }
+    @FXML
+    private void handleSetting(){
+        rootLayoutController.setSettingVisible();//设置界面可见
+        rootLayoutController.homePageNotSee();//主界面不可见
+       rootLayoutController.setSettingPane(rootLayoutController.setting);
+    }
+    @FXML
+    private void handleAboutus(){
+        rootLayoutController.setSettingVisible();//设置界面可见
+        rootLayoutController.homePageNotSee();//主界面不可见
+        rootLayoutController.setSettingPane(rootLayoutController.aboutus);
+    }
+    @FXML
+    private void handleTheme(){
+        rootLayoutController.setSettingVisible();//设置界面可见
+        rootLayoutController.homePageNotSee();//主界面不可见
+        rootLayoutController.setSettingPane(rootLayoutController.theme);
+    }
+    @FXML
+    private void handleMoney(){
+        rootLayoutController.setSettingVisible();//设置界面可见
+        rootLayoutController.homePageNotSee();//主界面不可见
+        rootLayoutController.setSettingPane(rootLayoutController.money);
+    }
+    @FXML
+    private void handleTiming(){
+        rootLayoutController.setSettingVisible();//设置界面可见
+        rootLayoutController.homePageNotSee();//主界面不可见
+        rootLayoutController.setSettingPane(rootLayoutController.timing);
+    }
+    @FXML
+    private void handleCollection(){
+        rootLayoutController.setSettingVisible();//设置界面可见
+        rootLayoutController.homePageNotSee();//主界面不可见
+        rootLayoutController.setSettingPane(rootLayoutController.collection);
+    }
+    @FXML
+    private void handleEdit(){
+        rootLayoutController.setSettingVisible();//设置界面可见
+        rootLayoutController.homePageNotSee();//主界面不可见
+        rootLayoutController.setSettingPane(rootLayoutController.edit);
+    }
 
     @FXML
     private void handleLogin() {
-    rootLayoutController.getMainApp().login();
+        rootLayoutController.getMainApp().login();
     }
     @FXML
     private void handlebutton1() {
