@@ -11,14 +11,14 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class Tool {
+public class DataLoader {
 
     private static List<User> users = new LinkedList<>();
 
     public static void loadUsers(){
         Connection connection = connectToDB();
 
-
+        List<User> tempt = new LinkedList<>();
         try {
             String sql = "select * from user;";
 
@@ -32,7 +32,7 @@ public class Tool {
                 // 输出数据
 
                 User u = new User(id,name,pw,setting);
-                users.add(u);
+                tempt.add(u);
 //
 //                System.out.print("ID: " + id);
 //                System.out.print(", Name: " + name);
@@ -48,6 +48,7 @@ public class Tool {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        setUsers(tempt);
     }
 
     public static User getUser(String user_name){
@@ -59,6 +60,6 @@ public class Tool {
     }
 
     public static void setUsers(List<User> users) {
-        Tool.users = users;
+        DataLoader.users = users;
     }
 }
