@@ -1,77 +1,65 @@
 package com.view.viewModel;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.effects.JFXDepthManager;
+import com.jfoenix.svg.SVGGlyph;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
+import javafx.beans.binding.Bindings;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.util.Duration;
 
 import java.util.Random;
 
+import static javafx.animation.Interpolator.EASE_BOTH;
 
-public class MovieSortItem extends Label {
-     public MovieSortItem(String title){
-         Random random=new Random(12);
-         this.setText(title);
-         this.setStyle("-fx-background-color: "+getDefaultColor((int)(Math.random()*12)%12));
-        ImageView imageView= new ImageView("resources/moviepage.png");
-        imageView.setFitWidth(80);
-        imageView.setFitHeight(80);
-         this.setGraphic(imageView);
-         this.setPrefHeight(80);
-         this.setPrefWidth(80);
-//         this.setMinSize(80,60);
-//         this.setMaxSize(80,60);
-         JFXDepthManager.setDepth(this, 3);
-     }
-    private String getDefaultColor(int i) {
-        String color = "#FFFFFF";
-        switch (i) {
-            case 0:
-                color = "#8F3F7E";
-                break;
-            case 1:
-                color = "#B5305F";
-                break;
-            case 2:
-                color = "#CE584A";
-                break;
-            case 3:
-                color = "#DB8D5C";
-                break;
-            case 4:
-                color = "#DA854E";
-                break;
-            case 5:
-                color = "#E9AB44";
-                break;
-            case 6:
-                color = "#FEE435";
-                break;
-            case 7:
-                color = "#99C286";
-                break;
-            case 8:
-                color = "#01A05E";
-                break;
-            case 9:
-                color = "#4A8895";
-                break;
-            case 10:
-                color = "#16669B";
-                break;
-            case 11:
-                color = "#2F65A5";
-                break;
-            case 12:
-                color = "#4E6A9C";
-                break;
-            default:
-                break;
-        }
-        return color;
+
+public class MovieSortItem extends StackPane {
+
+
+    public MovieSortItem(double width, double height, String language, String type){
+        String url = "resources/movie_type/"+language+"/"+type+".png";
+        this.setPrefWidth(width);
+        this.setPrefHeight(height);
+        this.setMinWidth(width);
+        this.setMinHeight(height);
+        JFXDepthManager.setDepth(this, 1);
+
+        // create content
+//        StackPane header = new StackPane();
+        JFXButton button = new JFXButton("");
+        button.setButtonType(JFXButton.ButtonType.RAISED);
+        button.setPrefSize(2*width, 2*height);
+        button.setStyle(
+                "-fx-background-radius: 5;" +
+                        "-fx-background-image: url(\"" + url + "\");" +
+                        "-fx-background-position: center;" +
+                        "-fx-background-repeat: no-repeat;" +
+                        "-fx-background-size: 100% 100%;"
+        );
+
+        VBox.setVgrow(button, Priority.ALWAYS);
+        VBox content = new VBox();
+
+        button.setOnMousePressed(event -> {button.setButtonType(JFXButton.ButtonType.FLAT);});
+        button.setOnMouseExited(event -> {button.setButtonType(JFXButton.ButtonType.RAISED);});
+        button.setOnMouseClicked(event -> {});
+
+        content.getChildren().addAll(button);
+
+        this.getChildren().addAll(content);
+        this.setStyle("-fx-padding: 20px 0px 0px 20px;");
+
     }
-
 }

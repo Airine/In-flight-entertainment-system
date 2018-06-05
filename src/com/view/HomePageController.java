@@ -1,8 +1,10 @@
 package com.view;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXMasonryPane;
 import com.jfoenix.controls.JFXScrollPane;
 import com.view.viewModel.MovieItem;
+import com.view.viewModel.MovieSortItem;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
@@ -29,9 +31,11 @@ public class HomePageController {
     private void initialize(){
         ArrayList<Node> children = new ArrayList<>();
 
-        for (int i = 0; i <30; i++){
+        for (int i = 0; i <9; i++){
            try {
-              StackPane sort=new MovieItem(100,180,"resources/movieitem.png","电影分类");
+//               StackPane sort=new MovieItem(100,180,"resources/movieitem.png","电影分类");
+               StackPane sort = new MovieSortItem(144, 81,"cn","Romance");
+//               JFXButton sort = new MovieSortItem(152, 83.25,"cn","Romance");
                children.add(sort);
 
            }catch (Exception e){

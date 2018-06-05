@@ -36,7 +36,7 @@ public class MovieItem extends StackPane {
         header.setPrefHeight(140);
         header.setStyle("-fx-background-radius: 5 5 0 0; " +
 //                "-fx-background-color: " + headerColor +
-                "; -fx-background-image: url(\"" + url + "\");" +
+                "-fx-background-image: url(\"" + url + "\");" +
                 "-fx-background-position: center;" +
                 "-fx-background-repeat: no-repeat;" +
                 "-fx-background-size: 100% 100%;" +
