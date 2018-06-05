@@ -18,9 +18,6 @@ public class HomePageController {
     private JFXScrollPane HomeScrollPane;
 
     @FXML
-    private JFXMasonryPane HomeMasonryPane;
-
-    @FXML
     private FlowPane flowpane;
 
     private  RootLayoutController rootLayoutController;
@@ -31,23 +28,20 @@ public class HomePageController {
 
     @FXML
     private void initialize(){
-        ArrayList<Node> children = new ArrayList<>();
-
-        for (int i = 0; i <20; i++){
+        for (int i = 0; i < 12; i++){
            try {
 
                StackPane sort = new MovieSortItem(200, 112,"cn","Erotic");
                flowpane.getChildren().add(sort);
-               children.add(sort);
+//               children.add(sort);
 
            }catch (Exception e){
                e.printStackTrace();
            }
         }
 
-
-        flowpane.setHgap(10);
-        flowpane.setVgap(20);
+//        flowpane.setHgap(10);
+//        flowpane.setVgap(20);
         HomeScrollPane.setContent(flowpane);
         HomeScrollPane.setStyle("-fx-border-color: transparent;");
         //封面图
