@@ -25,15 +25,15 @@ import static javafx.animation.Interpolator.EASE_BOTH;
 public class MovieItem extends StackPane {
 
 
-    public MovieItem(double width, double height, String url, String title){
-        this.setPrefWidth(width);
-        this.setPrefHeight(height);
+    public MovieItem(String url, String title){
+        this.setPrefWidth(240);
+        this.setPrefHeight(360);
         JFXDepthManager.setDepth(this, 1);
 
         // create content
         StackPane header = new StackPane();
         String headerColor = getDefaultColor(13);
-        header.setPrefHeight(140);
+        header.setPrefHeight(320);
         header.setStyle("-fx-background-radius: 5 5 0 0; " +
 //                "-fx-background-color: " + headerColor +
                 "-fx-background-image: url(\"" + url + "\");" +
@@ -42,11 +42,16 @@ public class MovieItem extends StackPane {
                 "-fx-background-size: 100% 100%;" +
                 "-fx-moz-background-size: 100% 100%;");
         VBox.setVgrow(header, Priority.ALWAYS);
+
         StackPane body = new StackPane();
-        body.setMinHeight(height-140);
+        body.setMinHeight(40);
+        body.setStyle("-fx-background-radius: 0 0 5 5; -fx-background-color: rgb(255,255,255,0.87);");
+        Label label = new Label(title);
+        body.getChildren().addAll(label);
+
         VBox content = new VBox();
         content.getChildren().addAll(header, body);
-        body.setStyle("-fx-background-radius: 0 0 5 5; -fx-background-color: rgb(255,255,255,0.87);");
+
 
 
         // create button

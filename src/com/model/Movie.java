@@ -1,23 +1,57 @@
 package com.model;
 
-public class Movie {
+import com.view.viewModel.MovieItem;
 
+public class Movie {
+    private int movie_id;
     private String title_cn;
     private String title_en;
     private int year;
     private int time;
     private String language;
 
+    private static final String moviePosterPath = "resources/moviePoster/";
+    private MovieItem mi_cn;
+    private MovieItem mi_en;
+
     public Movie(){
 
     }
 
-    public Movie(String title_cn, String title_en, int year, int time, String language){
+    public Movie(int movie_id,String title_cn, String title_en, int year, int time, String language){
+        setMovie_id(movie_id);
         setTitle_cn(title_cn);
         setTitle_en(title_en);
         setYear(year);
         setTime(time);
         setLanguage(language);
+        String url = moviePosterPath+movie_id+".jpg";
+        mi_cn = new MovieItem(url, title_cn);
+        mi_en = new MovieItem(url, title_en);
+    }
+
+    public MovieItem getMi_cn() {
+        return mi_cn;
+    }
+
+    public void setMi_cn(MovieItem mi_cn) {
+        this.mi_cn = mi_cn;
+    }
+
+    public MovieItem getMi_en() {
+        return mi_en;
+    }
+
+    public void setMi_en(MovieItem mi_en) {
+        this.mi_en = mi_en;
+    }
+
+    public int getMovie_id() {
+        return movie_id;
+    }
+
+    public void setMovie_id(int movie_id) {
+        this.movie_id = movie_id;
     }
 
     public String getTitle_cn() {
