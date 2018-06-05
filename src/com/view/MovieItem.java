@@ -35,7 +35,7 @@ public class MovieItem extends StackPane {
         String headerColor = getDefaultColor(13);
         header.setPrefHeight(140);
         header.setStyle("-fx-background-radius: 5 5 0 0; " +
-                "-fx-background-color: " + headerColor +
+//                "-fx-background-color: " + headerColor +
                 "; -fx-background-image: url(\"" + url + "\");" +
                 "-fx-background-position: center;" +
                 "-fx-background-repeat: no-repeat;" +
@@ -134,7 +134,7 @@ public class MovieItem extends StackPane {
                 color = "#4E6A9C";
                 break;
             default:
-                color = "000000";
+                color = "#000000";
                 break;
         }
         return color;

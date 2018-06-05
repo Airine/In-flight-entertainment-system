@@ -44,79 +44,102 @@ public class RootLayoutController {
     //和主应用连接
     private MainApp mainApp;
 
-    private  HamburgerNextArrowBasicTransition transition;
+    private HamburgerNextArrowBasicTransition transition;
     private VBox box;//抽屉栏
-    public AnchorPane homeP,musicP,playerP;
+    public AnchorPane homeP, musicP, playerP;
 
     /**
      * 设置主应用
+     *
      * @param app
      */
-    public void  setMainApp(MainApp app){
-        mainApp=app;
+    public void setMainApp(MainApp app) {
+        mainApp = app;
     }
-    public MainApp getMainApp(){return mainApp;}
-    public void setVBox(VBox box) {this.box=box;}
-    public void setHomePage(AnchorPane page){homepage.getChildren().setAll(page);}
-    public AnchorPane getHomepage() { return homepage; }
-    public void setSettingPane(AnchorPane pane ){SettingPane.getChildren().setAll(pane);}
-    public AnchorPane getSettingPane(){return SettingPane;}
+
+    public MainApp getMainApp() {
+        return mainApp;
+    }
+
+    public void setVBox(VBox box) {
+        this.box = box;
+    }
+
+    public void setHomePage(AnchorPane page) {
+        homepage.getChildren().setAll(page);
+    }
+
+    public AnchorPane getHomepage() {
+        return homepage;
+    }
+
+    public void setSettingPane(AnchorPane pane) {
+        SettingPane.getChildren().setAll(pane);
+    }
+
+    public AnchorPane getSettingPane() {
+        return SettingPane;
+    }
+
     @FXML
-    private void initialize(){
+    private void initialize() {
         try {
             transition = new HamburgerNextArrowBasicTransition(hamburger);
             transition.setRate(-1);
 
-         initDrawerContent();
-         initHomePage();
-         initMusicPage();
-         initPlayerPage();
-        }catch (Exception e){
+            initDrawerContent();
+            initHomePage();
+            initMusicPage();
+            initPlayerPage();
+        } catch (Exception e) {
             e.getStackTrace();
         }
     }
+
     /* *  初始化抽屉栏.
      * @author PennaLia
      * @date 2018/5/29 1:08
      * @param
      * @return
      */
-    public void initDrawerContent(){
+    public void initDrawerContent() {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class
                     .getResource("view/DrawerContent.fxml"));
             this.setVBox(loader.load());
-            DrawerContentController drawerContentController=loader.getController();
+            DrawerContentController drawerContentController = loader.getController();
             drawerContentController.setRootLayoutController(this);
             drawer.setSidePane(box);
             drawer.setVisible(false);
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-    }
-/* *  初始化主页面，就是默认主页面时文件页面
- * @author PennaLia
- * @date 2018/5/29 1:18
- * @param
- * @return
- */
-    public void initHomePage(){
-        try{
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class
-                    .getResource("view/HomePage.fxml"));
-           homeP=loader.load();
-          HomePageController HomePageController=loader.getController();
-            HomePageController.setRootLayoutController(this);
-            setHomePage(homeP);
-            homeline.setVisible(true);
-        }catch(IOException e){
+
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void initMusicPage(){
+    /* *  初始化主页面，就是默认主页面时文件页面
+     * @author PennaLia
+     * @date 2018/5/29 1:18
+     * @param
+     * @return
+     */
+    public void initHomePage() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class
+                    .getResource("view/HomePage.fxml"));
+            homeP = loader.load();
+            HomePageController HomePageController = loader.getController();
+            HomePageController.setRootLayoutController(this);
+            setHomePage(homeP);
+            homeline.setVisible(true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void initMusicPage() {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class
@@ -124,25 +147,26 @@ public class RootLayoutController {
             musicP = loader.load();
             MusicPageController musicPageController = loader.getController();
             musicPageController.setRootLayoutController(this);
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    public void initSettingPage(){
+
+    public void initSettingPage() {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class
                     .getResource("view/SettingPage.fxml"));
             AnchorPane setting = loader.load();
-           SettingPageController settingPageController = loader.getController();
-         settingPageController.setRootLayoutController(this);
-         setSettingPane(setting);
-        }catch (IOException e){
+            SettingPageController settingPageController = loader.getController();
+            settingPageController.setRootLayoutController(this);
+            setSettingPane(setting);
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void initPlayerPage(){
+    public void initPlayerPage() {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class
@@ -150,52 +174,57 @@ public class RootLayoutController {
             playerP = loader.load();
             PlayerPageController playerPageController = loader.getController();
             playerPageController.setRootLayoutController(this);
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    public void setSettingVisible(){
+
+    public void setSettingVisible() {
         getSettingPane().setVisible(true);
     }
-    public void homePageNotSee(){
+
+    public void homePageNotSee() {
         homepage.setVisible(false);
     }
-    public void homePageSee(){
+
+    public void homePageSee() {
         homepage.setVisible(true);
     }
+
     @FXML
-    private void handlehamburger(){
-            transition.setRate(transition.getRate()*-1);
-            transition.play();
-        if(drawer.isOpened()) {
+    private void handlehamburger() {
+        transition.setRate(transition.getRate() * -1);
+        transition.play();
+        if (drawer.isOpened()) {
             drawer.close();
             homePageSee();
             drawer.setVisible(false);
             getSettingPane().setVisible(false);
-        }
-        else {
+        } else {
             drawer.setVisible(true);
             drawer.open();
         }
     }
 
     @FXML
-    private void seeHomepage(){
-     setHomePage(homeP);
-     musicline.setVisible(false);
-     playline.setVisible(false);
-     homeline.setVisible(true);
+    private void seeHomepage() {
+        setHomePage(homeP);
+        musicline.setVisible(false);
+        playline.setVisible(false);
+        homeline.setVisible(true);
     }
+
     @FXML
-    private void seePlaypage(){
+    private void seePlaypage() {
         setHomePage(playerP);
         musicline.setVisible(false);
         playline.setVisible(true);
         homeline.setVisible(false);
 
     }
+
     @FXML
-    private void seeMusicpage(){
+    private void seeMusicpage() {
         setHomePage(musicP);
         musicline.setVisible(true);
         playline.setVisible(false);
@@ -204,7 +233,7 @@ public class RootLayoutController {
     }
 
     @FXML
-    private void handleClose(){
+    private void handleClose() {
         mainApp.closeWindows();
     }
 

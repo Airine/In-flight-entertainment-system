@@ -28,26 +28,39 @@ public class DrawerContentController {
 
     @FXML
     private JFXButton button3;
+
+    @FXML
+    private JFXButton user_icon;
+
     private boolean clicked =false;
 
     private  RootLayoutController rootLayoutController;
+
     public void setRootLayoutController(RootLayoutController rootLayoutController){
         this.rootLayoutController=rootLayoutController;
     }
 
+    @FXML
+    public void initialize(){
+        String url = "resources/shiyuan.png";
+        user_icon.setStyle(
+//                "-fx-background-color: " + headerColor +
+                "-fx-background-image: url(\"" + url + "\");" +
+                "-fx-background-position: center;" +
+                "-fx-background-repeat: no-repeat;" +
+                "-fx-background-size: 100% 100%;");
+    }
 
-
-
-  @FXML
-  private  void handleSetting(){
+    @FXML
+    private void handleSetting(){
         rootLayoutController.initSettingPage();
         rootLayoutController.setSettingVisible();
         rootLayoutController.homePageNotSee();
-  }
+    }
 
     @FXML
     private void handleLogin() {
-    rootLayoutController.getMainApp().login();
+        rootLayoutController.getMainApp().login();
     }
     @FXML
     private void handlebutton1() {
