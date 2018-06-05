@@ -27,11 +27,8 @@
                   <Font name="Arial Black" size="21.0" />
                </font>
             </Label>
-            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../resources/shiyuan.png" />
-               </image>
-            </ImageView>
+            <JFXButton buttonType="RAISED" layoutX="20.0" layoutY="9.0" prefHeight="95.0" prefWidth="95.0" style="-fx-background-radius: 50%;" text=" " />
+            <Label layoutX="14.0" layoutY="113.0" prefHeight="20.0" prefWidth="157.0" text="个性签名" />
          </children>
       </Pane>
       <JFXButton alignment="BASELINE_LEFT" onAction="#handleLogin" prefHeight="39.0" prefWidth="280.0" stylesheets="@Drawer.css" text="升级会员" textFill="GREY">
@@ -104,9 +101,9 @@
                   <Image url="@../../resources/icon/night.png" />
                </image>
             </ImageView>
-            <Label prefHeight="37.0" prefWidth="157.0" text="夜间模式" textFill="#ceced0">
+            <Label prefHeight="37.0" prefWidth="157.0" text="夜间模式" textFill="#050505a2">
                <font>
-                  <Font size="20.0" />
+                  <Font size="16.0" />
                </font>
                <HBox.margin>
                   <Insets left="4.0" top="2.0" />
@@ -119,7 +116,7 @@
             </JFXToggleButton>
          </children>
       </HBox>
-      <AnchorPane id="buttomPane" prefHeight="80.0" prefWidth="280.0" stylesheets="@Drawer.css">
+      <AnchorPane id="buttomPane" prefHeight="90.0" prefWidth="280.0" stylesheets="@Drawer.css">
          <children>
             <Label layoutX="40.0" layoutY="45.0" prefHeight="29.0" prefWidth="56.0" text="关于我们" />
             <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="16.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">

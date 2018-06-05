@@ -1,7 +1,7 @@
 .jfx-button {
-     -fx-background-color:F5F5F7;
-     -fx-text-fill: CECED0;
-      -fx-font-size:  20px; //字体大小
+     -fx-background-color: F5F5F7;
+      -fx-color: 070707;
+      -fx-font-size:  16px; //字体大小
       -fx-background-radius: 0;//圆角半径
 
 }
