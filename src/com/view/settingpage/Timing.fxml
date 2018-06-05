@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="436.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.settingpage.TimingController">
    <children>
       <JFXButton layoutX="173.0" layoutY="207.0" text="定时关闭" />
+      <AnchorPane layoutX="-7.0" layoutY="8.0" prefHeight="141.0" prefWidth="361.0" style="-fx-background-color: #ee5253;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label layoutX="59.0" layoutY="36.0" prefHeight="64.0" prefWidth="254.0" text="     定时关闭" textAlignment="JUSTIFY" textFill="WHITE">
+               <font>
+                  <Font size="34.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

@@ -20,6 +20,11 @@
             <Pane prefHeight="49.0" prefWidth="280.0" style="-fx-background-color: #F08080;">
                <children>
                   <JFXButton id="signout" buttonType="RAISED" layoutX="259.0" layoutY="7.0" prefHeight="15.0" prefWidth="15.0" stylesheets="@Drawer.css" text=" " />
+                  <ImageView fx:id="huiyuan" fitHeight="20.0" fitWidth="20.0" layoutX="110.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/icon/huiyuan.png" />
+                     </image>
+                  </ImageView>
                </children>
             </Pane>
             <Label layoutX="166.0" layoutY="63.0" opacity="0.56" prefHeight="37.0" prefWidth="100.0" text="石原里美" textFill="WHITE">
@@ -28,10 +33,13 @@
                </font>
             </Label>
             <JFXButton fx:id="user_icon" buttonType="RAISED" layoutX="20.0" layoutY="9.0" onMouseClicked="#handleLogin" prefHeight="95.0" prefWidth="95.0" text=" " />
-            <Label layoutX="14.0" layoutY="113.0" prefHeight="20.0" prefWidth="157.0" text="个性签名" />
-            <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="256.0" layoutY="118.0" onMouseClicked="#handleEdit" pickOnBounds="true" preserveRatio="true">
+            <Label layoutX="14.0" layoutY="113.0" prefHeight="20.0" prefWidth="157.0" text="今天也很喜欢赖鹏楠呢" textFill="#f3eaea">
+               <font>
+                  <Font name="Arial Black" size="14.0" />
+               </font></Label>
+            <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="250.0" layoutY="111.0" onMouseClicked="#handleEdit" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../resources/icon/timer.png" />
+                  <Image url="@../../resources/icon/modify.png" />
                </image>
             </ImageView>
          </children>
@@ -130,10 +138,14 @@
                         <Image url="@../../resources/icon/about.png" />
                      </image>
                   </ImageView>
-                  <Label prefHeight="23.0" prefWidth="52.0" text="关于我们" />
+                  <Label prefHeight="23.0" prefWidth="52.0" text=" 关于我们" />
                </children>
             </HBox>
-            <JFXButton id="setup" layoutX="253.0" layoutY="65.0" onMouseClicked="#handleSetting" prefHeight="19.0" prefWidth="19.0" stylesheets="@Drawer.css" text=" " />
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="248.0" layoutY="58.0" onMouseClicked="#handleSetting" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/icon/setup.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>

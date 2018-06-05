@@ -17,9 +17,9 @@
       <AnchorPane id="mainBar" prefHeight="44.0" prefWidth="640.0" stylesheets="@bar.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
             <JFXHamburger fx:id="hamburger" layoutX="1.0" onMouseClicked="#handlehamburger" opacity="0.8" prefHeight="44.0" prefWidth="52.0" stylesheets="@bar.css" AnchorPane.leftAnchor="1.0" />
-            <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="330.0" layoutY="6.0" onMouseClicked="#seeHomepage" opacity="0.8" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="330.0" AnchorPane.rightAnchor="289.0" AnchorPane.topAnchor="6.0">
+            <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="330.0" layoutY="6.0" onMouseClicked="#seeHomepage" opacity="0.8" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="330.0" AnchorPane.rightAnchor="289.0" AnchorPane.topAnchor="5.0">
                <image>
-                  <Image url="@../../resources/icon/file.png" />
+                  <Image url="@../../resources/icon/home2.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="407.0" layoutY="5.0" onMouseClicked="#seePlaypage" opacity="0.8" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="410.0" AnchorPane.rightAnchor="208.0" AnchorPane.topAnchor="5.0">
@@ -57,9 +57,9 @@
                   <Font size="6.0" />
                </font>
             </JFXButton>
-            <Line fx:id="homeline" endX="-65.0" fill="WHITE" layoutX="431.0" layoutY="41.5" startX="-100.0" stroke="WHITE" visible="false" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="330.0" AnchorPane.rightAnchor="287.0" />
-            <Line fx:id="playline" endX="-65.0" layoutX="508.5" layoutY="41.5" startX="-100.0" stroke="WHITE" visible="false" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="408.0" AnchorPane.rightAnchor="210.0" />
-            <Line fx:id="musicline" endX="-65.0" layoutX="519.0" layoutY="52.0" startX="-100.0" stroke="WHITE" visible="false" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="490.0" AnchorPane.rightAnchor="128.0" />
+            <Line fx:id="homeline" endX="-65.0" fill="WHITE" layoutX="431.0" layoutY="41.5" startX="-100.0" stroke="WHITE" visible="false" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="330.0" AnchorPane.rightAnchor="287.0" />
+            <Line fx:id="playline" endX="-65.0" layoutX="511.5" layoutY="41.5" startX="-100.0" stroke="WHITE" visible="false" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="410.0" AnchorPane.rightAnchor="207.0" />
+            <Line fx:id="musicline" endX="-65.0" layoutX="519.0" layoutY="52.0" startX="-100.0" stroke="WHITE" visible="false" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="490.0" AnchorPane.rightAnchor="128.0" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="homepage" layoutX="10.0" layoutY="54.0" prefHeight="436.0" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="44.0" />

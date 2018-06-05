@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.transitions.JFXFillTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -19,6 +20,9 @@ public class DrawerContentController {
 
     @FXML
     private ImageView userImage;
+
+    @FXML
+    private ImageView huiyuan;
 
     @FXML
     private JFXButton button1;
@@ -48,6 +52,12 @@ public class DrawerContentController {
                 "-fx-background-position: center;" +
                 "-fx-background-repeat: no-repeat;" +
                 "-fx-background-size: 100% 100%;");
+       beHuiyuan();
+    }
+
+    @FXML
+    public void beHuiyuan(){
+        huiyuan.setImage(new Image("resources/icon/truehuiyuan.png"));
     }
 
     @FXML
