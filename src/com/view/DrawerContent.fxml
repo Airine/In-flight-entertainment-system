@@ -133,11 +133,7 @@
                   <Label prefHeight="23.0" prefWidth="52.0" text="关于我们" />
                </children>
             </HBox>
-            <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="247.0" layoutY="58.0" onMouseClicked="#handleSetting" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../resources/icon/wangyiyun.png" />
-               </image>
-            </ImageView>
+            <JFXButton id="setup" layoutX="253.0" layoutY="65.0" onMouseClicked="#handleSetting" prefHeight="19.0" prefWidth="19.0" stylesheets="@Drawer.css" text=" " />
          </children>
       </AnchorPane>
    </children>

@@ -33,9 +33,16 @@
 }
 #aboutus{
  -fx-font-size:  10px; //字体大小
+}
+#setup{
+ -fx-font-size:  10px; //字体大小
+    -fx-background-radius: 50%;//圆角半径
+
+    -fx-background-position: center;
+     -fx-background-repeat: no-repeat;
+     -fx-background-size: 100% 100%;
 
 }
-
 
 #signout{
 -fx-background-radius:100;

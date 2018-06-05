@@ -44,7 +44,6 @@ public class DrawerContentController {
     public void initialize(){
         String url = "resources/shiyuan.png";
         user_icon.setStyle(
-//                "-fx-background-color: " + headerColor +
                 "-fx-background-image: url(\"" + url + "\");" +
                 "-fx-background-position: center;" +
                 "-fx-background-repeat: no-repeat;" +

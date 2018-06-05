@@ -34,6 +34,8 @@ public class MovieSortItem extends StackPane {
         this.setPrefHeight(height);
         this.setMinWidth(width);
         this.setMinHeight(height);
+        this.setMaxWidth(width);
+        this.setMaxHeight(height);
         JFXDepthManager.setDepth(this, 1);
 
         // create content
@@ -59,7 +61,7 @@ public class MovieSortItem extends StackPane {
         content.getChildren().addAll(button);
 
         this.getChildren().addAll(content);
-        this.setStyle("-fx-padding: 20px 0px 0px 20px;");
+//        this.setStyle("-fx-padding: 5px 5px 5px 5px;");
 
     }
 }
