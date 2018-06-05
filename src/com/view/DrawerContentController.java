@@ -53,9 +53,45 @@ public class DrawerContentController {
 
     @FXML
     private void handleSetting(){
-        rootLayoutController.initSettingPage();
-        rootLayoutController.setSettingVisible();
-        rootLayoutController.homePageNotSee();
+        rootLayoutController.setSettingVisible();//设置界面可见
+        rootLayoutController.homePageNotSee();//主界面不可见
+       rootLayoutController.setSettingPane(rootLayoutController.setting);
+    }
+    @FXML
+    private void handleAboutus(){
+        rootLayoutController.setSettingVisible();//设置界面可见
+        rootLayoutController.homePageNotSee();//主界面不可见
+        rootLayoutController.setSettingPane(rootLayoutController.aboutus);
+    }
+    @FXML
+    private void handleTheme(){
+        rootLayoutController.setSettingVisible();//设置界面可见
+        rootLayoutController.homePageNotSee();//主界面不可见
+        rootLayoutController.setSettingPane(rootLayoutController.theme);
+    }
+    @FXML
+    private void handleMoney(){
+        rootLayoutController.setSettingVisible();//设置界面可见
+        rootLayoutController.homePageNotSee();//主界面不可见
+        rootLayoutController.setSettingPane(rootLayoutController.money);
+    }
+    @FXML
+    private void handleTiming(){
+        rootLayoutController.setSettingVisible();//设置界面可见
+        rootLayoutController.homePageNotSee();//主界面不可见
+        rootLayoutController.setSettingPane(rootLayoutController.timing);
+    }
+    @FXML
+    private void handleCollection(){
+        rootLayoutController.setSettingVisible();//设置界面可见
+        rootLayoutController.homePageNotSee();//主界面不可见
+        rootLayoutController.setSettingPane(rootLayoutController.collection);
+    }
+    @FXML
+    private void handleEdit(){
+        rootLayoutController.setSettingVisible();//设置界面可见
+        rootLayoutController.homePageNotSee();//主界面不可见
+        rootLayoutController.setSettingPane(rootLayoutController.edit);
     }
 
     @FXML

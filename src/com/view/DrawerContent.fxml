@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="drawerBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="436.0" prefWidth="280.0" style="-fx-background-color: #FFB6C1;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.DrawerContentController">
+<VBox fx:id="drawerBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="436.0" prefWidth="280.0" style="-fx-background-color: #FFB6C1;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.DrawerContentController">
    <children>
       <Pane id="userPane" prefHeight="142.0" prefWidth="280.0" stylesheets="@Drawer.css">
          <children>
@@ -29,9 +29,14 @@
             </Label>
             <JFXButton fx:id="user_icon" buttonType="RAISED" layoutX="20.0" layoutY="9.0" onMouseClicked="#handleLogin" prefHeight="95.0" prefWidth="95.0" text=" " />
             <Label layoutX="14.0" layoutY="113.0" prefHeight="20.0" prefWidth="157.0" text="个性签名" />
+            <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="256.0" layoutY="118.0" onMouseClicked="#handleEdit" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/icon/timer.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
-      <JFXButton alignment="BASELINE_LEFT" prefHeight="39.0" prefWidth="280.0" stylesheets="@Drawer.css" text="升级会员" textFill="GREY">
+      <JFXButton alignment="BASELINE_LEFT" onMouseClicked="#handleMoney" prefHeight="39.0" prefWidth="280.0" stylesheets="@Drawer.css" text="升级会员" textFill="GREY">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
@@ -46,7 +51,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton alignment="BASELINE_LEFT" onAction="#handlebutton1" prefHeight="39.0" prefWidth="280.0" stylesheets="@Drawer.css" text="我的收藏" textFill="GREY">
+      <JFXButton alignment="BASELINE_LEFT" onAction="#handlebutton1" onMouseClicked="#handleCollection" prefHeight="39.0" prefWidth="280.0" stylesheets="@Drawer.css" text="我的收藏" textFill="GREY">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
@@ -61,7 +66,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="151.0" prefHeight="39.0" prefWidth="280.0" stylesheets="@Drawer.css" text="定时关闭" textFill="GREY">
+      <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="151.0" onMouseClicked="#handleTiming" prefHeight="39.0" prefWidth="280.0" stylesheets="@Drawer.css" text="定时关闭" textFill="GREY">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
@@ -76,7 +81,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="151.0" prefHeight="39.0" prefWidth="280.0" stylesheets="@Drawer.css" text="个性主题" textFill="GREY">
+      <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="151.0" onMouseClicked="#handleTheme" prefHeight="39.0" prefWidth="280.0" stylesheets="@Drawer.css" text="个性主题" textFill="GREY">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
@@ -118,10 +123,19 @@
       </HBox>
       <AnchorPane id="buttomPane" prefHeight="90.0" prefWidth="280.0" stylesheets="@Drawer.css">
          <children>
-            <Label layoutX="40.0" layoutY="45.0" prefHeight="29.0" prefWidth="56.0" text="关于我们" />
-            <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="16.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+            <HBox layoutX="14.0" layoutY="65.0" onMouseClicked="#handleAboutus" prefHeight="20.0" prefWidth="95.0">
+               <children>
+                  <ImageView fitHeight="19.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/icon/about.png" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="23.0" prefWidth="52.0" text="关于我们" />
+               </children>
+            </HBox>
+            <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="247.0" layoutY="58.0" onMouseClicked="#handleSetting" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../resources/icon/about.png" />
+                  <Image url="@../../resources/icon/wangyiyun.png" />
                </image>
             </ImageView>
          </children>

@@ -30,8 +30,12 @@
 -fx-font-size:  5px;
 -fx-background-radius:100;
 -fx-background-color:red;
+}
+#aboutus{
+ -fx-font-size:  10px; //字体大小
 
 }
+
 
 #signout{
 -fx-background-radius:100;
