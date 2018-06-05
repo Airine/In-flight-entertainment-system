@@ -1,4 +1,4 @@
-package com.view;
+package com.view.viewModel;
 
 import com.jfoenix.effects.JFXDepthManager;
 import javafx.geometry.Pos;
