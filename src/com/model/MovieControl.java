@@ -31,7 +31,7 @@ public class MovieControl extends BorderPane {
     private Slider timeSlider;
     private Label playTime;
     private Slider volumeSlider;
-
+    
     public MovieControl(final MediaPlayer player) {
         this.mp = player;
         setStyle("-fx-background-color: #bfc2c7;");
