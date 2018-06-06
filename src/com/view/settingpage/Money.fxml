@@ -1,21 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXRadioButton?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="436.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.settingpage.MoneyController">
    <children>
-      <JFXButton layoutX="173.0" layoutY="207.0" text="会员" />
-      <AnchorPane prefHeight="141.0" prefWidth="361.0" style="-fx-background-color: #ee5253;" AnchorPane.topAnchor="0.0">
+      <AnchorPane id="userPane" layoutX="-1.0" prefHeight="141.0" prefWidth="361.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label layoutX="59.0" layoutY="36.0" prefHeight="64.0" prefWidth="254.0" text="     升级会员" textAlignment="JUSTIFY" textFill="WHITE">
+            <Label alignment="CENTER" layoutX="-1.0" layoutY="36.0" prefHeight="64.0" prefWidth="360.0" text="会员特权" textAlignment="JUSTIFY" textFill="WHITE" AnchorPane.rightAnchor="0.0">
                <font>
                   <Font size="34.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
+      <Label alignment="CENTER" layoutX="38.0" layoutY="183.0" prefHeight="35.0" prefWidth="87.0" styleClass="huiyuanitem" text="尊贵黄钻身份" AnchorPane.leftAnchor="50.0" />
+      <Label alignment="CENTER" layoutX="50.0" layoutY="248.0" prefHeight="35.0" prefWidth="87.0" styleClass="huiyuanitem" text="自定义主题" AnchorPane.leftAnchor="50.0" />
+      <Label alignment="CENTER" layoutX="225.0" layoutY="183.0" prefHeight="35.0" prefWidth="87.0" styleClass="huiyuanitem" text="更多小视频" AnchorPane.rightAnchor="50.0" />
+      <Label alignment="CENTER" layoutX="224.0" layoutY="248.0" prefHeight="35.0" prefWidth="87.0" styleClass="huiyuanitem" text="一对一客服" AnchorPane.rightAnchor="50.0" />
+      <Label id="payway" alignment="CENTER" layoutX="-1.0" layoutY="301.0" prefHeight="35.0" prefWidth="361.0" text="付款方式" textAlignment="CENTER" />
+      <JFXRadioButton layoutX="62.0" layoutY="349.0" text=" ">
+         <graphic>
+            <ImageView fitHeight="33.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../resources/icon/alipay.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXRadioButton>
+      <JFXRadioButton layoutX="148.0" layoutY="349.0" text=" ">
+         <graphic>
+            <ImageView fitHeight="33.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../resources/icon/wechatpay.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXRadioButton>
+      <JFXRadioButton layoutX="238.0" layoutY="349.0" text=" ">
+         <graphic>
+            <ImageView fitHeight="49.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../resources/icon/visapay.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXRadioButton>
+      <JFXButton layoutX="122.0" layoutY="395.0" prefHeight="35.0" prefWidth="116.0" styleClass="surebutton" text="确认付款" />
    </children>
 </AnchorPane>
