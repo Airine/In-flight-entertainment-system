@@ -70,7 +70,17 @@
 
 
 
+//对于设置界面
 
+.huiyuanitem{//付款界面的小标签
+-fx-background-color: #ee5253;
+-fx-background-radius: 5;
+-fx-text-align:center;
+}
+
+#payway{//付款方式的标签
+ -fx-font-size: 16px;
+}
 
 
 
