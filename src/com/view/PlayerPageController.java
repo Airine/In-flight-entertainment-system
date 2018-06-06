@@ -5,6 +5,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 
 import java.io.IOException;
 
@@ -19,13 +22,19 @@ public class PlayerPageController {
 
     //把接入的视频界面赋值给play，然后调用setplaymovie，界面就会替换
     StackPane play;
-    public void setPlay(StackPane play){
-        this.play=play;
+    public void setPlay(Media media){
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        this.play = new StackPane();
+        MediaView mediaView = new MediaView(mediaPlayer);
+        mediaView.setPreserveRatio(true);
+        mediaView.fitHeightProperty().bind(play.heightProperty());
+        play.getChildren().add(mediaView);
+        play.setStyle("-fx-background-color: black;");
     }
+    
     private  void setPlaymovie(){
         playmovie.getChildren().addAll(play);
     }
-
 
 
     private  RootLayoutController rootLayoutController;
