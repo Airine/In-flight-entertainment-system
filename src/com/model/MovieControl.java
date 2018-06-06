@@ -31,9 +31,10 @@ public class MovieControl extends BorderPane {
     private Slider timeSlider;
     private Label playTime;
     private Slider volumeSlider;
-    
+
     public MovieControl(final MediaPlayer player) {
         this.mp = player;
+        setStyle("-fx-background-color: #bfc2c7;");
         mediaView = new MediaView(player);
         mediaView.setPreserveRatio(true);
         pane = new StackPane();
@@ -42,7 +43,6 @@ public class MovieControl extends BorderPane {
         pane.setStyle("-fx-background-color: black;");
         setCenter(pane);
         
-        //////////////////////////
         mediaBar = new HBox();
         mediaBar.setAlignment(Pos.CENTER);
         mediaBar.setPadding(new Insets(5, 10, 5, 10));
