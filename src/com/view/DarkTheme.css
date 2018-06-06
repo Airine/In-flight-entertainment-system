@@ -1,0 +1,17 @@
+//这里开始是bar的设置
+#mainBar{
+ -fx-background-color:black;//改成黑色
+}
+
+#searchBox{
+-fx-background-color:black;
+-fx-background-radius:25;
+}
+
+.jfx-hamburger StackPane {
+   -fx-background-color: #FFFAFA    ;
+}
+#searchtext{
+//搜索框的文本
+}
+

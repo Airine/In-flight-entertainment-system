@@ -12,7 +12,7 @@
       <Label layoutX="53.0" layoutY="171.0" prefHeight="39.0" prefWidth="92.0" text="顶部导航栏颜色" AnchorPane.leftAnchor="53.0" />
       <Label layoutX="53.0" layoutY="252.0" prefHeight="39.0" prefWidth="92.0" text="侧边导航栏颜色" AnchorPane.leftAnchor="53.0" />
       <JFXColorPicker accessibleRole="TEXT" layoutX="222.0" layoutY="171.0" prefHeight="39.0" prefWidth="74.0" AnchorPane.rightAnchor="65.0" />
-      <JFXButton layoutX="99.0" layoutY="345.0" prefHeight="39.0" prefWidth="167.0" style="-fx-background-color: #ee5253;" text="确认更改" textFill="WHITE" />
+      <JFXButton layoutX="99.0" layoutY="345.0" prefHeight="39.0" prefWidth="167.0" styleClass="surebutton" text="确认更改" textFill="WHITE" />
       <AnchorPane layoutX="2.0" prefHeight="141.0" prefWidth="361.0" style="-fx-background-color: #ee5253;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label layoutX="59.0" layoutY="36.0" prefHeight="64.0" prefWidth="254.0" text="     主题设置" textFill="WHITE">

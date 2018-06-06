@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXChipView?>
+<?import com.jfoenix.controls.JFXSpinner?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -18,14 +19,15 @@
          </children>
       </AnchorPane>
       <JFXChipView layoutX="7.0" layoutY="296.0" prefHeight="110.0" prefWidth="361.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <JFXButton layoutX="115.0" layoutY="396.0" prefHeight="29.0" prefWidth="131.0" style="-fx-background-color: #ee5253;" text="评价" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="115.0" AnchorPane.rightAnchor="114.0" />
+      <JFXButton layoutX="115.0" layoutY="396.0" prefHeight="39.0" prefWidth="131.0" styleClass="surebutton" text="评价" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="115.0" AnchorPane.rightAnchor="114.0" />
       <Label layoutX="125.0" layoutY="265.0" prefHeight="29.0" prefWidth="117.0" text="给开发者评价">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <JFXButton layoutX="118.0" layoutY="218.0" minHeight="29.0" prefHeight="29.0" prefWidth="131.0" style="-fx-background-color: #ee5253;" text="检查新版本" />
+      <JFXButton layoutX="118.0" layoutY="218.0" minHeight="29.0" onMouseClicked="#handleCheckUpdata" prefHeight="39.0" prefWidth="131.0" styleClass="surebutton" text="检查新版本" />
       <Label layoutX="123.0" layoutY="173.0" prefHeight="29.0" prefWidth="60.0" text="当前版本" />
       <Label layoutX="203.0" layoutY="173.0" prefHeight="29.0" prefWidth="36.0" text="1.0" />
+      <JFXSpinner fx:id="spinner" layoutX="239.0" layoutY="178.0" nodeOrientation="RIGHT_TO_LEFT" opacity="0.76" prefHeight="20.0" prefWidth="20.0" progress="0.0" startingAngle="0.0" visible="false" />
    </children>
 </AnchorPane>

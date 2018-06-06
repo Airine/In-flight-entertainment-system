@@ -3,11 +3,14 @@ package com.view;
 import com.MainApp;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
+import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.transitions.hamburger.HamburgerNextArrowBasicTransition;
+import com.sun.prism.paint.Color;
 import com.view.settingpage.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Line;
 
@@ -17,6 +20,16 @@ public class RootLayoutController {
 //主平面，暂时没什么用
     @FXML
     private AnchorPane mainPane;
+    //导航栏
+    @FXML
+    private AnchorPane mainBar;
+    //搜索栏
+    @FXML
+    private HBox searchbox;
+    //搜索栏的文本
+    @FXML
+    private JFXTextField searchfeild;
+
 
     //这是三根下划线
     @FXML
@@ -63,6 +76,7 @@ public class RootLayoutController {
     TimingController timingController;
     CollectionController collectionController;
     EditController editController;
+    DrawerContentController drawerContentController;
     /**
      * 设置主应用，连接到主界面
      * @param app
@@ -77,6 +91,8 @@ public class RootLayoutController {
     public void setVBox(VBox box) {
         this.box = box;
     }
+    public VBox getVBox(){return box;}
+    public DrawerContentController getDrawerContentController(){return drawerContentController;}
    /* *  用来替换主界面，当想切换哪个界面的时候就把界面赋值给homepage
     * @author PennaLia
     * @date 2018/6/5 14:18
@@ -113,7 +129,6 @@ public class RootLayoutController {
     public AnchorPane getSettingPane() {
         return SettingPane;
     }//返回设置界面
-
     /* *  初始化界面
       * @author PennaLia
       * @date 2018/6/5 14:20
@@ -145,6 +160,7 @@ public class RootLayoutController {
         }
     }
 
+
     /* *  初始化抽屉栏.
      * @author PennaLia
      * @date 2018/5/29 1:08
@@ -157,7 +173,7 @@ public class RootLayoutController {
             loader.setLocation(MainApp.class
                     .getResource("view/DrawerContent.fxml"));
             this.setVBox(loader.load());
-            DrawerContentController drawerContentController = loader.getController();
+            drawerContentController = loader.getController();
             drawerContentController.setRootLayoutController(this);
             drawer.setSidePane(box);//把box设置给抽屉
             drawer.setVisible(false);//一开始抽屉栏不可见，否则会遮挡
@@ -310,6 +326,9 @@ public class RootLayoutController {
             edit= loader.load();
             editController= loader.getController();
             editController.setRootLayoutController(this);
+
+        editController.getTextname().setText(this.getDrawerContentController().getUserName());
+        editController.getTextsign().setText(this.getDrawerContentController().getUserSign());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -384,6 +403,19 @@ public class RootLayoutController {
     @FXML
     private void handleClose() {
         mainApp.closeWindows();
+    }
+
+    /* * 用于设置夜间模式
+     * @author PennaLia
+     * @date 2018/6/6 8:33
+     * @param
+     * @return
+     */
+    public void ToNight(){
+     mainPane.getStylesheets().add("com/view/DarkTheme.css");
+    }
+    public void ToDefault(){
+        mainPane.getStylesheets().add("com/view/DefaultTheme.css");
     }
 
 }

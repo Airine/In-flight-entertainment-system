@@ -13,27 +13,27 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="drawerBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="436.0" prefWidth="280.0" style="-fx-background-color: #FFB6C1;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.DrawerContentController">
+<VBox fx:id="drawerBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="436.0" prefWidth="280.0" style="-fx-background-color: #FFB6C1;" stylesheets="@DefaultTheme.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.DrawerContentController">
    <children>
-      <Pane id="userPane" prefHeight="142.0" prefWidth="280.0" stylesheets="@Drawer.css">
+      <Pane id="userPane" prefHeight="142.0" prefWidth="280.0">
          <children>
-            <Pane prefHeight="49.0" prefWidth="280.0" style="-fx-background-color: #F08080;">
+            <Pane id="usepaneTop" prefHeight="49.0" prefWidth="280.0">
                <children>
-                  <JFXButton id="signout" buttonType="RAISED" layoutX="259.0" layoutY="7.0" prefHeight="15.0" prefWidth="15.0" stylesheets="@Drawer.css" text=" " />
                   <ImageView fx:id="huiyuan" fitHeight="20.0" fitWidth="20.0" layoutX="110.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../resources/icon/huiyuan.png" />
                      </image>
                   </ImageView>
+                  <JFXButton id="sign_out" buttonType="RAISED" layoutX="261.0" layoutY="3.0" prefHeight="15.0" prefWidth="15.0" text=" " />
                </children>
             </Pane>
-            <Label layoutX="166.0" layoutY="63.0" opacity="0.56" prefHeight="37.0" prefWidth="100.0" text="石原里美" textFill="WHITE">
+            <Label fx:id="username" layoutX="166.0" layoutY="63.0" opacity="0.56" prefHeight="37.0" prefWidth="100.0" text="石原里美" textFill="WHITE">
                <font>
                   <Font name="Arial Black" size="21.0" />
                </font>
             </Label>
             <JFXButton fx:id="user_icon" buttonType="RAISED" layoutX="20.0" layoutY="9.0" onMouseClicked="#handleLogin" prefHeight="95.0" prefWidth="95.0" text=" " />
-            <Label layoutX="14.0" layoutY="113.0" prefHeight="20.0" prefWidth="157.0" text="今天也很喜欢赖鹏楠呢" textFill="#f3eaea">
+            <Label fx:id="usersign" layoutX="14.0" layoutY="113.0" prefHeight="20.0" prefWidth="157.0" text="今天也很喜欢赖鹏楠呢" textFill="#f3eaea">
                <font>
                   <Font name="Arial Black" size="14.0" />
                </font></Label>
@@ -44,7 +44,7 @@
             </ImageView>
          </children>
       </Pane>
-      <JFXButton alignment="BASELINE_LEFT" onMouseClicked="#handleMoney" prefHeight="39.0" prefWidth="280.0" stylesheets="@Drawer.css" text="升级会员" textFill="GREY">
+      <JFXButton alignment="BASELINE_LEFT" onMouseClicked="#handleMoney" prefHeight="39.0" prefWidth="280.0" text="升级会员" textFill="GREY">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
@@ -59,7 +59,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton alignment="BASELINE_LEFT" onAction="#handlebutton1" onMouseClicked="#handleCollection" prefHeight="39.0" prefWidth="280.0" stylesheets="@Drawer.css" text="我的收藏" textFill="GREY">
+      <JFXButton alignment="BASELINE_LEFT" onAction="#handlebutton1" onMouseClicked="#handleCollection" prefHeight="39.0" prefWidth="280.0" text="我的收藏" textFill="GREY">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
@@ -74,7 +74,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="151.0" onMouseClicked="#handleTiming" prefHeight="39.0" prefWidth="280.0" stylesheets="@Drawer.css" text="定时关闭" textFill="GREY">
+      <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="151.0" onMouseClicked="#handleTiming" prefHeight="39.0" prefWidth="280.0" text="定时关闭" textFill="GREY">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
@@ -89,7 +89,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="151.0" onMouseClicked="#handleTheme" prefHeight="39.0" prefWidth="280.0" stylesheets="@Drawer.css" text="个性主题" textFill="GREY">
+      <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="151.0" onMouseClicked="#handleTheme" prefHeight="39.0" prefWidth="280.0" text="个性主题" textFill="GREY">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
@@ -104,7 +104,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <HBox id="hbox" prefHeight="49.0" prefWidth="280.0" stylesheets="@Drawer.css">
+      <HBox id="hbox" prefHeight="49.0" prefWidth="280.0">
          <children>
             <ImageView fitHeight="26.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                <HBox.margin>
@@ -122,14 +122,14 @@
                   <Insets left="4.0" top="2.0" />
                </HBox.margin>
             </Label>
-            <JFXToggleButton minHeight="10.0" prefHeight="31.0" prefWidth="74.0" text=" ">
+            <JFXToggleButton fx:id="night" minHeight="10.0" prefHeight="31.0" prefWidth="74.0" text=" " toggleLineColor="#009688">
                <HBox.margin>
                   <Insets top="4.0" />
                </HBox.margin>
             </JFXToggleButton>
          </children>
       </HBox>
-      <AnchorPane id="buttomPane" prefHeight="90.0" prefWidth="280.0" stylesheets="@Drawer.css">
+      <AnchorPane id="buttompane" prefHeight="90.0" prefWidth="280.0">
          <children>
             <HBox layoutX="14.0" layoutY="65.0" onMouseClicked="#handleAboutus" prefHeight="20.0" prefWidth="95.0">
                <children>
