@@ -43,6 +43,7 @@ public class MovieControl extends BorderPane {
         pane.setStyle("-fx-background-color: black;");
         setCenter(pane);
         
+        //////////////////////////
         mediaBar = new HBox();
         mediaBar.setAlignment(Pos.CENTER);
         mediaBar.setPadding(new Insets(5, 10, 5, 10));
