@@ -34,7 +34,6 @@ public class MovieControl extends BorderPane {
     
     public MovieControl(final MediaPlayer player) {
         this.mp = player;
-        setStyle("-fx-background-color: #bfc2c7;");
         mediaView = new MediaView(player);
         mediaView.setPreserveRatio(true);
         pane = new StackPane();

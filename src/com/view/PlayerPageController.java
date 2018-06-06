@@ -25,7 +25,6 @@ public class PlayerPageController {
     public void setPlay(Media media){
         MediaPlayer mediaPlayer = new MediaPlayer(media);
         this.play = new StackPane();
-        play.setStyle("-fx-background-color: #bfc2c7;");
         MediaView mediaView = new MediaView(mediaPlayer);
         mediaView.setPreserveRatio(true);
         mediaView.fitHeightProperty().bind(play.heightProperty());
@@ -36,7 +35,6 @@ public class PlayerPageController {
     private  void setPlaymovie(){
         playmovie.getChildren().addAll(play);
     }
-
 
 
     private  RootLayoutController rootLayoutController;
