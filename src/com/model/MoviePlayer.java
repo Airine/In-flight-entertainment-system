@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
@@ -21,12 +22,13 @@ public class MoviePlayer extends Application {
             ArrayList<String> idList = new ArrayList<>();
             idList.add("SqAOgoZHEprCsviT0xJXybgrYc0.");
             idList.add("ez-CW_dTCfyjhzXh9-SbvWlFZrM.");
-            idList.add("ZYrifWpqGS0YvRlPBWH6mUXGEx8.");
-            idList.add("PfiuqVYNfvZ5eFbFwyJuJd3HdJw.");
             com.model.WebScraping webScraping = new com.model.WebScraping();
-            Map<String, String> URL_Title = webScraping.scrapeLink(idList);
+            Map<String, String> URL_Title = webScraping.scrapeMovieLinks();
             Set<String> urls = URL_Title.keySet();
-            String url = (String) (urls.toArray())[0];
+            Collection<String> titles = URL_Title.values();
+            String url = (String) (urls.toArray())[1];
+            String title = (String) (titles.toArray())[1];
+            webScraping.scrapeMessage(title);
             String tmp = url.substring(url.indexOf("com/") + 4);
             Media media = new Media("https://m500.ku6.com/"+
                     URLEncoder.encode(tmp,"UTF-8").replace("+","%20"));
