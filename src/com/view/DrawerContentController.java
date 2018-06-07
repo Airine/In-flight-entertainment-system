@@ -2,9 +2,14 @@ package com.view;
 
 import com.MainApp;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXToggleButton;
 import com.jfoenix.transitions.JFXFillTransition;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -21,6 +26,9 @@ public class DrawerContentController {
     private ImageView userImage;
 
     @FXML
+    private ImageView huiyuan;
+
+    @FXML
     private JFXButton button1;
 
     @FXML
@@ -32,14 +40,30 @@ public class DrawerContentController {
     @FXML
     private JFXButton user_icon;
 
-    private boolean clicked =false;
+    @FXML
+    private JFXToggleButton night;
 
+    @FXML
+    private Label usersign;
+
+    @FXML
+    private Label username;
+
+
+    private boolean clicked =false;
+    private boolean Tonight=false;
     private  RootLayoutController rootLayoutController;
 
     public void setRootLayoutController(RootLayoutController rootLayoutController){
         this.rootLayoutController=rootLayoutController;
     }
 
+    public String getUserName(){
+        return username.getText();
+    }
+    public String getUserSign(){
+        return usersign.getText();
+    }
     @FXML
     public void initialize(){
         String url = "resources/shiyuan.png";
@@ -48,6 +72,18 @@ public class DrawerContentController {
                 "-fx-background-position: center;" +
                 "-fx-background-repeat: no-repeat;" +
                 "-fx-background-size: 100% 100%;");
+       initToggle();//初始化他的监听拖动
+    }
+
+    public void changNameAndSign(String name,String sign){
+        username.setText(name);
+        usersign.setText(sign);
+    }
+
+    @FXML
+    public void beHuiyuan(){
+        huiyuan.setImage(new Image("resources/icon/truehuiyuan.png"));
+        rootLayoutController.getMainApp().huiyuan=true;
     }
 
     @FXML
@@ -97,6 +133,23 @@ public class DrawerContentController {
     private void handleLogin() {
         rootLayoutController.getMainApp().login();
     }
+
+    private void initToggle(){
+        night.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(night.isSelected()==true){
+                    rootLayoutController.ToNight();
+                    System.out.println("晚安");
+                }else{
+                    rootLayoutController.ToDefault();
+                    System.out.println("早安");
+                }
+            }
+        });
+    }
+
+
     @FXML
     private void handlebutton1() {
         AnchorPane homepage= rootLayoutController.getHomepage();

@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXColorPicker?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="436.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.settingpage.ThemeController">
+<AnchorPane fx:id="anchorPane" prefHeight="436.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.settingpage.ThemeController">
    <children>
-      <JFXButton layoutX="173.0" layoutY="207.0" text="主题" />
+      <JFXColorPicker fx:id="leftbar" layoutX="222.0" layoutY="252.0" prefHeight="39.0" prefWidth="74.0" AnchorPane.rightAnchor="65.0" />
+      <Label layoutX="53.0" layoutY="171.0" prefHeight="39.0" prefWidth="92.0" text="顶部导航栏颜色" AnchorPane.leftAnchor="53.0" />
+      <Label layoutX="53.0" layoutY="252.0" prefHeight="39.0" prefWidth="92.0" text="侧边导航栏颜色" AnchorPane.leftAnchor="53.0" />
+      <JFXColorPicker fx:id="upbar" accessibleRole="TEXT" layoutX="222.0" layoutY="171.0" prefHeight="39.0" prefWidth="74.0" AnchorPane.rightAnchor="65.0" />
+      <JFXButton layoutX="99.0" layoutY="345.0" onMouseClicked="#handleOk" prefHeight="39.0" prefWidth="167.0" styleClass="surebutton" text="确认更改" textFill="WHITE" />
+      <AnchorPane id="userPane" layoutX="14.0" layoutY="6.0" prefHeight="141.0" prefWidth="361.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label alignment="CENTER" layoutX="-1.0" layoutY="36.0" prefHeight="64.0" prefWidth="360.0" text="主题" textAlignment="JUSTIFY" textFill="WHITE" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font size="34.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <StackPane fx:id="stackpane" layoutX="45.0" layoutY="156.0" prefHeight="159.0" prefWidth="257.0" visible="false" />
    </children>
 </AnchorPane>

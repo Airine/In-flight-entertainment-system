@@ -38,6 +38,7 @@ public class MainApp extends Application {
     }
 
     public Stage getPrimaryStage() { return primaryStage; }
+    public boolean huiyuan=false;
 
     @Override
     public void start(Stage primaryStage) {
