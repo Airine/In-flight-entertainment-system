@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXMasonryPane;
 import com.jfoenix.controls.JFXScrollPane;
 import com.model.Movie;
+import com.model.MovieType;
 import com.view.viewModel.MovieItem;
 import com.view.viewModel.MovieSortItem;
 import javafx.fxml.FXML;
@@ -13,9 +14,11 @@ import javafx.scene.layout.*;
 
 import java.util.ArrayList;
 
+import static com.MainApp.mainMovieTypes;
 import static com.MainApp.mainMovies;
 
 public class HomePageController {
+
 
     @FXML
     private JFXScrollPane HomeScrollPane;
@@ -29,9 +32,10 @@ public class HomePageController {
     }
 
     private void addMovieSortItem(){
-        for (int i = 0; i < 12; i++){
+        for (MovieType movieType : mainMovieTypes) {
             try {
-                StackPane sort = new MovieSortItem(200, 112,"cn","Erotic");
+                StackPane sort = movieType.getMovieSortItem_cn();
+                movieType.handleClick(HomeScrollPane);
                 flowpane.getChildren().add(sort);
             }catch (Exception e){
                 e.printStackTrace();
@@ -41,15 +45,15 @@ public class HomePageController {
 
     @FXML
     private void initialize(){
-//        this.addMovieSortItem();
-        for (Movie mainMovy : mainMovies) {
-            try {
-                StackPane movieItem = mainMovy.getMi_cn();
-                flowpane.getChildren().add(movieItem);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+        addMovieSortItem();
+//        for (Movie mainMovy : mainMovies) {
+//            try {
+//                StackPane movieItem = mainMovy.getMi_cn();
+//                flowpane.getChildren().add(movieItem);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
         HomeScrollPane.setContent(flowpane);
         HomeScrollPane.setStyle("-fx-border-color: transparent;");
         //封面图

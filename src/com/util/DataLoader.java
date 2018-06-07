@@ -16,6 +16,23 @@ public class DataLoader {
 
     private static List<User> users = new ArrayList<>();
     private static List<Movie> movies = new ArrayList<>();
+    private static List<MovieType> movieTypes = new ArrayList<>();
+    private static final String[] types = {
+            "Other",
+            "Action",
+            "Comedy",
+            "Mystery",
+            "Cartoon",
+            "Sci-Fi",
+            "Horror",
+            "War",
+            "Crime",
+            "Erotic",
+            "Disaster",
+            "Romance",
+            "Biography"
+    };
+
 
     public static void loadUsers(){
         Connection connection = connectToDB();
@@ -78,6 +95,36 @@ public class DataLoader {
         return tempt;
     }
 
+    public static List<MovieType> loadMovieTypes(String language){
+        Connection connection = connectToDB();
+
+        List<MovieType> tempt = new ArrayList<>();
+        try {
+            String sql = "select * from movie_type;";
+
+            ResultSet rs = runSQLquery(connection,sql);
+            assert rs != null : "Result set is null!!!";
+            while (rs.next()){
+                int id = rs.getInt("type_id");
+                String type_cn = rs.getString("type_cn");
+                String type_en = rs.getString("type_en");
+
+                // 输出数据
+                MovieType m = new MovieType(id, type_cn, type_en, language);
+                tempt.add(m);
+            }
+
+            if (connection!=null) {
+                if (!connection.isClosed())
+                    connection.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        setMovieTypes(tempt);
+        return tempt;
+    }
+
     public static User getUser(String user_name){
         List<User> tempt = users.stream()
                             .filter(user -> Objects.equals(user.getName(), user_name))
@@ -87,7 +134,9 @@ public class DataLoader {
     }
 
     public static List<Movie> getMoviesByType(String movie_type){
-        return null;
+        return movies.stream()
+                .filter(movie -> types[movie.getType()].equals(movie_type))
+                .collect(Collectors.toList());
     }
 
     private static void setUsers(List<User> users) {
@@ -96,4 +145,8 @@ public class DataLoader {
     private static void setMovies(List<Movie> movies) {
         DataLoader.movies = movies;
     }
+    private static void setMovieTypes(List<MovieType> movieTypes){
+        DataLoader.movieTypes = movieTypes;
+    }
+
 }
