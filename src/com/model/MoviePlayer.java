@@ -1,3 +1,4 @@
+/*
 package com.model;
 
 import javafx.application.Application;
@@ -56,3 +57,4 @@ public class MoviePlayer extends Application {
     }
 }
 
+*/
