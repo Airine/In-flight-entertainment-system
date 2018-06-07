@@ -5,13 +5,13 @@ import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.transitions.hamburger.HamburgerNextArrowBasicTransition;
-import com.sun.prism.paint.Color;
 import com.view.settingpage.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 
 import java.io.IOException;
@@ -278,6 +278,9 @@ public class RootLayoutController {
             theme = loader.load();
             themeController= loader.getController();
             themeController.setRootLayoutController(this);
+            //这边要想办法得到部件的颜色信息
+            themeController.getLeftbar().setValue(Color.web("000000"));
+            themeController.getUpbar().setValue(Color.web("000000"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -326,7 +329,6 @@ public class RootLayoutController {
             edit= loader.load();
             editController= loader.getController();
             editController.setRootLayoutController(this);
-
         editController.getTextname().setText(this.getDrawerContentController().getUserName());
         editController.getTextsign().setText(this.getDrawerContentController().getUserSign());
         } catch (IOException e) {

@@ -18,7 +18,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <JFXChipView layoutX="7.0" layoutY="296.0" prefHeight="110.0" prefWidth="361.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <JFXChipView fx:id="pingjia" layoutX="7.0" layoutY="296.0" prefHeight="110.0" prefWidth="361.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
       <JFXButton layoutX="115.0" layoutY="396.0" prefHeight="39.0" prefWidth="131.0" styleClass="surebutton" text="评价" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="115.0" AnchorPane.rightAnchor="114.0" />
       <Label layoutX="125.0" layoutY="265.0" prefHeight="29.0" prefWidth="117.0" text="给开发者评价">
          <font>
