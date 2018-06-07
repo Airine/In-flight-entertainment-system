@@ -3,6 +3,7 @@ package com.view;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXMasonryPane;
 import com.jfoenix.controls.JFXScrollPane;
+import com.model.Movie;
 import com.view.viewModel.MovieItem;
 import com.view.viewModel.MovieSortItem;
 import javafx.fxml.FXML;
@@ -41,11 +42,11 @@ public class HomePageController {
     @FXML
     private void initialize(){
 //        this.addMovieSortItem();
-        for (int i = 0; i < mainMovies.size(); i++){
+        for (Movie mainMovy : mainMovies) {
             try {
-                StackPane movieItem = mainMovies.get(i).getMi_cn();
+                StackPane movieItem = mainMovy.getMi_cn();
                 flowpane.getChildren().add(movieItem);
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }

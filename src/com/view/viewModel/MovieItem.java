@@ -26,14 +26,14 @@ public class MovieItem extends StackPane {
 
 
     public MovieItem(String url, String title){
-        this.setPrefWidth(240);
-        this.setPrefHeight(360);
+        this.setPrefWidth(200);
+        this.setPrefHeight(350);
         JFXDepthManager.setDepth(this, 1);
 
         // create content
         StackPane header = new StackPane();
         String headerColor = getDefaultColor(13);
-        header.setPrefHeight(320);
+        header.setPrefHeight(290);
         header.setStyle("-fx-background-radius: 5 5 0 0; " +
 //                "-fx-background-color: " + headerColor +
                 "-fx-background-image: url(\"" + url + "\");" +
@@ -44,7 +44,7 @@ public class MovieItem extends StackPane {
         VBox.setVgrow(header, Priority.ALWAYS);
 
         StackPane body = new StackPane();
-        body.setMinHeight(40);
+        body.setMinHeight(60);
         body.setStyle("-fx-background-radius: 0 0 5 5; -fx-background-color: rgb(255,255,255,0.87);");
         Label label = new Label(title);
         body.getChildren().addAll(label);
