@@ -1,5 +1,6 @@
 package com;
 
+import com.model.Movie;
 import com.model.User;
 import com.view.LoginController;
 import com.view.RootLayoutController;
@@ -12,12 +13,15 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.util.List;
 
-import static com.util.Tool.loadUsers;
+import static com.util.DataLoader.loadMovies;
+import static com.util.DataLoader.loadUsers;
 
 public class MainApp extends Application {
 
     public static User mainUser;
+    public static List<Movie> mainMovies;
 
     private Stage primaryStage;
     private AnchorPane rootLayout;
@@ -34,11 +38,11 @@ public class MainApp extends Application {
     }
 
     public Stage getPrimaryStage() { return primaryStage; }
+    public boolean huiyuan=false;
 
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("视频");
         this.primaryStage.setWidth(640);
         this.primaryStage.setHeight(480);
         this.primaryStage.initStyle(StageStyle.TRANSPARENT);//隐藏窗口
@@ -101,6 +105,7 @@ public class MainApp extends Application {
 
     public static void main(String[] args) {
         loadUsers();
+        mainMovies = loadMovies();
         launch(args);
     }
 }

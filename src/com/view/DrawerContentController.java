@@ -72,8 +72,7 @@ public class DrawerContentController {
                 "-fx-background-position: center;" +
                 "-fx-background-repeat: no-repeat;" +
                 "-fx-background-size: 100% 100%;");
-       beHuiyuan();
-       initToggle();
+       initToggle();//初始化他的监听拖动
     }
 
     public void changNameAndSign(String name,String sign){
@@ -84,6 +83,7 @@ public class DrawerContentController {
     @FXML
     public void beHuiyuan(){
         huiyuan.setImage(new Image("resources/icon/truehuiyuan.png"));
+        rootLayoutController.getMainApp().huiyuan=true;
     }
 
     @FXML

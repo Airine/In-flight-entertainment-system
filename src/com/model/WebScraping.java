@@ -18,8 +18,8 @@ import java.util.logging.Level;
 
 
 class WebScraping {
-    
-    
+
+
     public ArrayList<String> addAllMoives() throws IOException {
         //构造一个webClient 模拟Chrome 浏览器
         String url = "https://www.ku6.com/detail/72";
@@ -49,8 +49,8 @@ class WebScraping {
         }
         return urls;
     }
-    
-    
+
+
     public Map<String, String> scrapeMovieLinks() throws IOException {
         ArrayList<String> urls = addAllMoives();
         Map<String, String> URL_Title = new HashMap<>();
@@ -76,7 +76,7 @@ class WebScraping {
                     int index= link_str.indexOf("com/")+ 4;
                     String encodeStr = link_str.substring(0,index)
                             + URLEncoder.encode(link_str.substring(index),"UTF-8").replace("+","%20");
-                    
+
                     URL_Title.put(encodeStr,title);
                 }
             }
@@ -93,7 +93,7 @@ class WebScraping {
         for (Element e: infos) {
             if(e.selectFirst("span.type").text().equals("电影")){
                 if(e.selectFirst("a.desc_more")==null){
-                    continue;       
+                    continue;
                 }
                 url = e.selectFirst("a.desc_more").attr("href");
                 flag = true;

@@ -1,4 +1,3 @@
-/*
 package com.model;
 
 import javafx.application.Platform;
@@ -18,13 +17,13 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 
-public class MovieControl {
+public class MovieControl extends BorderPane {
     
     private MediaPlayer mp;
     MediaView mediaView;
     HBox mediaBar;
     StackPane pane;
-    //Stage stage;
+    Stage stage;
     private final boolean repeat = true;
     private boolean stopRequested = false;
     private boolean atEndOfMedia = false;
@@ -41,6 +40,7 @@ public class MovieControl {
         mediaView.fitHeightProperty().bind(pane.heightProperty());
         pane.getChildren().add(mediaView);
         pane.setStyle("-fx-background-color: black;");
+        setCenter(pane);
         
         //////////////////////////
         mediaBar = new HBox();
@@ -145,8 +145,7 @@ public class MovieControl {
         Label spacer2 = new Label("  ");
         mediaBar.getChildren().add(spacer2);
         
-        */
-/*Image image = new Image("resources/icon/fullScreen.png");
+        Image image = new Image("resources/icon/fullScreen.png");
         final Button fullScreenButton = new Button();
         ImageView imageView = new ImageView(image);
         imageView.setPreserveRatio(true);
@@ -164,8 +163,10 @@ public class MovieControl {
                     pane.getChildren().remove(mediaView);
             }
         });
-        mediaBar.getChildren().add(fullScreenButton);*//*
+        mediaBar.getChildren().add(fullScreenButton);
 
+        setBottom(mediaBar);
+        
     }
     
     private void updateValues() {
@@ -228,4 +229,4 @@ public class MovieControl {
             }
         }
     }
-}*/
+}
