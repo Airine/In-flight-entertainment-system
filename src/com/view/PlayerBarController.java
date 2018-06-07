@@ -1,23 +1,30 @@
 package com.view;
 
 import com.jfoenix.controls.JFXSlider;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
 
 public class PlayerBarController {
     @FXML
-    private JFXSlider ProgressBar;
+    private JFXSlider TimeBar;
 
     @FXML
     private JFXSlider volume;
 
     @FXML
     private ImageView PlayOrStop;
+    
+    @FXML
+    private Label playTime;
+    
     private PlayerPageController playerPageController;
-    Image stop;
-    Image play;
-    Boolean playing=true;
+    private Image stop;
+    private Image play;
 
 /* *  连接上一层的playpage
  * @author PennaLia
@@ -36,11 +43,9 @@ public class PlayerBarController {
  */
     @FXML
     private void initialize(){
-
         stop=new Image("resources/icon/vediostop.png");
         play=new Image("resources/icon/vedioplay.png");
         PlayOrStop.setImage(play);
-
     }
 
     /* *  用于设置播放按钮和暂停按钮。一开始是默认播放的.
@@ -51,7 +56,6 @@ public class PlayerBarController {
      */
     @FXML
     public void handlePlayOrStop(){
-
         MediaPlayer.Status status = mp.getStatus();
         if (status == MediaPlayer.Status.UNKNOWN || status == MediaPlayer.Status.HALTED) {
             // don't do anything in these states
@@ -117,7 +121,65 @@ public class PlayerBarController {
                 mp.setVolume(volume.getValue() / 100.0);
             }
         });
-
+    }
+    private void updateValues() {
+        if (playTime != null && TimeBar != null && volume != null) {
+            Platform.runLater(() -> {
+                Duration currentTime = mp.getCurrentTime();
+                playTime.setText(formatTime(currentTime, duration));
+                TimeBar.setDisable(duration.isUnknown());
+                if (!TimeBar.isDisabled()
+                        && duration.greaterThan(Duration.ZERO)
+                        && !TimeBar.isValueChanging()) {
+                    TimeBar.setValue(currentTime.divide(duration).toMillis()
+                            * 100.0);
+                }
+                if (!volume.isValueChanging()) {
+                    volume.setValue((int) Math.round(mp.getVolume()
+                            * 100));
+                }
+            });
+        }
     }
 
+    private static String formatTime(Duration elapsed, Duration duration) {
+        int intElapsed = (int) Math.floor(elapsed.toSeconds());
+        int elapsedHours = intElapsed / (60 * 60);
+        int temp = intElapsed;
+        if (elapsedHours > 0) {
+            temp -= elapsedHours * 60 * 60;
+        }
+        int elapsedMinutes = temp / 60;
+        int elapsedSeconds = intElapsed - elapsedHours * 60 * 60
+                - elapsedMinutes * 60;
+
+        if (duration.greaterThan(Duration.ZERO)) {
+            int intDuration = (int) Math.floor(duration.toSeconds());
+            int durationHours = intDuration / (60 * 60);
+            temp = intDuration;
+            if (durationHours > 0) {
+                temp -= durationHours * 60 * 60;
+            }
+            int durationMinutes = temp / 60;
+            int durationSeconds = intDuration - durationHours * 60 * 60
+                    - durationMinutes * 60;
+            if (durationHours > 0) {
+                return String.format("%d:%02d:%02d/%d:%02d:%02d",
+                        elapsedHours, elapsedMinutes, elapsedSeconds,
+                        durationHours, durationMinutes, durationSeconds);
+            } else {
+                return String.format("%02d:%02d/%02d:%02d",
+                        elapsedMinutes, elapsedSeconds, durationMinutes,
+                        durationSeconds);
+            }
+        } else {
+            if (elapsedHours > 0) {
+                return String.format("%d:%02d:%02d", elapsedHours,
+                        elapsedMinutes, elapsedSeconds);
+            } else {
+                return String.format("%02d:%02d", elapsedMinutes,
+                        elapsedSeconds);
+            }
+        }
+    }
 }

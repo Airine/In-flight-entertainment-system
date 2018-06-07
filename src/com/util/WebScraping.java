@@ -1,4 +1,4 @@
-package com.model;
+package com.util;
 
 import com.gargoylesoftware.htmlunit.BrowserVersion;
 import com.gargoylesoftware.htmlunit.WebClient;

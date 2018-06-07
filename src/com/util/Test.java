@@ -1,4 +1,4 @@
-package com.model;
+package com.util;
 
 import java.io.*;
 import java.util.Map;
@@ -7,9 +7,9 @@ public class Test {
 
     public static void main(String[] args) throws IOException {
 
-        File movieMessages = new File("E:\\GitHub\\In-flight-entertainment-system\\src\\com\\model\\movieMessages.txt");
+        File movieMessages = new File("");
         PrintWriter out = new PrintWriter(movieMessages);
-        com.model.WebScraping webScraping = new com.model.WebScraping();
+        WebScraping webScraping = new WebScraping();
         Map<String, String> URL_Title = webScraping.scrapeMovieLinks();
         StringBuilder sb = new StringBuilder();
         for(Map.Entry entry : URL_Title.entrySet()) {
