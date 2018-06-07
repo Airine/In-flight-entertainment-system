@@ -5,10 +5,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 
-import javax.print.attribute.standard.Media;
 import java.io.IOException;
 
 public class PlayerPageController {
@@ -22,6 +22,7 @@ public class PlayerPageController {
     PlayerBarController playerBarController;
     //把接入的视频界面赋值给play，然后调用setplaymovie，界面就会替换
     StackPane play;
+    
     public void setPlay(MediaView mediaView){
         play = new StackPane();
         mediaView.setPreserveRatio(true);
@@ -44,9 +45,8 @@ public class PlayerPageController {
     @FXML
     private void initialize(){
         try {
-            
             //这里随便加了个视频并且自动播放
-            mediaPlayer = new MediaPlayer(new javafx.scene.media.Media(
+            mediaPlayer = new MediaPlayer(new Media(
                     "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"));
             mediaPlayer.setAutoPlay(true);
             setPlay(new MediaView(mediaPlayer));
@@ -57,14 +57,14 @@ public class PlayerPageController {
         }
     }
 
-    public void initPlayerBar(){
+    private void initPlayerBar(){
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/PlayerBar.fxml"));
             bar = loader.load();
             Bar.getChildren().setAll(bar);
             
-            playerBarController= loader.getController();
+            playerBarController = loader.getController();
             playerBarController.setPlayPageController(this);
             playerBarController.controlPlayer(mediaPlayer);
            
