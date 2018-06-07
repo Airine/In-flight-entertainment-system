@@ -1,24 +1,33 @@
-//这里开始是bar的设置
+// 引入外部字体
+//@font-face {
+//    font-family: Frutiger; // 英语字体
+//    src: url('Frutiger-LT-45-Light.ttf');
+//}
+
+@font-face {
+    font-family: HanYi; // 中文字体
+    src: url("font/HanYiZhongDengXian.ttf");
+}
+
+
+// 这里开始是bar的设置
 
 #mainBar{//这个是顶部导航栏
- -fx-background-color:C62F2F;//网易云专属红
+    -fx-background-color:C62F2F;//网易云专属红
 }
+
 #searchBox{//搜索栏的框
--fx-background-color:A82828;
--fx-background-radius:25;
+    -fx-background-color:A82828;
+    -fx-background-radius:25;
 }
+
 .jfx-hamburger StackPane {//打开抽屉的东西hamburger
-   -fx-background-color: #FFFAFA ;
+    -fx-background-color: #FFFAFA ;
 }
+1px
 #searchtext{//搜索框的文本输入
 
 }
-
-
-
-
-
-
 
 //这里开始是抽屉
 .jfx-button {
@@ -34,64 +43,60 @@
 }
 
 #sign_out{//退出按钮
-  -fx-background-radius:100;
-  -fx-font-size:  1px;
-   -fx-background-color:#A9A9A9;
+    -fx-background-radius:100;
+    -fx-font-size:  1px;
+    -fx-background-color:#A9A9A9;
 }
-
 
 #usepaneTop{//用户设置的那个平面，上面那个单独一个颜色的
--fx-background-color: #F08080;
+    -fx-background-color: #F08080;
 }
+
 #userPane{//用户设置的那个平面，放石原里美头像的那个
- -fx-background-color: #ee5253;
+    -fx-background-color: #ee5253;
 }
 
 #buttompane{//底下那个最没用的，放关于我们的那个平面
-  -fx-background-color: F5F5F7;
+    -fx-background-color: F5F5F7;
 }
 
 #hbox{//放夜间模式的box
- -fx-background-color:F5F5F7;
+    -fx-background-color:F5F5F7;
 }
+
 #modify{//
- -fx-font-size:  1px; //字体大小
-  -fx-background-radius: 50%;//圆角半径
+    -fx-font-size:  1px; //字体大小
+    -fx-background-radius: 50%;//圆角半径
 }
 
 
-.surebutton{//这是确认修改的button，比如在修改信息时候的那个
--fx-background-color:#ee5253; //按钮颜色
--fx-text-fill: white; //字体颜色
--fx-font-size:  16px;  //字体大小
--fx-background-radius: 5;
+//这是确认修改的button，比如在修改信息时候的那个
+.surebutton{
+    -fx-background-color:#ee5253; //按钮颜色
+    -fx-text-fill: white; //字体颜色
+    -fx-font-size:  16px;  //字体大小
+    -fx-background-radius: 5;
 }
-
-
 
 
 //对于设置界面
-
 .huiyuanitem{//付款界面的小标签
--fx-background-color: #ee5253;
- -fx-font-color: #000000;
--fx-background-radius: 100;
+    -fx-background-color: #ee5253;
+    -fx-font-color: #000000;
+    -fx-background-radius: 100;
 }
 
 #payway{//付款方式的标签
- -fx-font-size: 16px;
+    -fx-font-size: 16px;
 
 }
-
-
-
-
-
 
 
 //对于所有的东西
 
 //这个对所有的label设置，后面可以统一设置字体，大小就不统一设置了
 .label{
--fx-text-align: center;
+    // -fx-font-family: 'Frutiger'; // 英语字体
+    // -fx-font-family: 'HanYi'; // 中文字体
+    -fx-text-align: center;
 }
