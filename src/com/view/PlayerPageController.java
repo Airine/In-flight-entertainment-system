@@ -19,8 +19,16 @@ public class PlayerPageController {
 
     //把接入的视频界面赋值给play，然后调用setplaymovie，界面就会替换
     StackPane play;
-    public void setPlay(StackPane play){
-        this.play=play;
+
+    
+    public void setPlay(MediaView mediaView){
+        play = new StackPane();
+        play.autosize();
+        mediaView.setPreserveRatio(true);
+        mediaView.fitWidthProperty().bind(play.widthProperty());
+        play.getChildren().add(mediaView);
+        play.setStyle("-fx-background-color: black;");
+
     }
     private  void setPlaymovie(){
         playmovie.getChildren().addAll(play);
@@ -35,6 +43,13 @@ public class PlayerPageController {
     @FXML
     private void initialize(){
         try {
+
+            //这里随便加了个视频
+            mediaPlayer = new MediaPlayer(new Media(
+                    "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"));
+            setPlay(new MediaView(mediaPlayer));
+            setPlaymovie();
+
             initPlayerBar();
         }catch (Exception e){
             e.printStackTrace();

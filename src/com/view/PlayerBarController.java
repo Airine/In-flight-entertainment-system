@@ -36,8 +36,11 @@ public class PlayerBarController {
  */
     @FXML
     private void initialize(){
-     stop=new Image("resources/icon/vediostop.png");
-     play=new Image("resources/icon/vedioplay.png");
+
+        stop=new Image("resources/icon/vediostop.png");
+        play=new Image("resources/icon/vedioplay.png");
+        PlayOrStop.setImage(play);
+
     }
 
     /* *  用于设置播放按钮和暂停按钮。一开始是默认播放的.
@@ -48,13 +51,73 @@ public class PlayerBarController {
      */
     @FXML
     public void handlePlayOrStop(){
-       if(playing){
-           PlayOrStop.setImage(play);
-           playing=false;
-       }else{
-           PlayOrStop.setImage(stop);
-           playing=true;
-       }
+
+        MediaPlayer.Status status = mp.getStatus();
+        if (status == MediaPlayer.Status.UNKNOWN || status == MediaPlayer.Status.HALTED) {
+            // don't do anything in these states
+            return;
+        }
+
+        if (status == MediaPlayer.Status.PAUSED
+                || status == MediaPlayer.Status.READY
+                || status == MediaPlayer.Status.STOPPED) {
+            // rewind the movie if we're sitting at the end
+            if (atEndOfMedia) {
+                mp.seek(mp.getStartTime());
+                atEndOfMedia = false;
+            }
+            mp.play();
+        } else {
+            mp.pause();
+        }
+    }
+    private MediaPlayer mp;
+    private boolean stopRequested = false;
+    private boolean atEndOfMedia = false;
+    private Duration duration;
+
+    public void controlPlayer(MediaPlayer player) {
+        this.mp = player;
+
+        player.currentTimeProperty().addListener(ov -> updateValues());
+
+        player.setOnPlaying(() -> {
+            if (stopRequested) {
+                player.pause();
+                stopRequested = false;
+            } else {
+                PlayOrStop.setImage(stop);
+            }
+        });
+
+        player.setOnPaused(() -> PlayOrStop.setImage(play));
+
+        player.setOnReady(() -> {
+            duration = player.getMedia().getDuration();
+            updateValues();
+        });
+        
+        player.setCycleCount(MediaPlayer.INDEFINITE);
+        
+        player.setOnEndOfMedia(() -> {
+            player.pause();
+            stopRequested = true;
+            atEndOfMedia = true;
+        });
+        
+        TimeBar.valueProperty().addListener(ov -> {
+            if (TimeBar.isValueChanging()) {
+                // multiply duration by percentage calculated by slider position
+                mp.seek(duration.multiply(TimeBar.getValue() / 100.0));
+            }
+        });
+
+        volume.valueProperty().addListener(ov -> {
+            if (volume.isValueChanging()) {
+                mp.setVolume(volume.getValue() / 100.0);
+            }
+        });
+
     }
 
 }
