@@ -43,9 +43,9 @@ public class PlayerBarController {
  */
     @FXML
     private void initialize(){
-     stop=new Image("resources/icon/vediostop.png");
-     play=new Image("resources/icon/vedioplay.png");
-     
+        stop=new Image("resources/icon/vediostop.png");
+        play=new Image("resources/icon/vedioplay.png");
+        PlayOrStop.setImage(play);
     }
 
     /* *  用于设置播放按钮和暂停按钮。一开始是默认播放的.
@@ -76,7 +76,6 @@ public class PlayerBarController {
         }
     }
     private MediaPlayer mp;
-    private boolean repeat = true;
     private boolean stopRequested = false;
     private boolean atEndOfMedia = false;
     private Duration duration;
@@ -101,14 +100,15 @@ public class PlayerBarController {
             duration = player.getMedia().getDuration();
             updateValues();
         });
-
-        player.setCycleCount(repeat ? MediaPlayer.INDEFINITE : 1);
-
+        
+        player.setCycleCount(MediaPlayer.INDEFINITE);
+        
         player.setOnEndOfMedia(() -> {
-            PlayOrStop.setImage(play);
+            player.pause();
             stopRequested = true;
             atEndOfMedia = true;
         });
+        
         TimeBar.valueProperty().addListener(ov -> {
             if (TimeBar.isValueChanging()) {
                 // multiply duration by percentage calculated by slider position

@@ -25,8 +25,9 @@ public class PlayerPageController {
     
     public void setPlay(MediaView mediaView){
         play = new StackPane();
+        play.autosize();
         mediaView.setPreserveRatio(true);
-        mediaView.fitHeightProperty().bind(play.heightProperty());
+        mediaView.fitWidthProperty().bind(play.widthProperty());
         play.getChildren().add(mediaView);
         play.setStyle("-fx-background-color: black;");
     }
@@ -45,10 +46,9 @@ public class PlayerPageController {
     @FXML
     private void initialize(){
         try {
-            //这里随便加了个视频并且自动播放
+            //这里随便加了个视频
             mediaPlayer = new MediaPlayer(new Media(
                     "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"));
-            mediaPlayer.setAutoPlay(true);
             setPlay(new MediaView(mediaPlayer));
             setPlaymovie();
             initPlayerBar();
