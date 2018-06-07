@@ -21,14 +21,18 @@ import javafx.util.Duration;
 import java.util.List;
 import java.util.Random;
 
+import static com.MainApp.mainMovieTypes;
 import static javafx.animation.Interpolator.EASE_BOTH;
 
 
 public class MovieSortItem extends StackPane {
 
-    public FlowPane flowPane;
+    private static final double width = 200;
+    private static final double height = 112;
 
-    public MovieSortItem(double width, double height, String language, String type){
+    private JFXButton button;
+
+    public MovieSortItem(String language, String type){
         String url = "resources/movie_type/"+language+"/"+type+".png";
         this.setPrefWidth(width);
         this.setPrefHeight(height);
@@ -41,20 +45,18 @@ public class MovieSortItem extends StackPane {
         button.setPrefSize(2*width, 2*height);
         button.setStyle(
                 "-fx-background-radius: 5;" +
-                        "-fx-background-image: url(\"" + url + "\");" +
-                        "-fx-background-position: center;" +
-                        "-fx-background-repeat: no-repeat;" +
-                        "-fx-background-size: 100% 100%;"
+                "-fx-background-image: url(\"" + url + "\");" +
+                "-fx-background-position: center;" +
+                "-fx-background-repeat: no-repeat;" +
+                "-fx-background-size: 100% 100%;"
         );
 
         VBox.setVgrow(button, Priority.ALWAYS);
         VBox content = new VBox();
 
         button.setOnMousePressed(event -> {button.setButtonType(JFXButton.ButtonType.FLAT);});
-        button.setOnMouseExited(event -> {button.setButtonType(JFXButton.ButtonType.RAISED);});
-        button.setOnMouseClicked(event -> {
-
-        });
+        button.setOnMouseReleased(event -> {button.setButtonType(JFXButton.ButtonType.RAISED);});
+        this.button = button;
 
         content.getChildren().addAll(button);
 
@@ -68,5 +70,9 @@ public class MovieSortItem extends StackPane {
 
     private void addMovies(List<Movie> movies){
 
+    }
+
+    public JFXButton getButton() {
+        return button;
     }
 }
