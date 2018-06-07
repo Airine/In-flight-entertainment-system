@@ -1,6 +1,7 @@
 package com.model;
 
 import com.view.viewModel.MovieItem;
+import javafx.scene.layout.AnchorPane;
 
 public class Movie {
     private int movie_id;
@@ -13,6 +14,8 @@ public class Movie {
     private static final String moviePosterPath = "resources/moviePoster/";
     private MovieItem mi_cn;
     private MovieItem mi_en;
+    private AnchorPane detailsPane_cn;
+    private AnchorPane detailsPane_en;
 
     public Movie(){
 
