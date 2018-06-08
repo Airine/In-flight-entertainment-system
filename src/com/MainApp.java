@@ -110,7 +110,7 @@ public class MainApp extends Application {
         loadUsers();
         mainMovies = loadMovies();
         // "cn" -> mainUser.language;
-        mainMovieTypes = loadMovieTypes("cn");
+        mainMovieTypes = loadMovieTypes("en");
         launch(args);
     }
 }

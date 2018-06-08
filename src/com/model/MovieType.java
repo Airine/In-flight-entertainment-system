@@ -6,6 +6,7 @@ import com.view.viewModel.MovieSortItem;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.util.DataLoader.getMoviesByType;
@@ -18,8 +19,8 @@ public class MovieType {
 
     private MovieSortItem movieSortItem_cn;
     private MovieSortItem movieSortItem_en;
-    private FlowPane flowPane;
-    private List<Movie> movies;
+    private FlowPane flowPane = new FlowPane();
+    private List<Movie> movies = new ArrayList<>();
 
 
     public MovieType(){
@@ -39,6 +40,7 @@ public class MovieType {
         movies = getMoviesByType(type_en);
         for (Movie movie:movies) {
             try{
+//                StackPane movieItem = movie.getMi_cn();
                 StackPane movieItem = (language.equals("cn"))? movie.getMi_cn() : movie.getMi_en();
                 flowPane.getChildren().add(movieItem);
             } catch (Exception e) {
@@ -111,11 +113,15 @@ public class MovieType {
     // 这个地方没写好
     public void handleClick(JFXScrollPane homeScrollPane) {
         movieSortItem_cn.getButton().setOnMouseClicked(event -> {
-//            homeScrollPane.setContent(flowPane);
-            System.out.println(type_cn);
+            homeScrollPane.setContent(flowPane);
+//            System.out.println(type_cn);
+//            for (Movie movie:movies){
+//                System.out.println(movie.getTitle_cn());
+//            }
+
         });
         movieSortItem_en.getButton().setOnMouseClicked(event -> {
-//            homeScrollPane.setContent(flowPane);
+            homeScrollPane.setContent(flowPane);
             System.out.println(type_en);
         });
     }

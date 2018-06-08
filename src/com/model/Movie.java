@@ -25,13 +25,14 @@ public class Movie {
     }
 
     public Movie(int movie_id,String title_cn, String title_en,
-                 int year, int time, String language){
+                 int year, int time, String language, int type){
         setMovie_id(movie_id);
         setTitle_cn(title_cn);
         setTitle_en(title_en);
         setYear(year);
         setTime(time);
         setLanguage(language);
+        setType(type);
         String url = moviePosterPath+movie_id+".jpg";
         mi_cn = new MovieItem(url, title_cn);
         mi_en = new MovieItem(url, title_en);
