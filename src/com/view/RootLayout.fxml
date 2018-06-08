@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: #F8F8FF;" stylesheets="@DefaultTheme.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.RootLayoutController">
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="640.0" style="-fx-background-color: #F8F8FF;" stylesheets="@DefaultTheme.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.RootLayoutController">
    <children>
       <AnchorPane id="mainBar" fx:id="mainBar" prefHeight="44.0" prefWidth="640.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
@@ -34,7 +34,7 @@
             </ImageView>
             <HBox id="searchBox" fx:id="searchbox" layoutX="79.0" layoutY="9.0" prefHeight="29.0" prefWidth="189.0" AnchorPane.bottomAnchor="7.0" AnchorPane.topAnchor="9.0">
                <children>
-                  <JFXTextField id="searchtext" fx:id="searchfeild" focusColor="#ffffff00" prefHeight="22.0" prefWidth="159.0" promptText="Search" unFocusColor="#ffffff00">
+                  <JFXTextField id="searchtext" fx:id="searchfeild" focusColor="#ffffff00" onKeyTyped="#handleSearch" prefHeight="22.0" prefWidth="159.0" promptText="Search" unFocusColor="#ffffff00">
                      <HBox.margin>
                         <Insets top="3.0" />
                      </HBox.margin>
@@ -42,7 +42,7 @@
                         <Insets left="10.0" />
                      </padding>
                   </JFXTextField>
-                  <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.48" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="25.0" fitWidth="25.0" onMouseClicked="#handleSearchClick" opacity="0.48" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../resources/icon/search.png" />
                      </image>
@@ -65,5 +65,6 @@
       <AnchorPane fx:id="homepage" layoutX="10.0" layoutY="54.0" prefHeight="436.0" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="44.0" />
       <JFXDrawer fx:id="drawer" defaultDrawerSize="280.0" layoutX="0.0" layoutY="44.0" prefHeight="436.0" prefWidth="280.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="360.0" AnchorPane.topAnchor="44.0" />
       <AnchorPane fx:id="SettingPane" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="280.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="44.0" />
+      <AnchorPane fx:id="searchpane" prefHeight="324.0" prefWidth="577.0" visible="false" AnchorPane.leftAnchor="31.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="44.0" />
    </children>
 </AnchorPane>

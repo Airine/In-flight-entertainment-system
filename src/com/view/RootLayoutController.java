@@ -8,6 +8,8 @@ import com.jfoenix.transitions.hamburger.HamburgerNextArrowBasicTransition;
 import com.view.settingpage.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -53,6 +55,9 @@ public class RootLayoutController {
     @FXML
     private AnchorPane SettingPane;
 
+    @FXML
+    private AnchorPane searchpane;//搜索的平面
+
 
     private MainApp mainApp; //和主应用连接
     private HamburgerNextArrowBasicTransition transition;
@@ -77,6 +82,8 @@ public class RootLayoutController {
     CollectionController collectionController;
     EditController editController;
     DrawerContentController drawerContentController;
+    //搜索界面的controler
+    MovieTableViewController movieTableViewController;
     /**
      * 设置主应用，连接到主界面
      * @param app
@@ -129,6 +136,10 @@ public class RootLayoutController {
     public AnchorPane getSettingPane() {
         return SettingPane;
     }//返回设置界面
+
+    public void searchPaneVisible(boolean a){
+        searchpane.setVisible(a);
+    }
     /* *  初始化界面
       * @author PennaLia
       * @date 2018/6/5 14:20
@@ -155,6 +166,7 @@ public class RootLayoutController {
             initCollection();
             initTiming();
             initEdit();
+            initSearchTree();
         } catch (Exception e) {
             e.getStackTrace();
         }
@@ -329,8 +341,23 @@ public class RootLayoutController {
             edit= loader.load();
             editController= loader.getController();
             editController.setRootLayoutController(this);
+            //界面初始化用户信息
         editController.getTextname().setText(this.getDrawerContentController().getUserName());
         editController.getTextsign().setText(this.getDrawerContentController().getUserSign());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void initSearchTree(){
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class
+                    .getResource("view/MovieTableView.fxml"));
+            AnchorPane pane= loader.load();
+            searchpane.getChildren().addAll(pane);
+            movieTableViewController= loader.getController();
+            movieTableViewController.setRootLayoutController(this);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -406,6 +433,18 @@ public class RootLayoutController {
     private void handleClose() {
         mainApp.closeWindows();
     }
+
+    @FXML
+    private void handleSearch(KeyEvent event){
+//        if(event.getCharacter()==(KeyCode.A.toString()))
+            System.out.print(event.getCharacter());
+//        searchPaneVisible(true);
+    }
+    @FXML
+    private void handleSearchClick(){
+            searchPaneVisible(true);
+    }
+
 
     /* * 用于设置夜间模式
      * @author PennaLia
