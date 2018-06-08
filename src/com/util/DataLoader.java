@@ -79,8 +79,9 @@ public class DataLoader {
                 int year = rs.getInt("year");
                 int time = rs.getInt("time");
                 String language = rs.getString("language");
+                int type = rs.getInt("type");
                 // 输出数据
-                Movie m = new Movie(id, title_cn, title_en, year, time, language);
+                Movie m = new Movie(id, title_cn, title_en, year, time, language,type);
                 tempt.add(m);
             }
 
