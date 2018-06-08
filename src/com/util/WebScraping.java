@@ -84,50 +84,95 @@ class WebScraping {
         return URL_Title;
     }
 
-    public StringBuilder scrapeMessage(String title) throws IOException {
-        StringBuilder sb = new StringBuilder();
-        String url = "https://v.qq.com/x/search/?q="+ URLEncoder.encode(title,"UTF-8");
-        Document doc = Jsoup.connect(url).timeout(3000).get();
+    public void scrapeMessage(Map.Entry entry,StringBuilder sb) throws IOException {
+        String title = (String) entry.getValue();
+        String url = "https://v.qq.com/x/search/?q="+ URLEncoder.encode(title+"电影","UTF-8");
+        Document doc = Jsoup.connect(url).timeout(10000).get();
         Elements infos = doc.select("div._infos");
         boolean flag = false;
-        for (Element e: infos) {
-            if(e.selectFirst("span.type").text().equals("电影")){
-                if(e.selectFirst("a.desc_more")==null){
+        for (Element e : infos) {
+            if (e.selectFirst("span.type").text().equals("电影")) {
+                if (e.selectFirst("a.desc_more") == null) {
                     continue;
                 }
                 url = e.selectFirst("a.desc_more").attr("href");
                 flag = true;
+                break;
             }
         }
         if (flag)
-            doc = Jsoup.connect(url).get();
-        sb.append("中文名: ").append(title).append('\n');
+            doc = Jsoup.connect(url).timeout(10000).get();
         Element details = doc.selectFirst("div.mod_figure_detail.mod_figure_detail_en.cf");
+
+        String EnglishTitle = "";
+        String poster = "";
+        String region = "";
+        String language="";
+        String release= "";
+        String genres="情色";
+        String description= "";
         if(details!=null) {
-            String poster = details.selectFirst("img").attr("src");
+            Element posterElement = details.selectFirst("img");
             Element enElement = details.selectFirst("span.title_en");
-            Element typeElement = details.selectFirst("div.video_type.cf");
-            Element timeElement = details.selectFirst("div.video_type.video_type_even.cf");
-            Element genresElement = details.selectFirst("div.video_tag.cf");
-            String EnglishTitle = "";
-            String type = "";
-            String time = "";
-            String genres="";
+            Elements typeElements = details.select("div.type_item");
+            Elements genreElements = details.select("a.tag");
+            Element descElement = details.selectFirst("div.txt._desc_txt_lineHight");
+            if(posterElement!=null)
+                poster = posterElement.attr("src");
             if(enElement!=null)
                 EnglishTitle = enElement.text();
-            if (typeElement!=null)
-                type = typeElement.text();
-            if (timeElement!=null)
-                time = timeElement.text();
-            if(genresElement!=null)
-                genres = genresElement.text();
-            String description = details.selectFirst("div.video_desc").text();
-            sb.append("英文名: ").append(EnglishTitle).append('\n').append("封面: ").append("http:").append(poster)
-                    .append('\n').append(time).append('\n').append(type).append('\n')
-                    .append(genres).append('\n').append(description).append('\n');
+            if (typeElements!=null) {
+                String temp;
+                for(Element e: typeElements){
+                    temp = e.selectFirst("span.type_tit").text();
+                    switch (temp){
+                        case "地　区:":
+                            region = e.selectFirst("span.type_txt").text();
+                            break;
+                        case "语　言:":
+                            language = e.selectFirst("span.type_txt").text();
+                            break;
+                        case "上映时间:":
+                            release = e.selectFirst("span.type_txt").text();
+                        default:
+                            break;
+                    }
+                }
+            }
+            if(genreElements!=null) {
+                A:for (Element e:genreElements) {
+                    switch (e.text()){
+                        case "动作":
+                        case "科幻":
+                        case "爱情":
+                        case "悬疑":    
+                        case "犯罪":
+                        case "战争":    
+                        case "传记":
+                        case "家庭":
+                        case "喜剧":
+                        case "惊悚":
+                        case "剧情":
+                            genres = e.text();
+                            break A;
+                        default:  
+                            break;
+                    }
+                }
+            }
+            if(descElement!=null)
+                description = descElement.text();
+
         }
-        return sb;
+        String comma = "\",";
+        sb.append("{\"title_cn\": \"").append(title).append(comma);
+        sb.append("\"title_en\": \"").append(EnglishTitle).append(comma);
+        sb.append("\"region\": \"").append(region).append(comma);
+        sb.append("\"release_time\": \"").append(release).append(comma);
+        sb.append("\"language\": \"").append(language).append(comma);
+        sb.append("\"genres\": \"").append(genres).append(comma);
+        sb.append("\"description\": \"").append(description).append(comma);
+        sb.append("\"href\": \"").append((String)entry.getKey()).append(comma);
+        sb.append("\"post_url\": \"").append("http:").append(poster).append("}");
     }
-
 }
-
