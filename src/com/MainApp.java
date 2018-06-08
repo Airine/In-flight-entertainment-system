@@ -1,6 +1,7 @@
 package com;
 
 import com.model.Movie;
+import com.model.MovieType;
 import com.model.User;
 import com.view.LoginController;
 import com.view.RootLayoutController;
@@ -16,6 +17,7 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.util.List;
 
+import static com.util.DataLoader.loadMovieTypes;
 import static com.util.DataLoader.loadMovies;
 import static com.util.DataLoader.loadUsers;
 
@@ -23,6 +25,7 @@ public class MainApp extends Application {
 
     public static User mainUser;
     public static List<Movie> mainMovies;
+    public static List<MovieType> mainMovieTypes;
 
     private Stage primaryStage;
     private AnchorPane rootLayout;
@@ -107,6 +110,8 @@ public class MainApp extends Application {
     public static void main(String[] args) {
         loadUsers();
         mainMovies = loadMovies();
+        // "cn" -> mainUser.language;
+        mainMovieTypes = loadMovieTypes("cn");
         launch(args);
     }
 }
