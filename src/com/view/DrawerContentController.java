@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
@@ -21,6 +22,12 @@ import java.io.IOException;
 public class DrawerContentController {
     @FXML
     private VBox drawerBox;
+
+    @FXML
+    private Pane UserBackPane;
+
+    @FXML
+    private Pane UserBackUpPane;
 
     @FXML
     private ImageView userImage;
@@ -64,6 +71,15 @@ public class DrawerContentController {
     public String getUserSign(){
         return usersign.getText();
     }
+
+
+    public Pane getUserBackPane(){
+        return UserBackPane;
+    }
+    public Pane getUserBackUpPane(){
+        return UserBackUpPane;
+    }
+
     @FXML
     public void initialize(){
         String url = "resources/shiyuan.png";
@@ -148,6 +164,7 @@ public class DrawerContentController {
             }
         });
     }
+
 
 
     @FXML

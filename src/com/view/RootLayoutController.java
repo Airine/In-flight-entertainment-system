@@ -136,7 +136,7 @@ public class RootLayoutController {
     public AnchorPane getSettingPane() {
         return SettingPane;
     }//返回设置界面
-
+    public AnchorPane getMainBar(){return  mainBar;}
     public void searchPaneVisible(boolean a){
         searchpane.setVisible(a);
     }
@@ -291,8 +291,9 @@ public class RootLayoutController {
             themeController= loader.getController();
             themeController.setRootLayoutController(this);
             //这边要想办法得到部件的颜色信息
-            themeController.getLeftbar().setValue(Color.web("000000"));
-            themeController.getUpbar().setValue(Color.web("000000"));
+            themeController.getLeftbarUp().setValue(Color.web("#F08080"));
+            themeController.getLeftbar().setValue(Color.web("#ee5253"));
+            themeController.getUpbar().setValue(Color.web("C62F2F"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -436,9 +437,12 @@ public class RootLayoutController {
 
     @FXML
     private void handleSearch(KeyEvent event){
-//        if(event.getCharacter()==(KeyCode.A.toString()))
-            System.out.print(event.getCharacter());
-//        searchPaneVisible(true);
+        KeyCode kc= event.getCode();
+        if (kc.equals(KeyCode.A)){
+            System.out.println("You pressed A!");
+            searchPaneVisible(true);
+        }
+
     }
     @FXML
     private void handleSearchClick(){
@@ -457,6 +461,18 @@ public class RootLayoutController {
     }
     public void ToDefault(){
         mainPane.getStylesheets().add("com/view/DefaultTheme.css");
+    }
+
+    public void changeLeftColor(String color){
+        drawerContentController.getUserBackPane().setStyle("-fx-background-color:"+"#"+color);
+        aboutUsController.getAboutusuppane().setStyle("-fx-background-color:"+"#"+color);
+        collectionController.getCollectionuppane().setStyle("-fx-background-color:"+"#"+color);
+        editController.getEdituppane().setStyle("-fx-background-color:"+"#"+color);
+        moneyController.getMoneyuppane().setStyle("-fx-background-color:"+"#"+color);
+        settingPageController.getSettinguppane().setStyle("-fx-background-color:"+"#"+color);
+        themeController.getThemeuppane().setStyle("-fx-background-color:"+"#"+color);
+        timingController.getTiminguppane().setStyle("-fx-background-color:"+"#"+color);
+        musicPageController.getMusicuppane().setStyle("-fx-background-color:"+"#"+color);
     }
 
 }

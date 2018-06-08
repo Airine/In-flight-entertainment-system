@@ -15,9 +15,9 @@
 
 <VBox fx:id="drawerBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="436.0" prefWidth="280.0" style="-fx-background-color: #FFB6C1;" stylesheets="@DefaultTheme.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.DrawerContentController">
    <children>
-      <Pane id="userPane" prefHeight="142.0" prefWidth="280.0">
+      <Pane id="userPane" fx:id="UserBackPane" prefHeight="142.0" prefWidth="280.0">
          <children>
-            <Pane id="usepaneTop" prefHeight="49.0" prefWidth="280.0">
+            <Pane id="usepaneTop" fx:id="UserBackUpPane" prefHeight="49.0" prefWidth="280.0">
                <children>
                   <ImageView fx:id="huiyuan" fitHeight="20.0" fitWidth="20.0" layoutX="110.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -59,7 +59,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton alignment="BASELINE_LEFT" onAction="#handlebutton1" onMouseClicked="#handleCollection" prefHeight="39.0" prefWidth="280.0" ripplerFill="LIGHTCORAL" text="我的收藏" textFill="GREY">
+      <JFXButton alignment="BASELINE_LEFT" onMouseClicked="#handleCollection" prefHeight="39.0" prefWidth="280.0" ripplerFill="LIGHTCORAL" text="我的收藏" textFill="GREY">
          <font>
             <Font name="Arial" size="12.0" />
          </font>

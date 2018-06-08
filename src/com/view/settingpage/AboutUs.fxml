@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="436.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.settingpage.AboutUsController">
    <children>
-      <AnchorPane id="userPane" layoutX="22.0" layoutY="14.0" prefHeight="141.0" prefWidth="361.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane id="userPane" fx:id="aboutusuppane" layoutX="22.0" layoutY="14.0" prefHeight="141.0" prefWidth="361.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label alignment="CENTER" layoutX="-1.0" layoutY="36.0" prefHeight="64.0" prefWidth="360.0" text="航天航空播放器" textAlignment="JUSTIFY" textFill="WHITE" AnchorPane.rightAnchor="0.0">
                <font>

@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="436.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.MusicPageController">
    <children>
-      <AnchorPane layoutX="6.0" prefHeight="244.0" prefWidth="640.0" style="-fx-background-color: #ee5253;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <AnchorPane id="userPane" fx:id="musicuppane" layoutX="6.0" prefHeight="244.0" prefWidth="640.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
             <Label layoutX="7.0" layoutY="149.0" prefHeight="69.0" prefWidth="219.0" text="音乐名" textFill="WHITE">
                <font>

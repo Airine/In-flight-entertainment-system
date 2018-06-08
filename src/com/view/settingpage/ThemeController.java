@@ -14,6 +14,9 @@ import javafx.scene.text.Text;
 public class ThemeController {
 
     @FXML
+    private AnchorPane themeuppane;
+
+    @FXML
     private AnchorPane anchorPane;
 
     @FXML
@@ -21,6 +24,9 @@ public class ThemeController {
 
     @FXML
     private JFXColorPicker leftbar;
+
+    @FXML
+    private JFXColorPicker leftbarUp;
 
     @FXML
     private JFXColorPicker upbar;
@@ -31,6 +37,11 @@ public class ThemeController {
     }
     public JFXColorPicker getLeftbar(){return  leftbar;}
     public JFXColorPicker getUpbar(){return  upbar;}
+    public JFXColorPicker getLeftbarUp() {return leftbarUp; }
+
+    public AnchorPane getThemeuppane() {
+        return themeuppane;
+    }
 
     public void handleOk() {
         if (rootLayoutController.getMainApp().huiyuan == false) {
@@ -41,12 +52,19 @@ public class ThemeController {
             JFXDialog dialog = new JFXDialog(stackpane, content, JFXDialog.DialogTransition.CENTER);
             JFXButton button = new JFXButton("我知道了");
             button.setOnAction(event -> {
+                stackpane.setVisible(false);
                 dialog.close();
             });
             content.setActions(button);
             dialog.show();
         } else {
-            System.out.println("可以改的");
+            String topBarValue=upbar.getValue().toString().substring(2,8);
+            rootLayoutController.getMainBar().setStyle("-fx-background-color:"+"#"+topBarValue);
+            String LeftValue=leftbar.getValue().toString().substring(2,8);
+            rootLayoutController.changeLeftColor(LeftValue);
+
+            String LeftUpValue=leftbarUp.getValue().toString().substring(2,8);
+            rootLayoutController.getDrawerContentController().getUserBackUpPane().setStyle("-fx-background-color:"+"#"+LeftUpValue);
         }
     }
 
