@@ -31,7 +31,7 @@ public class HomePageController {
     @FXML
     private FlowPane flowpane;
 
-    public JFXButton back;
+    public JFXButton back =new JFXButton();;
     ImageView imageView;
 
     private  RootLayoutController rootLayoutController;
@@ -43,7 +43,7 @@ public class HomePageController {
         for (MovieType movieType : mainMovieTypes) {
             try {
                 StackPane sort = movieType.getMovieSortItem_cn();
-                movieType.handleClick(HomeScrollPane);
+                movieType.handleClick(HomeScrollPane, back);
                 flowpane.getChildren().add(sort);
             }catch (Exception e){
                 e.printStackTrace();
@@ -60,7 +60,6 @@ public class HomePageController {
         imageView=new ImageView("resources/moviepage2.png");
         imageView.setFitWidth(640);
         imageView.setFitHeight(192);
-        back=new JFXButton();
         back.setPrefSize(35,35);
         back.setMinHeight(20);back.setMinWidth(20);
         back.setStyle("-fx-background-color:transparent;" +
@@ -73,6 +72,7 @@ public class HomePageController {
         back.setVisible(false);
         back.setOnMouseClicked(event -> {
             HomeScrollPane.setContent(flowpane);
+            back.setVisible(false);
         });
         HomeScrollPane.getTopBar().setAlignment(back, Pos.TOP_RIGHT);
         HomeScrollPane.getTopBar().getChildren().add(back);

@@ -111,8 +111,9 @@ public class MovieType {
     }
 
     // 这个地方没写好
-    public void handleClick(JFXScrollPane homeScrollPane) {
+    public void handleClick(JFXScrollPane homeScrollPane, JFXButton button) {
         movieSortItem_cn.getButton().setOnMouseClicked(event -> {
+            button.setVisible(true);
             homeScrollPane.setContent(flowPane);
 //            System.out.println(type_cn);
 //            for (Movie movie:movies){
