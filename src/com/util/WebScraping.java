@@ -151,9 +151,11 @@ class WebScraping {
                         case "传记":
                         case "家庭":
                         case "喜剧":
-                        case "惊悚":
                         case "剧情":
                             genres = e.text();
+                            break A;
+                        case "惊悚":
+                            genres = "恐怖";
                             break A;
                         default:  
                             break;
@@ -173,6 +175,6 @@ class WebScraping {
         sb.append("\"genres\": \"").append(genres).append(comma);
         sb.append("\"description\": \"").append(description).append(comma);
         sb.append("\"href\": \"").append((String)entry.getKey()).append(comma);
-        sb.append("\"post_url\": \"").append("http:").append(poster).append("}");
+        sb.append("\"post_url\": \"").append("http:").append(poster).append("\"}\n");
     }
 }
