@@ -2,6 +2,7 @@ package com.view;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXSlider;
+import com.jfoenix.controls.JFXToggleButton;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -25,9 +26,11 @@ public class MusicPageController {
     private JFXSlider MusicVolume;
     @FXML
     private Label MusicPlayTime;
+    @FXML
+    private JFXToggleButton LoopPlayback;
+    
     private MediaPlayer musicPlayer;
     private boolean stopRequested = false;
-    private boolean atEndOfMedia = false;
     private Duration duration;
     private  RootLayoutController rootLayoutController;
     public void setRootLayoutController(RootLayoutController rootLayoutController){
@@ -49,28 +52,15 @@ public class MusicPageController {
     private void handleMusic(){
         MediaPlayer.Status status = musicPlayer.getStatus();
         if (status == MediaPlayer.Status.UNKNOWN || status == MediaPlayer.Status.HALTED) {
-            // don't do anything in these states
             return;
         }
         if (status == MediaPlayer.Status.PAUSED
                 || status == MediaPlayer.Status.READY
                 || status == MediaPlayer.Status.STOPPED) {
-            // rewind the movie if we're sitting at the end
-            if (atEndOfMedia) {
-                musicPlayer.seek(musicPlayer.getStartTime());
-                atEndOfMedia = false;
-            }
             musicPlayer.play();
         } else {
             musicPlayer.pause();
         }
-    }
-    @FXML
-    private void musicCyclePlay(){
-        musicPlayer.setOnEndOfMedia(() -> {
-            stopRequested = false;
-            atEndOfMedia = true;
-        });
     }
     
     public void setMusicTitle(String music){
@@ -91,7 +81,7 @@ public class MusicPageController {
         player.currentTimeProperty().addListener(ov -> updateValues());
         player.setOnPlaying(() -> {
             if (stopRequested) {
-                player.pause();
+                musicPlayer.pause();
                 stopRequested = false;
             } else {
                 MusicPlayButton.setText("||");
@@ -101,16 +91,11 @@ public class MusicPageController {
         player.setOnPaused(() -> MusicPlayButton.setText(">"));
 
         player.setOnReady(() -> {
-            duration = player.getMedia().getDuration();
+            duration = musicPlayer.getMedia().getDuration();
             updateValues();
         });
 
         player.setCycleCount(MediaPlayer.INDEFINITE);
-
-        player.setOnEndOfMedia(() -> {
-            player.pause();
-            atEndOfMedia = true;
-        });
 
         musicSlider.valueProperty().addListener(ov -> {
             if (musicSlider.isValueChanging()) {
@@ -122,6 +107,23 @@ public class MusicPageController {
         MusicVolume.valueProperty().addListener(ov -> {
             if (MusicVolume.isValueChanging()) {
                 musicPlayer.setVolume(MusicVolume.getValue() / 100.0);
+            }
+        });
+
+        musicPlayer.setOnEndOfMedia(() -> {
+            musicPlayer.seek(musicPlayer.getStartTime());
+            musicPlayer.pause();
+        });
+        
+        LoopPlayback.selectedProperty().addListener(change ->{
+            if (!LoopPlayback.isSelected()){
+                musicPlayer.setOnEndOfMedia(() -> {
+                    musicPlayer.seek(musicPlayer.getStartTime());
+                    musicPlayer.pause();
+                });
+            }
+            else{
+                musicPlayer.setOnEndOfMedia(() -> musicPlayer.seek(musicPlayer.getStartTime()));
             }
         });
         

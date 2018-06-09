@@ -64,11 +64,6 @@ public class PlayerBarController {
         if (status == MediaPlayer.Status.PAUSED
                 || status == MediaPlayer.Status.READY
                 || status == MediaPlayer.Status.STOPPED) {
-            // rewind the movie if we're sitting at the end
-            if (atEndOfMedia) {
-                mp.seek(mp.getStartTime());
-                atEndOfMedia = false;
-            }
             mp.play();
         } else {
             mp.pause();
@@ -76,7 +71,6 @@ public class PlayerBarController {
     }
     private MediaPlayer mp;
     private boolean stopRequested = false;
-    private boolean atEndOfMedia = false;
     private Duration duration;
 
     public void controlPlayer(MediaPlayer player) {
@@ -103,8 +97,8 @@ public class PlayerBarController {
         player.setCycleCount(MediaPlayer.INDEFINITE);
         
         player.setOnEndOfMedia(() -> {
+            mp.seek(mp.getStartTime());
             player.pause();
-            atEndOfMedia = true;
         });
         
         TimeBar.valueProperty().addListener(ov -> {
