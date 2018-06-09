@@ -6,6 +6,7 @@ import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.transitions.hamburger.HamburgerNextArrowBasicTransition;
 import com.view.settingpage.*;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.input.KeyCode;
@@ -456,11 +457,20 @@ public class RootLayoutController {
      * @param
      * @return
      */
+    private String DarkCSS = this.getClass().getResource("DarkTheme.css").toExternalForm(),
+            DefaultCSS = this.getClass().getResource("DefaultTheme.css").toExternalForm();
+    
     public void ToNight(){
-     mainPane.getStylesheets().add("com/view/DarkTheme.css");
+        ObservableList<String> styleSheets = mainPane.getStylesheets();
+        styleSheets.remove(DefaultCSS);
+        if(!styleSheets.contains(DarkCSS))
+            styleSheets.add(DarkCSS);
     }
     public void ToDefault(){
-        mainPane.getStylesheets().add("com/view/DefaultTheme.css");
+        ObservableList<String> styleSheets = mainPane.getStylesheets();
+        styleSheets.remove(DarkCSS);
+        if(!styleSheets.contains(DefaultCSS))
+            styleSheets.add(DefaultCSS);
     }
 
     public void changeLeftColor(String color){

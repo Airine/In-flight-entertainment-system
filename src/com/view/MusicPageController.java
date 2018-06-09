@@ -115,7 +115,7 @@ public class MusicPageController {
             musicPlayer.pause();
         });
         
-        LoopPlayback.selectedProperty().addListener(change ->{
+        LoopPlayback.selectedProperty().addListener((observable, oldValue, newValue) ->{
             if (!LoopPlayback.isSelected()){
                 musicPlayer.setOnEndOfMedia(() -> {
                     musicPlayer.seek(musicPlayer.getStartTime());
