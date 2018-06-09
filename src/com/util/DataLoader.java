@@ -61,6 +61,7 @@ public class DataLoader {
             e.printStackTrace();
         }
         setUsers(tempt);
+        System.out.println("Load users successfully.");
     }
 
     public static List<Movie> loadMovies(){
@@ -93,6 +94,7 @@ public class DataLoader {
             e.printStackTrace();
         }
         setMovies(tempt);
+        System.out.println("Load movies successfully.");
         return tempt;
     }
 
@@ -123,6 +125,7 @@ public class DataLoader {
             e.printStackTrace();
         }
         setMovieTypes(tempt);
+        System.out.println("Load movie types successfully.");
         return tempt;
     }
 
@@ -140,6 +143,12 @@ public class DataLoader {
                 .collect(Collectors.toList());
     }
 
+    public static List<Movie> getMoviesByYear(int year){
+        return movies.stream()
+                .filter(movie -> movie.getYear()==year)
+                .collect(Collectors.toList());
+    }
+
     private static void setUsers(List<User> users) {
         DataLoader.users = users;
     }
@@ -149,5 +158,6 @@ public class DataLoader {
     private static void setMovieTypes(List<MovieType> movieTypes){
         DataLoader.movieTypes = movieTypes;
     }
+
 
 }

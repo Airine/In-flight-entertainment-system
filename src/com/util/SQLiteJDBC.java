@@ -40,7 +40,7 @@ public class SQLiteJDBC {
         try {
             Class.forName(JDBC_DRIVER);
             connection = DriverManager.getConnection(DB_URL);
-            System.out.println("Connect database successfully.");
+//            System.out.println("Connect database successfully.");
             return connection;
         } catch (Exception e){
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
