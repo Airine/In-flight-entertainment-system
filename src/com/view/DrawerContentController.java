@@ -153,16 +153,13 @@ public class DrawerContentController {
     }
 
     private void initToggle(){
-        night.selectedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if(night.isSelected()==true){
-                    rootLayoutController.ToNight();
-                    System.out.println("晚安");
-                }else{
-                    rootLayoutController.ToDefault();
-                    System.out.println("早安");
-                }
+        night.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if(night.isSelected()){
+                rootLayoutController.ToNight();
+                System.out.println("晚安");
+            }else{
+                rootLayoutController.ToDefault();
+                System.out.println("早安");
             }
         });
     }
