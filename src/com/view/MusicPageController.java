@@ -11,6 +11,8 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
+import java.io.File;
+
 import static com.view.PlayerBarController.formatTime;
 
 public class MusicPageController {
@@ -29,7 +31,11 @@ public class MusicPageController {
     @FXML
     private JFXToggleButton LoopPlayback;
     
-    private MediaPlayer musicPlayer;
+    private File[] musicList;
+    
+    private MediaPlayer currentPlayer;
+    
+    private int musicIndex;
     private boolean stopRequested = false;
     private Duration duration;
     private  RootLayoutController rootLayoutController;
@@ -40,48 +46,78 @@ public class MusicPageController {
     public AnchorPane getMusicPane() {
         return musicPane;
     }
-
+    public void setMusicTitle(String music){
+        musicTitle.setText(music);
+    }
+    
     @FXML
     private void initialize(){
-        MusicPlayButton.setText(">");
-        String url = getClass().getResource("/resources/music/Richard_Sanderson-Reality.mp3").toString();
-        setMusicTitle("Reality");
-        controlMusic(new MediaPlayer(new Media(url)));
+        String folder = getClass().getResource("/resources/music/").getPath();
+        musicList = new File(folder).listFiles();
+        musicIndex = 0;
+        assert musicList != null;
+        controlMusic(new MediaPlayer(new Media(musicList[musicIndex].toURI().toString())));
+        String fileName = musicList[musicIndex].getName();
+        int index = fileName.lastIndexOf("-");
+        if (index==-1)
+            setMusicTitle(fileName.substring(0,fileName.length()-4));
+        else
+            setMusicTitle(fileName.substring(index+2,fileName.length()-4));
     }
     @FXML
     private void handleMusic(){
-        MediaPlayer.Status status = musicPlayer.getStatus();
+        MediaPlayer.Status status = currentPlayer.getStatus();
         if (status == MediaPlayer.Status.UNKNOWN || status == MediaPlayer.Status.HALTED) {
             return;
         }
         if (status == MediaPlayer.Status.PAUSED
                 || status == MediaPlayer.Status.READY
                 || status == MediaPlayer.Status.STOPPED) {
-            musicPlayer.play();
+            currentPlayer.play();
         } else {
-            musicPlayer.pause();
+            currentPlayer.pause();
         }
-    }
-    
-    public void setMusicTitle(String music){
-        musicTitle.setText(music);
     }
 
     @FXML
     private void nextSong(){
-       
+       if(musicIndex>=musicList.length-1){
+           System.out.println("This is already the last song.");
+       }
+       else{
+           currentPlayer.pause();
+           controlMusic(new MediaPlayer(new Media(musicList[++musicIndex].toURI().toString())));
+           String fileName = musicList[musicIndex].getName();
+           int index = fileName.lastIndexOf("-");
+           if (index==-1) 
+               setMusicTitle(fileName.substring(0,fileName.length()-4));
+           else
+               setMusicTitle(fileName.substring(index+2,fileName.length()-4));
+       }
     }
     @FXML
     private void previousSong(){
-        
+        if(musicIndex<=0){
+            System.out.println("This is already the first song.");
+        }
+        else{
+            currentPlayer.pause();
+            controlMusic(new MediaPlayer(new Media(musicList[--musicIndex].toURI().toString())));
+            String fileName = musicList[musicIndex].getName();
+            int index = fileName.lastIndexOf("-");
+            if (index==-1)
+                setMusicTitle(fileName.substring(0,fileName.length()-4));
+            else
+                setMusicTitle(fileName.substring(index+2,fileName.length()-4));
+        }
     }
     
     public void controlMusic(MediaPlayer player){
-        musicPlayer = player;
+        currentPlayer = player;
         player.currentTimeProperty().addListener(ov -> updateValues());
         player.setOnPlaying(() -> {
             if (stopRequested) {
-                musicPlayer.pause();
+                currentPlayer.pause();
                 stopRequested = false;
             } else {
                 MusicPlayButton.setText("||");
@@ -91,7 +127,7 @@ public class MusicPageController {
         player.setOnPaused(() -> MusicPlayButton.setText(">"));
 
         player.setOnReady(() -> {
-            duration = musicPlayer.getMedia().getDuration();
+            duration = currentPlayer.getMedia().getDuration();
             updateValues();
         });
 
@@ -100,30 +136,30 @@ public class MusicPageController {
         musicSlider.valueProperty().addListener(ov -> {
             if (musicSlider.isValueChanging()) {
                 // multiply duration by percentage calculated by slider position
-                musicPlayer.seek(duration.multiply(musicSlider.getValue() / 100.0));
+                currentPlayer.seek(duration.multiply(musicSlider.getValue() / 100.0));
             }
         });
 
         MusicVolume.valueProperty().addListener(ov -> {
             if (MusicVolume.isValueChanging()) {
-                musicPlayer.setVolume(MusicVolume.getValue() / 100.0);
+                currentPlayer.setVolume(MusicVolume.getValue() / 100.0);
             }
         });
 
-        musicPlayer.setOnEndOfMedia(() -> {
-            musicPlayer.seek(musicPlayer.getStartTime());
-            musicPlayer.pause();
+        currentPlayer.setOnEndOfMedia(() -> {
+            currentPlayer.seek(currentPlayer.getStartTime());
+            currentPlayer.pause();
         });
         
         LoopPlayback.selectedProperty().addListener((observable, oldValue, newValue) ->{
             if (!LoopPlayback.isSelected()){
-                musicPlayer.setOnEndOfMedia(() -> {
-                    musicPlayer.seek(musicPlayer.getStartTime());
-                    musicPlayer.pause();
+                currentPlayer.setOnEndOfMedia(() -> {
+                    currentPlayer.seek(currentPlayer.getStartTime());
+                    currentPlayer.pause();
                 });
             }
             else{
-                musicPlayer.setOnEndOfMedia(() -> musicPlayer.seek(musicPlayer.getStartTime()));
+                currentPlayer.setOnEndOfMedia(() -> currentPlayer.seek(currentPlayer.getStartTime()));
             }
         });
         
@@ -131,7 +167,7 @@ public class MusicPageController {
     private void updateValues() {
         if (MusicPlayTime != null && musicSlider != null && MusicVolume != null) {
             Platform.runLater(() -> {
-                Duration currentTime = musicPlayer.getCurrentTime();
+                Duration currentTime = currentPlayer.getCurrentTime();
                 MusicPlayTime.setText(formatTime(currentTime, duration));
                 musicSlider.setDisable(duration.isUnknown());
                 if (!musicSlider.isDisabled()
@@ -141,7 +177,7 @@ public class MusicPageController {
                             * 100.0);
                 }
                 if (!MusicVolume.isValueChanging()) {
-                    MusicVolume.setValue((int) Math.round(musicPlayer.getVolume()
+                    MusicVolume.setValue((int) Math.round(currentPlayer.getVolume()
                             * 100));
                 }
             });

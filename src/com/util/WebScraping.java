@@ -174,6 +174,6 @@ class WebScraping {
         sb.append("\"genres\": \"").append(genres).append(comma);
         sb.append("\"description\": \"").append(description).append(comma);
         sb.append("\"href\": \"").append((String)entry.getKey()).append(comma);
-        sb.append("\"post_url\": \"").append("http:").append(poster).append("\"},\n");
+        sb.append("\"post_url\": \"").append("http:").append(poster).append("\"}");
     }
 }

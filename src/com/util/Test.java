@@ -1,7 +1,9 @@
 package com.util;
 
 import java.io.*;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 public class Test {
 
@@ -12,10 +14,18 @@ public class Test {
         Map<String, String> URL_Title = webScraping.scrapeMovieLinks();
         StringBuilder sb = new StringBuilder();
         sb.append("{\n");
-        for(Map.Entry entry : URL_Title.entrySet()) {
-            webScraping.scrapeMessage(entry,sb);
+        Set<Map.Entry<String, String>> set = URL_Title.entrySet();
+        Iterator<Map.Entry<String, String>> iterator = set.iterator();
+        int setSize = set.size();
+        for(int i = 1; i<setSize; i++) {
+            sb.append("\"").append(i).append("\":");
+            webScraping.scrapeMessage(iterator.next(),sb);
+            sb.append(",\n");
         }
-        sb.append("}\n");
+        Map.Entry entry = set.iterator().next();
+        sb.append("\"").append(setSize).append("\":");
+        webScraping.scrapeMessage(entry,sb);
+        sb.append("\n}\n");
         out.print(sb);
         out.close();
     }
