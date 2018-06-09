@@ -443,7 +443,6 @@ public class RootLayoutController {
             System.out.println("You pressed A!");
             searchPaneVisible(true);
         }
-
     }
     @FXML
     private void handleSearchClick(){

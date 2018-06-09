@@ -9,33 +9,33 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="436.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.MusicPageController">
+<AnchorPane prefHeight="436.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.MusicPageController">
    <children>
       <AnchorPane id="userPane" fx:id="musicPane" layoutX="6.0" prefHeight="267.0" prefWidth="640.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Label fx:id="musicTitle" layoutX="20.0" layoutY="149.0" prefHeight="69.0" prefWidth="400.0" text="Music" textFill="WHITE">
+            <Label id="musictitle" fx:id="musicTitle" alignment="CENTER" layoutX="6.0" layoutY="34.0" prefHeight="187.0" prefWidth="624.0" text="Music" textFill="WHITE">
                <font>
-                  <Font name="Consolas" size="40.0" />
+                  <Font name="Webdings" size="40.0" />
                </font>
             </Label>
-            <JFXToggleButton fx:id="LoopPlayback" layoutX="443.0" layoutY="195.0" prefHeight="58.0" prefWidth="197.0" text="Single Cycle" textFill="WHITE">
+            <JFXToggleButton fx:id="LoopPlayback" layoutX="443.0" layoutY="217.0" prefHeight="58.0" prefWidth="197.0" text="Single Cycle" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font></JFXToggleButton>
          </children>
       </AnchorPane>
       <JFXSlider fx:id="musicSlider" layoutX="155.0" layoutY="380.0" prefHeight="14.0" prefWidth="330.0" value="1.0" />
-      <JFXButton fx:id="MusicPlayButton" layoutX="295.0" layoutY="300.0" onAction="#handleMusic" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 50%; -fx-background-color: red;" text="&gt;" textFill="WHITE">
+      <JFXButton fx:id="MusicPlayButton" layoutX="295.0" layoutY="300.0" onAction="#handleMusic" prefHeight="50.0" prefWidth="50.0" styleClass="musicbutton" text="&gt;" textFill="WHITE">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="390.0" layoutY="300.0" onAction="#nextSong" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 50%; -fx-background-color: red;" text="&gt;|" textFill="WHITE">
+      <JFXButton layoutX="390.0" layoutY="300.0" onAction="#nextSong" prefHeight="50.0" prefWidth="50.0" styleClass="musicbutton" text="&gt;|" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="200.0" layoutY="300.0" onAction="#previousSong" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 50%; -fx-background-color: red;" text="|&lt;" textFill="WHITE">
+      <JFXButton layoutX="200.0" layoutY="300.0" onAction="#previousSong" prefHeight="50.0" prefWidth="50.0" styleClass="musicbutton" text="|&lt;" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>

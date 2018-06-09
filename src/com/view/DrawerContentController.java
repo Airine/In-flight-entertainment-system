@@ -156,10 +156,8 @@ public class DrawerContentController {
         night.selectedProperty().addListener((observable, oldValue, newValue) -> {
             if(night.isSelected()){
                 rootLayoutController.ToNight();
-                System.out.println("晚安");
             }else{
                 rootLayoutController.ToDefault();
-                System.out.println("早安");
             }
         });
     }

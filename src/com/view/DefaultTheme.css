@@ -110,3 +110,13 @@
 .jfx-list-cell: hover{
     -fx-background-color: #ee5253;
 }
+
+#musictitle{
+ -fx-font-family:"Webdings";
+ -fx-font-size:40px;
+}
+.musicbutton{
+    -fx-background-radius:50%;
+    -fx-background-color:#ee5253;
+    -fx-text-fill:white;
+}
