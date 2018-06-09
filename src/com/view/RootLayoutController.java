@@ -472,7 +472,7 @@ public class RootLayoutController {
         settingPageController.getSettinguppane().setStyle("-fx-background-color:"+"#"+color);
         themeController.getThemeuppane().setStyle("-fx-background-color:"+"#"+color);
         timingController.getTiminguppane().setStyle("-fx-background-color:"+"#"+color);
-        musicPageController.getMusicuppane().setStyle("-fx-background-color:"+"#"+color);
+        musicPageController.getMusicPane().setStyle("-fx-background-color:"+"#"+color);
     }
 
 }

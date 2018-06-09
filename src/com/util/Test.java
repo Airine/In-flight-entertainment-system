@@ -11,9 +11,11 @@ public class Test {
         WebScraping webScraping = new WebScraping();
         Map<String, String> URL_Title = webScraping.scrapeMovieLinks();
         StringBuilder sb = new StringBuilder();
+        sb.append("{\n");
         for(Map.Entry entry : URL_Title.entrySet()) {
             webScraping.scrapeMessage(entry,sb);
         }
+        sb.append("}\n");
         out.print(sb);
         out.close();
     }

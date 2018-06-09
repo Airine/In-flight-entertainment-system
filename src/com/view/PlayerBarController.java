@@ -55,13 +55,12 @@ public class PlayerBarController {
      * @return
      */
     @FXML
-    public void handlePlayOrStop(){
+    private void handlePlayOrStop(){
         MediaPlayer.Status status = mp.getStatus();
         if (status == MediaPlayer.Status.UNKNOWN || status == MediaPlayer.Status.HALTED) {
             // don't do anything in these states
             return;
         }
-
         if (status == MediaPlayer.Status.PAUSED
                 || status == MediaPlayer.Status.READY
                 || status == MediaPlayer.Status.STOPPED) {
@@ -105,7 +104,6 @@ public class PlayerBarController {
         
         player.setOnEndOfMedia(() -> {
             player.pause();
-            stopRequested = true;
             atEndOfMedia = true;
         });
         
@@ -142,7 +140,7 @@ public class PlayerBarController {
         }
     }
 
-    private static String formatTime(Duration elapsed, Duration duration) {
+    static String formatTime(Duration elapsed, Duration duration) {
         int intElapsed = (int) Math.floor(elapsed.toSeconds());
         int elapsedHours = intElapsed / (60 * 60);
         int temp = intElapsed;
