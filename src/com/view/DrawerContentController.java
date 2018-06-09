@@ -83,11 +83,11 @@ public class DrawerContentController {
     @FXML
     public void initialize(){
         String url = "resources/shiyuan.png";
-        user_icon.setStyle(
-                "-fx-background-image: url(\"" + url + "\");" +
-                "-fx-background-position: center;" +
-                "-fx-background-repeat: no-repeat;" +
-                "-fx-background-size: 100% 100%;");
+//        user_icon.setStyle(
+//                "-fx-background-image: url(\"" + url + "\");" +
+//                "-fx-background-position: center;" +
+//                "-fx-background-repeat: no-repeat;" +
+//                "-fx-background-size: 100% 100%;");
        initToggle();//初始化他的监听拖动
     }
 
@@ -95,7 +95,9 @@ public class DrawerContentController {
         username.setText(name);
         usersign.setText(sign);
     }
-
+    public void changeUserImage(String url){
+        user_icon.setStyle("-fx-background-image: url(\"" + url + "\");");
+    }
     @FXML
     public void beHuiyuan(){
         huiyuan.setImage(new Image("resources/icon/truehuiyuan.png"));
