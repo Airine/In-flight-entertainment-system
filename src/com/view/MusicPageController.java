@@ -42,6 +42,7 @@ public class MusicPageController {
     private void initialize(){
         MusicPlayButton.setText(">");
         String url = getClass().getResource("/resources/music/Richard_Sanderson-Reality.mp3").toString();
+        setMusicTitle("Reality");
         controlMusic(new MediaPlayer(new Media(url)));
     }
     @FXML

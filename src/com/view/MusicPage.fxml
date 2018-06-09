@@ -11,41 +11,44 @@
 
 <AnchorPane prefHeight="436.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.MusicPageController">
    <children>
-      <AnchorPane id="userPane" fx:id="musicPane" layoutX="6.0" prefHeight="244.0" prefWidth="640.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <AnchorPane id="userPane" fx:id="musicPane" layoutX="6.0" prefHeight="267.0" prefWidth="640.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Label fx:id="musicTitle" layoutX="7.0" layoutY="149.0" prefHeight="69.0" prefWidth="219.0" text="音乐名" textFill="WHITE">
+            <Label fx:id="musicTitle" layoutX="20.0" layoutY="149.0" prefHeight="69.0" prefWidth="219.0" text="音乐名" textFill="WHITE">
                <font>
                   <Font name="Consolas" size="45.0" />
                </font>
             </Label>
-            <JFXToggleButton fx:id="LoopPlayback" layoutX="522.0" layoutY="195.0" onAction="#musicCyclePlay" prefHeight="58.0" prefWidth="118.0" text="循环播放" textFill="WHITE" />
+            <JFXToggleButton fx:id="LoopPlayback" layoutX="488.0" layoutY="195.0" onAction="#musicCyclePlay" prefHeight="58.0" prefWidth="152.0" text="Single Cycle" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></JFXToggleButton>
          </children>
       </AnchorPane>
-      <JFXSlider fx:id="musicSlider" layoutX="179.0" layoutY="366.0" prefHeight="14.0" prefWidth="306.0" value="1.0" />
-      <JFXButton fx:id="MusicPlayButton" layoutX="302.0" layoutY="289.0" onAction="#handleMusic" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 50%; -fx-background-color: red;" text="| |" textFill="WHITE">
+      <JFXSlider fx:id="musicSlider" layoutX="163.0" layoutY="380.0" prefHeight="14.0" prefWidth="322.0" value="1.0" />
+      <JFXButton fx:id="MusicPlayButton" layoutX="295.0" layoutY="300.0" onAction="#handleMusic" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 50%; -fx-background-color: red;" text="| |" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="385.0" layoutY="289.0" onAction="#nextSong" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 50%; -fx-background-color: red;" text="&gt;|" textFill="WHITE">
+      <JFXButton layoutX="390.0" layoutY="300.0" onAction="#nextSong" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 50%; -fx-background-color: red;" text="&gt;|" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="213.0" layoutY="289.0" onAction="#previousSong" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 50%; -fx-background-color: red;" text="|&lt;" textFill="WHITE">
+      <JFXButton layoutX="200.0" layoutY="300.0" onAction="#previousSong" prefHeight="50.0" prefWidth="50.0" style="-fx-background-radius: 50%; -fx-background-color: red;" text="|&lt;" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </JFXButton>
-      <Label fx:id="MusicPlayTime" layoutX="87.0" layoutY="358.0" prefHeight="27.0" prefWidth="84.0" text="当前/总时间" textAlignment="CENTER">
+      <Label fx:id="MusicPlayTime" layoutX="61.0" layoutY="373.0" prefHeight="27.0" prefWidth="110.0" text="当前/总时间" textAlignment="CENTER">
          <font>
             <Font size="15.0" />
          </font></Label>
-      <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="504.0" layoutY="363.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="504.0" layoutY="378.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../resources/icon/sound1.png" />
          </image>
       </ImageView>
-      <JFXSlider fx:id="MusicVolume" layoutX="525.0" layoutY="366.0" prefHeight="14.0" prefWidth="84.0" />
+      <JFXSlider fx:id="MusicVolume" layoutX="525.0" layoutY="380.0" prefHeight="14.0" prefWidth="84.0" />
    </children>
 </AnchorPane>
