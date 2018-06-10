@@ -22,7 +22,7 @@ public class Test {
             webScraping.scrapeMessage(iterator.next(),sb);
             sb.append(",\n");
         }
-        Map.Entry entry = set.iterator().next();
+        Map.Entry entry = iterator.next();
         sb.append("\"").append(setSize).append("\":");
         webScraping.scrapeMessage(entry,sb);
         sb.append("\n}\n");
