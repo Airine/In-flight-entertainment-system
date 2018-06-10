@@ -135,6 +135,6 @@ public class LoginController {
     }
 
     public void clickSignButton(MouseEvent mouseEvent) {
-        mainApp.changeLanguage("cn");
+        mainApp.changeLanguage("en");
     }
 }

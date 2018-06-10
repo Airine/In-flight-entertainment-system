@@ -18,3 +18,4 @@ public class CollectionController {
     public void loadLanguage(String language) {
     }
 }
+
