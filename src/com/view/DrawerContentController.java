@@ -1,13 +1,9 @@
 package com.view;
 
-import com.MainApp;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXToggleButton;
 import com.jfoenix.transitions.JFXFillTransition;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -16,8 +12,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
-
-import java.io.IOException;
 
 public class DrawerContentController {
     public JFXButton vip;
@@ -85,13 +79,12 @@ public class DrawerContentController {
 
     @FXML
     public void initialize(){
-        String url = "resources/shiyuan.png";
-        user_icon.setStyle(
-                "-fx-background-image: url(\"" + url + "\");" +
+        String url = "resources/user_icon/shiyuan.png";
+        user_icon.setStyle("-fx-background-image: url(\"" + url + "\");" +
                 "-fx-background-position: center;" +
                 "-fx-background-repeat: no-repeat;" +
                 "-fx-background-size: 100% 100%;");
-       initToggle();//初始化他的监听拖动
+        initToggle();//初始化他的监听拖动
     }
 
     public void changNameAndSign(String name,String sign){
@@ -99,8 +92,12 @@ public class DrawerContentController {
         usersign.setText(sign);
     }
     public void changeUserImage(String url){
-        user_icon.setStyle("-fx-background-image: url(\"" + url + "\");");
+        user_icon.setStyle("-fx-background-image: url(\"" + url + "\");" +
+                "-fx-background-position: center;" +
+                "-fx-background-repeat: no-repeat;" +
+                "-fx-background-size: 100% 100%;");
     }
+
     @FXML
     public void beHuiyuan(){
         huiyuan.setImage(new Image("resources/icon/truehuiyuan.png"));
