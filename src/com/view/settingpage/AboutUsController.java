@@ -58,7 +58,10 @@ public class AboutUsController {
         });
         content.setActions(button);
         dialog.show();
-
+    }
+    @FXML
+    public void handleCommitComment(){
+        pingjia=new JFXChipView<>();
     }
 
     public void loadLanguage(String language) {

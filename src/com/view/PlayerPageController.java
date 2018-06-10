@@ -1,6 +1,7 @@
 package com.view;
 
 import com.MainApp;
+import com.jfoenix.controls.JFXSpinner;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
@@ -14,6 +15,9 @@ import java.io.IOException;
 public class PlayerPageController {
     @FXML
     private AnchorPane Bar;
+
+    @FXML
+    private JFXSpinner spinner;//转不转
 
     @FXML
     private StackPane playmovie;//这个用来外接电影的平面
