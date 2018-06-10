@@ -77,12 +77,13 @@ public class DataLoader {
                 int id = rs.getInt("movie_id");
                 String title_cn = rs.getString("title_cn");
                 String title_en = rs.getString("title_en");
-                int year = rs.getInt("year");
-                int time = rs.getInt("time");
+                String year = rs.getString("year");
                 String language = rs.getString("language");
                 int type = rs.getInt("type");
+                String href = rs.getString("href");
+                String post_href = rs.getString("post_href");
                 // 输出数据
-                Movie m = new Movie(id, title_cn, title_en, year, time, language,type);
+                Movie m = new Movie(id, title_cn, title_en, year, language,type,href,post_href);
                 tempt.add(m);
             }
 
@@ -140,12 +141,6 @@ public class DataLoader {
     public static List<Movie> getMoviesByType(String movie_type){
         return movies.stream()
                 .filter(movie -> types[movie.getType()].equals(movie_type))
-                .collect(Collectors.toList());
-    }
-
-    public static List<Movie> getMoviesByYear(int year){
-        return movies.stream()
-                .filter(movie -> movie.getYear()==year)
                 .collect(Collectors.toList());
     }
 

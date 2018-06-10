@@ -41,6 +41,7 @@ public class MovieType {
         for (Movie movie:movies) {
             try{
 //                StackPane movieItem = movie.getMi_cn();
+                movie.initMI();
                 StackPane movieItem = (language.equals("cn"))? movie.getMi_cn() : movie.getMi_en();
                 flowPane.getChildren().add(movieItem);
             } catch (Exception e) {
