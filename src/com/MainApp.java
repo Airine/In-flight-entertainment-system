@@ -70,7 +70,7 @@ public class MainApp extends Application {
             //连接controller
             rootLayoutController=loader.getController();
             rootLayoutController.setMainApp(this);
-
+            rootLayoutController.getMovieTableViewController().addTextListen();
             primaryStage.show();
         }catch (IOException e){
             e.printStackTrace();

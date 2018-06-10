@@ -4,6 +4,8 @@ import com.MainApp;
 import com.jfoenix.controls.*;
 import com.jfoenix.transitions.hamburger.HamburgerNextArrowBasicTransition;
 import com.view.settingpage.*;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -113,6 +115,14 @@ public class RootLayoutController {
     public void setVBox(VBox box) {
         this.box = box;
     }
+    public JFXTextField getSearchFeild(){
+        return searchfeild;
+    }
+
+    public MovieTableViewController getMovieTableViewController() {
+        return movieTableViewController;
+    }
+
     public VBox getVBox(){return box;}
     public JFXDrawer getDrawer(){return drawer;}
     public DrawerContentController getDrawerContentController(){return drawerContentController;}
@@ -151,12 +161,15 @@ public class RootLayoutController {
     }//返回主界面
     public AnchorPane getSettingPane() {
         return SettingPane;
-    }//返回设置界面
+    }
+
     public AnchorPane getMainBar(){return  mainBar;}
     public void searchPaneVisible(boolean a){
         searchpane.setVisible(a);
     }
-    /* *  初始化界面
+
+
+    /* *  initi all
       * @author PennaLia
       * @date 2018/6/5 14:20
       * @param
@@ -189,7 +202,7 @@ public class RootLayoutController {
     }
 
 
-    /* *  初始化抽屉栏.
+    /* *  init draer.
      * @author PennaLia
      * @date 2018/5/29 1:08
      * @param
@@ -210,7 +223,7 @@ public class RootLayoutController {
         }
     }
 
-    /* *  初始化主页面，就是默认主页面时文件页面
+    /* *  init homepage.
      * @author PennaLia
      * @date 2018/5/29 1:18
      * @param
@@ -230,7 +243,7 @@ public class RootLayoutController {
             e.printStackTrace();
         }
     }
-    /* *  初始化音乐界面
+    /* * initi music page .
      * @author PennaLia
      * @date 2018/6/5 14:22
      * @param
@@ -249,7 +262,7 @@ public class RootLayoutController {
         }
     }
 
-    /* *  初始化播放界面
+    /* *  init player page .
      * @author PennaLia
      * @date 2018/6/5 14:22
      * @param
@@ -267,7 +280,7 @@ public class RootLayoutController {
             e.printStackTrace();
         }
     }
-    /* *  初始化设置界面
+    /* *  init setting page.
      * @author PennaLia
      * @date 2018/6/5 14:22
      * @param
@@ -285,6 +298,12 @@ public class RootLayoutController {
             e.printStackTrace();
         }
     }
+    /* *  init aboutus page.
+     * @author PennaLia
+     * @date 2018/6/10 17:59
+     * @param
+     * @return
+     */
     public void initAboutUs(){
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -298,6 +317,12 @@ public class RootLayoutController {
             e.printStackTrace();
         }
     }
+    /* *  init theme page.
+     * @author PennaLia
+     * @date 2018/6/10 17:59
+     * @param
+     * @return
+     */
     public void initTheme(){
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -314,6 +339,12 @@ public class RootLayoutController {
             e.printStackTrace();
         }
     }
+    /* *  init money page.
+     * @author PennaLia
+     * @date 2018/6/10 17:59
+     * @param
+     * @return
+     */
     public void initMoney(){
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -326,6 +357,13 @@ public class RootLayoutController {
             e.printStackTrace();
         }
     }
+
+    /* *  init timing close page.
+     * @author PennaLia
+     * @date 2018/6/10 17:58
+     * @param
+     * @return
+     */
     public void initTiming(){
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -338,6 +376,12 @@ public class RootLayoutController {
             e.printStackTrace();
         }
     }
+    /* *  initial collection page.
+     * @author PennaLia
+     * @date 2018/6/10 17:58
+     * @param
+     * @return
+     */
     public void initCollection(){
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -350,6 +394,12 @@ public class RootLayoutController {
             e.printStackTrace();
         }
     }
+    /* *  initial edit page.
+     * @author PennaLia
+     * @date 2018/6/10 17:57
+     * @param
+     * @return
+     */
     public void initEdit(){
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -543,5 +593,9 @@ public class RootLayoutController {
         content.setActions(button);
         dialog.show();
     }
+
+
+
+
 
 }

@@ -10,6 +10,7 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,6 +18,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.util.Callback;
+
+import java.util.function.Predicate;
 
 public class MovieTableViewController {
     @FXML
@@ -26,7 +29,9 @@ public class MovieTableViewController {
     public void setRootLayoutController(RootLayoutController rootLayoutController){
         this.rootLayoutController=rootLayoutController;
     }
-
+    public JFXTreeTableView getTreeTabla(){
+        return  treetable;
+    }
     @FXML
     private  void initialize(){
         JFXTreeTableColumn<User,String> name =new JFXTreeTableColumn<>("Name");
@@ -50,6 +55,7 @@ public class MovieTableViewController {
         users.add(new User("penna",18));
         users.add(new User("Araon",19));
         TreeItem<User> root =new RecursiveTreeItem<User>(users,RecursiveTreeObject::getChildren);
+        
         treetable.getColumns().setAll(name,age);
         treetable.setRoot(root);
         treetable.setShowRoot(false);
@@ -70,5 +76,21 @@ public class MovieTableViewController {
             this.age=new SimpleIntegerProperty(age);
             this.name=new SimpleStringProperty(name);
         }
+    }
+
+    public void addTextListen(){
+        rootLayoutController.getSearchFeild().textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                treetable.setPredicate(new Predicate<TreeItem<User>>() {
+                    @Override
+                    public boolean test(TreeItem<User> userTreeItem) {
+                        Boolean flag=userTreeItem.getValue().name.getValue().contains(newValue)
+                        || userTreeItem.getValue().age.getValue().toString().contains(newValue);
+                        return flag;
+                    }
+                });
+            }
+        });
     }
 }
