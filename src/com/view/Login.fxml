@@ -35,7 +35,7 @@
                </font>
             </JFXPasswordField>
             <JFXButton fx:id="Login" buttonType="RAISED" layoutX="88.0" layoutY="208.0" onMouseClicked="#clickLoginButton" onMousePressed="#pressLoginButton" onMouseReleased="#releaseLoginButton" prefHeight="34.0" prefWidth="83.0" ripplerFill="WHITE" style="-fx-background-color: #2196f3;" text="Login" textFill="WHITE" />
-            <JFXButton fx:id="Sign" buttonType="RAISED" layoutX="220.0" layoutY="208.0" onMousePressed="#pressSignButton" onMouseReleased="#releaseSignButton" prefHeight="34.0" prefWidth="83.0" ripplerFill="WHITE" style="-fx-background-color: #2196f3;" text="Sign up" textFill="WHITE" />
+            <JFXButton fx:id="Sign" buttonType="RAISED" layoutX="220.0" layoutY="208.0" onMouseClicked="#clickSignButton" onMousePressed="#pressSignButton" onMouseReleased="#releaseSignButton" prefHeight="34.0" prefWidth="83.0" ripplerFill="WHITE" style="-fx-background-color: #2196f3;" text="Sign up" textFill="WHITE" />
             <Text fx:id="user_name_warning" fill="#ebfff8cb" layoutX="120.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="185.0">
                <font>
                   <Font name="Verdana" size="12.0" />

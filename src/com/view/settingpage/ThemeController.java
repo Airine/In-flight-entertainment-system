@@ -4,14 +4,33 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXColorPicker;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
+import com.util.JsonLoader;
 import com.view.RootLayoutController;
 import javafx.fxml.FXML;
 
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ThemeController {
+
+    @FXML
+    private Label title;
+
+    @FXML
+    private Label upBar;
+
+    @FXML
+    private Label leftBar;
+
+    @FXML
+    private Label leftBarUp;
+
+    @FXML
+    private JFXButton button;
 
     @FXML
     private AnchorPane themeuppane;
@@ -44,7 +63,7 @@ public class ThemeController {
     }
 
     public void handleOk() {
-        if (rootLayoutController.getMainApp().huiyuan == false) {
+        if (!rootLayoutController.getMainApp().huiyuan) {
             stackpane.setVisible(true);
             JFXDialogLayout content = new JFXDialogLayout();
             content.setHeading(new Text("你太穷了"));
@@ -68,4 +87,17 @@ public class ThemeController {
         }
     }
 
+    public void loadLanguage(String language) {
+        JSONObject jsonObject = JsonLoader.getJsonValue(language,"theme");
+        try {
+            assert jsonObject != null;
+            title.setText(jsonObject.getString("title"));
+            upBar.setText(jsonObject.getString("upBar"));
+            leftBar.setText(jsonObject.getString("leftBarUp"));
+            leftBarUp.setText(jsonObject.getString("leftBarUp"));
+            button.setText(jsonObject.getString("button"));
+        } catch (JSONException | NullPointerException e){
+            e.printStackTrace();
+        }
+    }
 }

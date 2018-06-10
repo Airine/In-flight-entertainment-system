@@ -24,6 +24,7 @@ public class SettingPageController {
     public AnchorPane getSettinguppane(){
         return  settinguppane;
     }
+
     Label chinese=new Label("中文");
     Label english=new Label("English");
     Label français=new Label("Français");
@@ -47,6 +48,7 @@ public class SettingPageController {
                 return new Label(string);
             }
         });
+
 
     }
 }

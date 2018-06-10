@@ -87,6 +87,20 @@ public class RootLayoutController {
     DrawerContentController drawerContentController;
     //搜索界面的controler
     MovieTableViewController movieTableViewController;
+
+    public void loadLanguage(String language){
+        settingPageController.loadLanguage(language);
+        aboutUsController.loadLanguage(language);
+        themeController.loadLanguage(language);
+        moneyController.loadLanguage(language);
+        timingController.loadLanguage(language);
+        collectionController.loadLanguage(language);
+        editController.loadLanguage(language);
+        drawerContentController.loadLanguage(language);
+        movieTableViewController.loadLanguage(language);
+    }
+
+
     /**
      * 设置主应用，连接到主界面
      * @param app

@@ -20,6 +20,9 @@ import javafx.util.Duration;
 import java.io.IOException;
 
 public class DrawerContentController {
+    public JFXButton vip;
+    public JFXButton star;
+    public JFXButton timing;
     @FXML
     private VBox drawerBox;
 
@@ -184,5 +187,9 @@ public class DrawerContentController {
             transition.play();
             clicked=false;
         }
+    }
+
+    public void loadLanguage(String language) {
+        
     }
 }
