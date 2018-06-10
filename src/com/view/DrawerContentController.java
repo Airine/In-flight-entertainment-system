@@ -20,9 +20,6 @@ import javafx.util.Duration;
 import java.io.IOException;
 
 public class DrawerContentController {
-    public JFXButton vip;
-    public JFXButton star;
-    public JFXButton timing;
     @FXML
     private VBox drawerBox;
 
@@ -139,12 +136,9 @@ public class DrawerContentController {
     }
     @FXML
     private void handleCollection(){
-        rootLayoutController.getDrawer().close();
-        rootLayoutController.getDrawer().setVisible(false);
-        rootLayoutController.homePageSee();
-        rootLayoutController.getSettingPane().setVisible(false);
-        rootLayoutController.HomePageController.changeFlowContent(rootLayoutController.collection);
-        rootLayoutController.HomePageController.back.setVisible(true);
+        rootLayoutController.setSettingVisible();//设置界面可见
+        rootLayoutController.homePageNotSee();//主界面不可见
+        rootLayoutController.setSettingPane(rootLayoutController.collection);
     }
     @FXML
     private void handleEdit(){
@@ -187,9 +181,5 @@ public class DrawerContentController {
             transition.play();
             clicked=false;
         }
-    }
-
-    public void loadLanguage(String language) {
-        
     }
 }

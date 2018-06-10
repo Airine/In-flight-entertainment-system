@@ -60,9 +60,6 @@ public class MovieTableViewController {
         rootLayoutController.searchPaneVisible(false);
     }
 
-    public void loadLanguage(String language) {
-    }
-
     class User extends RecursiveTreeObject<User> {
         StringProperty name ;
         IntegerProperty age ;

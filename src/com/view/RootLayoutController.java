@@ -12,7 +12,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -74,8 +73,7 @@ public class RootLayoutController {
     public PlayerPageController playerPageController;
 
     //几个设置界面
-    public AnchorPane setting,aboutus,theme,money,timing,edit;
-    public FlowPane collection;//收藏界面
+    public AnchorPane setting,aboutus,theme,money,timing,collection,edit;
     //设置界面的控制器
     SettingPageController settingPageController;
     AboutUsController aboutUsController;
@@ -87,20 +85,6 @@ public class RootLayoutController {
     DrawerContentController drawerContentController;
     //搜索界面的controler
     MovieTableViewController movieTableViewController;
-
-    public void loadLanguage(String language){
-        settingPageController.loadLanguage(language);
-        aboutUsController.loadLanguage(language);
-        themeController.loadLanguage(language);
-        moneyController.loadLanguage(language);
-        timingController.loadLanguage(language);
-        collectionController.loadLanguage(language);
-        editController.loadLanguage(language);
-        drawerContentController.loadLanguage(language);
-        movieTableViewController.loadLanguage(language);
-    }
-
-
     /**
      * 设置主应用，连接到主界面
      * @param app
@@ -116,7 +100,6 @@ public class RootLayoutController {
         this.box = box;
     }
     public VBox getVBox(){return box;}
-    public JFXDrawer getDrawer(){return drawer;}
     public DrawerContentController getDrawerContentController(){return drawerContentController;}
    /* *  用来替换主界面，当想切换哪个界面的时候就把界面赋值给homepage
     * @author PennaLia
@@ -181,10 +164,10 @@ public class RootLayoutController {
             initAboutUs();
             initTheme();
             initMoney();
+            initCollection();
             initTiming();
             initEdit();
             initSearchTree();
-            initCollection();
         } catch (Exception e) {
             e.getStackTrace();
         }
@@ -492,6 +475,7 @@ public class RootLayoutController {
     public void changeLeftColor(String color){
         drawerContentController.getUserBackPane().setStyle("-fx-background-color:"+"#"+color);
         aboutUsController.getAboutusuppane().setStyle("-fx-background-color:"+"#"+color);
+        collectionController.getCollectionuppane().setStyle("-fx-background-color:"+"#"+color);
         editController.getEdituppane().setStyle("-fx-background-color:"+"#"+color);
         moneyController.getMoneyuppane().setStyle("-fx-background-color:"+"#"+color);
         settingPageController.getSettinguppane().setStyle("-fx-background-color:"+"#"+color);

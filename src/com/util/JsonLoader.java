@@ -17,7 +17,7 @@ public class JsonLoader {
         return new JSONTokener(data);
     }
 
-    public static JSONObject getJsonValue(String fileName, String block){
+    private static JSONObject getJsonValue(String fileName, String block){
         try{
             JSONObject jsonObject = (JSONObject) loadData(fileName).nextValue();
             return (JSONObject) jsonObject.get(block);

@@ -44,7 +44,7 @@
             </ImageView>
          </children>
       </Pane>
-      <JFXButton fx:id="vip" alignment="BASELINE_LEFT" onMouseClicked="#handleMoney" prefHeight="39.0" prefWidth="280.0" ripplerFill="LIGHTCORAL" text="升级会员" textFill="GREY">
+      <JFXButton alignment="BASELINE_LEFT" onMouseClicked="#handleMoney" prefHeight="39.0" prefWidth="280.0" ripplerFill="LIGHTCORAL" text="升级会员" textFill="GREY">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
@@ -59,7 +59,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="star" alignment="BASELINE_LEFT" onMouseClicked="#handleCollection" prefHeight="39.0" prefWidth="280.0" ripplerFill="LIGHTCORAL" text="我的收藏" textFill="GREY">
+      <JFXButton alignment="BASELINE_LEFT" onMouseClicked="#handleCollection" prefHeight="39.0" prefWidth="280.0" ripplerFill="LIGHTCORAL" text="我的收藏" textFill="GREY">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
@@ -74,7 +74,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="timing" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="151.0" onMouseClicked="#handleTiming" prefHeight="39.0" prefWidth="280.0" ripplerFill="LIGHTCORAL" text="定时关闭" textFill="GREY">
+      <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="151.0" onMouseClicked="#handleTiming" prefHeight="39.0" prefWidth="280.0" ripplerFill="LIGHTCORAL" text="定时关闭" textFill="GREY">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
@@ -89,7 +89,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="theme" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="151.0" onMouseClicked="#handleTheme" prefHeight="39.0" prefWidth="280.0" ripplerFill="LIGHTCORAL" text="个性主题" textFill="GREY">
+      <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="151.0" onMouseClicked="#handleTheme" prefHeight="39.0" prefWidth="280.0" ripplerFill="LIGHTCORAL" text="个性主题" textFill="GREY">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
@@ -114,7 +114,7 @@
                   <Image url="@../../resources/icon/night.png" />
                </image>
             </ImageView>
-            <Label fx:id="nightLabel" id="likebutton" prefHeight="37.0" prefWidth="157.0" text="夜间模式" textFill="#050505a2">
+            <Label id="likebutton" prefHeight="37.0" prefWidth="157.0" text="夜间模式" textFill="#050505a2">
                <font>
                   <Font size="16.0" />
                </font>
@@ -138,7 +138,7 @@
                         <Image url="@../../resources/icon/about.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="about" id="likebutton" prefHeight="23.0" prefWidth="52.0" text=" 关于我们" />
+                  <Label id="likebutton" prefHeight="23.0" prefWidth="52.0" text=" 关于我们" />
                </children>
             </HBox>
             <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="248.0" layoutY="58.0" onMouseClicked="#handleSetting" pickOnBounds="true" preserveRatio="true">

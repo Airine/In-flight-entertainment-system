@@ -2,7 +2,6 @@
     "loginDialog": {
         "username": "Username:",
         "password": "Password:",
-
         "login": "Log in",
         "sign": "Sign in"
     },
@@ -47,7 +46,6 @@
         "theme": "Theme",
         "nightLabel": "Night mode",
         "about": "About us"
-
     }
 
 

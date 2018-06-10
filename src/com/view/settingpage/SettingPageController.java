@@ -24,7 +24,6 @@ public class SettingPageController {
     public AnchorPane getSettinguppane(){
         return  settinguppane;
     }
-
     Label chinese=new Label("中文");
     Label english=new Label("English");
     Label français=new Label("Français");
@@ -33,7 +32,7 @@ public class SettingPageController {
     private void initialize(){
         initCombox();
     }
-    private void initCombox(){
+    private  void initCombox(){
 
         langComBoix.getItems().addAll(chinese,english,français);
         langComBoix.setEditable(false);
@@ -49,9 +48,5 @@ public class SettingPageController {
             }
         });
 
-
-    }
-
-    public void loadLanguage(String language) {
     }
 }
