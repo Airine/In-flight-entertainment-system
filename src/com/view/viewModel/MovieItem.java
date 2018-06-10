@@ -6,6 +6,7 @@ import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXNodesList;
 import com.jfoenix.effects.JFXDepthManager;
 import com.jfoenix.svg.SVGGlyph;
+import com.view.RootLayoutController;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -78,6 +79,8 @@ public class MovieItem extends StackPane {
         addCollection.setScaleY(0);
         addCollection.setOnMouseClicked(event -> {
             try {
+                MainApp.player.mediaPlayer.stop();
+                MainApp.player.getRootLayoutController().seePlaypage();
                 MainApp.player.mediaPlayer = new MediaPlayer(new Media(videoUrl));
                 MainApp.player.setPlay(new MediaView(MainApp.player.mediaPlayer));
                 MainApp.player.setPlaymovie();
