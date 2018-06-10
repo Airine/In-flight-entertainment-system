@@ -25,29 +25,34 @@ public class PlayerPageController {
     AnchorPane bar;
     PlayerBarController playerBarController;
     //把接入的视频界面赋值给play，然后调用setplaymovie，界面就会替换
-    StackPane play;
-    
-    public void setPlay(MediaView mediaView){
-        play = new StackPane();
-        play.autosize();
-        mediaView.setPreserveRatio(true);
-        mediaView.fitWidthProperty().bind(play.widthProperty());
-        play.getChildren().add(mediaView);
-        play.setStyle("-fx-background-color: black;");
-    }
-
-    public void setPlaymovie(){
-        playmovie.getChildren().add(play);
-    }
-
+    StackPane MoviePane;
+    public MediaPlayer mediaPlayer;
     private RootLayoutController rootLayoutController;
+    
     public void setRootLayoutController(RootLayoutController rootLayoutController){
         this.rootLayoutController=rootLayoutController;
     }
+
+    public JFXSpinner getSpinner() {
+        return spinner;
+    }
+
+    public void setMoviePane(MediaView mediaView){
+        MoviePane = new StackPane();
+        MoviePane.autosize();
+        mediaView.setPreserveRatio(true);
+        mediaView.fitWidthProperty().bind(MoviePane.widthProperty());
+        MoviePane.getChildren().add(mediaView);
+        MoviePane.setStyle("-fx-background-color: black;");
+    }
+
+    public void setPlayMovie(){
+        playmovie.getChildren().add(MoviePane);
+    }
+    
     public RootLayoutController getRootLayoutController(){
         return  rootLayoutController;
     }
-    public MediaPlayer mediaPlayer;
     
     @FXML
     private void initialize(){
@@ -55,8 +60,8 @@ public class PlayerPageController {
             //这里随便加了个视频
             mediaPlayer = new MediaPlayer(new Media(
                     "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"));
-            setPlay(new MediaView(mediaPlayer));
-            setPlaymovie();
+            setMoviePane(new MediaView(mediaPlayer));
+            setPlayMovie();
             initPlayerBar();
         }catch (Exception e){
             e.printStackTrace();

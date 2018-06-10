@@ -35,6 +35,9 @@ public class PlayerBarController {
     public void setPlayPageController(PlayerPageController Controller){
         this.playerPageController=Controller;
     }
+    
+
+    
 /* *  初始化设置
  * @author PennaLia
  * @date 2018/6/2 19:03
@@ -92,6 +95,7 @@ public class PlayerBarController {
         player.setOnReady(() -> {
             duration = player.getMedia().getDuration();
             updateValues();
+            playerPageController.getSpinner().setVisible(false);
         });
         
         player.setCycleCount(MediaPlayer.INDEFINITE);
