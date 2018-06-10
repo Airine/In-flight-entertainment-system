@@ -11,6 +11,8 @@ import org.json.JSONObject;
 
 
 public class MoneyController {
+
+
     public Label VIP;
     public Label label1;
     public Label label2;
