@@ -6,11 +6,13 @@ import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.transitions.hamburger.HamburgerNextArrowBasicTransition;
 import com.view.settingpage.*;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -72,7 +74,8 @@ public class RootLayoutController {
     public PlayerPageController playerPageController;
 
     //几个设置界面
-    public AnchorPane setting,aboutus,theme,money,timing,collection,edit;
+    public AnchorPane setting,aboutus,theme,money,timing,edit;
+    public FlowPane collection;//收藏界面
     //设置界面的控制器
     SettingPageController settingPageController;
     AboutUsController aboutUsController;
@@ -113,6 +116,7 @@ public class RootLayoutController {
         this.box = box;
     }
     public VBox getVBox(){return box;}
+    public JFXDrawer getDrawer(){return drawer;}
     public DrawerContentController getDrawerContentController(){return drawerContentController;}
    /* *  用来替换主界面，当想切换哪个界面的时候就把界面赋值给homepage
     * @author PennaLia
@@ -177,10 +181,10 @@ public class RootLayoutController {
             initAboutUs();
             initTheme();
             initMoney();
-            initCollection();
             initTiming();
             initEdit();
             initSearchTree();
+            initCollection();
         } catch (Exception e) {
             e.getStackTrace();
         }
@@ -456,7 +460,6 @@ public class RootLayoutController {
             System.out.println("You pressed A!");
             searchPaneVisible(true);
         }
-
     }
     @FXML
     private void handleSearchClick(){
@@ -470,23 +473,31 @@ public class RootLayoutController {
      * @param
      * @return
      */
+    private String DarkCSS = this.getClass().getResource("DarkTheme.css").toExternalForm(),
+            DefaultCSS = this.getClass().getResource("DefaultTheme.css").toExternalForm();
+    
     public void ToNight(){
-     mainPane.getStylesheets().add("com/view/DarkTheme.css");
+        ObservableList<String> styleSheets = mainPane.getStylesheets();
+        styleSheets.remove(DefaultCSS);
+        if(!styleSheets.contains(DarkCSS))
+            styleSheets.add(DarkCSS);
     }
     public void ToDefault(){
-        mainPane.getStylesheets().add("com/view/DefaultTheme.css");
+        ObservableList<String> styleSheets = mainPane.getStylesheets();
+        styleSheets.remove(DarkCSS);
+        if(!styleSheets.contains(DefaultCSS))
+            styleSheets.add(DefaultCSS);
     }
 
     public void changeLeftColor(String color){
         drawerContentController.getUserBackPane().setStyle("-fx-background-color:"+"#"+color);
         aboutUsController.getAboutusuppane().setStyle("-fx-background-color:"+"#"+color);
-        collectionController.getCollectionuppane().setStyle("-fx-background-color:"+"#"+color);
         editController.getEdituppane().setStyle("-fx-background-color:"+"#"+color);
         moneyController.getMoneyuppane().setStyle("-fx-background-color:"+"#"+color);
         settingPageController.getSettinguppane().setStyle("-fx-background-color:"+"#"+color);
         themeController.getThemeuppane().setStyle("-fx-background-color:"+"#"+color);
         timingController.getTiminguppane().setStyle("-fx-background-color:"+"#"+color);
-        musicPageController.getMusicuppane().setStyle("-fx-background-color:"+"#"+color);
+        musicPageController.getMusicPane().setStyle("-fx-background-color:"+"#"+color);
     }
 
 }

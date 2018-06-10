@@ -98,7 +98,9 @@ public class DrawerContentController {
         username.setText(name);
         usersign.setText(sign);
     }
-
+    public void changeUserImage(String url){
+        user_icon.setStyle("-fx-background-image: url(\"" + url + "\");");
+    }
     @FXML
     public void beHuiyuan(){
         huiyuan.setImage(new Image("resources/icon/truehuiyuan.png"));
@@ -137,9 +139,12 @@ public class DrawerContentController {
     }
     @FXML
     private void handleCollection(){
-        rootLayoutController.setSettingVisible();//设置界面可见
-        rootLayoutController.homePageNotSee();//主界面不可见
-        rootLayoutController.setSettingPane(rootLayoutController.collection);
+        rootLayoutController.getDrawer().close();
+        rootLayoutController.getDrawer().setVisible(false);
+        rootLayoutController.homePageSee();
+        rootLayoutController.getSettingPane().setVisible(false);
+        rootLayoutController.HomePageController.changeFlowContent(rootLayoutController.collection);
+        rootLayoutController.HomePageController.back.setVisible(true);
     }
     @FXML
     private void handleEdit(){
@@ -154,16 +159,11 @@ public class DrawerContentController {
     }
 
     private void initToggle(){
-        night.selectedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if(night.isSelected()==true){
-                    rootLayoutController.ToNight();
-                    System.out.println("晚安");
-                }else{
-                    rootLayoutController.ToDefault();
-                    System.out.println("早安");
-                }
+        night.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if(night.isSelected()){
+                rootLayoutController.ToNight();
+            }else{
+                rootLayoutController.ToDefault();
             }
         });
     }

@@ -1,6 +1,8 @@
 package com.view.viewModel;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDrawer;
+import com.jfoenix.controls.JFXNodesList;
 import com.jfoenix.effects.JFXDepthManager;
 import com.jfoenix.svg.SVGGlyph;
 import javafx.animation.KeyFrame;
@@ -53,7 +55,7 @@ public class MovieItem extends StackPane {
         VBox content = new VBox();
         content.getChildren().addAll(header, body);
 
-        // create button
+        // create button1
         JFXButton button = new JFXButton("");
         button.setButtonType(JFXButton.ButtonType.RAISED);
         button.setStyle("-fx-background-radius: 40;-fx-background-color: " + getDefaultColor((int) ((Math.random() * 12) % 12)));
@@ -61,33 +63,65 @@ public class MovieItem extends StackPane {
         button.setRipplerFill(Color.valueOf(headerColor));
         button.setScaleX(0);
         button.setScaleY(0);
+        //create button2
+        JFXButton addCollection =new JFXButton("1");
+        addCollection.setButtonType(JFXButton.ButtonType.RAISED);
+        addCollection.setStyle("-fx-background-radius: 40;-fx-background-color: " + getDefaultColor((int) ((Math.random() * 12) % 12)));
+        addCollection.setPrefSize(40, 40);
+        addCollection.setRipplerFill(Color.valueOf(headerColor));
+        addCollection.setScaleX(0);
+        addCollection.setScaleY(0);
+        //create button 3
+        JFXButton play=new JFXButton("2");
+        play.setButtonType(JFXButton.ButtonType.RAISED);
+        play.setStyle("-fx-background-radius: 40;-fx-background-color: " + getDefaultColor((int) ((Math.random() * 12) % 12)));
+        play.setPrefSize(40, 40);
+        play.setRipplerFill(Color.valueOf(headerColor));
+        play.setScaleX(0);
+        play.setScaleY(0);
+        //create nodelist
+        JFXNodesList nodesList=new JFXNodesList();
+        //add button to nodelist
+        nodesList.addAnimatedNode(button);
+        nodesList.addAnimatedNode(addCollection);
+        nodesList.addAnimatedNode(play);
+
+        //set button 1 graph
         SVGGlyph glyph = new SVGGlyph(-1,
                 "test",
                 "M256 832c-11.712 0-23.36-3.2-33.664-9.536A64.170667 64.170667 0 0 1 192 768V256c0-22.208 11.52-42.816 30.336-54.464a64.298667 64.298667 0 0 1 62.272-2.816l512 256a64.064 64.064 0 0 1 0 114.56l-512 256c-8.96 4.48-18.88 6.72-28.608 6.72z",
                  Color.WHITE);
-
         glyph.setSize(20, 20);
         button.setGraphic(glyph);
-        button.translateYProperty().bind(Bindings.createDoubleBinding(() ->
-                header.getBoundsInParent().getHeight() - button.getHeight() / 2,
-                header.boundsInParentProperty(), button.heightProperty()));
+        //set button 2 graph
 
-        StackPane.setMargin(button, new Insets(0, 12, 0, 0));
-        StackPane.setAlignment(button, Pos.TOP_RIGHT);
+        //set button 3 graph
 
-        Timeline animation = new Timeline(new KeyFrame(Duration.millis(240),
+        //set nodeilist height
+        nodesList.translateYProperty().bind(Bindings.createDoubleBinding(() ->
+                header.getBoundsInParent().getHeight() - nodesList.getHeight() / 2,
+                header.boundsInParentProperty(), nodesList.heightProperty()));
+        nodesList.setSpacing(20d);
+        nodesList.setRotate(180);
+
+        StackPane.setMargin(nodesList, new Insets(0, 12, 0, 0));
+        StackPane.setAlignment(nodesList, Pos.TOP_RIGHT);
+
+        Timeline animation = new Timeline(new KeyFrame(Duration.millis(100),
                 new KeyValue(button.scaleXProperty(),
                         1,
                         EASE_BOTH),
                 new KeyValue(button.scaleYProperty(),
                         1,
                         EASE_BOTH)));
-        animation.setDelay(Duration.millis( 5000));
+        animation.setDelay(Duration.millis( 3000));
         animation.play();
-        this.getChildren().addAll(content, button);
+        this.getChildren().addAll(content, nodesList);
 
         this.setStyle("-fx-padding: 20px 0px 0px 20px;");
     }
+
+
 
     private String getDefaultColor(int i) {
         String color;

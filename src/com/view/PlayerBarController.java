@@ -55,21 +55,15 @@ public class PlayerBarController {
      * @return
      */
     @FXML
-    public void handlePlayOrStop(){
+    private void handlePlayOrStop(){
         MediaPlayer.Status status = mp.getStatus();
         if (status == MediaPlayer.Status.UNKNOWN || status == MediaPlayer.Status.HALTED) {
             // don't do anything in these states
             return;
         }
-
         if (status == MediaPlayer.Status.PAUSED
                 || status == MediaPlayer.Status.READY
                 || status == MediaPlayer.Status.STOPPED) {
-            // rewind the movie if we're sitting at the end
-            if (atEndOfMedia) {
-                mp.seek(mp.getStartTime());
-                atEndOfMedia = false;
-            }
             mp.play();
         } else {
             mp.pause();
@@ -77,7 +71,6 @@ public class PlayerBarController {
     }
     private MediaPlayer mp;
     private boolean stopRequested = false;
-    private boolean atEndOfMedia = false;
     private Duration duration;
 
     public void controlPlayer(MediaPlayer player) {
@@ -104,9 +97,8 @@ public class PlayerBarController {
         player.setCycleCount(MediaPlayer.INDEFINITE);
         
         player.setOnEndOfMedia(() -> {
+            mp.seek(mp.getStartTime());
             player.pause();
-            stopRequested = true;
-            atEndOfMedia = true;
         });
         
         TimeBar.valueProperty().addListener(ov -> {
@@ -142,7 +134,7 @@ public class PlayerBarController {
         }
     }
 
-    private static String formatTime(Duration elapsed, Duration duration) {
+    static String formatTime(Duration elapsed, Duration duration) {
         int intElapsed = (int) Math.floor(elapsed.toSeconds());
         int elapsedHours = intElapsed / (60 * 60);
         int temp = intElapsed;

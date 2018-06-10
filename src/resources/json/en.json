@@ -2,7 +2,54 @@
     "loginDialog": {
         "username": "Username:",
         "password": "Password:",
-        "login": "Login",
-        "sign": "Sign up"
+
+        "login": "Log in",
+        "sign": "Sign in"
+    },
+
+    "theme": {
+        "title": "Theme",
+        "upBar": "main navigation bar color",
+        "leftBar": "left Navigation bar1 color",
+        "leftBarUp": "left Navigation bar2 color",
+        "button": "Commit"
+    },
+
+    "money": {
+        "label1": "SVIP symbol",
+        "label2":"Custom theme",
+        "label3": "More resource",
+        "label4": "Customer service",
+        "label5": "Terms of payment",
+        "pay": "Pay",
+        "month": "10$/Per Month"
+    },
+
+    "about": {
+        "title": "Sustech Player",
+        "comment": "Comment",
+        "commentTo": "Commit",
+        "checkVersion": "Check for updates",
+        "version": "Current Versions"
+    },
+
+    "edit": {
+        "name": "Username",
+        "ps": "Signatures",
+        "confirm": "Commit",
+        "modify": "Edit"
+    },
+
+    "drawer": {
+        "vip": " Purchase VIP",
+        "star": "Favorites",
+        "timing": "Timer PowerOff",
+        "theme": "Theme",
+        "nightLabel": "Night mode",
+        "about": "About us"
+
     }
+
+
+
 }

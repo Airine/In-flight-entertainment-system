@@ -32,7 +32,6 @@ class WebScraping {
         webClient.getOptions().setJavaScriptEnabled(true);
         webClient.getOptions().setCssEnabled(false);
         webClient.getOptions().setActiveXNative(false);
-        webClient.getOptions().setCssEnabled(false);
         webClient.getOptions().setThrowExceptionOnScriptError(false);
         webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);
         webClient.getOptions().setTimeout(5000);
@@ -175,6 +174,6 @@ class WebScraping {
         sb.append("\"genres\": \"").append(genres).append(comma);
         sb.append("\"description\": \"").append(description).append(comma);
         sb.append("\"href\": \"").append((String)entry.getKey()).append(comma);
-        sb.append("\"post_url\": \"").append("http:").append(poster).append("\"}\n");
+        sb.append("\"post_url\": \"").append("http:").append(poster).append("\"}");
     }
 }
