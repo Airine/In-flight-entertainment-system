@@ -34,6 +34,14 @@ import static javafx.animation.Interpolator.EASE_BOTH;
 
 public class MovieItem extends StackPane {
 
+    private JFXButton button = new JFXButton();
+
+    private JFXButton playbutton = new JFXButton();
+
+    private JFXButton collectionbutton = new JFXButton();
+
+    private boolean ifCollect = false;
+
     public MovieItem(String postUrl, String title, String videoUrl){
         this.setPrefWidth(200);
         this.setPrefHeight(350);
@@ -61,59 +69,18 @@ public class MovieItem extends StackPane {
         VBox content = new VBox();
         content.getChildren().addAll(header, body);
 
-        // create button1
-        JFXButton button = new JFXButton("");
-        button.setButtonType(JFXButton.ButtonType.RAISED);
-        button.setStyle("-fx-background-radius: 40;-fx-background-color: " + getDefaultColor((int) ((Math.random() * 12) % 12)));
-        button.setPrefSize(40, 40);
-        button.setRipplerFill(Color.valueOf(headerColor));
-        button.setScaleX(0);
-        button.setScaleY(0);
-        //create button2
-        JFXButton addCollection =new JFXButton("1");
-        addCollection.setButtonType(JFXButton.ButtonType.RAISED);
-        addCollection.setStyle("-fx-background-radius: 40;-fx-background-color: " + getDefaultColor((int) ((Math.random() * 12) % 12)));
-        addCollection.setPrefSize(40, 40);
-        addCollection.setRipplerFill(Color.valueOf(headerColor));
-        addCollection.setScaleX(0);
-        addCollection.setScaleY(0);
-        addCollection.setOnMouseClicked(event -> {
-            try {
-                MainApp.player.mediaPlayer.stop();
-                MainApp.player.getRootLayoutController().seePlaypage();
-                MainApp.player.mediaPlayer = new MediaPlayer(new Media(videoUrl));
-                MainApp.player.setPlay(new MediaView(MainApp.player.mediaPlayer));
-                MainApp.player.setPlaymovie();
-                MainApp.player.initPlayerBar();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
-        //create button 3
-        JFXButton play=new JFXButton("2");
-        play.setButtonType(JFXButton.ButtonType.RAISED);
-        play.setStyle("-fx-background-radius: 40;-fx-background-color: " + getDefaultColor((int) ((Math.random() * 12) % 12)));
-        play.setPrefSize(40, 40);
-        play.setRipplerFill(Color.valueOf(headerColor));
-        play.setScaleX(0);
-        play.setScaleY(0);
+        initMainButton();
+
+        initPlayButton(videoUrl);
+
+        initCollectionButton();
+
         //create nodelist
         JFXNodesList nodesList=new JFXNodesList();
         //add button to nodelist
         nodesList.addAnimatedNode(button);
-        nodesList.addAnimatedNode(addCollection);
-        nodesList.addAnimatedNode(play);
-
-        //set button 1 graph
-        SVGGlyph glyph = new SVGGlyph(-1,
-                "test",
-                "M256 832c-11.712 0-23.36-3.2-33.664-9.536A64.170667 64.170667 0 0 1 192 768V256c0-22.208 11.52-42.816 30.336-54.464a64.298667 64.298667 0 0 1 62.272-2.816l512 256a64.064 64.064 0 0 1 0 114.56l-512 256c-8.96 4.48-18.88 6.72-28.608 6.72z",
-                 Color.WHITE);
-        glyph.setSize(20, 20);
-        button.setGraphic(glyph);
-        //set button 2 graph
-
-        //set button 3 graph
+        nodesList.addAnimatedNode(playbutton);
+        nodesList.addAnimatedNode(collectionbutton);
 
         //set nodeilist height
         nodesList.translateYProperty().bind(Bindings.createDoubleBinding(() ->
@@ -139,6 +106,89 @@ public class MovieItem extends StackPane {
         this.setStyle("-fx-padding: 20px 0px 0px 20px;");
     }
 
+    private void initMainButton(){
+
+        button.setButtonType(JFXButton.ButtonType.RAISED);
+        button.setStyle("-fx-background-radius: 40;-fx-background-color: " + getDefaultColor((int) ((Math.random() * 12) % 12)));
+        button.setPrefSize(40, 40);
+        button.setRipplerFill(Color.valueOf(getDefaultColor(13)));
+        button.setScaleX(0);
+        button.setScaleY(0);
+        SVGGlyph add_graph = new SVGGlyph(-1,
+                "test",
+                "M512 832a32 32 0 0 0 32-32v-256h256a32 32 0 0 0 0-64h-256V224a32 32 0 0 0-64 0v256H224a32 32 0 0 0 0 64h256v256a32 32 0 0 0 32 32",
+                Color.WHITE);
+        add_graph.setSize(20, 20);
+        button.setGraphic(add_graph);
+
+
+
+    }
+
+    private void initPlayButton(String videoUrl){
+
+        playbutton.setButtonType(JFXButton.ButtonType.RAISED);
+        playbutton.setStyle("-fx-background-radius: 40;-fx-background-color: " + getDefaultColor((int) ((Math.random() * 12) % 12)));
+        playbutton.setPrefSize(40, 40);
+        playbutton.setRipplerFill(Color.valueOf(getDefaultColor(13)));
+        playbutton.setScaleX(0);
+        playbutton.setScaleY(0);
+        playbutton.setOnMouseClicked(event -> {
+            try {
+                MainApp.player.mediaPlayer.stop();
+                MainApp.player.getRootLayoutController().seePlaypage();
+                MainApp.player.mediaPlayer = new MediaPlayer(new Media(videoUrl));
+                MainApp.player.setPlay(new MediaView(MainApp.player.mediaPlayer));
+                MainApp.player.setPlaymovie();
+                MainApp.player.initPlayerBar();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
+        //set play button graph
+        SVGGlyph play_graph = new SVGGlyph(-1,
+                "test",
+                "M256 832c-11.712 0-23.36-3.2-33.664-9.536A64.170667 64.170667 0 0 1 192 768V256c0-22.208 11.52-42.816 30.336-54.464a64.298667 64.298667 0 0 1 62.272-2.816l512 256a64.064 64.064 0 0 1 0 114.56l-512 256c-8.96 4.48-18.88 6.72-28.608 6.72z",
+                Color.WHITE);
+        play_graph.setSize(20, 20);
+        playbutton.setGraphic(play_graph);
+
+    }
+
+    private void initCollectionButton(){
+
+        collectionbutton.setButtonType(JFXButton.ButtonType.RAISED);
+        collectionbutton.setStyle("-fx-background-radius: 40;-fx-background-color: " + getDefaultColor((int) ((Math.random() * 12) % 12)));
+        collectionbutton.setPrefSize(40, 40);
+        collectionbutton.setRipplerFill(Color.valueOf(getDefaultColor(13)));
+        collectionbutton.setScaleX(0);
+        collectionbutton.setScaleY(0);
+
+        //set collection button graph
+        SVGGlyph collection = new SVGGlyph(-1,
+                "test",
+                "M695.104 546.368c-20.16 19.808-31.328 54.4-26.56 82.368l26.976 158.56-140.992-74.688c-25.056-13.248-61.408-13.28-86.464 0l-140.992 74.656 27.008-158.56c4.736-27.904-6.464-62.528-26.56-82.336l-114.56-112.512 158.08-23.136c27.936-4.096 57.312-25.6 69.792-51.04l70.464-143.872 70.464 143.872c12.512 25.472 41.856 46.944 69.824 51.04l158.08 23.136-114.56 112.512z m182.528-89.536c14.976-14.72 20.384-32.96 14.816-50.016-5.536-17.024-20.64-28.512-41.344-31.552l-190.272-27.872c-6.944-1.024-18.432-9.472-21.6-15.872l-85.088-173.76c-9.248-18.88-24.896-29.76-42.88-29.76-17.92 0-33.568 10.88-42.848 29.76l-85.056 173.76c-3.136 6.4-14.656 14.848-21.632 15.872l-190.272 27.84c-20.704 3.072-35.744 14.56-41.28 31.584-5.6 17.024-0.192 35.264 14.784 50.016L282.624 592c5.12 5.024 9.6 18.848 8.352 25.92l-32.512 190.944c-3.52 20.8 2.784 38.816 17.344 49.344 7.52 5.44 16.256 8.16 25.472 8.16 8.576 0 17.632-2.368 26.56-7.104l170.176-90.144c6.08-3.2 20.48-3.2 26.56 0l170.144 90.144c18.496 9.824 37.504 9.408 52.032-1.056 14.56-10.56 20.896-28.512 17.376-49.312l-32.512-190.976c-1.216-7.072 3.232-20.896 8.32-25.92l137.696-135.2z",
+                Color.WHITE);
+        collection.setSize(20, 20);
+
+        SVGGlyph collection_fill = new SVGGlyph(-1,
+                "test",
+                "M877.632 456.8c14.976-14.72 20.384-32.96 14.816-49.984-5.536-17.024-20.608-28.544-41.344-31.584l-190.24-27.84c-6.976-1.024-18.464-9.472-21.6-15.904l-85.12-173.696c-9.28-18.944-24.896-29.76-42.88-29.76-17.952 0-33.6 10.816-42.816 29.76l-85.12 173.696c-3.104 6.432-14.592 14.848-21.6 15.904l-190.24 27.84c-20.704 3.04-35.776 14.56-41.344 31.584-5.568 17.024-0.16 35.232 14.816 49.984l137.696 135.232c5.088 4.992 9.536 18.816 8.32 25.92l-32.48 190.912c-3.552 20.832 2.752 38.816 17.344 49.344 7.52 5.44 16.224 8.16 25.472 8.16 8.576 0 17.6-2.336 26.56-7.04l170.176-90.176c6.048-3.2 20.448-3.2 26.528 0l170.144 90.112c18.528 9.856 37.504 9.44 52.064-1.056 14.56-10.528 20.864-28.48 17.344-49.28l-32.48-190.976c-1.28-7.104 3.2-20.928 8.32-25.92l137.664-135.232z",
+                Color.WHITE);
+        collection_fill.setSize(20, 20);
+
+        collectionbutton.setGraphic(collection);
+
+        collectionbutton.setOnMouseClicked(event -> {
+            if (ifCollect) {
+                collectionbutton.setGraphic(collection);
+            } else{
+                collectionbutton.setGraphic(collection_fill);
+            }
+            ifCollect = !ifCollect;
+        });
+    }
 
 
     private String getDefaultColor(int i) {
