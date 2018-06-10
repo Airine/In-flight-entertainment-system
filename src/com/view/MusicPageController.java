@@ -85,7 +85,7 @@ public class MusicPageController {
            System.out.println("This is already the last song.");
        }
        else{
-           currentPlayer.pause();
+           currentPlayer.stop();
            controlMusic(new MediaPlayer(new Media(musicList[++musicIndex].toURI().toString())));
            String fileName = musicList[musicIndex].getName();
            int index = fileName.lastIndexOf("-");
@@ -102,7 +102,7 @@ public class MusicPageController {
             System.out.println("This is already the first song.");
         }
         else{
-            currentPlayer.pause();
+            currentPlayer.stop();
             controlMusic(new MediaPlayer(new Media(musicList[--musicIndex].toURI().toString())));
             String fileName = musicList[musicIndex].getName();
             int index = fileName.lastIndexOf("-");

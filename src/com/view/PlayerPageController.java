@@ -40,7 +40,9 @@ public class PlayerPageController {
     public void setRootLayoutController(RootLayoutController rootLayoutController){
         this.rootLayoutController=rootLayoutController;
     }
-    
+    public RootLayoutController getRootLayoutController(){
+        return  rootLayoutController;
+    }
     public MediaPlayer mediaPlayer;
     
     @FXML
@@ -56,8 +58,7 @@ public class PlayerPageController {
             e.printStackTrace();
         }
     }
-
-
+    
 
     public void initPlayerBar(){
         try {

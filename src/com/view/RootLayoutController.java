@@ -4,6 +4,7 @@ import com.MainApp;
 import com.jfoenix.controls.*;
 import com.jfoenix.transitions.hamburger.HamburgerNextArrowBasicTransition;
 import com.view.settingpage.*;
+import com.view.viewModel.MovieItem;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -84,7 +85,8 @@ public class RootLayoutController {
     DrawerContentController drawerContentController;
     //搜索界面的controler
     MovieTableViewController movieTableViewController;
-
+    
+    
     public void loadLanguage(String language){
         settingPageController.loadLanguage(language);
         aboutUsController.loadLanguage(language);
@@ -420,7 +422,7 @@ public class RootLayoutController {
      * @return
      */
     @FXML
-    public  void seePlaypage() {
+    public void seePlaypage() {
         setHomePage(playerP);
         musicline.setVisible(false);
         playline.setVisible(true);
