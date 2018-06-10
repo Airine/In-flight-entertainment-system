@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTimePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="436.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.settingpage.TimingController">
    <children>
-      <JFXButton layoutX="173.0" layoutY="207.0" text="定时关闭" />
       <AnchorPane id="userPane" fx:id="timinguppane" layoutY="7.0" prefHeight="141.0" prefWidth="361.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label alignment="CENTER" layoutX="-1.0" layoutY="36.0" prefHeight="64.0" prefWidth="360.0" text="定时关闭" textAlignment="JUSTIFY" textFill="WHITE" AnchorPane.rightAnchor="0.0">
@@ -17,5 +18,12 @@
             </Label>
          </children>
       </AnchorPane>
+      <JFXTimePicker fx:id="chosetime" layoutX="112.0" layoutY="275.0" prefHeight="23.0" prefWidth="157.0" />
+      <Label alignment="CENTER" layoutX="102.0" layoutY="154.0" prefHeight="53.0" prefWidth="157.0" text="自动关闭时间">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+      <JFXButton layoutX="113.0" layoutY="351.0" onMouseClicked="#handleTimingClose" prefHeight="39.0" prefWidth="138.0" styleClass="surebutton" text="确认" />
+      <JFXDatePicker fx:id="choosedata" layoutX="112.0" layoutY="218.0" prefHeight="23.0" prefWidth="157.0" />
    </children>
 </AnchorPane>

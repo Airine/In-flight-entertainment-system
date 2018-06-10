@@ -9,6 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
@@ -66,5 +67,6 @@
       <JFXDrawer fx:id="drawer" defaultDrawerSize="280.0" layoutX="0.0" layoutY="44.0" prefHeight="436.0" prefWidth="280.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="360.0" AnchorPane.topAnchor="44.0" />
       <AnchorPane fx:id="SettingPane" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="280.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="44.0" />
       <AnchorPane fx:id="searchpane" prefHeight="324.0" prefWidth="577.0" visible="false" AnchorPane.leftAnchor="31.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="44.0" />
+      <StackPane fx:id="stackpane" layoutX="200.0" layoutY="176.0" prefHeight="133.0" prefWidth="258.0" visible="false" />
    </children>
 </AnchorPane>
