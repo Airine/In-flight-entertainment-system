@@ -2,22 +2,16 @@ package com.view.viewModel;
 
 import com.MainApp;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXNodesList;
 import com.jfoenix.effects.JFXDepthManager;
 import com.jfoenix.svg.SVGGlyph;
-import com.view.RootLayoutController;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.beans.binding.Bindings;
-import javafx.event.Event;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -26,9 +20,6 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
-import sun.applet.Main;
-
-import java.util.Random;
 
 import static javafx.animation.Interpolator.EASE_BOTH;
 
@@ -81,9 +72,11 @@ public class MovieItem extends StackPane {
             try {
                 MainApp.player.mediaPlayer.stop();
                 MainApp.player.getRootLayoutController().seePlaypage();
+                MainApp.player.getSpinner().setVisible(true);
                 MainApp.player.mediaPlayer = new MediaPlayer(new Media(videoUrl));
-                MainApp.player.setPlay(new MediaView(MainApp.player.mediaPlayer));
-                MainApp.player.setPlaymovie();
+                MainApp.player.mediaPlayer.setAutoPlay(true);
+                MainApp.player.setMoviePane(new MediaView(MainApp.player.mediaPlayer));
+                MainApp.player.setPlayMovie();
                 MainApp.player.initPlayerBar();
             } catch (Exception e) {
                 e.printStackTrace();

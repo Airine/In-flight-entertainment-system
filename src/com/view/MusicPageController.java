@@ -15,6 +15,10 @@ import java.io.File;
 
 import static com.view.PlayerBarController.formatTime;
 
+/**
+ * @author Huang Kemiao
+ * @
+ */
 public class MusicPageController {
     @FXML
     private AnchorPane musicPane;
@@ -64,6 +68,7 @@ public class MusicPageController {
         else
             setMusicTitle(fileName.substring(index+2,fileName.length()-4));
     }
+    
     @FXML
     private void handleMusic(){
         MediaPlayer.Status status = currentPlayer.getStatus();
