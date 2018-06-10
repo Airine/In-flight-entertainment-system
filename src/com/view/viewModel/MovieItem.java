@@ -1,5 +1,6 @@
 package com.view.viewModel;
 
+import com.MainApp;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXNodesList;
@@ -19,8 +20,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
+import sun.applet.Main;
 
 import java.util.Random;
 
@@ -28,7 +33,7 @@ import static javafx.animation.Interpolator.EASE_BOTH;
 
 public class MovieItem extends StackPane {
 
-    public MovieItem(String postUrl, String title){
+    public MovieItem(String postUrl, String title, String videoUrl){
         this.setPrefWidth(200);
         this.setPrefHeight(350);
         JFXDepthManager.setDepth(this, 1);
@@ -71,6 +76,16 @@ public class MovieItem extends StackPane {
         addCollection.setRipplerFill(Color.valueOf(headerColor));
         addCollection.setScaleX(0);
         addCollection.setScaleY(0);
+        addCollection.setOnMouseClicked(event -> {
+            try {
+                MainApp.player.mediaPlayer = new MediaPlayer(new Media(videoUrl));
+                MainApp.player.setPlay(new MediaView(MainApp.player.mediaPlayer));
+                MainApp.player.setPlaymovie();
+                MainApp.player.initPlayerBar();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
         //create button 3
         JFXButton play=new JFXButton("2");
         play.setButtonType(JFXButton.ButtonType.RAISED);

@@ -41,8 +41,8 @@ public class Movie {
     }
 
     public void initMI(){
-        mi_cn = new MovieItem(post_href, title_cn);
-        mi_en = new MovieItem(post_href, title_en);
+        mi_cn = new MovieItem(post_href, title_cn, href);
+        mi_en = new MovieItem(post_href, title_en, href);
     }
 
     public int getType() {

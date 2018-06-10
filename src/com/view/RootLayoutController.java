@@ -262,6 +262,7 @@ public class RootLayoutController {
                     .getResource("view/PlayerPage.fxml"));
             playerP = loader.load();
             playerPageController = loader.getController();
+            MainApp.player = playerPageController;
             playerPageController.setRootLayoutController(this);
         } catch (IOException e) {
             e.printStackTrace();

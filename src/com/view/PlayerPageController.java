@@ -32,7 +32,7 @@ public class PlayerPageController {
         play.setStyle("-fx-background-color: black;");
     }
 
-    private void setPlaymovie(){
+    public void setPlaymovie(){
         playmovie.getChildren().add(play);
     }
 
@@ -41,7 +41,7 @@ public class PlayerPageController {
         this.rootLayoutController=rootLayoutController;
     }
     
-    MediaPlayer mediaPlayer;
+    public MediaPlayer mediaPlayer;
     
     @FXML
     private void initialize(){
@@ -57,7 +57,9 @@ public class PlayerPageController {
         }
     }
 
-    private void initPlayerBar(){
+
+
+    public void initPlayerBar(){
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/PlayerBar.fxml"));
