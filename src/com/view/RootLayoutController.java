@@ -4,7 +4,12 @@ import com.MainApp;
 import com.jfoenix.controls.*;
 import com.jfoenix.transitions.hamburger.HamburgerNextArrowBasicTransition;
 import com.view.settingpage.*;
+
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+
 import com.view.viewModel.MovieItem;
+
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -114,6 +119,14 @@ public class RootLayoutController {
     public void setVBox(VBox box) {
         this.box = box;
     }
+    public JFXTextField getSearchFeild(){
+        return searchfeild;
+    }
+
+    public MovieTableViewController getMovieTableViewController() {
+        return movieTableViewController;
+    }
+
     public VBox getVBox(){return box;}
     public JFXDrawer getDrawer(){return drawer;}
     public DrawerContentController getDrawerContentController(){return drawerContentController;}
@@ -152,12 +165,15 @@ public class RootLayoutController {
     }//返回主界面
     public AnchorPane getSettingPane() {
         return SettingPane;
-    }//返回设置界面
+    }
+
     public AnchorPane getMainBar(){return  mainBar;}
     public void searchPaneVisible(boolean a){
         searchpane.setVisible(a);
     }
-    /* *  初始化界面
+
+
+    /* *  initi all
       * @author PennaLia
       * @date 2018/6/5 14:20
       * @param
@@ -190,7 +206,7 @@ public class RootLayoutController {
     }
 
 
-    /* *  初始化抽屉栏.
+    /* *  init draer.
      * @author PennaLia
      * @date 2018/5/29 1:08
      * @param
@@ -211,7 +227,7 @@ public class RootLayoutController {
         }
     }
 
-    /* *  初始化主页面，就是默认主页面时文件页面
+    /* *  init homepage.
      * @author PennaLia
      * @date 2018/5/29 1:18
      * @param
@@ -231,7 +247,7 @@ public class RootLayoutController {
             e.printStackTrace();
         }
     }
-    /* *  初始化音乐界面
+    /* * initi music page .
      * @author PennaLia
      * @date 2018/6/5 14:22
      * @param
@@ -250,7 +266,7 @@ public class RootLayoutController {
         }
     }
 
-    /* *  初始化播放界面
+    /* *  init player page .
      * @author PennaLia
      * @date 2018/6/5 14:22
      * @param
@@ -269,7 +285,7 @@ public class RootLayoutController {
             e.printStackTrace();
         }
     }
-    /* *  初始化设置界面
+    /* *  init setting page.
      * @author PennaLia
      * @date 2018/6/5 14:22
      * @param
@@ -287,6 +303,12 @@ public class RootLayoutController {
             e.printStackTrace();
         }
     }
+    /* *  init aboutus page.
+     * @author PennaLia
+     * @date 2018/6/10 17:59
+     * @param
+     * @return
+     */
     public void initAboutUs(){
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -300,6 +322,12 @@ public class RootLayoutController {
             e.printStackTrace();
         }
     }
+    /* *  init theme page.
+     * @author PennaLia
+     * @date 2018/6/10 17:59
+     * @param
+     * @return
+     */
     public void initTheme(){
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -316,6 +344,12 @@ public class RootLayoutController {
             e.printStackTrace();
         }
     }
+    /* *  init money page.
+     * @author PennaLia
+     * @date 2018/6/10 17:59
+     * @param
+     * @return
+     */
     public void initMoney(){
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -328,6 +362,13 @@ public class RootLayoutController {
             e.printStackTrace();
         }
     }
+
+    /* *  init timing close page.
+     * @author PennaLia
+     * @date 2018/6/10 17:58
+     * @param
+     * @return
+     */
     public void initTiming(){
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -340,6 +381,12 @@ public class RootLayoutController {
             e.printStackTrace();
         }
     }
+    /* *  initial collection page.
+     * @author PennaLia
+     * @date 2018/6/10 17:58
+     * @param
+     * @return
+     */
     public void initCollection(){
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -352,6 +399,12 @@ public class RootLayoutController {
             e.printStackTrace();
         }
     }
+    /* *  initial edit page.
+     * @author PennaLia
+     * @date 2018/6/10 17:57
+     * @param
+     * @return
+     */
     public void initEdit(){
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -381,7 +434,7 @@ public class RootLayoutController {
             e.printStackTrace();
         }
     }
-    /* *  抽屉开关的响应事件
+    /* *  this is use to open drawer.
      * @author PennaLia
      * @date 2018/6/5 14:24
      * @param
@@ -402,7 +455,7 @@ public class RootLayoutController {
         }
     }
 
-    /* * 切换到主界面的时候下划线可见
+    /* * see the line in homepage..
      * @author PennaLia
      * @date 2018/6/5 14:25
      * @param
@@ -415,7 +468,7 @@ public class RootLayoutController {
         playline.setVisible(false);
         homeline.setVisible(true);
     }
-    /* *  播放界面下划线可见
+    /* *  see the line in playpage..
      * @author PennaLia
      * @date 2018/6/5 14:25
      * @param
@@ -429,7 +482,7 @@ public class RootLayoutController {
         homeline.setVisible(false);
 
     }
-    /* *  音乐界面下划线可见
+    /* *  see the line in musicpage.
      * @author PennaLia
      * @date 2018/6/5 14:25
      * @param
@@ -442,7 +495,7 @@ public class RootLayoutController {
         playline.setVisible(false);
         homeline.setVisible(false);
     }
-    /* * 关闭应用
+    /* * close the windows
      * @author PennaLia
      * @date 2018/6/5 14:26
      * @param
@@ -460,6 +513,12 @@ public class RootLayoutController {
             searchPaneVisible(true);
         }
     }
+    /* *  this is used for hanlde search
+     * @author PennaLia
+     * @date 2018/6/10 17:54
+     * @param
+     * @return
+     */
     @FXML
     private void handleSearchClick(){
             searchPaneVisible(true);
@@ -474,13 +533,25 @@ public class RootLayoutController {
      */
     private String DarkCSS = this.getClass().getResource("DarkTheme.css").toExternalForm(),
             DefaultCSS = this.getClass().getResource("DefaultTheme.css").toExternalForm();
-    
+
+    /* * this set the theme to night
+     * @author PennaLia
+     * @date 2018/6/10 17:48
+     * @param
+     * @return
+     */
     public void ToNight(){
         ObservableList<String> styleSheets = mainPane.getStylesheets();
         styleSheets.remove(DefaultCSS);
         if(!styleSheets.contains(DarkCSS))
             styleSheets.add(DarkCSS);
     }
+    /* *  this set theme to default.
+     * @author PennaLia
+     * @date 2018/6/10 17:48
+     * @param
+     * @return
+     */
     public void ToDefault(){
         ObservableList<String> styleSheets = mainPane.getStylesheets();
         styleSheets.remove(DarkCSS);
@@ -488,6 +559,12 @@ public class RootLayoutController {
             styleSheets.add(DefaultCSS);
     }
 
+    /* *  this change the left bar value
+     * @author PennaLia
+     * @date 2018/6/10 17:49
+     * @param
+     * @return
+     */
     public void changeLeftColor(String color){
         drawerContentController.getUserBackPane().setStyle("-fx-background-color:"+"#"+color);
         aboutUsController.getAboutusuppane().setStyle("-fx-background-color:"+"#"+color);
@@ -498,27 +575,31 @@ public class RootLayoutController {
         timingController.getTiminguppane().setStyle("-fx-background-color:"+"#"+color);
         musicPageController.getMusicPane().setStyle("-fx-background-color:"+"#"+color);
     }
+    /* *  this is use for close app automatically
+     * @author PennaLia
+     * @date 2018/6/10 17:49
+     * @param
+     * @return
+     */
     public void timerOutClose(){
         stackpane.setVisible(true);
         JFXDialogLayout content = new JFXDialogLayout();
-        content.setHeading(new Text("要关闭了"));
-        content.setBody(new Text("十秒后会自动关闭"));
+        content.setHeading(new Text("It will close soon"));
+        content.setBody(new Text("It will close in 10s"));
         JFXDialog dialog = new JFXDialog(stackpane, content, JFXDialog.DialogTransition.CENTER);
-        JFXButton button = new JFXButton("不关");
+        JFXButton button = new JFXButton("No, i don't want to close it");
         button.setOnAction(event -> {
             stackpane.setVisible(false);
             timingController.timer.stop();
             timingController.waitForClose=false;
             dialog.close();
         });
-//        JFXButton button1 = new JFXButton("不关");
-//        button.setOnAction(event -> {
-//            stackpane.setVisible(false);
-//            dialog.close();
-//        });
         content.setActions(button);
-//        content.setActions(button1);
         dialog.show();
     }
+
+
+
+
 
 }
