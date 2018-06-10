@@ -8,14 +8,15 @@
 
 <AnchorPane prefHeight="436.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.settingpage.EditController">
    <children>
-      <Label layoutX="31.0" layoutY="186.0" prefHeight="33.0" prefWidth="99.0" text="姓名" />
+      <Label fx:id="name" layoutX="31.0" layoutY="186.0" prefHeight="33.0" prefWidth="99.0" text="姓名" />
       <JFXTextField fx:id="textname" layoutX="143.0" layoutY="179.0" prefHeight="39.0" prefWidth="183.0" />
-      <Label layoutX="31.0" layoutY="251.0" prefHeight="33.0" prefWidth="99.0" text="个性签名" textAlignment="RIGHT" />
+      <Label fx:id="ps" layoutX="31.0" layoutY="251.0" prefHeight="33.0" prefWidth="99.0" text="个性签名" textAlignment="RIGHT" />
       <JFXTextField fx:id="textsign" layoutX="143.0" layoutY="243.0" prefHeight="39.0" prefWidth="183.0" />
-      <JFXButton layoutX="97.0" layoutY="372.0" onMouseClicked="#handleEdit" prefHeight="39.0" prefWidth="167.0" styleClass="surebutton" text="确认修改" />
+      <JFXButton fx:id="confirmButton" layoutX="97.0" layoutY="347.0" onMouseClicked="#handleEdit" prefHeight="39.0" prefWidth="167.0" styleClass="surebutton" text="确认修改" />
+
       <AnchorPane id="userPane" fx:id="edituppane" layoutX="6.0" prefHeight="141.0" prefWidth="361.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Label alignment="CENTER" layoutX="-1.0" layoutY="36.0" prefHeight="64.0" prefWidth="360.0" text="修改信息" textAlignment="JUSTIFY" textFill="WHITE" AnchorPane.rightAnchor="0.0">
+            <Label fx:id="modify" alignment="CENTER" layoutX="-1.0" layoutY="36.0" prefHeight="64.0" prefWidth="360.0" text="修改信息" textAlignment="JUSTIFY" textFill="WHITE" AnchorPane.rightAnchor="0.0">
                <font>
                   <Font size="34.0" />
                </font>
