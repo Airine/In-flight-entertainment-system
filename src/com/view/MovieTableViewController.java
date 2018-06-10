@@ -14,9 +14,11 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 
 import java.util.function.Predicate;
@@ -34,6 +36,7 @@ public class MovieTableViewController {
     }
     @FXML
     private  void initialize(){
+        //第一列
         JFXTreeTableColumn<User,String> name =new JFXTreeTableColumn<>("Name");
         name.setPrefWidth(150);
         name.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<User, String>, ObservableValue<String>>() {
@@ -42,6 +45,7 @@ public class MovieTableViewController {
                 return  param.getValue().getValue().name;
             }
         });
+        //第二列
         JFXTreeTableColumn<User,Number> age =new JFXTreeTableColumn<>("Age");
         age.setPrefWidth(150);
         age.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<User, Number>, ObservableValue<Number>>() {
@@ -50,15 +54,26 @@ public class MovieTableViewController {
                 return  param.getValue().getValue().age;
             }
         });
-
+        //被搜索的对象
         ObservableList<User>users =FXCollections.observableArrayList();
         users.add(new User("penna",18));
         users.add(new User("Araon",19));
         TreeItem<User> root =new RecursiveTreeItem<User>(users,RecursiveTreeObject::getChildren);
-        
         treetable.getColumns().setAll(name,age);
         treetable.setRoot(root);
         treetable.setShowRoot(false);
+
+        //鼠标双击事件
+        treetable.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if(event.getClickCount()==2){
+                    TreeItem<User> item=treetable.getSelectionModel().getSelectedItem();
+                    System.out.println(item.getValue().name+" "+item.getValue().age);
+                }
+            }
+        });
+
     }
 
     @FXML
@@ -85,6 +100,11 @@ public class MovieTableViewController {
                 treetable.setPredicate(new Predicate<TreeItem<User>>() {
                     @Override
                     public boolean test(TreeItem<User> userTreeItem) {
+                        if(newValue.length()>0)//这个别删，是检测文本大于0自动打开搜索框，不点回车了
+                            rootLayoutController.searchPaneVisible(true);
+                        else
+                            rootLayoutController.searchPaneVisible(false);
+                        //这个是监听如果值里面有这个，就搜索返回
                         Boolean flag=userTreeItem.getValue().name.getValue().contains(newValue)
                         || userTreeItem.getValue().age.getValue().toString().contains(newValue);
                         return flag;

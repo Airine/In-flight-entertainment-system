@@ -57,7 +57,7 @@ public class MainApp extends Application {
         this.primaryStage.setHeight(480);
         this.primaryStage.initStyle(StageStyle.TRANSPARENT);//隐藏窗口
         this.primaryStage.setResizable(false);//不能改变窗口大小
-        this.primaryStage.getIcons().add(new Image("resources/shulilogo.png"));
+        this.primaryStage.getIcons().add(new Image("resources/wangyi.png"));
         initRootLayout();
     }
     private void initRootLayout(){

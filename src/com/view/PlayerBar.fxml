@@ -7,23 +7,28 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="48.0" prefWidth="640.0" style="-fx-background-color: F5F5F7;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.PlayerBarController">
+<AnchorPane prefHeight="48.0" prefWidth="640.0" style="-fx-background-color: F5F5F7;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.PlayerBarController">
    <children>
-      <JFXSlider fx:id="TimeBar" accessibleRole="BUTTON" cache="true" layoutX="68.0" layoutY="17.0" opacity="0.8" prefHeight="14.0" prefWidth="329.0" value="1.0">
+      <JFXSlider fx:id="TimeBar" accessibleRole="BUTTON" cache="true" layoutX="68.0" layoutY="17.0" opacity="0.8" prefHeight="14.0" prefWidth="309.0" value="1.0">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </JFXSlider>
-      <Label fx:id="playTime" layoutX="415.0" layoutY="17.0" prefHeight="15.0" prefWidth="107.0" text="当前时间/总时间" textAlignment="CENTER" />
-      <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="527.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="14.0" AnchorPane.topAnchor="14.0">
+      <Label fx:id="playTime" layoutX="391.0" layoutY="17.0" prefHeight="15.0" prefWidth="107.0" text="当前时间/总时间" textAlignment="CENTER" />
+      <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="514.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="14.0" AnchorPane.topAnchor="14.0">
          <image>
             <Image url="@../../resources/icon/sound1.png" />
          </image>
       </ImageView>
-      <JFXSlider fx:id="volume" layoutX="550.0" layoutY="17.0" prefHeight="14.0" prefWidth="76.0" AnchorPane.bottomAnchor="17.0" AnchorPane.topAnchor="17.0" />
+      <JFXSlider fx:id="volume" layoutX="540.0" layoutY="17.0" prefHeight="14.0" prefWidth="76.0" AnchorPane.bottomAnchor="17.0" AnchorPane.topAnchor="17.0" />
       <ImageView fx:id="PlayOrStop" fitHeight="28.0" fitWidth="28.0" layoutX="24.0" layoutY="10.0" onMouseClicked="#handlePlayOrStop" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="607.0" AnchorPane.topAnchor="10.0">
          <image>
             <Image url="@../../resources/icon/vediostop.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="629.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../resources/icon/addfile.png" />
          </image>
       </ImageView>
    </children>

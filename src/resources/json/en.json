@@ -37,7 +37,7 @@
         "name": "Username",
         "ps": "Signatures",
         "confirm": "Commit",
-        "modify": "Edit"
+        "modify1": "Edit"
     },
 
     "drawer": {
