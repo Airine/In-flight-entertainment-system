@@ -28,7 +28,7 @@ import static javafx.animation.Interpolator.EASE_BOTH;
 
 public class MovieItem extends StackPane {
 
-    public MovieItem(String postUrl, String title, String videoUrl){
+    public MovieItem(String postUrl, String title){
         this.setPrefWidth(200);
         this.setPrefHeight(350);
         JFXDepthManager.setDepth(this, 1);
