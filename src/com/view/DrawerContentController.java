@@ -136,9 +136,12 @@ public class DrawerContentController {
     }
     @FXML
     private void handleCollection(){
-        rootLayoutController.setSettingVisible();//设置界面可见
-        rootLayoutController.homePageNotSee();//主界面不可见
-        rootLayoutController.setSettingPane(rootLayoutController.collection);
+        rootLayoutController.getDrawer().close();
+        rootLayoutController.getDrawer().setVisible(false);
+        rootLayoutController.homePageSee();
+        rootLayoutController.getSettingPane().setVisible(false);
+        rootLayoutController.HomePageController.changeFlowContent(rootLayoutController.collection);
+        rootLayoutController.HomePageController.back.setVisible(true);
     }
     @FXML
     private void handleEdit(){
