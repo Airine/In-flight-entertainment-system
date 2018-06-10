@@ -1,8 +1,8 @@
 {
     "loginDialog": {
-        "user": "Username:",
+        "username": "Username:",
         "password": "Password:",
         "login": "Login",
-        "signUp": "Sign up"
+        "sign": "Sign up"
     }
 }

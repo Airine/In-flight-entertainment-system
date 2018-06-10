@@ -15,4 +15,8 @@ public class SettingPageController {
     public AnchorPane getSettinguppane(){
         return  settinguppane;
     }
+
+    public void loadLanguage(String language) {
+
+    }
 }

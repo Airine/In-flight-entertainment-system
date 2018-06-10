@@ -16,4 +16,7 @@ public class CollectionController {
     public void setRootLayoutController(RootLayoutController rootLayoutController){
         this.rootLayoutController=rootLayoutController;
     }
+
+    public void loadLanguage(String language) {
+    }
 }
