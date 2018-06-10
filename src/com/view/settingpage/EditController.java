@@ -1,6 +1,8 @@
 package com.view.settingpage;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.JFXTextField;
 import com.util.JsonLoader;
 import com.view.RootLayoutController;
@@ -8,6 +10,8 @@ import javafx.fxml.FXML;
 
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -36,6 +40,9 @@ public class EditController {
     private AnchorPane edituppane;
     @FXML
     private JFXTextField textsign;
+    @FXML
+    private StackPane stackpane;
+
     String imageURL;
 
     public JFXTextField getTextname(){return  textname;}
@@ -63,16 +70,18 @@ public class EditController {
         if(seletedFile!=null){
             imageURL=seletedFile.toURI().toURL().toExternalForm();//加载出文件的路径
         }else {
-            ButtonType close = new ButtonType("OK", ButtonBar.ButtonData.CANCEL_CLOSE);
-            Alert alert = new Alert(Alert.AlertType.INFORMATION,"You didn't choose any file",close);
-            alert.setTitle("Information");
-            alert.setHeaderText(null);
-            alert.setX(580);
-            alert.setY(280);
-            DialogPane pane = alert.getDialogPane();
-            pane.setGraphic(null);
-            pane.setPrefSize(200,80);
-            alert.showAndWait();
+            stackpane.setVisible(true);
+            JFXDialogLayout content = new JFXDialogLayout();
+            content.setHeading(new Text("Wrong"));
+            content.setBody(new Text("You did not choose any file"));
+            JFXDialog dialog = new JFXDialog(stackpane, content, JFXDialog.DialogTransition.CENTER);
+            JFXButton button = new JFXButton("I know");
+            button.setOnAction(event -> {
+                stackpane.setVisible(false);
+                dialog.close();
+            });
+            content.setActions(button);
+            dialog.show();
             imageURL = null;
         }
     }

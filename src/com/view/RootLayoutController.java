@@ -506,6 +506,7 @@ public class RootLayoutController {
         mainApp.closeWindows();
     }
 
+
     @FXML
     private void handleSearch(KeyEvent event){
         KeyCode kc= event.getCode();
