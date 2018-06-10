@@ -30,17 +30,15 @@ public class DataUpdater {
 
     public static void updateMovie(Movie movie){
         Connection connection = connectToDB();
-        String sql = "insert into movie " +
-                "(title_cn, title_en, " +
-                "year, language, type, href, post_href) " +
-                "values("+
-                movie.getTitle_cn() +"," +
-                movie.getTitle_en() +"," +
-                movie.getYear()     +"," +
-                movie.getLanguage() +"," +
-                movie.getType()     +"," +
-                movie.getHref()     +"," +
-                movie.getPost_href()+"," +
+        String sql = "INSERT INTO `movie`(`title_cn`,`title_en`,`year`,`language`,`type`,`href`,`post_href`)" +
+                "values('"+
+                movie.getTitle_cn() +"', '" +
+                movie.getTitle_en() +"', '" +
+                movie.getYear()     +"', '" +
+                movie.getLanguage() +"', " +
+                movie.getType()     +", '" +
+                movie.getHref()     +"', '" +
+                movie.getPost_href()+"'" +
                 ");" +
                 "commit;";
         runSQLstatement(connection, sql);

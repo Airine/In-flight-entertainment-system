@@ -28,7 +28,7 @@ import static javafx.animation.Interpolator.EASE_BOTH;
 
 public class MovieItem extends StackPane {
 
-    public MovieItem(String url, String title){
+    public MovieItem(String postUrl, String title, String videoUrl){
         this.setPrefWidth(200);
         this.setPrefHeight(350);
         JFXDepthManager.setDepth(this, 1);
@@ -39,7 +39,7 @@ public class MovieItem extends StackPane {
         header.setPrefHeight(290);
         header.setStyle("-fx-background-radius: 5 5 0 0; " +
 //                "-fx-background-color: " + headerColor +
-                "-fx-background-image: url(\"" + url + "\");" +
+                "-fx-background-image: url(\"" + postUrl + "\");" +
                 "-fx-background-position: center;" +
                 "-fx-background-repeat: no-repeat;" +
                 "-fx-background-size: 100% 100%;" +

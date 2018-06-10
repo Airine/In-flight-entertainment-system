@@ -27,6 +27,7 @@ public class MainApp extends Application {
     public static User mainUser;
     public static List<Movie> mainMovies;
     public static List<MovieType> mainMovieTypes;
+    public static List<Movie> starMovies;
 
     LoginController controller;
     RootLayoutController rootLayoutController;

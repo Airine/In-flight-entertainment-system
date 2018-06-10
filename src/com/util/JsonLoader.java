@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 import static com.util.DataUpdater.updateMovie;
+import static com.util.DataUpdater.updateMovies;
 import static com.util.SQLiteJDBC.connectToDB;
 import static com.util.SQLiteJDBC.runSQLstatement;
 
@@ -22,49 +23,39 @@ public class JsonLoader {
     private static Map<String,Integer> type = new HashMap<String, Integer>();
 
     public static void main(String args[]){
-//        type.put("动作", 1);
-//        type.put("喜剧", 2);
-//        type.put("悬疑", 3);
-//        type.put("剧情", 4);
-//        type.put("科幻", 5);
-//        type.put("恐怖", 6);
-//        type.put("战争", 7);
-//        type.put("犯罪", 8);
-//        type.put("情色", 9);
-//        type.put("家庭",10);
-//        type.put("爱情",11);
-//        type.put("传记",12);
-//        List<Movie> newmovies = new ArrayList<>();
-////        for (int i = 1; i < 40; i++) {
-//            JSONObject tempt = getJsonValue("movieMessage/movieMessage", (new Integer(1)).toString());
-////            System.out.println(tempt);
-//            try {
-//                assert tempt != null;
-//                newmovies.add(new Movie(
-//                        1,
-//                        tempt.getString("title_cn"),
-//                        tempt.getString("title_en"),
-//                        tempt.getString("release_time"),
-//                        tempt.getString("language"),
-//                        type.get(tempt.getString("genres")),
-//                        tempt.getString("href"),
-//                        tempt.getString("post_url")
-//                ));
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-////        }
-//        updateMovie(newmovies.get(0));
-        Connection connection = connectToDB();
-        String sql = "INSERT INTO `movie`(`movie_id`,`title_cn`,`title_en`,`year`,`language`,`type`,`href`,`post_href`) VALUES (5, 'testing','testing','testing','testing',1,'testing','testing');" +
-                "commit;";
-        runSQLstatement(connection, sql);
-        try {
-            assert connection != null;
-            connection.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        type.put("动作", 1);
+        type.put("喜剧", 2);
+        type.put("悬疑", 3);
+        type.put("剧情", 4);
+        type.put("科幻", 5);
+        type.put("恐怖", 6);
+        type.put("战争", 7);
+        type.put("犯罪", 8);
+        type.put("情色", 9);
+        type.put("家庭",10);
+        type.put("爱情",11);
+        type.put("传记",12);
+        ArrayList<Movie> newmovies = new ArrayList<>();
+        for (int i = 2; i < 40; i++) {
+            JSONObject tempt = getJsonValue("movieMessage/movieMessage", (new Integer(i)).toString());
+            System.out.println(tempt);
+            try {
+                assert tempt != null;
+                newmovies.add(new Movie(
+                        i,
+                        tempt.getString("title_cn"),
+                        tempt.getString("title_en"),
+                        tempt.getString("release_time"),
+                        tempt.getString("language"),
+                        type.get(tempt.getString("genres")),
+                        tempt.getString("href"),
+                        tempt.getString("post_url")
+                ));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
+        updateMovies(newmovies);
     }
 
     private static JSONTokener loadData(String fileName){

@@ -37,9 +37,12 @@ public class Movie {
         setType(type);
         setHref(href);
         setPost_href(post_href);
-        String url = post_href;
-//        mi_cn = new MovieItem(url, title_cn);
-//        mi_en = new MovieItem(url, title_en);
+
+    }
+
+    public void initMI(){
+        mi_cn = new MovieItem(post_href, title_cn);
+        mi_en = new MovieItem(post_href, title_en);
     }
 
     public int getType() {
