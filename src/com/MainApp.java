@@ -5,6 +5,7 @@ import com.model.MovieType;
 import com.model.User;
 import com.util.JsonLoader;
 import com.view.LoginController;
+import com.view.PlayerPageController;
 import com.view.RootLayoutController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -28,6 +29,7 @@ public class MainApp extends Application {
     public static List<Movie> mainMovies;
     public static List<MovieType> mainMovieTypes;
     public static List<Movie> starMovies;
+    public static PlayerPageController player;
 
     LoginController controller;
     RootLayoutController rootLayoutController;

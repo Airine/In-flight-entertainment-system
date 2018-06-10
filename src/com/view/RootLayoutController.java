@@ -4,8 +4,12 @@ import com.MainApp;
 import com.jfoenix.controls.*;
 import com.jfoenix.transitions.hamburger.HamburgerNextArrowBasicTransition;
 import com.view.settingpage.*;
+
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+
+import com.view.viewModel.MovieItem;
+
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -33,7 +37,6 @@ public class RootLayoutController {
     private JFXTextField searchfeild;
     @FXML
     private StackPane stackpane;//关闭的对话窗口
-
 
     //这是三根下划线
     @FXML
@@ -87,7 +90,8 @@ public class RootLayoutController {
     DrawerContentController drawerContentController;
     //搜索界面的controler
     MovieTableViewController movieTableViewController;
-
+    
+    
     public void loadLanguage(String language){
         settingPageController.loadLanguage(language);
         aboutUsController.loadLanguage(language);
@@ -275,6 +279,7 @@ public class RootLayoutController {
                     .getResource("view/PlayerPage.fxml"));
             playerP = loader.load();
             playerPageController = loader.getController();
+            MainApp.player = playerPageController;
             playerPageController.setRootLayoutController(this);
         } catch (IOException e) {
             e.printStackTrace();
@@ -470,7 +475,7 @@ public class RootLayoutController {
      * @return
      */
     @FXML
-    public  void seePlaypage() {
+    public void seePlaypage() {
         setHomePage(playerP);
         musicline.setVisible(false);
         playline.setVisible(true);
@@ -504,8 +509,7 @@ public class RootLayoutController {
     @FXML
     private void handleSearch(KeyEvent event){
         KeyCode kc= event.getCode();
-        if (kc.equals(KeyCode.A)){
-            System.out.println("You pressed A!");
+        if (kc==(KeyCode.ENTER)){
             searchPaneVisible(true);
         }
     }

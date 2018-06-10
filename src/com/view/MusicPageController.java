@@ -15,6 +15,10 @@ import java.io.File;
 
 import static com.view.PlayerBarController.formatTime;
 
+/**
+ * @author Huang Kemiao
+ * @
+ */
 public class MusicPageController {
     @FXML
     private AnchorPane musicPane;
@@ -64,6 +68,7 @@ public class MusicPageController {
         else
             setMusicTitle(fileName.substring(index+2,fileName.length()-4));
     }
+    
     @FXML
     private void handleMusic(){
         MediaPlayer.Status status = currentPlayer.getStatus();
@@ -85,7 +90,7 @@ public class MusicPageController {
            System.out.println("This is already the last song.");
        }
        else{
-           currentPlayer.pause();
+           currentPlayer.stop();
            controlMusic(new MediaPlayer(new Media(musicList[++musicIndex].toURI().toString())));
            String fileName = musicList[musicIndex].getName();
            int index = fileName.lastIndexOf("-");
@@ -93,6 +98,7 @@ public class MusicPageController {
                setMusicTitle(fileName.substring(0,fileName.length()-4));
            else
                setMusicTitle(fileName.substring(index+2,fileName.length()-4));
+           currentPlayer.play();
        }
     }
     @FXML
@@ -101,7 +107,7 @@ public class MusicPageController {
             System.out.println("This is already the first song.");
         }
         else{
-            currentPlayer.pause();
+            currentPlayer.stop();
             controlMusic(new MediaPlayer(new Media(musicList[--musicIndex].toURI().toString())));
             String fileName = musicList[musicIndex].getName();
             int index = fileName.lastIndexOf("-");
@@ -109,6 +115,7 @@ public class MusicPageController {
                 setMusicTitle(fileName.substring(0,fileName.length()-4));
             else
                 setMusicTitle(fileName.substring(index+2,fileName.length()-4));
+            currentPlayer.play();
         }
     }
     
