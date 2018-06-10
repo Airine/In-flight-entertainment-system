@@ -1,8 +1,53 @@
 {
     "loginDialog": {
-        "user": "用户名:",
+        "username": "用户名:",
         "password": "密码:",
         "login": "登录",
-        "signUp": "注册"
+        "sign": "注册"
+    },
+
+    "theme": {
+        "title": "主题",
+        "upBar": "顶部导航栏颜色",
+        "leftBar": "侧边导航栏主颜色",
+        "leftBarUp": "侧边导航栏副颜色",
+        "button": "确认更改"
+    },
+
+    "money": {
+        "label1": "尊贵黄钻身份",
+        "label2": "自定义主题",
+        "label3": "更多小视频",
+        "label4": "一对一客服",
+        "label5": "付款方式",
+        "pay": "确认付款",
+        "month": "10$/每月"
+    },
+
+    "about": {
+        "title": "航天航空播放器",
+        "comment": "评价",
+        "commentTo": "给开发者好评",
+        "checkVersion": "检查新版本",
+        "version": "当前版本"
+    },
+
+    "edit": {
+        "name": "姓名",
+        "ps": "个性签名",
+        "confirm": "确认修改",
+        "modify": "修改信息"
+    },
+
+    "drawer": {
+        "vip": "升级会员",
+        "star": "我的收藏",
+        "timing": "定时关闭",
+        "theme": "个性主题",
+        "nightLabel": "夜间模式",
+        "about": "关于我们"
     }
+
+
+
 }

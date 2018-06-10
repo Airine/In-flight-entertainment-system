@@ -15,4 +15,8 @@ public class TimingController {
     public AnchorPane getTiminguppane() {
         return timinguppane;
     }
+
+    public void loadLanguage(String language) {
+
+    }
 }

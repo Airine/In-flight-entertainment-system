@@ -2,18 +2,20 @@ package com.view.settingpage;
 
 import com.view.RootLayoutController;
 import javafx.fxml.FXML;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
 
 
 public class CollectionController {
     @FXML
-    private AnchorPane collectionuppane;
+    private FlowPane mycollection;
 
-    public AnchorPane getCollectionuppane(){
-        return collectionuppane;
-    }
+    public FlowPane getMycollection(){return mycollection;}
     private RootLayoutController rootLayoutController;
     public void setRootLayoutController(RootLayoutController rootLayoutController){
         this.rootLayoutController=rootLayoutController;
     }
+
+    public void loadLanguage(String language) {
+    }
 }
+

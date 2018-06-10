@@ -3,6 +3,7 @@ package com;
 import com.model.Movie;
 import com.model.MovieType;
 import com.model.User;
+import com.util.JsonLoader;
 import com.view.LoginController;
 import com.view.RootLayoutController;
 import javafx.application.Application;
@@ -27,6 +28,8 @@ public class MainApp extends Application {
     public static List<Movie> mainMovies;
     public static List<MovieType> mainMovieTypes;
 
+    LoginController controller;
+    RootLayoutController rootLayoutController;
     private Stage primaryStage;
     private AnchorPane rootLayout;
     private Boolean login=false,openLogin=false ;//判断是否已经登陆过，如果已经打开登陆窗口，或者已经登陆，就不能再打开登陆窗口
@@ -64,8 +67,8 @@ public class MainApp extends Application {
             primaryStage.setScene(scene);
 
             //连接controller
-            RootLayoutController controller=loader.getController();
-            controller.setMainApp(this);
+            rootLayoutController=loader.getController();
+            rootLayoutController.setMainApp(this);
 
             primaryStage.show();
         }catch (IOException e){
@@ -90,7 +93,7 @@ public class MainApp extends Application {
                 dialogStage.initOwner(primaryStage);
                 Scene scene = new Scene(page);
                 dialogStage.setScene(scene);
-                LoginController controller = loader.getController();
+                controller = loader.getController();
                 controller.setMainApp(this);
                 controller.setDialogStage(dialogStage);
                 controller.setCloseAction();
@@ -114,4 +117,12 @@ public class MainApp extends Application {
         mainMovieTypes = loadMovieTypes("en");
         launch(args);
     }
+
+
+    public void changeLanguage(String language){
+        controller.loadLanguage(language);
+        rootLayoutController.loadLanguage(language);
+    }
+
+
 }
