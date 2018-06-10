@@ -24,7 +24,6 @@
                </font></JFXToggleButton>
          </children>
       </AnchorPane>
-      <JFXSlider fx:id="musicSlider" layoutX="155.0" layoutY="380.0" prefHeight="14.0" prefWidth="330.0" value="1.0" />
       <JFXButton fx:id="MusicPlayButton" layoutX="295.0" layoutY="300.0" onAction="#handleMusic" prefHeight="50.0" prefWidth="50.0" styleClass="musicbutton" text="&gt;" textFill="WHITE">
          <font>
             <Font name="System Bold" size="25.0" />
@@ -50,5 +49,6 @@
          </image>
       </ImageView>
       <JFXSlider fx:id="MusicVolume" layoutX="520.0" layoutY="380.0" prefHeight="14.0" prefWidth="80.0" />
+      <JFXSlider fx:id="musicSlider" layoutX="155.0" layoutY="380.0" prefHeight="14.0" prefWidth="330.0" value="1.0" />
    </children>
 </AnchorPane>
