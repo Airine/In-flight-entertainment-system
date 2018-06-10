@@ -85,7 +85,7 @@ public class DrawerContentController {
 
     @FXML
     public void initialize(){
-        String url = "resources/shiyuan.png";
+        String url = "resources/user_icon/shiyuan.png";
         user_icon.setStyle("-fx-background-image: url(\"" + url + "\");" +
                 "-fx-background-position: center;" +
                 "-fx-background-repeat: no-repeat;" +
@@ -103,9 +103,7 @@ public class DrawerContentController {
                 "-fx-background-repeat: no-repeat;" +
                 "-fx-background-size: 100% 100%;");
     }
-    public String getStyle(){
-        return user_icon.getStyle();
-    }
+
     @FXML
     public void beHuiyuan(){
         huiyuan.setImage(new Image("resources/icon/truehuiyuan.png"));

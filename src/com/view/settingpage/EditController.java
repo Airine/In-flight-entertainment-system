@@ -62,7 +62,6 @@ public class EditController {
         File seletedFile =fc.showOpenDialog(null);
         if(seletedFile!=null){
             imageURL=seletedFile.toURI().toURL().toExternalForm();//加载出文件的路径
-            //但是这个加载好像重复了就不行"resources/shiyuan.png"
         }else {
             ButtonType close = new ButtonType("OK", ButtonBar.ButtonData.CANCEL_CLOSE);
             Alert alert = new Alert(Alert.AlertType.INFORMATION,"You didn't choose any file",close);
@@ -80,7 +79,7 @@ public class EditController {
 
     private static void configureFileChooser(final FileChooser fileChooser) {
         fileChooser.setTitle("View Pictures");
-        fileChooser.setInitialDirectory(new File(System.getProperty("user.dir")+"/src/resources/"));
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.dir")+"/src/resources/user_icon"));
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("All Files", "*.*"),
                 new FileChooser.ExtensionFilter("JPG", "*.jpg"),
