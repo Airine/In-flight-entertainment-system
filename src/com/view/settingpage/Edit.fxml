@@ -17,7 +17,7 @@
 
       <AnchorPane id="userPane" fx:id="edituppane" layoutX="6.0" prefHeight="141.0" prefWidth="361.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Label fx:id="modify" alignment="CENTER" layoutX="-1.0" layoutY="36.0" prefHeight="64.0" prefWidth="360.0" text="修改信息" textAlignment="JUSTIFY" textFill="WHITE" AnchorPane.rightAnchor="0.0">
+            <Label fx:id="modify1" alignment="CENTER" layoutX="-1.0" layoutY="36.0" prefHeight="64.0" prefWidth="360.0" styleClass="bigtitle" text="修改信息" textAlignment="JUSTIFY" textFill="WHITE" AnchorPane.rightAnchor="0.0">
                <font>
                   <Font size="34.0" />
                </font>

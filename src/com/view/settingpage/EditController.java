@@ -103,7 +103,7 @@ public class EditController {
             name.setText(jsonObject.getString("name"));
             ps.setText(jsonObject.getString("ps"));
             confirmButton.setText(jsonObject.getString("confirm"));
-            modify.setText(jsonObject.getString("modify"));
+            modify.setText(jsonObject.getString("modify1"));
         } catch (JSONException | NullPointerException e){
             e.printStackTrace();
         }

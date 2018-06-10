@@ -16,7 +16,7 @@
       <JFXButton fx:id="button" layoutX="97.0" layoutY="374.0" onMouseClicked="#handleOk" prefHeight="39.0" prefWidth="167.0" styleClass="surebutton" text="确认更改" textFill="WHITE" />
       <AnchorPane id="userPane" fx:id="themeuppane" layoutX="14.0" layoutY="6.0" prefHeight="141.0" prefWidth="361.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label fx:id="title" alignment="CENTER" layoutX="-1.0" layoutY="36.0" prefHeight="64.0" prefWidth="360.0" text="主题" textAlignment="JUSTIFY" textFill="WHITE" AnchorPane.rightAnchor="0.0">
+            <Label fx:id="title" alignment="CENTER" layoutX="-1.0" layoutY="36.0" prefHeight="64.0" prefWidth="360.0" styleClass="bigtitle" text="主题" textAlignment="JUSTIFY" textFill="WHITE" AnchorPane.rightAnchor="0.0">
                <font>
                   <Font size="34.0" />
                </font>
