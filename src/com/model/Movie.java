@@ -8,10 +8,12 @@ public class Movie {
     private int movie_id;
     private String title_cn;
     private String title_en;
-    private int year;
-    private int time;
+    private String year;
+//    private int time;
     private String language;
     private int type;
+    private String href;
+    private String post_href;
 
     private static final String moviePosterPath = "resources/moviePoster/";
     private MovieItem mi_cn;
@@ -25,17 +27,19 @@ public class Movie {
     }
 
     public Movie(int movie_id,String title_cn, String title_en,
-                 int year, int time, String language, int type){
+                 String year, String language, int type, String href, String post_href){
         setMovie_id(movie_id);
         setTitle_cn(title_cn);
         setTitle_en(title_en);
         setYear(year);
-        setTime(time);
+//        setTime(time);
         setLanguage(language);
         setType(type);
-        String url = moviePosterPath+movie_id+".jpg";
-        mi_cn = new MovieItem(url, title_cn);
-        mi_en = new MovieItem(url, title_en);
+        setHref(href);
+        setPost_href(post_href);
+        String url = post_href;
+//        mi_cn = new MovieItem(url, title_cn);
+//        mi_en = new MovieItem(url, title_en);
     }
 
     public int getType() {
@@ -102,20 +106,12 @@ public class Movie {
         this.title_en = title_en;
     }
 
-    public int getYear() {
+    public String getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(String year) {
         this.year = year;
-    }
-
-    public int getTime() {
-        return time;
-    }
-
-    public void setTime(int time) {
-        this.time = time;
     }
 
     public String getLanguage() {
@@ -125,4 +121,21 @@ public class Movie {
     public void setLanguage(String language) {
         this.language = language;
     }
+
+    public String getHref() {
+        return href;
+    }
+
+    public void setHref(String href) {
+        this.href = href;
+    }
+
+    public String getPost_href() {
+        return post_href;
+    }
+
+    public void setPost_href(String post_href) {
+        this.post_href = post_href;
+    }
+
 }
