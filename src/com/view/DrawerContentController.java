@@ -83,11 +83,11 @@ public class DrawerContentController {
     @FXML
     public void initialize(){
         String url = "resources/shiyuan.png";
-//        user_icon.setStyle(
-//                "-fx-background-image: url(\"" + url + "\");" +
-//                "-fx-background-position: center;" +
-//                "-fx-background-repeat: no-repeat;" +
-//                "-fx-background-size: 100% 100%;");
+        user_icon.setStyle(
+                "-fx-background-image: url(\"" + url + "\");" +
+                "-fx-background-position: center;" +
+                "-fx-background-repeat: no-repeat;" +
+                "-fx-background-size: 100% 100%;");
        initToggle();//初始化他的监听拖动
     }
 
