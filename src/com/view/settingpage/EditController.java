@@ -16,6 +16,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 
 import java.io.File;
+import java.net.MalformedURLException;
 
 
 public class EditController {
@@ -31,7 +32,6 @@ public class EditController {
     private Label ps;
     @FXML
     private JFXTextField textname;
-
     @FXML
     private AnchorPane edituppane;
     @FXML
@@ -47,21 +47,22 @@ public class EditController {
     public void setRootLayoutController(RootLayoutController rootLayoutController){
         this.rootLayoutController=rootLayoutController;
     }
-
+    @FXML
     public void handleEdit(){
         rootLayoutController.getDrawerContentController().changNameAndSign(
                 textname.getText(),textsign.getText()
         );
+        if(imageURL!=null)
+            rootLayoutController.getDrawerContentController().changeUserImage(imageURL);
     }
     @FXML
-    public void handleChooseFile(){
+    public void handleChooseFile() throws MalformedURLException {
         FileChooser fc = new FileChooser();
         configureFileChooser(fc);
         File seletedFile =fc.showOpenDialog(null);
         if(seletedFile!=null){
-            imageURL=seletedFile.toURI().toString().substring(5);//加载出文件的路径，绝对路径
-            System.out.print(imageURL);
-            rootLayoutController.getDrawerContentController().changeUserImage(imageURL);//但是这个加载好像重复了就不行"resources/shiyuan.png"
+            imageURL=seletedFile.toURI().toURL().toExternalForm();//加载出文件的路径
+            //但是这个加载好像重复了就不行"resources/shiyuan.png"
         }else {
             ButtonType close = new ButtonType("OK", ButtonBar.ButtonData.CANCEL_CLOSE);
             Alert alert = new Alert(Alert.AlertType.INFORMATION,"You didn't choose any file",close);
@@ -73,6 +74,7 @@ public class EditController {
             pane.setGraphic(null);
             pane.setPrefSize(200,80);
             alert.showAndWait();
+            imageURL = null;
         }
     }
 
@@ -84,11 +86,6 @@ public class EditController {
                 new FileChooser.ExtensionFilter("JPG", "*.jpg"),
                 new FileChooser.ExtensionFilter("PNG", "*.png")
         );
-    }
-    @FXML
-    private void handleConfirm(){
-
-
     }
 
     public void loadLanguage(String language) {

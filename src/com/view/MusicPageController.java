@@ -93,6 +93,7 @@ public class MusicPageController {
                setMusicTitle(fileName.substring(0,fileName.length()-4));
            else
                setMusicTitle(fileName.substring(index+2,fileName.length()-4));
+           currentPlayer.play();
        }
     }
     @FXML
@@ -109,6 +110,7 @@ public class MusicPageController {
                 setMusicTitle(fileName.substring(0,fileName.length()-4));
             else
                 setMusicTitle(fileName.substring(index+2,fileName.length()-4));
+            currentPlayer.play();
         }
     }
     
