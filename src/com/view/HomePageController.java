@@ -31,7 +31,7 @@ public class HomePageController {
     @FXML
     private FlowPane flowpane;
 
-    public JFXButton back =new JFXButton();;
+    public JFXButton back =new JFXButton();
     ImageView imageView;
 
     private  RootLayoutController rootLayoutController;
@@ -82,8 +82,9 @@ public class HomePageController {
     }
 
 
-
-
+        public void changeFlowContent(FlowPane flowPane){
+        HomeScrollPane.setContent(flowPane);
+        }
 }
 
 

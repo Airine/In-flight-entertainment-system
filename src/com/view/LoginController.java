@@ -5,12 +5,15 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.model.User;
+import com.util.JsonLoader;
 import javafx.fxml.FXML;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import static com.MainApp.mainUser;
 import static com.util.DataLoader.getUser;
@@ -37,6 +40,19 @@ public class LoginController {
 
     @FXML
     private void initialize(){
+    }
+
+    public void loadLanguage(String language){
+        JSONObject jsonObject = JsonLoader.getJsonValue(language,"loginDialog");
+        try {
+            assert jsonObject != null;
+            Login.setText(jsonObject.getString("login"));
+            Sign.setText(jsonObject.getString("sign"));
+            user_name.setPromptText(jsonObject.getString("username"));
+            user_pw.setPromptText(jsonObject.getString("password"));
+        } catch (JSONException | NullPointerException e){
+            e.printStackTrace();
+        }
     }
 
     /* *  这个方法用来监听关闭，以便于可以再次代开login.
@@ -116,5 +132,9 @@ public class LoginController {
 
     public void getPwTyped(KeyEvent keyEvent) {
         user_pw_warning.setText("");
+    }
+
+    public void clickSignButton(MouseEvent mouseEvent) {
+        mainApp.changeLanguage("en");
     }
 }
