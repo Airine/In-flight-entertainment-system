@@ -78,7 +78,7 @@
 //对于设置界面
 .huiyuanitem{//付款界面的小标签
      -fx-font-family:"Microsoft YaHei Light"  ;
-    -fx-background-color: #ee5253;
+    -fx-background-color: #A9A9A9;
     -fx-font-color: #000000;
     -fx-background-radius: 100;
 }
