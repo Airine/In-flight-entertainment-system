@@ -12,6 +12,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import static com.MainApp.loginButtonText;
 import static com.MainApp.mainUser;
 import static com.util.DataLoader.getUser;
 
@@ -37,6 +38,7 @@ public class LoginController {
 
     @FXML
     private void initialize(){
+        Login.setText(loginButtonText);
     }
 
     /* *  这个方法用来监听关闭，以便于可以再次代开login.

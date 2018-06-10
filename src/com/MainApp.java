@@ -3,6 +3,7 @@ package com;
 import com.model.Movie;
 import com.model.MovieType;
 import com.model.User;
+import com.util.JsonLoader;
 import com.view.LoginController;
 import com.view.RootLayoutController;
 import javafx.application.Application;
@@ -111,7 +112,17 @@ public class MainApp extends Application {
         loadUsers();
         mainMovies = loadMovies();
         // "cn" -> mainUser.language;
-        mainMovieTypes = loadMovieTypes("en");
+        mainMovieTypes = loadMovieTypes("cn");
+        loadLanguage("cn");
         launch(args);
     }
+
+    private static void loadLanguage(String language){
+//        String path = "resources/json/"+language+".json";
+        loginButtonText =  JsonLoader.getJsonValue(language, "loginDialog","login");
+        System.out.println(loginButtonText);
+    }
+
+    public static String loginButtonText;
+
 }
