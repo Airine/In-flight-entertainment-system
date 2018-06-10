@@ -34,7 +34,6 @@ public class RootLayoutController {
     @FXML
     private JFXTextField searchfeild;
 
-
     //这是三根下划线
     @FXML
     private Line homeline;
@@ -456,8 +455,7 @@ public class RootLayoutController {
     @FXML
     private void handleSearch(KeyEvent event){
         KeyCode kc= event.getCode();
-        if (kc.equals(KeyCode.A)){
-            System.out.println("You pressed A!");
+        if (kc==(KeyCode.ENTER)){
             searchPaneVisible(true);
         }
     }
