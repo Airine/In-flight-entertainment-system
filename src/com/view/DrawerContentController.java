@@ -141,6 +141,7 @@ public class DrawerContentController {
     private void handleCollection(){
         rootLayoutController.getDrawer().close();
         rootLayoutController.getDrawer().setVisible(false);
+        rootLayoutController.seeHomepage();
         rootLayoutController.homePageSee();
         rootLayoutController.getSettingPane().setVisible(false);
         rootLayoutController.HomePageController.changeFlowContent(rootLayoutController.collection);

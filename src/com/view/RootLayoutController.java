@@ -1,9 +1,7 @@
 package com.view;
 
 import com.MainApp;
-import com.jfoenix.controls.JFXDrawer;
-import com.jfoenix.controls.JFXHamburger;
-import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.*;
 import com.jfoenix.transitions.hamburger.HamburgerNextArrowBasicTransition;
 import com.view.settingpage.*;
 import javafx.collections.ObservableList;
@@ -11,12 +9,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 
@@ -33,6 +29,8 @@ public class RootLayoutController {
     //搜索栏的文本
     @FXML
     private JFXTextField searchfeild;
+    @FXML
+    private StackPane stackpane;//关闭的对话窗口
 
 
     //这是三根下划线
@@ -409,7 +407,7 @@ public class RootLayoutController {
      * @return
      */
     @FXML
-    private void seeHomepage() {
+    public void seeHomepage() {
         setHomePage(homeP);
         musicline.setVisible(false);
         playline.setVisible(false);
@@ -422,7 +420,7 @@ public class RootLayoutController {
      * @return
      */
     @FXML
-    private void seePlaypage() {
+    public  void seePlaypage() {
         setHomePage(playerP);
         musicline.setVisible(false);
         playline.setVisible(true);
@@ -436,7 +434,7 @@ public class RootLayoutController {
      * @return
      */
     @FXML
-    private void seeMusicpage() {
+    public void seeMusicpage() {
         setHomePage(musicP);
         musicline.setVisible(true);
         playline.setVisible(false);
@@ -498,6 +496,28 @@ public class RootLayoutController {
         themeController.getThemeuppane().setStyle("-fx-background-color:"+"#"+color);
         timingController.getTiminguppane().setStyle("-fx-background-color:"+"#"+color);
         musicPageController.getMusicPane().setStyle("-fx-background-color:"+"#"+color);
+    }
+    public void timerOutClose(){
+        stackpane.setVisible(true);
+        JFXDialogLayout content = new JFXDialogLayout();
+        content.setHeading(new Text("要关闭了"));
+        content.setBody(new Text("十秒后会自动关闭"));
+        JFXDialog dialog = new JFXDialog(stackpane, content, JFXDialog.DialogTransition.CENTER);
+        JFXButton button = new JFXButton("不关");
+        button.setOnAction(event -> {
+            stackpane.setVisible(false);
+            timingController.timer.stop();
+            timingController.waitForClose=false;
+            dialog.close();
+        });
+//        JFXButton button1 = new JFXButton("不关");
+//        button.setOnAction(event -> {
+//            stackpane.setVisible(false);
+//            dialog.close();
+//        });
+        content.setActions(button);
+//        content.setActions(button1);
+        dialog.show();
     }
 
 }

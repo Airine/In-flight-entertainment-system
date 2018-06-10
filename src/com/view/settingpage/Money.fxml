@@ -23,17 +23,10 @@
       <Label fx:id="label2" alignment="CENTER" layoutX="51.0" layoutY="214.0" prefHeight="35.0" prefWidth="87.0" styleClass="huiyuanitem" text="自定义主题" textFill="WHITE" AnchorPane.leftAnchor="51.0" />
       <Label fx:id="label3" alignment="CENTER" layoutX="224.0" layoutY="155.0" prefHeight="35.0" prefWidth="87.0" styleClass="huiyuanitem" text="更多小视频" textFill="WHITE" AnchorPane.rightAnchor="50.0" />
       <Label fx:id="label4" alignment="CENTER" layoutX="224.0" layoutY="214.0" prefHeight="35.0" prefWidth="87.0" styleClass="huiyuanitem" text="一对一客服" textFill="WHITE" AnchorPane.rightAnchor="50.0" />
-      <Label fx:id="label5" id="payway" alignment="CENTER" layoutY="266.0" prefHeight="35.0" prefWidth="361.0" text="付款方式" textAlignment="CENTER" />
-      <JFXRadioButton layoutX="62.0" layoutY="349.0" text=" ">
-         <graphic>
-            <ImageView fitHeight="33.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../resources/icon/alipay.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXRadioButton>
-      <JFXRadioButton layoutX="148.0" layoutY="349.0" text=" ">
+      <Label id="payway" fx:id="label5" alignment="CENTER" layoutY="266.0" prefHeight="35.0" prefWidth="361.0" text="付款方式" textAlignment="CENTER" />
+      <JFXButton fx:id="pay" layoutX="122.0" layoutY="395.0" onMouseClicked="#handleBeHuiYuan" prefHeight="35.0" prefWidth="116.0" styleClass="surebutton" text="确认付款" />
+      <Label fx:id="month" alignment="CENTER" layoutX="132.0" layoutY="314.0" prefHeight="20.0" prefWidth="97.0" style="-fx-background-color: #5F9EA0; -fx-background-radius: 100;" text="10$/每月" />
+      <JFXRadioButton layoutX="63.0" layoutY="349.0" text=" ">
          <graphic>
             <ImageView fitHeight="33.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -42,16 +35,23 @@
             </ImageView>
          </graphic>
       </JFXRadioButton>
+      <JFXRadioButton layoutX="149.0" layoutY="349.0" text=" ">
+         <graphic>
+            <ImageView fitHeight="33.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../resources/icon/alipay.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXRadioButton>
       <JFXRadioButton layoutX="238.0" layoutY="349.0" text=" ">
          <graphic>
-            <ImageView fitHeight="49.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="29.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../resources/icon/visapay.png" />
                </image>
             </ImageView>
          </graphic>
       </JFXRadioButton>
-      <JFXButton fx:id="pay" layoutX="122.0" layoutY="395.0" onMouseClicked="#handleBeHuiYuan" prefHeight="35.0" prefWidth="116.0" styleClass="surebutton" text="确认付款" />
-      <Label fx:id="month" alignment="CENTER" layoutX="132.0" layoutY="314.0" prefHeight="20.0" prefWidth="97.0" style="-fx-background-color: #5F9EA0; -fx-background-radius: 100;" text="10$/每月" />
    </children>
 </AnchorPane>
