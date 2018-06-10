@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXSpinner?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 
@@ -7,5 +8,6 @@
    <children>
       <StackPane fx:id="playmovie" layoutX="34.0" layoutY="22.0" prefHeight="388.0" prefWidth="640.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <AnchorPane fx:id="Bar" layoutX="2.0" layoutY="371.0" prefHeight="48.0" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <JFXSpinner fx:id="spinner" layoutX="308.0" layoutY="196.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="30.0" prefWidth="30.0" />
    </children>
 </AnchorPane>

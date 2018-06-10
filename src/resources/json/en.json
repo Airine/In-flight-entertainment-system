@@ -27,8 +27,8 @@
 
     "about": {
         "title": "Sustech Player",
-        "comment": "Comment",
-        "commentTo": "Commit",
+        "comment": "Commit",
+        "commentTo": "Comment",
         "checkVersion": "Check for updates",
         "version": "Current Versions"
     },
