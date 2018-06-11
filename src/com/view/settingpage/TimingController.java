@@ -24,6 +24,9 @@ public class TimingController {
     @FXML
     private JFXButton commit;
 
+    @FXML
+    private StackPane stackpane;
+
 
     @FXML
     private JFXTimePicker chosetime;
@@ -50,9 +53,27 @@ public class TimingController {
         if(choosedata.getValue()==null||chosetime.getValue()==null){
             return;
         }
+        closeTime=choosedata.getValue().toString().substring(0,5)+choosedata.getValue().toString().substring(6,10)+" "+chosetime.getValue();
+
+        int res =closeTime.compareTo(new Date().toLocaleString().toString().substring(0, 15));
+        if(res<0){
+            stackpane.setVisible(true);
+            JFXDialogLayout content = new JFXDialogLayout();
+            content.setHeading(new Text("不可以哦"));
+            content.setBody(new Text("你设置的时间早就过了"));
+            JFXDialog dialog = new JFXDialog(stackpane, content, JFXDialog.DialogTransition.CENTER);
+            JFXButton button = new JFXButton("我知道了");
+            button.setOnAction(event -> {
+                stackpane.setVisible(false);
+                dialog.close();
+            });
+            content.setActions(button);
+            dialog.show();
+            return;
+        }
         commit.setStyle("-fx-background-color: #A9A9A9;" +
                 "    -fx-font-color: #000000;");
-        closeTime=choosedata.getValue().toString().substring(0,5)+choosedata.getValue().toString().substring(6,10)+" "+chosetime.getValue();
+        
         timer = new Timeline(new KeyFrame(Duration.seconds(10),ev->{
             if(waitForClose){
                 rootLayoutController.getMainApp().closeWindows();
