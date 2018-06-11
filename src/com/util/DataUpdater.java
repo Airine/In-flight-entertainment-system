@@ -49,6 +49,7 @@ public class DataUpdater {
     public static void writeBackCollection(){
         Connection connection = connectToDB();
         User user = MainApp.mainUser;
+        if (user == null) return;
         List<Movie> starMovies = MainApp.starMovies;
 
         System.out.println("Delete Previous....");
