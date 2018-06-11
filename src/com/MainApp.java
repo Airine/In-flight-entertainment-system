@@ -111,6 +111,7 @@ public class MainApp extends Application {
 
     public void closeWindows(){
         DataUpdater.writeBackCollection();
+        System.out.println("Write Back Compelete.");
         primaryStage.close();
     }
 
