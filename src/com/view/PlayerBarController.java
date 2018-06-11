@@ -106,6 +106,8 @@ public class PlayerBarController {
             duration = player.getMedia().getDuration();
             updateValues();
             playerPageController.getSpinner().setVisible(false);
+            playerPageController.advertismentPlayer.stop();
+            playerPageController.setPlayMovie(playerPageController.MoviePane);
         });
         
         player.setCycleCount(MediaPlayer.INDEFINITE);
