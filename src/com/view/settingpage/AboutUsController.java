@@ -38,11 +38,10 @@ public class AboutUsController {
 
     @FXML
     private void initialize() {
+        initPingJia();
     }
 
-    private void initSpinner(){
 
-    }
 
     @FXML
     public void handleCheckUpdata(){
@@ -61,7 +60,7 @@ public class AboutUsController {
     }
     @FXML
     public void handleCommitComment(){
-        pingjia=new JFXChipView<>();
+
     }
 
     public void loadLanguage(String language) {
@@ -77,5 +76,9 @@ public class AboutUsController {
         } catch (JSONException | NullPointerException e){
             e.printStackTrace();
         }
+    }
+
+    public void initPingJia(){
+        pingjia.setStyle("-fx-font-size:17px;");
     }
 }

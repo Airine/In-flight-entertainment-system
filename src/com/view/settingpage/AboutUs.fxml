@@ -18,17 +18,19 @@
             </Label>
          </children>
       </AnchorPane>
-      <JFXChipView fx:id="pingjia" layoutX="7.0" layoutY="296.0" prefHeight="89.0" prefWidth="360.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <JFXChipView fx:id="pingjia" layoutX="7.0" layoutY="322.0" prefHeight="74.0" prefWidth="360.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
       <JFXButton fx:id="comment" alignment="CENTER" layoutX="125.0" layoutY="396.0" onMouseClicked="#handleCommitComment" prefHeight="29.0" prefWidth="116.0" styleClass="surebutton" text="评价" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="125.0" AnchorPane.rightAnchor="119.0" />
-      <Label fx:id="commentTo" alignment="CENTER" layoutX="67.0" layoutY="271.0" prefHeight="23.0" prefWidth="232.0" text="给开发者评价">
+      <Label fx:id="commentTo" alignment="CENTER" layoutX="67.0" layoutY="288.0" prefHeight="23.0" prefWidth="232.0" text="给开发者评价">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <JFXButton id="checkbutton" fx:id="checkVersion" alignment="CENTER" layoutX="191.0" layoutY="218.0" minHeight="29.0" onMouseClicked="#handleCheckUpdata" prefHeight="29.0" prefWidth="100.0" text="检查" />
-      <Label fx:id="version" layoutX="29.0" layoutY="173.0" prefHeight="29.0" prefWidth="116.0" text="当前版本" />
-      <Label alignment="CENTER" layoutX="191.0" layoutY="173.0" prefHeight="29.0" prefWidth="100.0" text="1.0" />
+      <JFXButton id="checkbutton" fx:id="checkVersion" alignment="CENTER" layoutX="191.0" layoutY="204.0" minHeight="29.0" onMouseClicked="#handleCheckUpdata" prefHeight="29.0" prefWidth="100.0" text="检查" />
+      <Label fx:id="version" layoutX="29.0" layoutY="159.0" prefHeight="29.0" prefWidth="116.0" text="当前版本" />
+      <Label alignment="CENTER" layoutX="191.0" layoutY="159.0" prefHeight="29.0" prefWidth="100.0" text="1.0" />
       <StackPane fx:id="stackpane" layoutX="81.0" layoutY="193.0" prefHeight="89.0" prefWidth="198.0" visible="false" />
-      <Label fx:id="version1" layoutX="29.0" layoutY="218.0" prefHeight="29.0" prefWidth="116.0" text="检查新版本" />
+      <Label fx:id="version1" layoutX="29.0" layoutY="204.0" prefHeight="29.0" prefWidth="116.0" text="检查新版本" />
+      <Label fx:id="version11" layoutX="29.0" layoutY="242.0" prefHeight="29.0" prefWidth="116.0" text="工作室" />
+      <Label alignment="CENTER" layoutX="191.0" layoutY="242.0" prefHeight="29.0" prefWidth="100.0" text="荔园九栋701" />
    </children>
 </AnchorPane>
