@@ -90,7 +90,10 @@ public class RootLayoutController {
     DrawerContentController drawerContentController;
     //搜索界面的controler
     MovieTableViewController movieTableViewController;
-    
+
+    String WaringTitle="程序即将自动关闭";
+    String WaringMessage="程序会在10s内自动关闭";
+    String WaringButton="我不想要关闭";
     
     public void loadLanguage(String language){
         settingPageController.loadLanguage(language);
@@ -200,6 +203,7 @@ public class RootLayoutController {
             initEdit();
             initSearchTree();
             initCollection();
+            now=DefaultCSS;
         } catch (Exception e) {
             e.getStackTrace();
         }
@@ -527,15 +531,13 @@ public class RootLayoutController {
     }
 
 
-    /* * 用于设置夜间模式
-     * @author PennaLia
-     * @date 2018/6/6 8:33
-     * @param
-     * @return
-     */
-    private String DarkCSS = this.getClass().getResource("DarkTheme.css").toExternalForm(),
-            DefaultCSS = this.getClass().getResource("DefaultTheme.css").toExternalForm();
 
+    public String DarkCSS = this.getClass().getResource("DarkTheme.css").toExternalForm(),
+            DefaultCSS = this.getClass().getResource("DefaultTheme.css").toExternalForm(),
+            Theme1= this.getClass().getResource("Theme1.css").toExternalForm(),
+            Theme2=this.getClass().getResource("Theme2.css").toExternalForm(),
+            Theme3=this.getClass().getResource("Theme3.css").toExternalForm();
+    public String now;
     /* * this set the theme to night
      * @author PennaLia
      * @date 2018/6/10 17:48
@@ -544,9 +546,10 @@ public class RootLayoutController {
      */
     public void ToNight(){
         ObservableList<String> styleSheets = mainPane.getStylesheets();
-        styleSheets.remove(DefaultCSS);
-        if(!styleSheets.contains(DarkCSS))
+        styleSheets.clear();
+        if(!styleSheets.contains(DarkCSS)) {
             styleSheets.add(DarkCSS);
+        }
     }
     /* *  this set theme to default.
      * @author PennaLia
@@ -556,9 +559,36 @@ public class RootLayoutController {
      */
     public void ToDefault(){
         ObservableList<String> styleSheets = mainPane.getStylesheets();
-        styleSheets.remove(DarkCSS);
-        if(!styleSheets.contains(DefaultCSS))
+        styleSheets.clear();
+        if(!styleSheets.contains(DefaultCSS)) {
             styleSheets.add(DefaultCSS);
+            now=DefaultCSS;
+        }
+    }
+
+    public void ToTheme1(){
+        ObservableList<String> styleSheets = mainPane.getStylesheets();
+        styleSheets.clear();
+        if(!styleSheets.contains(Theme1)) {
+            styleSheets.add(Theme1);
+            now=Theme1;
+        }
+    }
+    public void ToTheme2(){
+        ObservableList<String> styleSheets = mainPane.getStylesheets();
+        styleSheets.clear();
+        if(!styleSheets.contains(Theme2)) {
+            styleSheets.add(Theme2);
+            now=Theme2;
+        }
+    }
+    public void ToTheme3(){
+        ObservableList<String> styleSheets = mainPane.getStylesheets();
+        styleSheets.clear();
+        if(!styleSheets.contains(Theme3)) {
+            styleSheets.add(Theme3);
+            now=Theme3;
+        }
     }
 
     /* *  this change the left bar value
@@ -586,10 +616,10 @@ public class RootLayoutController {
     public void timerOutClose(){
         stackpane.setVisible(true);
         JFXDialogLayout content = new JFXDialogLayout();
-        content.setHeading(new Text("It will close soon"));
-        content.setBody(new Text("It will close in 10s"));
+        content.setHeading(new Text(WaringTitle));
+        content.setBody(new Text(WaringMessage));
         JFXDialog dialog = new JFXDialog(stackpane, content, JFXDialog.DialogTransition.CENTER);
-        JFXButton button = new JFXButton("No, i don't want to close it");
+        JFXButton button = new JFXButton(WaringButton);
         button.setOnAction(event -> {
             stackpane.setVisible(false);
             timingController.timer.stop();
@@ -598,6 +628,22 @@ public class RootLayoutController {
         });
         content.setActions(button);
         dialog.show();
+    }
+
+    public void setWaringText(String language){
+        if (language.equals("cn")){
+            WaringTitle="程序即将自动关闭";
+            WaringMessage="程序会在10s内自动关闭";
+            WaringButton="我不想要关闭";
+        }else if(language.equals("en")){
+            WaringTitle="It will automatically close soon";
+            WaringMessage="The program will automatically shut down within 10s";
+            WaringButton="I don't want to close it";
+        }else if(language.equals("fr")){
+            WaringTitle="Le programme s'éteindra automatiquement";
+            WaringMessage="Le programme s'éteindra automatiquement dans les 10s";
+            WaringButton="Je ne veux pas fermer";
+        }
     }
 
 

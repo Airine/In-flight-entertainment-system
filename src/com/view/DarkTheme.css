@@ -103,6 +103,11 @@
     -fx-background-radius: 5;
 }
 
+.themelabel{
+    -fx-font-size: 13px;
+    -fx-text-fill:black;
+}
+
 .workshop{
  -fx-font-family:"Microsoft YaHei Light"  ;
    -fx-text-fill: white;
