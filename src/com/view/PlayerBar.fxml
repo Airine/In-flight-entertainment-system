@@ -14,7 +14,7 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </JFXSlider>
-      <Label fx:id="playTime" layoutX="375.0" layoutY="17.0" prefHeight="15.0" prefWidth="117.0" text="当前时间/总时间" textAlignment="CENTER" AnchorPane.rightAnchor="148.0" />
+      <Label fx:id="playTime" layoutX="375.0" layoutY="17.0" prefHeight="15.0" prefWidth="117.0" text="0:00:00/0:00:00" textAlignment="CENTER" AnchorPane.rightAnchor="148.0" />
       <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="495.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="14.0">
          <image>
             <Image url="@../../resources/icon/sound1.png" />
