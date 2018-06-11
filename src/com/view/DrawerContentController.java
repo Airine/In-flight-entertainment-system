@@ -176,7 +176,16 @@ public class DrawerContentController {
             if(night.isSelected()){
                 rootLayoutController.ToNight();
             }else{
-                rootLayoutController.ToDefault();
+                if(rootLayoutController.now.equals(rootLayoutController.DefaultCSS)){
+                    rootLayoutController.ToDefault();
+                }else if(rootLayoutController.now.equals(rootLayoutController.Theme1)){
+                    rootLayoutController.ToTheme1();
+                }else if(rootLayoutController.now.equals(rootLayoutController.Theme2)){
+                    rootLayoutController.ToTheme2();
+                }else if(rootLayoutController.now.equals(rootLayoutController.Theme3)){
+                    rootLayoutController.ToTheme3();
+                }
+
             }
         });
     }

@@ -3,7 +3,7 @@
 // 这里开始是bar的设置
 
 #mainBar{//这个是顶部导航栏
-    -fx-background-color: black;//变黑
+    -fx-background-color:#27B664;
 }
 
 #searchBox{//搜索栏的框
@@ -13,17 +13,17 @@
 
 .jfx-hamburger StackPane {//打开抽屉的东西hamburger
     -fx-background-color: #FFFAFA ;
-    -fx-background-radius : 10px;
+     -fx-background-radius : 10px;
 }
 
 #searchtext{//搜索框的文本输入
-    -fx-text-fill: black;
+    -fx-text-fill: #080808;
 }
 
 //这里开始是抽屉
 .jfx-button {
      -fx-font-family:"Microsoft YaHei Light";
-     -fx-background-color: #DCDCDC;
+     -fx-background-color: F5F5F7;
      -fx-text-fill:  #080808;
      -fx-font-size:  16px; //字体大小
      -fx-background-radius:0;
@@ -40,23 +40,23 @@
 #sign_out{//退出按钮
     -fx-background-radius:100;
     -fx-font-size:  1px;
-    -fx-background-color: white;
+    -fx-background-color:#F9FAFB;
 }
 
 #usepaneTop{//用户设置的那个平面，上面那个单独一个颜色的
-    -fx-background-color: 		#1E1E1E;
+    -fx-background-color: #A4EAC8;
 }
 
 #userPane{//用户设置的那个平面，放石原里美头像的那个
-    -fx-background-color: black;
+    -fx-background-color:#50C387;
 }
 
 #buttompane{//底下那个最没用的，放关于我们的那个平面
-    -fx-background-color: #DCDCDC;
+    -fx-background-color: F5F5F7;
 }
 
 #hbox{//放夜间模式的box
-    -fx-background-color: #DCDCDC;
+    -fx-background-color:F5F5F7;
 }
 
 #modify{
@@ -69,24 +69,29 @@
 //这是确认修改的button，比如在修改信息时候的那个
 .surebutton{
      -fx-font-family:"Microsoft YaHei Light"  ;
-    -fx-background-color:#0A0A0A; //按钮颜色
+    -fx-background-color:#50C387; //按钮颜色
     -fx-text-fill: white; //字体颜色
     -fx-font-size:  16px;  //字体大小
     -fx-background-radius: 5;
 }
+
 #checkbutton{
-     -fx-font-family:"Microsoft YaHei Light"  ;
-    -fx-background-color:#0A0A0A; //按钮颜色
+    -fx-font-family:"Microsoft YaHei Light"  ;
+    -fx-background-color:#50C387; //按钮颜色
     -fx-text-fill: white; //字体颜色
     -fx-font-size:  12px;  //字体大小
     -fx-background-radius: 5;
 }
-
+.workshop{
+ -fx-font-family:"Microsoft YaHei Light"  ;
+   -fx-text-fill: white;
+    -fx-font-size: 12px;
+}
 
 //对于设置界面
 .huiyuanitem{//付款界面的小标签
      -fx-font-family:"Microsoft YaHei Light"  ;
-    -fx-background-color: #0A0A0A;
+    -fx-background-color: #50C387;
     -fx-font-color: #000000;
     -fx-background-radius: 100;
 }
@@ -98,20 +103,14 @@
 
 #chosefile{
     -fx-font-size: 12px;
-     -fx-text-fill: white;
-    -fx-background-color:#0A0A0A ;
+    -fx-text-fill: white;
+    -fx-background-color: 	#50C387;
     -fx-background-radius: 5;
 }
 
 .themelabel{
     -fx-font-size: 13px;
     -fx-text-fill:black;
-}
-
-.workshop{
- -fx-font-family:"Microsoft YaHei Light"  ;
-   -fx-text-fill: white;
-    -fx-font-size: 12px;
 }
 
 //对于所有的东西
@@ -127,17 +126,19 @@
     -fx-rippler-fill: RED;
 }
 .jfx-list-cell: hover{
-    -fx-background-color: #ee5253;
+    -fx-background-color: #50C387;
 }
+
 #musictitle{
  -fx-font-family:"Webdings";
  -fx-font-size:40px;
 }
 .musicbutton{
     -fx-background-radius:50%;
-    -fx-background-color:black;
+    -fx-background-color:#50C387;
     -fx-text-fill:white;
 }
+
 .bigtitle{//设置界面的title
     -fx-font-size:35px;
     -fx-font-family:"Webdings";
