@@ -60,7 +60,7 @@ public class AboutUsController {
     }
     @FXML
     public void handleCommitComment(){
-        pingjia=new JFXChipView<>();
+
     }
 
     public void loadLanguage(String language) {
