@@ -1,16 +1,21 @@
 package com.view.settingpage;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXDialogLayout;
 import com.util.JsonLoader;
 import com.view.RootLayoutController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 
 public class MoneyController {
+
 
 
     public Label VIP;
@@ -25,6 +30,9 @@ public class MoneyController {
     @FXML
     private AnchorPane moneyuppane;
 
+    @FXML
+    private StackPane stackpane;
+
     private boolean payWay;
     private RootLayoutController rootLayoutController;
     public void setRootLayoutController(RootLayoutController rootLayoutController){
@@ -37,6 +45,21 @@ public class MoneyController {
     @FXML
     public void handleBeHuiYuan(){
         rootLayoutController.getDrawerContentController().beHuiyuan();
+        stackpane.setVisible(true);
+        JFXDialogLayout content = new JFXDialogLayout();
+        content.setHeading(new Text("Remind"));
+        content.setBody(new Text("Congratulations!"));
+        JFXDialog dialog = new JFXDialog(stackpane, content, JFXDialog.DialogTransition.CENTER);
+        JFXButton button = new JFXButton("I konw");
+        button.setOnAction(event -> {
+            stackpane.setVisible(false);
+            dialog.close();
+        });
+        content.setActions(button);
+        dialog.show();
+        pay.setStyle("-fx-background-color: #A9A9A9;" +
+                "    -fx-font-color: #000000;");
+
     }
 
     public void loadLanguage(String language) {

@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="drawerBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="436.0" prefWidth="280.0" style="-fx-background-color: #FFB6C1;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.DrawerContentController">
+<VBox fx:id="drawerBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="436.0" prefWidth="280.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.DrawerContentController">
    <children>
       <Pane id="userPane" fx:id="UserBackPane" prefHeight="142.0" prefWidth="280.0">
          <children>
@@ -114,7 +114,7 @@
                   <Image url="@../../resources/icon/night.png" />
                </image>
             </ImageView>
-            <Label fx:id="nightLabel" id="likebutton" prefHeight="37.0" prefWidth="157.0" text="夜间模式" textFill="#050505a2">
+            <Label id="likebutton" fx:id="nightLabel" prefHeight="37.0" prefWidth="157.0" text="夜间模式" textFill="#050505a2">
                <font>
                   <Font size="16.0" />
                </font>
@@ -131,19 +131,19 @@
       </HBox>
       <AnchorPane id="buttompane" prefHeight="90.0" prefWidth="280.0">
          <children>
-            <HBox layoutX="14.0" layoutY="65.0" onMouseClicked="#handleAboutus" prefHeight="20.0" prefWidth="95.0">
+            <HBox layoutX="13.0" layoutY="64.0" onMouseClicked="#handleAboutus" prefHeight="20.0" prefWidth="95.0">
                <children>
                   <ImageView fitHeight="19.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../resources/icon/about.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="about" id="likebutton" prefHeight="23.0" prefWidth="52.0" text=" 关于我们" />
+                  <Label id="likebutton" fx:id="about" prefHeight="23.0" prefWidth="52.0" text=" 关于我们" />
                </children>
             </HBox>
             <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="248.0" layoutY="58.0" onMouseClicked="#handleSetting" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../resources/icon/setup.png" />
+                  <Image url="@../../resources/icon/setting%20card.png" />
                </image>
             </ImageView>
          </children>
