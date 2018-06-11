@@ -48,6 +48,15 @@ public class SettingPageController {
                 return new Label(string);
             }
         });
+        //选择box做什么
+        langComBoix.valueProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue.getText()=="中文")
+                System.out.println("中文");
+            if(newValue.getText()=="English")
+                System.out.println("英语");
+            if(newValue.getText()=="Français")
+                System.out.println("法语");
+        });
 
 
     }

@@ -1,6 +1,7 @@
 package com.view;
 
 import com.MainApp;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXSpinner;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,6 +19,9 @@ public class PlayerPageController {
 
     @FXML
     private JFXSpinner spinner;//转不转
+
+    @FXML
+    private JFXButton skip;
 
     @FXML
     private StackPane playmovie;//这个用来外接电影的平面

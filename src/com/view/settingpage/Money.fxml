@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXRadioButton?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -27,7 +28,7 @@
       <Label id="payway" fx:id="label5" alignment="CENTER" layoutY="266.0" prefHeight="35.0" prefWidth="361.0" text="付款方式" textAlignment="CENTER" />
       <JFXButton fx:id="pay" layoutX="122.0" layoutY="395.0" onMouseClicked="#handleBeHuiYuan" prefHeight="35.0" prefWidth="116.0" styleClass="surebutton" text="确认付款" />
       <Label fx:id="month" alignment="CENTER" layoutX="132.0" layoutY="314.0" prefHeight="20.0" prefWidth="97.0" style="-fx-background-color: #5F9EA0; -fx-background-radius: 100;" text="10$/每月" />
-      <JFXRadioButton layoutX="63.0" layoutY="349.0" text=" ">
+      <JFXRadioButton fx:id="wechatpay" layoutX="63.0" layoutY="349.0" text=" ">
          <graphic>
             <ImageView fitHeight="33.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -35,8 +36,11 @@
                </image>
             </ImageView>
          </graphic>
+         <toggleGroup>
+            <ToggleGroup fx:id="group1" />
+         </toggleGroup>
       </JFXRadioButton>
-      <JFXRadioButton layoutX="149.0" layoutY="349.0" text=" ">
+      <JFXRadioButton fx:id="alipay" layoutX="149.0" layoutY="349.0" text=" " toggleGroup="$group1">
          <graphic>
             <ImageView fitHeight="33.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -45,7 +49,7 @@
             </ImageView>
          </graphic>
       </JFXRadioButton>
-      <JFXRadioButton layoutX="238.0" layoutY="349.0" text=" ">
+      <JFXRadioButton fx:id="visapay" layoutX="238.0" layoutY="349.0" text=" " toggleGroup="$group1">
          <graphic>
             <ImageView fitHeight="29.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                <image>
