@@ -158,6 +158,7 @@ public class DrawerContentController {
 
     private void initToggle(){
         night.selectedProperty().addListener((observable, oldValue, newValue) -> {
+
             if(night.isSelected()){
                 rootLayoutController.ToNight();
             }else{

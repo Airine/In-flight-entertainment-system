@@ -6,14 +6,21 @@ import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
 import com.util.JsonLoader;
 import com.view.RootLayoutController;
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.ObjectProperty;
 import javafx.fxml.FXML;
 
+import javafx.geometry.Insets;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import javax.jws.soap.SOAPBinding;
+import java.time.Duration;
 
 public class ThemeController {
 
@@ -62,6 +69,11 @@ public class ThemeController {
         return themeuppane;
     }
 
+    @FXML
+    private void initialize(){
+
+    }
+
     public void handleOk() {
         if (!rootLayoutController.getMainApp().huiyuan) {
             stackpane.setVisible(true);
@@ -100,4 +112,32 @@ public class ThemeController {
             e.printStackTrace();
         }
     }
+
+    public void bindColorPicker() {
+        Pane UserBackPane=rootLayoutController.getDrawerContentController().getUserBackPane();
+       UserBackPane.backgroundProperty().addListener((observable, oldValue, newValue) -> {
+            if(UserBackPane.getBackground()==null){
+                return;
+            }
+                Color color=(Color) UserBackPane.getBackground().getFills().get(0).getFill();
+                leftbar.setValue(color);
+       });
+       Pane UserBackUpPane=rootLayoutController.getDrawerContentController().getUserBackUpPane();
+        UserBackUpPane.backgroundProperty().addListener((observable, oldValue, newValue) -> {
+            if(UserBackUpPane.getBackground()==null){
+                return;
+            }
+            Color color=(Color) UserBackUpPane.getBackground().getFills().get(0).getFill();
+            leftbarUp.setValue(color);
+        });
+        AnchorPane mainBar= rootLayoutController.getMainBar();
+        mainBar.backgroundProperty().addListener((observable, oldValue, newValue) -> {
+            if(mainBar.getBackground()==null){
+                return;
+            }
+            Color color=(Color) mainBar.getBackground().getFills().get(0).getFill();
+            upbar.setValue(color);
+        });
+    }
+
 }
