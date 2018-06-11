@@ -68,53 +68,20 @@ public class ThemeController {
     public AnchorPane getThemeuppane() {
         return themeuppane;
     }
-    String WaringTitle="你没有开通这个功能";
-    String WaringMessage="这个问题你充钱就能解决";
-    String WaringButton="行";
 
-    public void setWaringText(String language){
-        if (language.equals("cn")){
-            WaringTitle="你没有开通这个功能";
-            WaringMessage="这个问题你充钱就能解决";
-            WaringButton="行";
-        }else if(language.equals("en")){
-            WaringTitle="You don't have the authority.";
-            WaringMessage="You need to pay for VIP";
-            WaringButton="OK, I konw";
-        }else if(language.equals("fr")){
-            WaringTitle="Vous n'avez pas ouvert cette fonction";
-            WaringMessage="Vous devriez acheter vip pour résoudre ce problème";
-            WaringButton="Bon";
-        }
-    }
     @FXML
     private void initialize(){
 
     }
-    @FXML
-    private void handlrToDefault(){
-        rootLayoutController.ToDefault();
-    }
-    @FXML
-    private void handleTheme1(){
-        rootLayoutController.ToTheme1();
-    }
-    @FXML
-    private void handleTheme2(){
-        rootLayoutController.ToTheme2();
-    }
-    @FXML
-    private void handleTheme3(){
-        rootLayoutController.ToTheme3();
-    }
+
     public void handleOk() {
         if (!rootLayoutController.getMainApp().huiyuan) {
             stackpane.setVisible(true);
             JFXDialogLayout content = new JFXDialogLayout();
-            content.setHeading(new Text(WaringTitle));
-            content.setBody(new Text(WaringMessage));
+            content.setHeading(new Text("你太穷了"));
+            content.setBody(new Text("这个问题你充钱就能解决"));
             JFXDialog dialog = new JFXDialog(stackpane, content, JFXDialog.DialogTransition.CENTER);
-            JFXButton button = new JFXButton(WaringButton);
+            JFXButton button = new JFXButton("我知道了");
             button.setOnAction(event -> {
                 stackpane.setVisible(false);
                 dialog.close();

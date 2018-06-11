@@ -9,11 +9,11 @@
 
 <AnchorPane fx:id="anchorPane" prefHeight="436.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.settingpage.ThemeController">
    <children>
-      <JFXColorPicker fx:id="leftbar" layoutX="222.0" layoutY="270.0" prefHeight="39.0" prefWidth="74.0" AnchorPane.rightAnchor="65.0" />
-      <Label fx:id="upBar" alignment="CENTER" layoutX="27.0" layoutY="210.0" prefHeight="39.0" prefWidth="152.0" styleClass="themelabel" text="顶部导航栏颜色" AnchorPane.leftAnchor="27.0" />
-      <Label fx:id="leftBar" alignment="CENTER" layoutX="27.0" layoutY="270.0" prefHeight="39.0" prefWidth="152.0" styleClass="themelabel" text="侧边导航栏主颜色" AnchorPane.leftAnchor="27.0" />
-      <JFXColorPicker fx:id="upbar" accessibleRole="TEXT" layoutX="222.0" layoutY="210.0" prefHeight="39.0" prefWidth="74.0" AnchorPane.rightAnchor="65.0" />
-      <JFXButton fx:id="button" layoutX="117.0" layoutY="383.0" onMouseClicked="#handleOk" prefHeight="39.0" prefWidth="128.0" styleClass="surebutton" text="确认更改" textFill="WHITE" />
+      <JFXColorPicker fx:id="leftbar" layoutX="222.0" layoutY="236.0" prefHeight="39.0" prefWidth="74.0" AnchorPane.rightAnchor="65.0" />
+      <Label fx:id="upBar" alignment="CENTER" layoutX="25.0" layoutY="171.0" prefHeight="39.0" prefWidth="152.0" text="顶部导航栏颜色" AnchorPane.leftAnchor="25.0" />
+      <Label fx:id="leftBar" alignment="CENTER" layoutX="27.0" layoutY="236.0" prefHeight="39.0" prefWidth="152.0" text="侧边导航栏主颜色" AnchorPane.leftAnchor="27.0" />
+      <JFXColorPicker fx:id="upbar" accessibleRole="TEXT" layoutX="222.0" layoutY="171.0" prefHeight="39.0" prefWidth="74.0" AnchorPane.rightAnchor="65.0" />
+      <JFXButton fx:id="button" layoutX="97.0" layoutY="374.0" onMouseClicked="#handleOk" prefHeight="39.0" prefWidth="167.0" styleClass="surebutton" text="确认更改" textFill="WHITE" />
       <AnchorPane id="userPane" fx:id="themeuppane" layoutX="14.0" layoutY="6.0" prefHeight="141.0" prefWidth="361.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label fx:id="title" alignment="CENTER" layoutX="-1.0" layoutY="36.0" prefHeight="64.0" prefWidth="360.0" styleClass="bigtitle" text="主题" textAlignment="JUSTIFY" textFill="WHITE" AnchorPane.rightAnchor="0.0">
@@ -23,12 +23,8 @@
             </Label>
          </children>
       </AnchorPane>
-      <Label fx:id="leftBarUp" alignment="CENTER" layoutX="27.0" layoutY="332.0" prefHeight="39.0" prefWidth="152.0" styleClass="themelabel" text="侧边导航栏副颜色" />
-      <JFXColorPicker fx:id="leftbarUp" layoutX="222.0" layoutY="332.0" prefHeight="39.0" prefWidth="74.0" />
-      <JFXButton layoutX="27.0" layoutY="156.0" onMouseClicked="#handlrToDefault" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #ee5253; -fx-background-radius: 10px;" text=" " />
-      <JFXButton layoutX="115.0" layoutY="156.0" onMouseClicked="#handleTheme1" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #58C9B9; -fx-background-radius: 10px;" text=" " />
-      <JFXButton layoutX="206.0" layoutY="156.0" onMouseClicked="#handleTheme2" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #274c5e; -fx-background-radius: 10px;" text=" " />
-      <JFXButton layoutX="289.0" layoutY="156.0" onMouseClicked="#handleTheme3" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #27B664; -fx-background-radius: 10px;" text=" " />
+      <Label fx:id="leftBarUp" alignment="CENTER" layoutX="27.0" layoutY="300.0" prefHeight="39.0" prefWidth="152.0" text="侧边导航栏副颜色" />
+      <JFXColorPicker fx:id="leftbarUp" layoutX="222.0" layoutY="300.0" prefHeight="39.0" prefWidth="74.0" />
       <StackPane fx:id="stackpane" layoutX="45.0" layoutY="156.0" prefHeight="133.0" prefWidth="258.0" visible="false" />
    </children>
 </AnchorPane>
