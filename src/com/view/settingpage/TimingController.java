@@ -21,12 +21,19 @@ public class TimingController {
     @FXML
     private JFXDatePicker choosedata;
 
+    @FXML
+    private JFXButton commit;
+
 
     @FXML
     private JFXTimePicker chosetime;
     private RootLayoutController rootLayoutController;
     public void setRootLayoutController(RootLayoutController rootLayoutController){
         this.rootLayoutController=rootLayoutController;
+    }
+
+    public JFXButton getCommit() {
+        return commit;
     }
 
     public AnchorPane getTiminguppane() {
@@ -40,6 +47,11 @@ public class TimingController {
     int count=0;
     @FXML
     public void handleTimingClose(){
+        if(choosedata.getValue()==null||chosetime.getValue()==null){
+            return;
+        }
+        commit.setStyle("-fx-background-color: #A9A9A9;" +
+                "    -fx-font-color: #000000;");
         closeTime=choosedata.getValue().toString().substring(0,5)+choosedata.getValue().toString().substring(6,10)+" "+chosetime.getValue();
         timer = new Timeline(new KeyFrame(Duration.seconds(10),ev->{
             if(waitForClose){
@@ -48,7 +60,7 @@ public class TimingController {
                 System.out.println("开始"+count);count++;
                 String now = new Date().toLocaleString().toString().substring(0, 15);
                 if (now.equals(closeTime)) {
-                    waitForClose=true;
+                    waitForClose=true;//next time it will close auto
                     rootLayoutController.timerOutClose();
                 }
             }
@@ -57,15 +69,7 @@ public class TimingController {
         timer.play();
     }
 
-    class MyTask extends TimerTask {
 
-        //在run方法中的语句就是定时任务执行时运行的语句。
-        public void run() {
-
-        }
-
-
-    }
 
     public void loadLanguage(String language) {
 
