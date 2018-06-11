@@ -91,7 +91,7 @@ public class MovieTableViewController {
                         MainApp.player.mediaPlayer.stop();
                         MainApp.player.getRootLayoutController().seePlaypage();
                         MainApp.player.getSpinner().setVisible(true);
-                        MainApp.player.setPlayerWithBar(new MediaPlayer(new Media(tempt.getHref())));
+                        MainApp.player.setPlayerWithBar(new Media(tempt.getHref()));
                         MainApp.player.mediaPlayer.setAutoPlay(true);
                     } catch (Exception e) {
                         e.printStackTrace();

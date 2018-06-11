@@ -1,5 +1,6 @@
 package com.view;
 
+import com.MainApp;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
@@ -11,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.util.Duration;
@@ -35,7 +37,6 @@ public class PlayerBarController {
     private Image stop;
     private Image play;
     public String localMovieURL = null;
-    
 /* *  连接上一层的playpage
  * @author PennaLia
  * @date 2018/6/2 19:03
@@ -45,8 +46,6 @@ public class PlayerBarController {
     public void setPlayPageController(PlayerPageController Controller){
         this.playerPageController=Controller;
     }
-    
-
     
 /* *  初始化设置
  * @author PennaLia
@@ -85,7 +84,8 @@ public class PlayerBarController {
     private MediaPlayer mp;
     private boolean stopRequested = false;
     private Duration duration;
-
+    FileChooser fc;
+    
     public void controlPlayer(MediaPlayer player) {
         this.mp = player;
 
@@ -106,8 +106,6 @@ public class PlayerBarController {
             duration = player.getMedia().getDuration();
             updateValues();
             playerPageController.getSpinner().setVisible(false);
-            playerPageController.advertismentPlayer.stop();
-            playerPageController.setPlayMovie(playerPageController.MoviePane);
         });
         
         player.setCycleCount(MediaPlayer.INDEFINITE);
@@ -193,27 +191,30 @@ public class PlayerBarController {
 
     @FXML
     public void handle_local_movies() throws MalformedURLException {
-        FileChooser fc = new FileChooser();
-        configureFileChooser(fc);
-        File seletedFile = fc.showOpenDialog(null);
-        if(seletedFile!=null){
-            localMovieURL =seletedFile.toURI().toURL().toExternalForm();//加载出文件的路径
-            playerPageController.setPlayerWithBar(new MediaPlayer(new Media(localMovieURL)));
-            playerPageController.mediaPlayer.setAutoPlay(true);
-        }else {
-            playerPageController.getWarningPane().setVisible(true);
-            JFXDialogLayout content = new JFXDialogLayout();
-            content.setHeading(new Text("Wrong"));
-            content.setBody(new Text("You did not choose any file"));
-            JFXDialog dialog = new JFXDialog(playerPageController.getWarningPane(), content, JFXDialog.DialogTransition.CENTER);
-            JFXButton button = new JFXButton("I know");
-            button.setOnAction(event -> {
-                playerPageController.getWarningPane().setVisible(false);
-                dialog.close();
-            });
-            content.setActions(button);
-            dialog.show();
-            localMovieURL = null;
+        if(fc==null) {
+            fc = new FileChooser();
+            configureFileChooser(fc);
+            File seletedFile = fc.showOpenDialog(null);
+            if (seletedFile != null) {
+                localMovieURL = seletedFile.toURI().toURL().toExternalForm();//加载出文件的路径
+                playerPageController.setPlayerWithBar(new Media(localMovieURL));
+                playerPageController.mediaPlayer.setAutoPlay(true);
+                playerPageController.getSkip().setVisible(true);
+            } else {
+                playerPageController.getWarningPane().setVisible(true);
+                JFXDialogLayout content = new JFXDialogLayout();
+                content.setHeading(new Text("Wrong"));
+                content.setBody(new Text("You did not choose any file"));
+                JFXDialog dialog = new JFXDialog(playerPageController.getWarningPane(), content, JFXDialog.DialogTransition.CENTER);
+                JFXButton button = new JFXButton("I know");
+                button.setOnAction(event -> {
+                    playerPageController.getWarningPane().setVisible(false);
+                    dialog.close();
+                });
+                content.setActions(button);
+                dialog.show();
+                localMovieURL = null;
+            }
         }
     }
     private static void configureFileChooser(final FileChooser fileChooser) {
