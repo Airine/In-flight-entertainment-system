@@ -7,14 +7,14 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane minHeight="48.0" minWidth="640.0" prefHeight="48.0" prefWidth="640.0" style="-fx-background-color: F5F5F7;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.PlayerBarController">
+<AnchorPane minHeight="48.0" minWidth="640.0" prefHeight="48.0" prefWidth="640.0" style="-fx-background-color: F5F5F7;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.PlayerBarController">
    <children>
       <JFXSlider fx:id="TimeBar" accessibleRole="BUTTON" cache="true" layoutX="56.0" layoutY="17.0" opacity="0.8" prefHeight="14.0" prefWidth="309.0" value="1.0" AnchorPane.rightAnchor="275.0">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </JFXSlider>
-      <Label fx:id="playTime" layoutX="375.0" layoutY="17.0" prefHeight="15.0" prefWidth="117.0" text="当前时间/总时间" textAlignment="CENTER" AnchorPane.rightAnchor="148.0" />
+      <Label fx:id="playTime" layoutX="375.0" layoutY="17.0" prefHeight="15.0" prefWidth="117.0" text="0:00:00/0:00:00" textAlignment="CENTER" AnchorPane.rightAnchor="148.0" />
       <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="495.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="14.0">
          <image>
             <Image url="@../../resources/icon/sound1.png" />
@@ -26,7 +26,7 @@
             <Image url="@../../resources/icon/vediostop.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="611.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="611.0" AnchorPane.rightAnchor="11.0">
+      <ImageView fx:id="local_movies" fitHeight="18.0" fitWidth="18.0" layoutX="611.0" layoutY="15.0" onMouseClicked="#handle_local_movies" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="611.0" AnchorPane.rightAnchor="11.0">
          <image>
             <Image url="@../../resources/icon/addfile.png" />
          </image>

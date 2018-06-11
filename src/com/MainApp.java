@@ -3,6 +3,7 @@ package com;
 import com.model.Movie;
 import com.model.MovieType;
 import com.model.User;
+import com.util.DataUpdater;
 import com.util.JsonLoader;
 import com.view.LoginController;
 import com.view.PlayerPageController;
@@ -17,18 +18,17 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
-import static com.util.DataLoader.loadMovieTypes;
-import static com.util.DataLoader.loadMovies;
-import static com.util.DataLoader.loadUsers;
+import static com.util.DataLoader.*;
 
 public class MainApp extends Application {
 
     public static User mainUser;
     public static List<Movie> mainMovies;
     public static List<MovieType> mainMovieTypes;
-    public static List<Movie> starMovies;
+    public static List<Movie> starMovies = new ArrayList<>();
     public static PlayerPageController player;
 
     LoginController controller;
@@ -110,6 +110,8 @@ public class MainApp extends Application {
     }
 
     public void closeWindows(){
+        DataUpdater.writeBackCollection();
+        System.out.println("Write Back Compelete.");
         primaryStage.close();
     }
 
@@ -118,6 +120,8 @@ public class MainApp extends Application {
         mainMovies = loadMovies();
         // "cn" -> mainUser.language;
         mainMovieTypes = loadMovieTypes("en");
+//        mainUser = getUser("aaron");
+//        loadStarRelation();
         launch(args);
     }
 

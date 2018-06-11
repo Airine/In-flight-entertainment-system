@@ -1,13 +1,22 @@
 package com.view;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.JFXSlider;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.util.Duration;
+
+import java.io.File;
+import java.net.MalformedURLException;
 
 public class PlayerBarController {
     @FXML
@@ -25,7 +34,8 @@ public class PlayerBarController {
     private PlayerPageController playerPageController;
     private Image stop;
     private Image play;
-
+    public String localMovieURL = null;
+    
 /* *  连接上一层的playpage
  * @author PennaLia
  * @date 2018/6/2 19:03
@@ -177,5 +187,36 @@ public class PlayerBarController {
                         elapsedSeconds);
             }
         }
+    }
+
+    @FXML
+    public void handle_local_movies() throws MalformedURLException {
+        FileChooser fc = new FileChooser();
+        configureFileChooser(fc);
+        File seletedFile = fc.showOpenDialog(null);
+        if(seletedFile!=null){
+            localMovieURL =seletedFile.toURI().toURL().toExternalForm();//加载出文件的路径
+            playerPageController.setPlayerWithBar(new MediaPlayer(new Media(localMovieURL)));
+            playerPageController.mediaPlayer.setAutoPlay(true);
+        }else {
+            playerPageController.getWarningPane().setVisible(true);
+            JFXDialogLayout content = new JFXDialogLayout();
+            content.setHeading(new Text("Wrong"));
+            content.setBody(new Text("You did not choose any file"));
+            JFXDialog dialog = new JFXDialog(playerPageController.getWarningPane(), content, JFXDialog.DialogTransition.CENTER);
+            JFXButton button = new JFXButton("I know");
+            button.setOnAction(event -> {
+                playerPageController.getWarningPane().setVisible(false);
+                dialog.close();
+            });
+            content.setActions(button);
+            dialog.show();
+            localMovieURL = null;
+        }
+    }
+    private static void configureFileChooser(final FileChooser fileChooser) {
+        fileChooser.setTitle("View Videos");
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.dir")+"/src/resources/movie_trailers/"));
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("MP4", "*.mp4"));
     }
 }

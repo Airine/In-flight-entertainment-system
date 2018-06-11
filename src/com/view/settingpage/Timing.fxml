@@ -23,7 +23,7 @@
          <font>
             <Font size="15.0" />
          </font></Label>
-      <JFXButton layoutX="113.0" layoutY="351.0" onMouseClicked="#handleTimingClose" prefHeight="39.0" prefWidth="138.0" styleClass="surebutton" text="确认" />
+      <JFXButton fx:id="commit" layoutX="113.0" layoutY="351.0" onMouseClicked="#handleTimingClose" prefHeight="39.0" prefWidth="138.0" styleClass="surebutton" text="确认" />
       <JFXDatePicker fx:id="choosedata" layoutX="112.0" layoutY="218.0" prefHeight="23.0" prefWidth="157.0" />
    </children>
 </AnchorPane>

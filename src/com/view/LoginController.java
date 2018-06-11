@@ -17,6 +17,7 @@ import org.json.JSONObject;
 
 import static com.MainApp.mainUser;
 import static com.util.DataLoader.getUser;
+import static com.util.DataLoader.loadStarRelation;
 
 
 public class LoginController {
@@ -93,6 +94,7 @@ public class LoginController {
             } else {
                 dialogStage.close();
                 mainUser = user;
+                loadStarRelation();
             }
         }
     }

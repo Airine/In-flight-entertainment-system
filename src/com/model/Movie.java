@@ -19,6 +19,16 @@ public class Movie {
     private MovieItem mi_cn;
     private MovieItem mi_en;
 
+    private boolean star = false;
+
+    public boolean isStar() {
+        return star;
+    }
+
+    public void setStar(boolean star) {
+        this.star = star;
+    }
+
     private FlowPane detailsPane_cn;
     private FlowPane detailsPane_en;
 
@@ -40,11 +50,29 @@ public class Movie {
 
     }
 
-    public void initMI(){
-        mi_cn = new MovieItem(post_href, title_cn, href);
-        mi_en = new MovieItem(post_href, title_en, href);
+    public Movie(Movie movie){
+        this.movie_id = movie.movie_id;
+        this.title_cn = movie.title_cn;
+        this.title_en = movie.title_en;
+        this.year     = movie.year;
+        this.language = movie.language;
+        this.type     = movie.type;
+        this.href     = movie.href;
+        this.post_href= movie.post_href;
+        this.mi_cn    = movie.mi_cn;
+        this.mi_en    = movie.mi_en;
+        this.star     = movie.star;
     }
 
+    public void initMI(){
+        mi_cn = new MovieItem(this, title_cn);
+        mi_en = new MovieItem(this, title_en);
+    }
+
+    @Override
+    public String toString(){
+        return "Id: " + movie_id + "\tTitle:" + title_cn;
+    }
     public int getType() {
         return type;
     }
