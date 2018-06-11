@@ -52,18 +52,16 @@ public class MoneyController {
     public AnchorPane getMoneyuppane(){
         return  moneyuppane;
     }
-    String WaringTitle="祝贺";
-    String WaringMessage="恭喜你喜提会员";
-    String WaringButton="知道了";
+
     @FXML
     public void handleBeHuiYuan(){
         rootLayoutController.getDrawerContentController().beHuiyuan();
         stackpane.setVisible(true);
         JFXDialogLayout content = new JFXDialogLayout();
-        content.setHeading(new Text(WaringTitle));
-        content.setBody(new Text(WaringMessage));
+        content.setHeading(new Text("Remind"));
+        content.setBody(new Text("Congratulations!"));
         JFXDialog dialog = new JFXDialog(stackpane, content, JFXDialog.DialogTransition.CENTER);
-        JFXButton button = new JFXButton(WaringButton);
+        JFXButton button = new JFXButton("I konw");
         button.setOnAction(event -> {
             stackpane.setVisible(false);
             dialog.close();
@@ -90,22 +88,6 @@ public class MoneyController {
             e.printStackTrace();
         }
     }
-    public void setWaringText(String language){
-        if (language.equals("cn")){
-            WaringTitle="祝贺";
-            WaringMessage="恭喜你喜提会员";
-            WaringButton="知道了";
-        }else if(language.equals("en")){
-            WaringTitle="Congratulations";
-            WaringMessage="You are VIP now";
-            WaringButton="OK, I konw";
-        }else if(language.equals("fr")){
-            WaringTitle="Félicitations";
-            WaringMessage="Vous êtes maintenant notre membre";
-            WaringButton="Je sais";
-        }
-    }
-
 
 
 }

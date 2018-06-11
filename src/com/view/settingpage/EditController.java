@@ -51,29 +51,8 @@ public class EditController {
         return edituppane;
     }
     private RootLayoutController rootLayoutController;
-
-    String WaringTitle="警告";
-    String WaringMessage="你没有选择任何文件";
-    String WaringButton="我知道了";
-
     public void setRootLayoutController(RootLayoutController rootLayoutController){
         this.rootLayoutController=rootLayoutController;
-    }
-
-    public void setWaringText(String language){
-        if (language.equals("cn")){
-            WaringTitle="警告";
-            WaringMessage="你没有选择任何文件";
-            WaringButton="我知道了";
-        }else if(language.equals("en")){
-            WaringTitle="Waring";
-            WaringMessage="You did not choose any file";
-            WaringButton="OK, I konw";
-        }else if(language.equals("fr")){
-            WaringTitle="Avertissement";
-            WaringMessage="Vous n'avez sélectionné aucun fichier";
-            WaringButton="Je sais";
-        }
     }
     @FXML
     public void handleEdit(){
@@ -93,10 +72,10 @@ public class EditController {
         }else {
             stackpane.setVisible(true);
             JFXDialogLayout content = new JFXDialogLayout();
-            content.setHeading(new Text(WaringTitle));
-            content.setBody(new Text(WaringMessage));
+            content.setHeading(new Text("Wrong"));
+            content.setBody(new Text("You did not choose any file"));
             JFXDialog dialog = new JFXDialog(stackpane, content, JFXDialog.DialogTransition.CENTER);
-            JFXButton button = new JFXButton(WaringButton);
+            JFXButton button = new JFXButton("I know");
             button.setOnAction(event -> {
                 stackpane.setVisible(false);
                 dialog.close();
