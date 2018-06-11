@@ -3,17 +3,14 @@ package com.view;
 import com.MainApp;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXSpinner;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 
-import java.io.File;
 import java.io.IOException;
 
 public class PlayerPageController {
@@ -36,10 +33,10 @@ public class PlayerPageController {
     PlayerBarController playerBarController;
     //把接入的视频界面赋值给play，然后调用setplaymovie，界面就会替换
     StackPane MoviePane;
-
+    StackPane advertisementPane;
+    
     public MediaPlayer mediaPlayer;
     public MediaPlayer advertismentPlayer;
-    public MediaView mediaView;
     
     private RootLayoutController rootLayoutController;
     
@@ -50,25 +47,7 @@ public class PlayerPageController {
     public void setRootLayoutController(RootLayoutController rootLayoutController){
         this.rootLayoutController=rootLayoutController;
     }
-    
-    @FXML
-    private void handleSkip(){
-        skip.setVisible(false);
-        advertismentPlayer.stop();
-        mediaView.setMediaPlayer(mediaPlayer);
-        if(mediaPlayer.getStatus()!=MediaPlayer.Status.READY){
-            spinner.setVisible(true);
-        }
-        else {
-            advertismentPlayer.stop();
-            mediaView.setMediaPlayer(mediaPlayer);
-            Bar.setDisable(false);
-        }
-    }
-    
-    public StackPane getPlaymovie() {
-        return playmovie;
-    }
+
     public JFXSpinner getSpinner() {
         return spinner;
     }
@@ -77,20 +56,27 @@ public class PlayerPageController {
         return warningPane;
     }
 
-    public JFXButton getSkip() {
-        return skip;
-    }
-    
-    public void setMoviePane(){
+    public void setMoviePane(MediaView mediaView){
         MoviePane = new StackPane();
+        MoviePane.autosize();
         mediaView.setPreserveRatio(true);
         mediaView.fitWidthProperty().bind(MoviePane.widthProperty());
         MoviePane.getChildren().add(mediaView);
         MoviePane.setStyle("-fx-background-color: black;");
     }
+    
+    private void setAdvertisementPane(MediaView mediaView){
+        advertisementPane = new StackPane();
+        advertisementPane.autosize();
+        mediaView.setPreserveRatio(true);
+        mediaView.fitWidthProperty().bind(advertisementPane.widthProperty());
+        advertisementPane.getChildren().add(mediaView);
+        advertisementPane.setStyle("-fx-background-color: black;");
+    }
 
-    public void setPlayMovie(){
-        playmovie.getChildren().add(MoviePane);
+    public void setPlayMovie(StackPane pane){
+        playmovie.getChildren().clear();
+        playmovie.getChildren().add(pane);
     }
     
     public void initPlayerBar(){
@@ -111,40 +97,29 @@ public class PlayerPageController {
     @FXML
     private void initialize(){
         try {
-            skip.setVisible(false);
-            mediaView = new MediaView();
+            //这里随便加了个小视频
+            mediaPlayer = new MediaPlayer(new Media(
+                    "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"));
             advertismentPlayer = new MediaPlayer(new Media(
-                    getClass().getResource("/resources/advertisement/flight.mp4").toExternalForm()));
-            spinner.setVisible(false);
-            mediaPlayer = new MediaPlayer(new Media("http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"));
-            mediaView.setMediaPlayer(mediaPlayer);
-            setMoviePane();
-            setPlayMovie();
+                    getClass().getResource("/resources/advertisement/iphoneX.mp4").toExternalForm()));
+            setMoviePane(new MediaView(mediaPlayer));
+            setAdvertisementPane(new MediaView(advertismentPlayer));
+            setPlayMovie(advertisementPane);
             initPlayerBar();
-            advertismentPlayer.setOnEndOfMedia(()->{
-                advertismentPlayer.stop();
-                spinner.setVisible(true);
-                if(mediaPlayer.getStatus()==MediaPlayer.Status.READY){
-                    mediaView.setMediaPlayer(mediaPlayer);
-                    Bar.setDisable(false);
-                    mediaPlayer.play();
-                }
-            });
+            advertismentPlayer.setAutoPlay(true);
         }catch (Exception e){
             e.printStackTrace();
         }
     }
     
-    public void setPlayerWithBar(Media media){
-        advertismentPlayer.play();
-        Bar.setDisable(true);
-        if(rootLayoutController.getMainApp().huiyuan)
-            skip.setVisible(true);
-        spinner.setVisible(false);
-        mediaPlayer = new MediaPlayer(media);
-        mediaView.setMediaPlayer(advertismentPlayer);
-        setMoviePane();
-        setPlayMovie();
+    public void setPlayerWithBar(MediaPlayer player){
+        mediaPlayer = player;
+        setMoviePane(new MediaView(player));
+        setPlayMovie(advertisementPane);
         initPlayerBar();
+        advertismentPlayer.setAutoPlay(true);
     }
+
+    
+
 }
