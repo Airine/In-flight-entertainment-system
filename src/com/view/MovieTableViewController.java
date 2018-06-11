@@ -89,10 +89,10 @@ public class MovieTableViewController {
                     System.out.println(tempt);
                     try {
                         MainApp.player.mediaPlayer.stop();
+                        MainApp.player.advertismentPlayer.stop();
                         MainApp.player.getRootLayoutController().seePlaypage();
                         MainApp.player.getSpinner().setVisible(true);
                         MainApp.player.setPlayerWithBar(new Media(tempt.getHref()));
-                        MainApp.player.mediaPlayer.setAutoPlay(true);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

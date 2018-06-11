@@ -106,6 +106,9 @@ public class PlayerBarController {
             duration = player.getMedia().getDuration();
             updateValues();
             playerPageController.getSpinner().setVisible(false);
+            if (playerPageController.advertismentPlayer.getStatus()==MediaPlayer.Status.STOPPED){
+                playerPageController.getBar().setDisable(false);
+            }
         });
         
         player.setCycleCount(MediaPlayer.INDEFINITE);
@@ -197,9 +200,14 @@ public class PlayerBarController {
             File seletedFile = fc.showOpenDialog(null);
             if (seletedFile != null) {
                 localMovieURL = seletedFile.toURI().toURL().toExternalForm();//加载出文件的路径
-                playerPageController.setPlayerWithBar(new Media(localMovieURL));
+                playerPageController.getSpinner().setVisible(false);
+                playerPageController.mediaPlayer = new MediaPlayer(new Media(localMovieURL));
+                playerPageController.mediaView.setMediaPlayer(playerPageController.mediaPlayer);
+                playerPageController.setMoviePane();
+                playerPageController.setPlayMovie();
+                playerPageController.initPlayerBar();
                 playerPageController.mediaPlayer.setAutoPlay(true);
-                playerPageController.getSkip().setVisible(true);
+                playerPageController.getSkip().setVisible(false);
             } else {
                 playerPageController.getWarningPane().setVisible(true);
                 JFXDialogLayout content = new JFXDialogLayout();

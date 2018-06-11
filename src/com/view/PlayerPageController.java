@@ -50,7 +50,11 @@ public class PlayerPageController {
     public void setRootLayoutController(RootLayoutController rootLayoutController){
         this.rootLayoutController=rootLayoutController;
     }
-    
+
+    public AnchorPane getBar() {
+        return Bar;
+    }
+
     @FXML
     private void handleSkip(){
         skip.setVisible(false);
@@ -126,6 +130,7 @@ public class PlayerPageController {
                 spinner.setVisible(true);
                 if(mediaPlayer.getStatus()==MediaPlayer.Status.READY){
                     mediaView.setMediaPlayer(mediaPlayer);
+                    spinner.setVisible(false);
                     Bar.setDisable(false);
                 }
             });
