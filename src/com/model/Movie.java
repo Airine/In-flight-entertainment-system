@@ -69,6 +69,10 @@ public class Movie {
         mi_en = new MovieItem(this, title_en);
     }
 
+    @Override
+    public String toString(){
+        return "Id: " + movie_id + "\tTitle:" + title_cn;
+    }
     public int getType() {
         return type;
     }

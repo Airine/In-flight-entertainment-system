@@ -1,15 +1,13 @@
 package com.util;
 
+import com.MainApp;
 import com.model.*;
 import static com.util.SQLiteJDBC.*;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class DataLoader {
@@ -17,6 +15,7 @@ public class DataLoader {
     private static List<User> users = new ArrayList<>();
     private static List<Movie> movies = new ArrayList<>();
     private static List<MovieType> movieTypes = new ArrayList<>();
+//    private static Map<Integer,Integer> star_relation;
     private static final String[] types = {
             "Other",
             "Action",
@@ -130,9 +129,52 @@ public class DataLoader {
         return tempt;
     }
 
+    public static void loadStarRelation(){
+        Connection connection = connectToDB();
+
+        User user = MainApp.mainUser;
+        List<Movie> starMovies = MainApp.starMovies;
+
+        try{
+            String sql = "select * from star_relations;";
+
+            ResultSet rs = runSQLquery(connection, sql);
+            assert rs !=null : "Result set is null";
+            while (rs.next()){
+                int user_id = rs.getInt("user_id");
+                int movie_id = rs.getInt("movie_id");
+                if (user.getId() == user_id){
+                    Movie tempt = getMovie(movie_id);
+                    assert tempt != null;
+                    tempt.setStar(true);
+                    starMovies.add(tempt);
+                }
+            }
+
+            if (connection!=null){
+                if (!connection.isClosed())
+                    connection.close();
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        System.out.println("Load user collection successfully.");
+        for (Movie m : starMovies) {
+            System.out.println(m);
+        }
+    }
+
     public static User getUser(String user_name){
         List<User> tempt = users.stream()
                             .filter(user -> Objects.equals(user.getName(), user_name))
+                            .collect(Collectors.toList());
+        if (tempt.size()!=1) return null;
+        else return tempt.get(0);
+    }
+
+    public static Movie getMovie(int id){
+        List<Movie> tempt = movies.stream()
+                            .filter(movie -> movie.getMovie_id() == id)
                             .collect(Collectors.toList());
         if (tempt.size()!=1) return null;
         else return tempt.get(0);
@@ -153,6 +195,8 @@ public class DataLoader {
     private static void setMovieTypes(List<MovieType> movieTypes){
         DataLoader.movieTypes = movieTypes;
     }
+
+
 
 
 }
