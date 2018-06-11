@@ -75,6 +75,14 @@
     -fx-background-radius: 5;
 }
 
+#checkbutton{
+    -fx-font-family:"Microsoft YaHei Light"  ;
+    -fx-background-color:#ee5253; //按钮颜色
+    -fx-text-fill: white; //字体颜色
+    -fx-font-size:  12px;  //字体大小
+    -fx-background-radius: 5;
+}
+
 
 //对于设置界面
 .huiyuanitem{//付款界面的小标签
@@ -91,7 +99,8 @@
 
 #chosefile{
     -fx-font-size: 12px;
-    -fx-background-color: 	#DCDCDC;
+    -fx-text-fill: white;
+    -fx-background-color: 	#ee5253;
     -fx-background-radius: 5;
 }
 

@@ -340,6 +340,7 @@ public class RootLayoutController {
             themeController.getLeftbarUp().setValue(Color.web("#F08080"));
             themeController.getLeftbar().setValue(Color.web("#ee5253"));
             themeController.getUpbar().setValue(Color.web("C62F2F"));
+            themeController.bindColorPicker();
         } catch (IOException e) {
             e.printStackTrace();
         }

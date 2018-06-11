@@ -6,6 +6,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="436.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.settingpage.MoneyController">
@@ -53,5 +54,6 @@
             </ImageView>
          </graphic>
       </JFXRadioButton>
+      <StackPane fx:id="stackpane" layoutX="55.0" layoutY="166.0" prefHeight="133.0" prefWidth="258.0" visible="false" />
    </children>
 </AnchorPane>

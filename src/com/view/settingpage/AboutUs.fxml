@@ -18,16 +18,17 @@
             </Label>
          </children>
       </AnchorPane>
-      <JFXChipView fx:id="pingjia" layoutX="7.0" layoutY="296.0" prefHeight="110.0" prefWidth="361.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <JFXButton fx:id="comment" alignment="CENTER" layoutX="133.0" layoutY="377.0" onMouseClicked="#handleCommitComment" prefHeight="39.0" prefWidth="116.0" styleClass="surebutton" text="评价" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="133.0" AnchorPane.rightAnchor="111.0" />
-      <Label fx:id="commentTo" alignment="CENTER" layoutX="67.0" layoutY="265.0" prefHeight="29.0" prefWidth="232.0" text="给开发者评价">
+      <JFXChipView fx:id="pingjia" layoutX="7.0" layoutY="296.0" prefHeight="89.0" prefWidth="360.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <JFXButton fx:id="comment" alignment="CENTER" layoutX="125.0" layoutY="396.0" onMouseClicked="#handleCommitComment" prefHeight="29.0" prefWidth="116.0" styleClass="surebutton" text="评价" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="125.0" AnchorPane.rightAnchor="119.0" />
+      <Label fx:id="commentTo" alignment="CENTER" layoutX="67.0" layoutY="271.0" prefHeight="23.0" prefWidth="232.0" text="给开发者评价">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <JFXButton fx:id="checkVersion" alignment="CENTER" layoutX="103.0" layoutY="218.0" minHeight="29.0" onMouseClicked="#handleCheckUpdata" prefHeight="39.0" prefWidth="178.0" styleClass="surebutton" text="检查新版本" />
-      <Label fx:id="version" alignment="CENTER" layoutX="67.0" layoutY="173.0" prefHeight="29.0" prefWidth="131.0" text="当前版本" />
-      <Label layoutX="213.0" layoutY="173.0" prefHeight="29.0" prefWidth="100.0" text="1.0" />
+      <JFXButton id="checkbutton" fx:id="checkVersion" alignment="CENTER" layoutX="191.0" layoutY="218.0" minHeight="29.0" onMouseClicked="#handleCheckUpdata" prefHeight="29.0" prefWidth="100.0" text="检查" />
+      <Label fx:id="version" layoutX="29.0" layoutY="173.0" prefHeight="29.0" prefWidth="116.0" text="当前版本" />
+      <Label alignment="CENTER" layoutX="191.0" layoutY="173.0" prefHeight="29.0" prefWidth="100.0" text="1.0" />
       <StackPane fx:id="stackpane" layoutX="81.0" layoutY="193.0" prefHeight="89.0" prefWidth="198.0" visible="false" />
+      <Label fx:id="version1" layoutX="29.0" layoutY="218.0" prefHeight="29.0" prefWidth="116.0" text="检查新版本" />
    </children>
 </AnchorPane>

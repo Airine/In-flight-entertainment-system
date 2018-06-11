@@ -69,9 +69,16 @@
 //这是确认修改的button，比如在修改信息时候的那个
 .surebutton{
      -fx-font-family:"Microsoft YaHei Light"  ;
-    -fx-background-color:#A9A9A9; //按钮颜色
+    -fx-background-color:#0A0A0A; //按钮颜色
     -fx-text-fill: white; //字体颜色
     -fx-font-size:  16px;  //字体大小
+    -fx-background-radius: 5;
+}
+#checkbutton{
+     -fx-font-family:"Microsoft YaHei Light"  ;
+    -fx-background-color:#0A0A0A; //按钮颜色
+    -fx-text-fill: white; //字体颜色
+    -fx-font-size:  12px;  //字体大小
     -fx-background-radius: 5;
 }
 
@@ -79,7 +86,7 @@
 //对于设置界面
 .huiyuanitem{//付款界面的小标签
      -fx-font-family:"Microsoft YaHei Light"  ;
-    -fx-background-color: #A9A9A9;
+    -fx-background-color: #0A0A0A;
     -fx-font-color: #000000;
     -fx-background-radius: 100;
 }
@@ -91,7 +98,8 @@
 
 #chosefile{
     -fx-font-size: 12px;
-    -fx-background-color: 	#DCDCDC;
+     -fx-text-fill: white;
+    -fx-background-color:#0A0A0A ;
     -fx-background-radius: 5;
 }
 
