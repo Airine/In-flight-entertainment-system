@@ -197,7 +197,7 @@ public class PlayerBarController {
         if(seletedFile!=null){
             localMovieURL =seletedFile.toURI().toURL().toExternalForm();//加载出文件的路径
             playerPageController.setPlayerWithBar(new MediaPlayer(new Media(localMovieURL)));
-            
+            playerPageController.mediaPlayer.setAutoPlay(true);
         }else {
             playerPageController.getWarningPane().setVisible(true);
             JFXDialogLayout content = new JFXDialogLayout();
