@@ -9,5 +9,6 @@
       <StackPane fx:id="playmovie" layoutX="34.0" layoutY="22.0" prefHeight="388.0" prefWidth="640.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <AnchorPane fx:id="Bar" layoutX="2.0" layoutY="371.0" prefHeight="48.0" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
       <JFXSpinner fx:id="spinner" layoutX="300.0" layoutY="174.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="40.0" />
+      <StackPane fx:id="warningPane" layoutX="190.0" layoutY="128.0" prefHeight="132.0" prefWidth="258.0" />
    </children>
 </AnchorPane>
