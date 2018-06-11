@@ -30,6 +30,9 @@ public class AboutUsController {
     public AnchorPane getAboutusuppane(){
         return aboutusuppane;
     }
+    String WaringTitle="当前版本";
+    String WaringMessage="当前已经是最新版本";
+    String WaringButton="我知道了";
 
     private RootLayoutController rootLayoutController;
     public void setRootLayoutController(RootLayoutController rootLayoutController){
@@ -40,17 +43,31 @@ public class AboutUsController {
     private void initialize() {
         initPingJia();
     }
-
+    public void setWaringText(String language){
+        if (language.equals("cn")){
+            WaringTitle="当前版本";
+            WaringMessage="当前已经是最新版本";
+            WaringButton="我知道了";
+        }else if(language.equals("en")){
+            WaringTitle="Current version";
+            WaringMessage="Currently is the latest version";
+            WaringButton="OK, I konw";
+        }else if(language.equals("fr")){
+            WaringTitle="Version actuelle";
+            WaringMessage="Actuellement la dernière version";
+            WaringButton="Je sais";
+        }
+    }
 
 
     @FXML
     public void handleCheckUpdata(){
         stackpane.setVisible(true);
         JFXDialogLayout content = new JFXDialogLayout();
-        content.setHeading(new Text("当前版本"));
-        content.setBody(new Text("当前已经是最新版本"));
+        content.setHeading(new Text(WaringTitle));
+        content.setBody(new Text(WaringMessage));
         JFXDialog dialog = new JFXDialog(stackpane, content, JFXDialog.DialogTransition.CENTER);
-        JFXButton button = new JFXButton("我知道了");
+        JFXButton button = new JFXButton(WaringButton);
         button.setOnAction(event -> {
             stackpane.setVisible(false);
             dialog.close();

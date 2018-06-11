@@ -108,6 +108,10 @@
     -fx-background-radius: 5;
 }
 
+.themelabel{
+    -fx-font-size: 13px;
+    -fx-text-fill:black;
+}
 
 //对于所有的东西
 
