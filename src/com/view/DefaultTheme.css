@@ -82,7 +82,11 @@
     -fx-font-size:  12px;  //字体大小
     -fx-background-radius: 5;
 }
-
+.workshop{
+ -fx-font-family:"Microsoft YaHei Light"  ;
+   -fx-text-fill: white;
+    -fx-font-size: 12px;
+}
 
 //对于设置界面
 .huiyuanitem{//付款界面的小标签

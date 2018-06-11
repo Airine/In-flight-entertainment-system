@@ -103,6 +103,11 @@
     -fx-background-radius: 5;
 }
 
+.workshop{
+ -fx-font-family:"Microsoft YaHei Light"  ;
+   -fx-text-fill: white;
+    -fx-font-size: 12px;
+}
 
 //对于所有的东西
 
