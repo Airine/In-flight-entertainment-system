@@ -3,10 +3,12 @@ package com.view.settingpage;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
+import com.jfoenix.controls.JFXRadioButton;
 import com.util.JsonLoader;
 import com.view.RootLayoutController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
@@ -32,6 +34,15 @@ public class MoneyController {
 
     @FXML
     private StackPane stackpane;
+    @FXML
+    private JFXRadioButton wechatpay;
+
+    @FXML
+    private JFXRadioButton alipay;
+
+    @FXML
+    private JFXRadioButton visapay;
+
 
     private boolean payWay;
     private RootLayoutController rootLayoutController;
@@ -77,4 +88,6 @@ public class MoneyController {
             e.printStackTrace();
         }
     }
+
+
 }

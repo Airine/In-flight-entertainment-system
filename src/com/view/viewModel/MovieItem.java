@@ -139,11 +139,8 @@ public class MovieItem extends StackPane {
                 MainApp.player.mediaPlayer.stop();
                 MainApp.player.getRootLayoutController().seePlaypage();
                 MainApp.player.getSpinner().setVisible(true);
-                MainApp.player.mediaPlayer = new MediaPlayer(new Media(videoUrl));
+                MainApp.player.setPlayerWithBar(new MediaPlayer(new Media(videoUrl)));
                 MainApp.player.mediaPlayer.setAutoPlay(true);
-                MainApp.player.setMoviePane(new MediaView(MainApp.player.mediaPlayer));
-                MainApp.player.setPlayMovie();
-                MainApp.player.initPlayerBar();
             } catch (Exception e) {
                 e.printStackTrace();
             }
