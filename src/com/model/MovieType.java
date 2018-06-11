@@ -42,6 +42,7 @@ public class MovieType {
             try{
 //                StackPane movieItem = movie.getMi_cn();
                 movie.initMI();
+//                StackPane movieItem = movie.getMi_cn();
                 StackPane movieItem = (language.equals("cn"))? movie.getMi_cn() : movie.getMi_en();
                 flowPane.getChildren().add(movieItem);
             } catch (Exception e) {
@@ -115,6 +116,8 @@ public class MovieType {
     public void handleClick(JFXScrollPane homeScrollPane, JFXButton button) {
         movieSortItem_cn.getButton().setOnMouseClicked(event -> {
             button.setVisible(true);
+            flowPane = new FlowPane();
+            initMovies("cn");
             homeScrollPane.setContent(flowPane);
 //            System.out.println(type_cn);
 //            for (Movie movie:movies){
@@ -123,6 +126,9 @@ public class MovieType {
 
         });
         movieSortItem_en.getButton().setOnMouseClicked(event -> {
+            button.setVisible(true);
+            flowPane = new FlowPane();
+            initMovies("en");
             homeScrollPane.setContent(flowPane);
             System.out.println(type_en);
         });

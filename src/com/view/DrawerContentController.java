@@ -1,15 +1,15 @@
 package com.view;
 
+import com.MainApp;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXToggleButton;
 import com.jfoenix.transitions.JFXFillTransition;
+import com.model.Movie;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
@@ -141,8 +141,22 @@ public class DrawerContentController {
         rootLayoutController.seeHomepage();
         rootLayoutController.homePageSee();
         rootLayoutController.getSettingPane().setVisible(false);
-        rootLayoutController.HomePageController.changeFlowContent(rootLayoutController.collection);
+        FlowPane flowPane = rootLayoutController.collectionController.getMycollection();
+        flowPane = new FlowPane();
+        for (Movie movie: MainApp.starMovies) {
+            try{
+//                StackPane movieItem = movie.getMi_cn();
+                movie.initMI();
+                StackPane movieItem = movie.getMi_cn();
+//                StackPane movieItem = (language.equals("cn"))? movie.getMi_cn() : movie.getMi_en();
+                flowPane.getChildren().add(movieItem);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        rootLayoutController.HomePageController.changeFlowContent(flowPane);
         rootLayoutController.HomePageController.back.setVisible(true);
+
     }
     @FXML
     private void handleEdit(){

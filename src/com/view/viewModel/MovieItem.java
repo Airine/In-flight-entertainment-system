@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXNodesList;
 import com.jfoenix.effects.JFXDepthManager;
 import com.jfoenix.svg.SVGGlyph;
+import com.model.Movie;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -21,9 +22,14 @@ import javafx.scene.media.MediaView;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
+import static com.MainApp.starMovies;
 import static javafx.animation.Interpolator.EASE_BOTH;
 
 public class MovieItem extends StackPane {
+
+    private Movie movie;
+
+//    private Movie pram_movie;
 
     private JFXButton button = new JFXButton();
 
@@ -31,9 +37,12 @@ public class MovieItem extends StackPane {
 
     private JFXButton collectionbutton = new JFXButton();
 
-    private boolean ifCollect = false;
+//    private boolean ifCollect = false;
 
-    public MovieItem(String postUrl, String title, String videoUrl){
+    public MovieItem(Movie movie, String title){
+//        this.movie = new Movie(movie);
+        this.movie = movie;
+//        pram_movie = movie;
         this.setPrefWidth(200);
         this.setPrefHeight(350);
         JFXDepthManager.setDepth(this, 1);
@@ -43,7 +52,7 @@ public class MovieItem extends StackPane {
         header.setPrefHeight(290);
         header.setStyle("-fx-background-radius: 5 5 0 0; " +
 //                "-fx-background-color: " + headerColor +
-                "-fx-background-image: url(\"" + postUrl + "\");" +
+                "-fx-background-image: url(\"" + movie.getPost_href() + "\");" +
                 "-fx-background-position: center;" +
                 "-fx-background-repeat: no-repeat;" +
                 "-fx-background-size: 100% 100%;" +
@@ -62,7 +71,7 @@ public class MovieItem extends StackPane {
 
         initMainButton();
 
-        initPlayButton(videoUrl);
+        initPlayButton(movie.getHref());
 
         initCollectionButton();
 
@@ -91,7 +100,7 @@ public class MovieItem extends StackPane {
                 new KeyValue(button.scaleYProperty(),
                         1,
                         EASE_BOTH)));
-        animation.setDelay(Duration.millis( 3000));
+        animation.setDelay(Duration.millis(500));
         animation.play();
         this.getChildren().addAll(content, nodesList);
 
@@ -172,15 +181,21 @@ public class MovieItem extends StackPane {
                 Color.WHITE);
         collection_fill.setSize(20, 20);
 
-        collectionbutton.setGraphic(collection);
+        if (!movie.isStar())
+            collectionbutton.setGraphic(collection);
+        else
+            collectionbutton.setGraphic(collection_fill);
 
         collectionbutton.setOnMouseClicked(event -> {
-            if (ifCollect) {
+            if (movie.isStar()) {
                 collectionbutton.setGraphic(collection);
+                starMovies.remove(movie);
             } else{
                 collectionbutton.setGraphic(collection_fill);
+                starMovies.add(movie);
             }
-            ifCollect = !ifCollect;
+            movie.setStar(!movie.isStar());
+//            pram_movie.setStar(!movie.isStar());
         });
     }
 

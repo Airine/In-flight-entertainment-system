@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.util.DataLoader.loadMovieTypes;
@@ -28,7 +29,7 @@ public class MainApp extends Application {
     public static User mainUser;
     public static List<Movie> mainMovies;
     public static List<MovieType> mainMovieTypes;
-    public static List<Movie> starMovies;
+    public static List<Movie> starMovies = new ArrayList<>();
     public static PlayerPageController player;
 
     LoginController controller;
