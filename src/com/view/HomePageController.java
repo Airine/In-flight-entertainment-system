@@ -33,10 +33,10 @@ public class HomePageController {
 
     public JFXButton back =new JFXButton();
     ImageView imageView;
+    RootLayoutController rootLayoutController;
 
-    private  RootLayoutController rootLayoutController;
-    public void setRootLayoutController(RootLayoutController rootLayoutController){
-        this.rootLayoutController=rootLayoutController;
+    public void setRootLayoutController(RootLayoutController rootLayoutController) {
+        this.rootLayoutController = rootLayoutController;
     }
 
     private void addMovieSortItem(){

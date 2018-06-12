@@ -7,21 +7,14 @@ import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
 import com.util.JsonLoader;
 import com.view.RootLayoutController;
-import javafx.beans.binding.Bindings;
-import javafx.beans.property.ObjectProperty;
 import javafx.fxml.FXML;
 
-import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import javax.jws.soap.SOAPBinding;
-import java.time.Duration;
 
 /* *  this class is used to set theme that we have four themes and can change it by user .
  * @author PennaLia
@@ -113,7 +106,7 @@ public class ThemeController {
      */
     @FXML
     private void handlrToDefault(){
-        rootLayoutController.ToDefault();
+        rootLayoutController.toDefault();
     }
     /* *   set the theme to theme1.
      * @author PennaLia
@@ -123,7 +116,7 @@ public class ThemeController {
      */
     @FXML
     private void handleTheme1(){
-        rootLayoutController.ToTheme1();
+        rootLayoutController.toTheme1();
     }
     /* *    set the theme to theme2.
      * @author PennaLia
@@ -133,7 +126,7 @@ public class ThemeController {
      */
     @FXML
     private void handleTheme2(){
-        rootLayoutController.ToTheme2();
+        rootLayoutController.toTheme2();
     }
     /* *   set the theme to theme3.
      * @author PennaLia
@@ -143,7 +136,7 @@ public class ThemeController {
      */
     @FXML
     private void handleTheme3(){
-        rootLayoutController.ToTheme3();
+        rootLayoutController.toTheme3();
     }
     /* *  commit the change that your want .
      * @author PennaLia

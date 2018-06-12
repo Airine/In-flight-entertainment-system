@@ -195,16 +195,16 @@ public class DrawerContentController {
         night.selectedProperty().addListener((observable, oldValue, newValue) -> {
 
             if(night.isSelected()){
-                rootLayoutController.ToNight();
+                rootLayoutController.toNight();
             }else{
                 if(rootLayoutController.now.equals(rootLayoutController.DefaultCSS)){
-                    rootLayoutController.ToDefault();
+                    rootLayoutController.toDefault();
                 }else if(rootLayoutController.now.equals(rootLayoutController.Theme1)){
-                    rootLayoutController.ToTheme1();
+                    rootLayoutController.toTheme1();
                 }else if(rootLayoutController.now.equals(rootLayoutController.Theme2)){
-                    rootLayoutController.ToTheme2();
+                    rootLayoutController.toTheme2();
                 }else if(rootLayoutController.now.equals(rootLayoutController.Theme3)){
-                    rootLayoutController.ToTheme3();
+                    rootLayoutController.toTheme3();
                 }
 
             }
