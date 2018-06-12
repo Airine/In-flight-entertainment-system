@@ -235,7 +235,11 @@ public class WebScraping {
         sb.append("\"post_url\": \"").append("http:").append(poster).append("\"}");
         System.out.println(title);
     }
-    
+
+    /**
+     * This method write the message to a json file.
+     * The file is stored in database.
+     */
     public void generateJson(){
         try (PrintWriter out = new PrintWriter("src/resources/json/movieMessage/movieMessage.json")) {
             Map<String, String> URL_Title = scrapeMovieLinks();
@@ -256,7 +260,7 @@ public class WebScraping {
             sb.append("\n}\n");
             out.print(sb);
         } catch (FileNotFoundException e) {
-            System.out.println("Sorry, json file does not found.");
+            System.out.println("Sorry, the json file does not found.");
         } catch (IOException e) {
             e.printStackTrace();
         }
