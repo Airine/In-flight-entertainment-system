@@ -90,6 +90,16 @@ public class MusicPageController {
         }
     }
 
+    @FXML
+    private void handleClickMusicBar(){
+        currentPlayer.seek(duration.multiply(musicSlider.getValue() / 100.0));
+    }
+    
+    @FXML
+    private void handleClickMusicVolume(){
+        currentPlayer.setVolume(MusicVolume.getValue() / 100.0);
+    }
+    
     /**
      * We only use local songs.
      * The songs are in order and they are stored in file list.

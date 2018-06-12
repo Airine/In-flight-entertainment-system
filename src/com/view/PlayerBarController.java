@@ -33,7 +33,7 @@ public class PlayerBarController {
     private JFXSlider volume;
 
     @FXML
-    private ImageView PlayOrStop;
+    private ImageView PlayOrPause;
     
     @FXML
     private Label playTime;
@@ -42,7 +42,10 @@ public class PlayerBarController {
     private Image stop;
     private Image play;
     public String localMovieURL = null;
-    
+    private MediaPlayer mp;
+    private boolean stopRequested = false;
+    private Duration duration;
+    FileChooser fc;
     /* *  
      * Connect to the controller of upper level
      * @author PennaLia
@@ -61,16 +64,15 @@ public class PlayerBarController {
     private void initialize(){
         stop=new Image("resources/icon/vediostop.png");
         play=new Image("resources/icon/vedioplay.png");
-        PlayOrStop.setImage(play);
+        PlayOrPause.setImage(play);
     }
 
     /* *  
-     * @author PennaLia
-     * @date 2018/6/2 19:03
-     * @return
+     * @author 黄珂邈
+     * The method control the player to play or pause 
      */
     @FXML
-    private void handlePlayOrStop(){
+    private void handlePlayOrPause(){
         MediaPlayer.Status status = mp.getStatus();
         if (status == MediaPlayer.Status.UNKNOWN || status == MediaPlayer.Status.HALTED) {
             // don't do anything in these states
@@ -84,10 +86,19 @@ public class PlayerBarController {
             mp.pause();
         }
     }
-    private MediaPlayer mp;
-    private boolean stopRequested = false;
-    private Duration duration;
-    FileChooser fc;
+
+    /**
+     * The method is to control the progress bar by clicking.
+     */
+    @FXML
+    private void handleClickTimeBar(){
+        mp.seek(duration.multiply(TimeBar.getValue() / 100.0));
+    }
+    
+    @FXML
+    private void handleClickVolumeBar(){
+        mp.setVolume(volume.getValue() / 100.0);
+    }
 
     /**
      * This method link the media player with the control bar
@@ -101,6 +112,7 @@ public class PlayerBarController {
      * </p>
      *
      * @param player the media player which will be controlled
+     * @return
      */
     public void controlPlayer(MediaPlayer player) {
         this.mp = player;
@@ -112,11 +124,11 @@ public class PlayerBarController {
                 player.pause();
                 stopRequested = false;
             } else {
-                PlayOrStop.setImage(stop);
+                PlayOrPause.setImage(stop);
             }
         });
 
-        player.setOnPaused(() -> PlayOrStop.setImage(play));
+        player.setOnPaused(() -> PlayOrPause.setImage(play));
 
         player.setOnReady(() -> {
             duration = player.getMedia().getDuration();
@@ -143,13 +155,19 @@ public class PlayerBarController {
                 mp.seek(duration.multiply(TimeBar.getValue() / 100.0));
             }
         });
-
+        
         volume.valueProperty().addListener(ov -> {
             if (volume.isValueChanging()) {
                 mp.setVolume(volume.getValue() / 100.0);
             }
         });
     }
+
+    /**
+     * @author 黄珂邈
+     * This method is to let the current time be in the right status and show it.
+     * @return
+     */
     private void updateValues() {
         if (playTime != null && TimeBar != null && volume != null) {
             Platform.runLater(() -> {

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="436.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.MusicPageController">
+<AnchorPane prefHeight="436.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.MusicPageController">
    <children>
       <AnchorPane id="userPane" fx:id="musicPane" layoutX="6.0" prefHeight="267.0" prefWidth="640.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
@@ -48,7 +48,7 @@
             <Image url="@../../resources/icon/sound1.png" />
          </image>
       </ImageView>
-      <JFXSlider fx:id="MusicVolume" layoutX="520.0" layoutY="380.0" prefHeight="14.0" prefWidth="80.0" />
-      <JFXSlider fx:id="musicSlider" layoutX="155.0" layoutY="380.0" prefHeight="14.0" prefWidth="330.0" value="1.0" />
+      <JFXSlider fx:id="MusicVolume" layoutX="520.0" layoutY="380.0" onMousePressed="#handleClickMusicVolume" prefHeight="14.0" prefWidth="80.0" />
+      <JFXSlider fx:id="musicSlider" layoutX="155.0" layoutY="380.0" onMousePressed="#handleClickMusicBar" prefHeight="14.0" prefWidth="330.0" value="1.0" />
    </children>
 </AnchorPane>
