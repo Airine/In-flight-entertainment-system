@@ -3,42 +3,45 @@ package com.view;
 import com.MainApp;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXSpinner;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
-
-import java.io.File;
 import java.io.IOException;
 
+/**
+ * <p>
+ * The video player page controller. 
+ * It should be connected to the bar controller and the other methods relate to video playing.
+ * </p>
+ * 
+ */
 public class PlayerPageController {
     @FXML
     private AnchorPane Bar;
 
     @FXML
-    private JFXSpinner spinner;//转不转
+    private JFXSpinner spinner;
 
     @FXML
     private JFXButton skip;
 
     @FXML
-    private StackPane playmovie;//这个用来外接电影的平面
+    private StackPane playmovie;
 
     @FXML
     private StackPane warningPane;        
     
     AnchorPane bar;
     PlayerBarController playerBarController;
-    //把接入的视频界面赋值给play，然后调用setplaymovie，界面就会替换
-    StackPane MoviePane;
 
-    public MediaPlayer mediaPlayer;
-    public MediaPlayer advertismentPlayer;
+    StackPane MoviePane;
+    
+    public MediaPlayer mediaPlayer; // This is the movie player
+    public MediaPlayer advertisementPlayer;
     public MediaView mediaView;
     
     private RootLayoutController rootLayoutController;
@@ -58,21 +61,18 @@ public class PlayerPageController {
     @FXML
     private void handleSkip(){
         skip.setVisible(false);
-        advertismentPlayer.stop();
+        advertisementPlayer.stop();
         mediaView.setMediaPlayer(mediaPlayer);
         if(mediaPlayer.getStatus()!=MediaPlayer.Status.READY){
             spinner.setVisible(true);
         }
         else {
-            advertismentPlayer.stop();
+            advertisementPlayer.stop();
             mediaView.setMediaPlayer(mediaPlayer);
             Bar.setDisable(false);
         }
     }
     
-    public StackPane getPlaymovie() {
-        return playmovie;
-    }
     public JFXSpinner getSpinner() {
         return spinner;
     }
@@ -84,16 +84,16 @@ public class PlayerPageController {
     public JFXButton getSkip() {
         return skip;
     }
-    
+
+    /**
+     * Set the stackPane and mediaView and bind the properties to fit the size
+     */
     public void setMoviePane(){
         MoviePane = new StackPane();
         mediaView.setPreserveRatio(true);
         mediaView.fitWidthProperty().bind(MoviePane.widthProperty());
         MoviePane.getChildren().add(mediaView);
         MoviePane.setStyle("-fx-background-color: black;");
-    }
-
-    public void setPlayMovie(){
         playmovie.getChildren().add(MoviePane);
     }
     
@@ -111,44 +111,64 @@ public class PlayerPageController {
             e.printStackTrace();
         }
     }
-    
+
+    /**
+     * <p>
+     * Initialize the player page,
+     * listeners
+     * and all the local variables
+     * </p>
+     */
     @FXML
     private void initialize(){
         try {
             skip.setVisible(false);
             mediaView = new MediaView();
-            advertismentPlayer = new MediaPlayer(new Media(
+            advertisementPlayer = new MediaPlayer(new Media(
                     getClass().getResource("/resources/advertisement/flight.mp4").toExternalForm()));
             spinner.setVisible(false);
             mediaPlayer = new MediaPlayer(new Media("http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"));
             mediaView.setMediaPlayer(mediaPlayer);
             setMoviePane();
-            setPlayMovie();
             initPlayerBar();
-            advertismentPlayer.setOnEndOfMedia(()->{
-                advertismentPlayer.stop();
+            advertisementPlayer.setOnEndOfMedia(()->{
+                advertisementPlayer.stop();
                 spinner.setVisible(true);
+                mediaView.setMediaPlayer(mediaPlayer);
                 if(mediaPlayer.getStatus()==MediaPlayer.Status.READY){
                     mediaView.setMediaPlayer(mediaPlayer);
                     spinner.setVisible(false);
                     Bar.setDisable(false);
+                    mediaPlayer.setAutoPlay(true);
                 }
             });
         }catch (Exception e){
             e.printStackTrace();
         }
     }
-    
+
+    /**
+     * @author 黄珂邈
+     * <h>
+     *     Initially Playing Movies
+     * </h>
+     * <p>
+     *  The method set the beginning of the movies.
+     *  There is an ad at the beginning in order to 
+     *  break the air of waiting the movie to load from the websites.
+     * </p>
+     * 
+     * @param media The media that we want to set to the page
+     */
     public void setPlayerWithBar(Media media){
-        advertismentPlayer.play();
+        advertisementPlayer.play();
         Bar.setDisable(true);
         if(rootLayoutController.getMainApp().huiyuan)
             skip.setVisible(true);
         spinner.setVisible(false);
         mediaPlayer = new MediaPlayer(media);
-        mediaView.setMediaPlayer(advertismentPlayer);
+        mediaView.setMediaPlayer(advertisementPlayer);
         setMoviePane();
-        setPlayMovie();
         initPlayerBar();
     }
 }

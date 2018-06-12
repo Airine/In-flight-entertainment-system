@@ -19,16 +19,32 @@ import java.util.logging.Level;
 
 class WebScraping {
 
-
+    /**
+     * @author 黄珂邈
+     * <h>
+     *     Web scraping data from website with Javascript dynamically loading
+     * </h>
+     * <p>
+     *     The method is to get the urls which contain the playable movie urls from ku6.
+     *     In order to get the data after Javascript, 
+     *     we have to simulate a new chrome browser.
+     * </p>
+     * @return
+     * The array list of the player page urls from
+     * @see <a href="https://www.ku6.com/detail/72">
+     *     https://www.ku6.com/detail/72
+     *     </a>
+     * @throws IOException
+     */
     public ArrayList<String> addAllMoives() throws IOException {
-        //构造一个webClient 模拟Chrome 浏览器
+        //construct a web client
         String url = "https://www.ku6.com/detail/72";
         WebClient webClient = new WebClient(BrowserVersion.CHROME);
-        //屏蔽日志信息
+        //ignore the log
         LogFactory.getFactory().setAttribute("org.apache.commons.logging.Log",
                 "org.apache.commons.logging.impl.NoOpLog");
         java.util.logging.Logger.getLogger("com.gargoylesoftware").setLevel(Level.OFF);
-        //支持JavaScript
+        //Support JavaScript
         webClient.getOptions().setJavaScriptEnabled(true);
         webClient.getOptions().setCssEnabled(false);
         webClient.getOptions().setActiveXNative(false);
@@ -36,7 +52,7 @@ class WebScraping {
         webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);
         webClient.getOptions().setTimeout(5000);
         HtmlPage rootPage = webClient.getPage(url);
-        //设置一个运行JavaScript的时间
+        //set the runtime for JS
         webClient.waitForBackgroundJavaScript(5000);
         String html = rootPage.asXml();
         Document document = Jsoup.parse(html);
@@ -49,7 +65,18 @@ class WebScraping {
         return urls;
     }
 
-
+    /**
+     * @author 黄珂邈
+     * <h>
+     *     Movie Scraping
+     * </h>
+     * <p>
+     *     This method is to get the movie urls end with .mp4 or .mpg
+     *     They can be directly load by media in javafx.
+     * </p>
+     * @return Map with urls as keys and titles as values
+     * @throws IOException
+     */
     public Map<String, String> scrapeMovieLinks() throws IOException {
         ArrayList<String> urls = addAllMoives();
         Map<String, String> URL_Title = new HashMap<>();
@@ -83,11 +110,32 @@ class WebScraping {
         return URL_Title;
     }
 
+    /**
+     * @author 黄珂邈
+     * <h>
+     *     Movie Message Scraping
+     * </h>
+     * <p>
+     *     This method is to get the movies information on 
+     *     <a href = "https://v.qq.com">https://v.qq.com</a>
+     *     by using the Chinese titles from ku6.
+     *     (There is no English title on ku6)
+     *     The results will be stored in StringBuilder for json file.
+     * </p>
+     * 
+     * @param entry The entry which contains urls and titles. 
+     * @param sb The StringBuilder which will append information.
+     * @throws IOException
+     */
     public void scrapeMessage(Map.Entry entry,StringBuilder sb) throws IOException {
         String title = (String) entry.getValue();
         String url = "https://v.qq.com/x/search/?q="+ URLEncoder.encode(title+"电影","UTF-8");
         Document doc = Jsoup.connect(url).timeout(10000).get();
         Elements infos = doc.select("div._infos");
+        
+        /* Below we have to ensure whether there is a null pointer for many times
+            since there are information may not shown on the websites.
+         */
         boolean flag = false;
         for (Element e : infos) {
             if (e.selectFirst("span.type").text().equals("电影")) {
@@ -154,7 +202,7 @@ class WebScraping {
                             genres = e.text();
                             break A;
                         case "惊悚":
-                            genres = "恐怖";
+                            genres = "恐怖"; // here we change one type name
                             break A;
                         default:  
                             break;
@@ -165,6 +213,9 @@ class WebScraping {
                 description = descElement.text();
 
         }
+        /*
+            Here we are creating text with json format.
+         */
         String comma = "\",";
         sb.append("{\"title_cn\": \"").append(title).append(comma);
         sb.append("\"title_en\": \"").append(EnglishTitle).append(comma);
