@@ -18,7 +18,7 @@
                   <Font name="Webdings" size="40.0" />
                </font>
             </Label>
-            <JFXToggleButton fx:id="LoopPlayback" layoutX="443.0" layoutY="217.0" prefHeight="58.0" prefWidth="197.0" text="Single Cycle" textFill="WHITE">
+            <JFXToggleButton fx:id="LoopPlayback" layoutX="443.0" layoutY="217.0" prefHeight="58.0" prefWidth="197.0" text="单曲循环" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font></JFXToggleButton>
