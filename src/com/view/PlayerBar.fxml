@@ -9,7 +9,7 @@
 
 <AnchorPane minHeight="48.0" minWidth="640.0" prefHeight="48.0" prefWidth="640.0" style="-fx-background-color: F5F5F7;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.PlayerBarController">
    <children>
-      <JFXSlider fx:id="TimeBar" accessibleRole="BUTTON" cache="true" layoutX="56.0" layoutY="17.0" opacity="0.8" prefHeight="14.0" prefWidth="309.0" value="1.0" AnchorPane.rightAnchor="275.0">
+      <JFXSlider fx:id="TimeBar" accessibleRole="BUTTON" cache="true" layoutX="56.0" layoutY="17.0" onMousePressed="#handleClickTimeBar" opacity="0.8" prefHeight="14.0" prefWidth="309.0" value="1.0" AnchorPane.rightAnchor="275.0">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor>
@@ -20,7 +20,7 @@
             <Image url="@../../resources/icon/sound1.png" />
          </image>
       </ImageView>
-      <JFXSlider fx:id="volume" layoutX="524.0" layoutY="17.0" prefHeight="14.0" prefWidth="76.0" AnchorPane.bottomAnchor="17.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="17.0" />
+      <JFXSlider fx:id="volume" layoutX="524.0" layoutY="17.0" onMousePressed="#handleClickVolumeBar" prefHeight="14.0" prefWidth="76.0" AnchorPane.bottomAnchor="17.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="17.0" />
       <ImageView fx:id="PlayOrStop" fitHeight="28.0" fitWidth="28.0" layoutX="18.0" layoutY="10.0" onMouseClicked="#handlePlayOrStop" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="294.0" AnchorPane.topAnchor="10.0">
          <image>
             <Image url="@../../resources/icon/vediostop.png" />

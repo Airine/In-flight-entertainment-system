@@ -84,6 +84,17 @@ public class PlayerBarController {
             mp.pause();
         }
     }
+    
+    @FXML
+    private void handleClickTimeBar(){
+        mp.seek(duration.multiply(TimeBar.getValue() / 100.0));
+    }
+    
+    @FXML
+    private void handleClickVolumeBar(){
+        mp.setVolume(volume.getValue() / 100.0);
+    }
+    
     private MediaPlayer mp;
     private boolean stopRequested = false;
     private Duration duration;
@@ -143,7 +154,7 @@ public class PlayerBarController {
                 mp.seek(duration.multiply(TimeBar.getValue() / 100.0));
             }
         });
-
+        
         volume.valueProperty().addListener(ov -> {
             if (volume.isValueChanging()) {
                 mp.setVolume(volume.getValue() / 100.0);
