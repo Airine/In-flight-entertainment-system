@@ -118,13 +118,14 @@ public class MovieTableViewController {
 
 
 
+
     /* *  this class is uesd to made movies class be search in the search tree.
      * @author PennaLia
      * @date 2018/6/12 20:14
      * @param
      * @return
      */
-    class treeMovie extends RecursiveTreeObject<treeMovie> {
+    static class treeMovie extends RecursiveTreeObject<treeMovie> {
         StringProperty title;
         StringProperty type;
         StringProperty language;

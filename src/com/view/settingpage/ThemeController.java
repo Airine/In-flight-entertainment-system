@@ -1,5 +1,6 @@
 package com.view.settingpage;
 
+import com.MainApp;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXColorPicker;
 import com.jfoenix.controls.JFXDialog;
@@ -151,7 +152,7 @@ public class ThemeController {
      * @return
      */
     public void handleOk() {
-        if (!rootLayoutController.getMainApp().huiyuan) {
+        if (!MainApp.huiyuan) {
             stackpane.setVisible(true);
             JFXDialogLayout content = new JFXDialogLayout();
             content.setHeading(new Text(WaringTitle));

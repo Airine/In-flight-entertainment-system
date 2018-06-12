@@ -48,6 +48,10 @@ public class SettingPageController {
     @FXML
     private JFXButton sure;
 
+    public JFXButton getWebScrapingButton() {
+        return webScrapingButton;
+    }
+
     @FXML
     private JFXButton webScrapingButton;
     private RootLayoutController rootLayoutController;
@@ -65,6 +69,9 @@ public class SettingPageController {
     @FXML
     private void initialize(){
         initCombox();
+        if (MainApp.mainUser==null || MainApp.mainUser.getIfAdmin()!=1){
+            webScrapingButton.setDisable(true);
+        }
     }
 
     /* *  set different language for the app.

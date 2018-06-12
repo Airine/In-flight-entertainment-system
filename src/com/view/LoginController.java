@@ -95,6 +95,13 @@ public class LoginController {
                 dialogStage.close();
                 mainUser = user;
                 loadStarRelation();
+                if (mainUser.getIfVIP() == 1){
+                    mainApp.getRootLayoutController().getDrawerContentController().beHuiyuan();
+                }
+                if (mainUser.getIfAdmin() == 1){
+                    MainApp.Admin = true;
+                    mainApp.getRootLayoutController().settingPageController.getWebScrapingButton().setDisable(false);
+                }
             }
         }
     }
