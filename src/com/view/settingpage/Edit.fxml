@@ -24,7 +24,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <Label fx:id="userimage" layoutX="31.0" layoutY="307.0" prefHeight="33.0" prefWidth="99.0" text="头像" textAlignment="RIGHT" />
+      <Label layoutX="31.0" layoutY="307.0" prefHeight="33.0" prefWidth="99.0" text="头像" textAlignment="RIGHT" />
       <JFXButton id="chosefile" fx:id="choosefile" layoutX="143.0" layoutY="307.0" onMouseClicked="#handleChooseFile" prefHeight="33.0" prefWidth="107.0" text="选择文件" />
       <StackPane fx:id="stackpane" layoutX="55.0" layoutY="166.0" prefHeight="133.0" prefWidth="258.0" visible="false" />
    </children>

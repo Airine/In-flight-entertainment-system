@@ -15,6 +15,7 @@ public class CollectionController {
         this.rootLayoutController=rootLayoutController;
     }
 
-
+    public void loadLanguage(String language) {
+    }
 }
 

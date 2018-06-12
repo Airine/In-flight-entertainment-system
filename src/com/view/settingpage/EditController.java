@@ -31,7 +31,7 @@ public class EditController {
     @FXML
     private JFXButton confirmButton;
     @FXML
-    private Label modify1;
+    private Label modify;
     @FXML
     private Label ps;
     @FXML
@@ -42,8 +42,6 @@ public class EditController {
     private JFXTextField textsign;
     @FXML
     private StackPane stackpane;
-    @FXML
-    private Label userimage;
 
     String imageURL;
 
@@ -126,10 +124,7 @@ public class EditController {
             name.setText(jsonObject.getString("name"));
             ps.setText(jsonObject.getString("ps"));
             confirmButton.setText(jsonObject.getString("confirm"));
-            modify1.setText(jsonObject.getString("modify1"));//title
-            userimage.setText(jsonObject.getString("userimage"));
-            choosefile.setText(jsonObject.getString("choosefile"));
-            setWaringText(language);
+            modify.setText(jsonObject.getString("modify1"));
         } catch (JSONException | NullPointerException e){
             e.printStackTrace();
         }

@@ -1,19 +1,15 @@
 package com.view.settingpage;
 
 import com.jfoenix.controls.*;
-import com.util.JsonLoader;
 import com.view.RootLayoutController;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.Date;
 import java.util.Timer;
@@ -30,12 +26,6 @@ public class TimingController {
 
     @FXML
     private StackPane stackpane;
-
-    @FXML
-    private Label title;
-
-    @FXML
-    private Label closetime;
 
     @FXML
     private JFXTimePicker chosetime;
@@ -119,15 +109,6 @@ public class TimingController {
 
 
     public void loadLanguage(String language) {
-        JSONObject jsonObject = JsonLoader.getJsonValue(language,"timing");
-        try {
-            assert jsonObject != null;
-            title.setText(jsonObject.getString("title"));
-            closetime.setText(jsonObject.getString("closetime"));
-            commit.setText(jsonObject.getString("commit"));
-            setWaringText(language);
-        } catch (JSONException | NullPointerException e){
-            e.printStackTrace();
-        }
+
     }
 }

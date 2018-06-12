@@ -5,7 +5,6 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXToggleButton;
 import com.jfoenix.transitions.JFXFillTransition;
 import com.model.Movie;
-import com.util.JsonLoader;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -13,8 +12,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class DrawerContentController {
     public JFXButton vip;
@@ -36,7 +33,13 @@ public class DrawerContentController {
     private ImageView huiyuan;
 
     @FXML
-    private JFXButton theme;
+    private JFXButton button1;
+
+    @FXML
+    private JFXButton button2;
+
+    @FXML
+    private JFXButton button3;
 
     @FXML
     private JFXButton user_icon;
@@ -50,11 +53,6 @@ public class DrawerContentController {
     @FXML
     private Label username;
 
-    @FXML
-    private Label about;
-
-    @FXML
-    private Label nightLabel;
 
     private boolean clicked =false;
     private boolean Tonight=false;
@@ -214,18 +212,6 @@ public class DrawerContentController {
     }
 
     public void loadLanguage(String language) {
-        JSONObject jsonObject = JsonLoader.getJsonValue(language,"drawer");
-        try {
-            assert jsonObject != null;
-            vip.setText(jsonObject.getString("vip"));
-            star.setText(jsonObject.getString("star"));
-            timing.setText(jsonObject.getString("timing"));
-            theme.setText(jsonObject.getString("theme"));
-            nightLabel.setText(jsonObject.getString("night"));
-            about.setText(jsonObject.getString("about"));
-
-        } catch (JSONException | NullPointerException e){
-            e.printStackTrace();
-        }
+        
     }
 }

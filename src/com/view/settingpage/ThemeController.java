@@ -141,7 +141,6 @@ public class ThemeController {
             leftBar.setText(jsonObject.getString("leftBarUp"));
             leftBarUp.setText(jsonObject.getString("leftBarUp"));
             button.setText(jsonObject.getString("button"));
-            setWaringText(language);
         } catch (JSONException | NullPointerException e){
             e.printStackTrace();
         }

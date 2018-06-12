@@ -21,18 +21,12 @@ public class AboutUsController {
     public Label commentTo;
     public JFXButton checkVersion;
     public Label version;
-    @FXML
-    private Label version1;
+
     @FXML
     private AnchorPane aboutusuppane;
 
     @FXML
     private JFXChipView<?> pingjia;
-    @FXML
-    private Label workshop;
-
-    @FXML
-    private Label workplace;
     public AnchorPane getAboutusuppane(){
         return aboutusuppane;
     }
@@ -95,10 +89,7 @@ public class AboutUsController {
             commentTo.setText(jsonObject.getString("commentTo"));
             checkVersion.setText(jsonObject.getString("checkVersion"));
             version.setText(jsonObject.getString("version"));
-            version1.setText(jsonObject.getString("version1"));
-            workshop.setText(jsonObject.getString("workshop"));
-            workplace.setText(jsonObject.getString("workplace"));
-            setWaringText(language);
+
         } catch (JSONException | NullPointerException e){
             e.printStackTrace();
         }

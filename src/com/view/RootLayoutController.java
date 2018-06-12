@@ -101,11 +101,10 @@ public class RootLayoutController {
         themeController.loadLanguage(language);
         moneyController.loadLanguage(language);
         timingController.loadLanguage(language);
+        collectionController.loadLanguage(language);
         editController.loadLanguage(language);
         drawerContentController.loadLanguage(language);
         movieTableViewController.loadLanguage(language);
-        musicPageController.loadLanguage(language);
-        setWaringText(language);
     }
 
 
@@ -205,7 +204,6 @@ public class RootLayoutController {
             initSearchTree();
             initCollection();
             now=DefaultCSS;
-
         } catch (Exception e) {
             e.getStackTrace();
         }

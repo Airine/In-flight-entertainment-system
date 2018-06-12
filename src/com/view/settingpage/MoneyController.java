@@ -20,6 +20,7 @@ public class MoneyController {
 
 
 
+    public Label VIP;
     public Label label1;
     public Label label2;
     public Label label3;
@@ -41,10 +42,6 @@ public class MoneyController {
 
     @FXML
     private JFXRadioButton visapay;
-
-    @FXML
-    private Label vip;
-
 
 
     private boolean payWay;
@@ -89,8 +86,6 @@ public class MoneyController {
             label5.setText(jsonObject.getString("label5"));
             pay.setText(jsonObject.getString("pay"));
             month.setText(jsonObject.getString("month"));
-            vip.setText(jsonObject.getString("vip1"));
-            setWaringText(language);
         } catch (JSONException | NullPointerException e){
             e.printStackTrace();
         }
