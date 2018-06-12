@@ -1,5 +1,6 @@
 package com.view.settingpage;
 
+import com.MainApp;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXListView;
@@ -9,6 +10,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.StringConverter;
+
+import static com.util.DataLoader.loadMovieTypes;
+import static com.util.DataLoader.loadMovies;
 
 
 public class SettingPageController {
@@ -66,6 +70,9 @@ public class SettingPageController {
     private void handleWebScraping(){
         com.util.WebScraping webScraping = new WebScraping();
         webScraping.generateJson();
+        webScraping.updateMovieDataBase();
+        MainApp.mainMovies = loadMovies();
+        MainApp.mainMovieTypes = loadMovieTypes("en");
     }
     
     public void loadLanguage(String language) {

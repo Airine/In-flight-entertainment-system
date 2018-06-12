@@ -3,8 +3,11 @@ package com.util;
 import com.gargoylesoftware.htmlunit.BrowserVersion;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
+import com.model.Movie;
 import com.sun.deploy.net.URLEncoder;
 import org.apache.commons.logging.LogFactory;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -16,8 +19,13 @@ import java.io.PrintWriter;
 import java.util.*;
 import java.util.logging.Level;
 
+import static com.util.DataUpdater.updateMovies;
+
 
 public class WebScraping {
+
+    private static Map<String,Integer> type = new HashMap<String, Integer>();
+
 
     /**
      * @author 黄珂邈
@@ -265,6 +273,41 @@ public class WebScraping {
             e.printStackTrace();
         }
     }
-    
+
+    public void updateMovieDataBase(){
+        type.put("动作", 1);
+        type.put("喜剧", 2);
+        type.put("悬疑", 3);
+        type.put("剧情", 4);
+        type.put("科幻", 5);
+        type.put("恐怖", 6);
+        type.put("战争", 7);
+        type.put("犯罪", 8);
+        type.put("情色", 9);
+        type.put("家庭",10);
+        type.put("爱情",11);
+        type.put("传记",12);
+        ArrayList<Movie> newmovies = new ArrayList<>();
+        for (int i = 1; i < 40; i++) {
+            JSONObject tempt = JsonLoader.getJsonValue("movieMessage/movieMessage", (new Integer(i)).toString());
+//            System.out.println(tempt);
+            try {
+                assert tempt != null;
+                newmovies.add(new Movie(
+                        i,
+                        tempt.getString("title_cn"),
+                        tempt.getString("title_en"),
+                        tempt.getString("release_time"),
+                        tempt.getString("language"),
+                        type.get(tempt.getString("genres")),
+                        tempt.getString("href"),
+                        tempt.getString("post_url")
+                ));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        updateMovies(newmovies);
+    }
     
 }
