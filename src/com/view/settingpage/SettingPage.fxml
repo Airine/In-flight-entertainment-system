@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="436.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.settingpage.SettingPageController">
+<AnchorPane prefHeight="436.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.settingpage.SettingPageController">
    <children>
       <AnchorPane id="userPane" fx:id="settinguppane" layoutX="7.0" layoutY="7.0" prefHeight="141.0" prefWidth="361.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label alignment="CENTER" layoutX="-1.0" layoutY="36.0" prefHeight="64.0" prefWidth="360.0" styleClass="bigtitle" text="设置" textAlignment="JUSTIFY" textFill="WHITE" AnchorPane.rightAnchor="0.0">
+            <Label fx:id="title" alignment="CENTER" layoutX="-1.0" layoutY="36.0" prefHeight="64.0" prefWidth="360.0" styleClass="bigtitle" text="设置" textAlignment="JUSTIFY" textFill="WHITE" AnchorPane.rightAnchor="0.0">
                <font>
                   <Font size="34.0" />
                </font>
@@ -19,11 +19,11 @@
          </children>
       </AnchorPane>
       <JFXComboBox fx:id="langComBoix" layoutX="163.0" layoutY="184.0" prefHeight="34.0" prefWidth="110.0" />
-      <Label layoutX="35.0" layoutY="184.0" prefHeight="34.0" prefWidth="94.0" text="语言" />
-      <Label layoutX="35.0" layoutY="260.0" prefHeight="34.0" prefWidth="94.0" text="爬虫" />
-      <Label layoutX="35.0" layoutY="315.0" prefHeight="34.0" prefWidth="94.0" text="关联" />
-      <JFXCheckBox layoutX="163.0" layoutY="320.0" prefHeight="24.0" prefWidth="187.0" text="将此软件设为默认播放软件" />
-      <JFXButton layoutX="126.0" layoutY="384.0" prefHeight="34.0" prefWidth="110.0" styleClass="surebutton" text="确定" />
-      <JFXButton fx:id="webScrapingButton" layoutX="163.0" layoutY="260.0" onMouseClicked="#handleWebScraping" prefHeight="34.0" prefWidth="110.0" styleClass="surebutton" text="开始更新" />
+      <Label fx:id="language1" layoutX="35.0" layoutY="184.0" prefHeight="34.0" prefWidth="94.0" text="语言" />
+      <Label fx:id="scrap" layoutX="35.0" layoutY="260.0" prefHeight="34.0" prefWidth="94.0" text="爬虫" />
+      <Label fx:id="connect" layoutX="35.0" layoutY="315.0" prefHeight="34.0" prefWidth="94.0" text="关联" />
+      <JFXCheckBox fx:id="setdefault" layoutX="163.0" layoutY="320.0" prefHeight="24.0" prefWidth="187.0" text="将此软件设为默认播放软件" />
+      <JFXButton fx:id="sure" layoutX="126.0" layoutY="384.0" prefHeight="34.0" prefWidth="110.0" styleClass="surebutton" text="确定" />
+      <JFXButton fx:id="webScrapingButton" layoutX="163.0" layoutY="265.0" onMouseClicked="#handleWebScraping" prefHeight="24.0" prefWidth="110.0" styleClass="surebutton" text="开始更新" />
    </children>
 </AnchorPane>

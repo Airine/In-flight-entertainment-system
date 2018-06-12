@@ -63,9 +63,17 @@
 
     "music":{
         "loop":"单曲循环"
+    },
+
+    "setting":{
+        "title":"设置",
+        "lan":"语言",
+        "scrap":"爬虫",
+        "scrapbutton":"开始更新",
+        "connect":"关联",
+        "setdefault":"将此软件设置为默认播放器",
+        "sure":"确认"
     }
-
-
 
 
 }

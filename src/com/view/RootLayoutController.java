@@ -106,6 +106,7 @@ public class RootLayoutController {
         movieTableViewController.loadLanguage(language);
         musicPageController.loadLanguage(language);
         setWaringText(language);
+
     }
 
 

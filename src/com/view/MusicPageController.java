@@ -184,11 +184,10 @@ public class MusicPageController {
         
     }
     public void loadLanguage(String language) {
-        JSONObject jsonObject = JsonLoader.getJsonValue(language,"money");
+        JSONObject jsonObject = JsonLoader.getJsonValue(language,"music");
         try {
             assert jsonObject != null;
             LoopPlayback.setText(jsonObject.getString("loop"));
-
         } catch (JSONException | NullPointerException e){
             e.printStackTrace();
         }
