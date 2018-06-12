@@ -23,6 +23,11 @@ import org.json.JSONObject;
 import javax.jws.soap.SOAPBinding;
 import java.time.Duration;
 
+/* *  this class is used to set theme that we have four themes and can change it by user .
+ * @author PennaLia
+ * @date 2018/6/12 22:07
+ * @version Player Version 1.0
+ */
 public class ThemeController {
 
     @FXML
@@ -69,10 +74,17 @@ public class ThemeController {
     public AnchorPane getThemeuppane() {
         return themeuppane;
     }
+    //warning information .
     String WaringTitle="你没有开通这个功能";
     String WaringMessage="这个问题你充钱就能解决";
     String WaringButton="行";
 
+    /* *  this set the warning text for different language .
+     * @author PennaLia
+     * @date 2018/6/12 22:13
+     * @param  language language .
+     * @return
+     */
     public void setWaringText(String language){
         if (language.equals("cn")){
             WaringTitle="你没有开通这个功能";
@@ -92,22 +104,53 @@ public class ThemeController {
     private void initialize(){
 
     }
+
+    /* *  set the theme to default theme.
+     * @author PennaLia
+     * @date 2018/6/12 22:13
+     * @param
+     * @return
+     */
     @FXML
     private void handlrToDefault(){
         rootLayoutController.ToDefault();
     }
+    /* *   set the theme to theme1.
+     * @author PennaLia
+     * @date 2018/6/12 22:14
+     * @param
+     * @return
+     */
     @FXML
     private void handleTheme1(){
         rootLayoutController.ToTheme1();
     }
+    /* *    set the theme to theme2.
+     * @author PennaLia
+     * @date 2018/6/12 22:14
+     * @param
+     * @return
+     */
     @FXML
     private void handleTheme2(){
         rootLayoutController.ToTheme2();
     }
+    /* *   set the theme to theme3.
+     * @author PennaLia
+     * @date 2018/6/12 22:14
+     * @param
+     * @return
+     */
     @FXML
     private void handleTheme3(){
         rootLayoutController.ToTheme3();
     }
+    /* *  commit the change that your want .
+     * @author PennaLia
+     * @date 2018/6/12 22:14
+     * @param
+     * @return
+     */
     public void handleOk() {
         if (!MainApp.huiyuan) {
             stackpane.setVisible(true);
@@ -133,6 +176,12 @@ public class ThemeController {
         }
     }
 
+    /* *  load language from json .
+     * @author PennaLia
+     * @date 2018/6/12 22:15
+     * @param
+     * @return
+     */
     public void loadLanguage(String language) {
         JSONObject jsonObject = JsonLoader.getJsonValue(language,"theme");
         try {
@@ -148,6 +197,12 @@ public class ThemeController {
         }
     }
 
+    /* *  bind the color picker to textfeild .
+     * @author PennaLia
+     * @date 2018/6/12 22:15
+     * @param
+     * @return
+     */
     public void bindColorPicker() {
         Pane UserBackPane=rootLayoutController.getDrawerContentController().getUserBackPane();
        UserBackPane.backgroundProperty().addListener((observable, oldValue, newValue) -> {

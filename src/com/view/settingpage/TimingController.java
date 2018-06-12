@@ -19,6 +19,11 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/* *  this used to control thiming page,
+ * @author PennaLia
+ * @date 2018/6/12 22:16
+ * @version Player Version 1.0
+ */
 public class TimingController {
     @FXML
     private AnchorPane timinguppane;
@@ -58,6 +63,13 @@ public class TimingController {
     public AnchorPane getTiminguppane() {
         return timinguppane;
     }
+
+    /* *  set language for different language .
+     * @author PennaLia
+     * @date 2018/6/12 22:16
+     * @param
+     * @return
+     */
     public void setWaringText(String language){
         if (language.equals("cn")){
             WaringTitle="不可以哦";
@@ -74,6 +86,12 @@ public class TimingController {
         }
     }
 
+    /* *  to handle close app automatully.
+     * @author PennaLia
+     * @date 2018/6/12 22:17
+     * @param
+     * @return
+     */
     @FXML
     public void handleTimingClose(){
         if(choosedata.getValue()==null||chosetime.getValue()==null){
@@ -117,7 +135,12 @@ public class TimingController {
     }
 
 
-
+    /* *  load language file from json.
+     * @author PennaLia
+     * @date 2018/6/12 22:17
+     * @param
+     * @return
+     */
     public void loadLanguage(String language) {
         JSONObject jsonObject = JsonLoader.getJsonValue(language,"timing");
         try {

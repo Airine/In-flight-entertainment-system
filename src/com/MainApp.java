@@ -93,7 +93,7 @@ public class MainApp extends Application {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class
-                    .getResource("view/Login.fxml"));
+                    .getResource("view/login.fxml"));
             Loginpage = (AnchorPane) loader.load();
             controller = loader.getController();
             controller.setMainApp(this);
@@ -106,7 +106,7 @@ public class MainApp extends Application {
             if(!login && !openLogin) {
                 Stage dialogStage = new Stage();
                 openLogin=true; //打开了窗口就不能再打开了
-                dialogStage.setTitle("Login");
+                dialogStage.setTitle("login");
                 dialogStage.setResizable(false);
                 dialogStage.initOwner(primaryStage);
                 Scene scene = new Scene(Loginpage);

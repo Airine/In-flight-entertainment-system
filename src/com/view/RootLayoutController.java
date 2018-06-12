@@ -5,11 +5,6 @@ import com.jfoenix.controls.*;
 import com.jfoenix.transitions.hamburger.HamburgerNextArrowBasicTransition;
 import com.view.settingpage.*;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-
-import com.view.viewModel.MovieItem;
-
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,6 +17,11 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 
+/* * this is a controller for the root, that initialize and contain all other controller.
+ * @author PennaLia
+ * @date 2018/6/12 20:33
+ * @version Player Version 1.0
+ */
 public class RootLayoutController {
      //main pane. the bigger pane.
     @FXML
@@ -74,7 +74,7 @@ public class RootLayoutController {
     public AnchorPane homeP, musicP, playerP;
     //three main page controller
     public MusicPageController musicPageController;
-    public HomePageController HomePageController;
+    public HomePageController homePageController;
     public PlayerPageController playerPageController;
 
     //setting pane
@@ -111,7 +111,6 @@ public class RootLayoutController {
         timingController.loadLanguage(language);
         editController.loadLanguage(language);
         drawerContentController.loadLanguage(language);
-        movieTableViewController.loadLanguage(language);
         musicPageController.loadLanguage(language);
         setWaringText(language);
 
@@ -253,8 +252,8 @@ public class RootLayoutController {
             loader.setLocation(MainApp.class
                     .getResource("view/HomePage.fxml"));
             homeP = loader.load();
-             HomePageController = loader.getController();
-            HomePageController.setRootLayoutController(this);
+             homePageController = loader.getController();
+            homePageController.setRootLayoutController(this);
             setHomePage(homeP);
             homeline.setVisible(true);//一开始就是可见的
         } catch (IOException e) {
