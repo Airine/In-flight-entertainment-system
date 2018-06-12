@@ -131,14 +131,14 @@
       </HBox>
       <AnchorPane id="buttompane" prefHeight="90.0" prefWidth="280.0">
          <children>
-            <HBox layoutX="13.0" layoutY="64.0" onMouseClicked="#handleAboutus" prefHeight="20.0" prefWidth="95.0">
+            <HBox layoutX="13.0" layoutY="64.0" onMouseClicked="#handleAboutus" prefHeight="20.0" prefWidth="163.0">
                <children>
                   <ImageView fitHeight="19.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../resources/icon/about.png" />
                      </image>
                   </ImageView>
-                  <Label id="likebutton" fx:id="about" prefHeight="23.0" prefWidth="52.0" text=" 关于我们" />
+                  <Label id="likebutton" fx:id="about" prefHeight="20.0" prefWidth="129.0" text=" 关于我们" />
                </children>
             </HBox>
             <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="248.0" layoutY="58.0" onMouseClicked="#handleSetting" pickOnBounds="true" preserveRatio="true">

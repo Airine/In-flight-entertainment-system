@@ -29,9 +29,11 @@ public class DataUpdater {
     
     public static void updateUser(User user){
         Connection connection = connectToDB();
+        int VIP = (MainApp.huiyuan) ? 1 : 0;
         String sql = "UPDATE `user`" +
                 "SET `nick_name` = '" + user.getNickName() + "'," +
                 "`status` = '" + user.getStatus() + "'," +
+                "`if_VIP` = '" + VIP + "'," +
                 "`icon_url` = '" + user.getIconUrl() + "'" +
                 "WHERE `user_id` = '" + user.getId()+"';" +
                 "commit;";
@@ -140,5 +142,20 @@ public class DataUpdater {
 //        DataLoader.movies.add(movie);
         updateMovie(movie);
     }
-    
+
+
+    public static User insertUser(String user_nameText, String user_pwText) {
+        Connection connection = connectToDB();
+        String sql = "INSERT INTO `user`(`user_name`,`user_password`)" +
+                "values('"+
+                user_nameText +"', '" +
+                user_pwText +"'" +
+                ");" +
+                "commit;";
+        runSQLstatement(connection, sql);
+        loadUsers();
+        return getUser(user_nameText);
+    }
+
+
 }

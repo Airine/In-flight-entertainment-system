@@ -23,12 +23,18 @@ import java.util.List;
 
 import static com.util.DataLoader.*;
 
+/* *  this is mainapp to control all , and store the primary stage .
+ * @author PennaLia
+ * @date 2018/6/12 23:35
+ * @version Player Version 1.0
+ */
+
 public class MainApp extends Application {
 
     public static User mainUser;
     public static List<Movie> mainMovies;
     public static List<MovieType> mainMovieTypes;
-    public static List<Movie> starMovies = new ArrayList<>();
+    public static List<Movie> starMovies;
     public static PlayerPageController player;
     public static boolean huiyuan=false;
     public static boolean Admin=false;
@@ -39,7 +45,7 @@ public class MainApp extends Application {
     private AnchorPane rootLayout;
     private AnchorPane Loginpage;
     private Boolean login=false,openLogin=false ;//判断是否已经登陆过，如果已经打开登陆窗口，或者已经登陆，就不能再打开登陆窗口
-   //get 和 set
+   //get and  set method .
     public AnchorPane getRootLayout(){return  rootLayout;}
 
     public RootLayoutController getRootLayoutController() {
@@ -57,7 +63,20 @@ public class MainApp extends Application {
 
     public Stage getPrimaryStage() { return primaryStage; }
 
+    public static PlayerPageController getPlayer() {
+        return player;
+    }
 
+    public static void setPlayer(PlayerPageController player) {
+        MainApp.player = player;
+    }
+
+    /* *  star the application.
+     * @author PennaLia
+     * @date 2018/6/12 23:36
+     * @param
+     * @return
+     */
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
@@ -68,7 +87,14 @@ public class MainApp extends Application {
         this.primaryStage.getIcons().add(new Image("resources/plane.png"));
         initRootLayout();
         initLogin();
+        starMovies=new ArrayList<>();
     }
+    /* *  init the rootlayout page.
+     * @author PennaLia
+     * @date 2018/6/12 23:36
+     * @param
+     * @return
+     */
     private void initRootLayout(){
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -88,7 +114,12 @@ public class MainApp extends Application {
             System.out.print(e.getMessage());
         }
     }
-
+    /* *  init the login page.
+     * @author PennaLia
+     * @date 2018/6/12 23:36
+     * @param
+     * @return
+     */
     private void initLogin(){
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -101,6 +132,13 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
     }
+
+    /* *  handle login , you will log your account in.
+     * @author PennaLia
+     * @date 2018/6/12 23:36
+     * @param
+     * @return
+     */
     public void login(){
         try {
             if(!login && !openLogin) {
@@ -123,6 +161,12 @@ public class MainApp extends Application {
         }
     }
 
+    /* *  close the windows of application.
+     * @author PennaLia
+     * @date 2018/6/12 23:37
+     * @param
+     * @return
+     */
     public void closeWindows(){
         DataUpdater.writeBackCollection();
         if (mainUser!=null)
@@ -130,7 +174,12 @@ public class MainApp extends Application {
         System.out.println("Write Back Compelete.");
         primaryStage.close();
     }
-
+    /* *  the main method .
+     * @author PennaLia
+     * @date 2018/6/12 23:37
+     * @param
+     * @return
+     */
     public static void main(String[] args) {
         loadUsers();
         mainMovies = loadMovies();
@@ -139,7 +188,12 @@ public class MainApp extends Application {
         launch(args);
     }
 
-
+    /* *  change the language of the all application .
+     * @author PennaLia
+     * @date 2018/6/12 23:38
+     * @param
+     * @return
+     */
     public void changeLanguage(String language){
         rootLayoutController.loadLanguage(language);
         controller.loadLanguage(language);
