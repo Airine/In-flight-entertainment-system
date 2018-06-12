@@ -23,25 +23,24 @@ import static com.util.DataUpdater.updateMovies;
 
 public class WebScraping {
 
-    private static Map<String,Integer> type = new HashMap<String, Integer>();
+    private static Map<String, Integer> type = new HashMap<String, Integer>();
 
 
     /**
+     * @return The array list of the player page urls from
+     * @throws IOException
      * @author 黄珂邈
      * <h>
-     *     Web scraping data from website with Javascript dynamically loading
+     * Web scraping data from website with Javascript dynamically loading
      * </h>
      * <p>
-     *     The method is to get the urls which contain the playable movie urls from ku6.
-     *     In order to get the data after Javascript, 
-     *     we have to simulate a new chrome browser.
+     * The method is to get the urls which contain the playable movie urls from ku6.
+     * In order to get the data after Javascript,
+     * we have to simulate a new chrome browser.
      * </p>
-     * @return
-     * The array list of the player page urls from
      * @see <a href="https://www.ku6.com/detail/72">
-     *     https://www.ku6.com/detail/72
-     *     </a>
-     * @throws IOException
+     * https://www.ku6.com/detail/72
+     * </a>
      */
     public ArrayList<String> addAllMoives() throws IOException {
         //construct a web client
@@ -70,24 +69,24 @@ public class WebScraping {
         Element container = document.getElementById("video-container");
         Elements links = container.select("a[href]");
         Element temp;
-        for (int i=0;i<links.size();i+=2) {
+        for (int i = 0; i < links.size(); i += 2) {
             temp = links.get(i);
-            urls.add("https://www.ku6.com"+temp.attr("href"));
+            urls.add("https://www.ku6.com" + temp.attr("href"));
         }
         return urls;
     }
 
     /**
-     * @author 黄珂邈
-     * <h>
-     *     Movie Scraping
-     * </h>
-     * <p>
-     *     This method is to get the movie urls end with .mp4 or .mpg
-     *     They can be directly load by media in javafx.
-     * </p>
      * @return Map with urls as keys and titles as values
      * @throws IOException
+     * @author 黄珂邈
+     * <h>
+     * Movie Scraping
+     * </h>
+     * <p>
+     * This method is to get the movie urls end with .mp4 or .mpg
+     * They can be directly load by media in javafx.
+     * </p>
      */
     public Map<String, String> scrapeMovieLinks() throws IOException {
         ArrayList<String> urls = addAllMoives();
@@ -102,20 +101,20 @@ public class WebScraping {
             for (Element vi : videoItems) {
                 String html = vi.html();
                 startIndex = html.indexOf("flvURL");
-                if (startIndex!=-1) {
+                if (startIndex != -1) {
                     startIndex += 9;
                     String tmp = html.substring(startIndex);
                     endIndex = tmp.indexOf("\"");
-                    link_str = tmp.substring(0,endIndex);
+                    link_str = tmp.substring(0, endIndex);
                     startIndex = html.indexOf("document.title") + 18;
                     tmp = html.substring(startIndex);
                     endIndex = tmp.indexOf("\"");
-                    title = tmp.substring(0,endIndex);
-                    int index= link_str.indexOf("com/")+ 4;
-                    String encodeStr = link_str.substring(0,index)
-                            + URLEncoder.encode(link_str.substring(index),"UTF-8").replace("+","%20");
+                    title = tmp.substring(0, endIndex);
+                    int index = link_str.indexOf("com/") + 4;
+                    String encodeStr = link_str.substring(0, index)
+                            + URLEncoder.encode(link_str.substring(index), "UTF-8").replace("+", "%20");
 
-                    URL_Title.put(encodeStr,title);
+                    URL_Title.put(encodeStr, title);
                     break;
                 }
             }
@@ -125,25 +124,24 @@ public class WebScraping {
     }
 
     /**
+     * @param entry The entry which contains urls and titles.
+     * @param sb    The StringBuilder which will append information.
+     * @throws IOException
      * @author 黄珂邈
      * <h>
-     *     Movie Message Scraping
+     * Movie Message Scraping
      * </h>
      * <p>
-     *     This method is to get the movies information on 
-     *     <a href = "https://v.qq.com">https://v.qq.com</a>
-     *     by using the Chinese titles from ku6.
-     *     (There is no English title on ku6)
-     *     The results will be stored in StringBuilder for json file.
+     * This method is to get the movies information on
+     * <a href = "https://v.qq.com">https://v.qq.com</a>
+     * by using the Chinese titles from ku6.
+     * (There is no English title on ku6)
+     * The results will be stored in StringBuilder for json file.
      * </p>
-     *
-     * @param entry The entry which contains urls and titles. 
-     * @param sb The StringBuilder which will append information.
-     * @throws IOException
      */
-    public void scrapeMessage(Map.Entry entry,StringBuilder sb) throws IOException {
+    public void scrapeMessage(Map.Entry entry, StringBuilder sb) throws IOException {
         String title = (String) entry.getValue();
-        String url = "https://v.qq.com/x/search/?q="+ URLEncoder.encode(title+"电影","UTF-8");
+        String url = "https://v.qq.com/x/search/?q=" + URLEncoder.encode(title + "电影", "UTF-8");
         Document doc = Jsoup.connect(url).timeout(10000).get();
         Elements infos = doc.select("div._infos");
         
@@ -168,25 +166,25 @@ public class WebScraping {
         String EnglishTitle = "";
         String poster = "";
         String region = "";
-        String language="";
-        String release= "";
-        String genres="情色";
-        String description= "";
-        if(details!=null) {
+        String language = "";
+        String release = "";
+        String genres = "情色";
+        String description = "";
+        if (details != null) {
             Element posterElement = details.selectFirst("img");
             Element enElement = details.selectFirst("span.title_en");
             Elements typeElements = details.select("div.type_item");
             Elements genreElements = details.select("a.tag");
             Element descElement = details.selectFirst("div.txt._desc_txt_lineHight");
-            if(posterElement!=null)
+            if (posterElement != null)
                 poster = posterElement.attr("src");
-            if(enElement!=null)
+            if (enElement != null)
                 EnglishTitle = enElement.text();
-            if (typeElements!=null) {
+            if (typeElements != null) {
                 String temp;
-                for(Element e: typeElements){
+                for (Element e : typeElements) {
                     temp = e.selectFirst("span.type_tit").text();
-                    switch (temp){
+                    switch (temp) {
                         case "地　区:":
                             region = e.selectFirst("span.type_txt").text();
                             break;
@@ -201,9 +199,10 @@ public class WebScraping {
                     }
                 }
             }
-            if(genreElements!=null) {
-                A:for (Element e:genreElements) {
-                    switch (e.text()){
+            if (genreElements != null) {
+                A:
+                for (Element e : genreElements) {
+                    switch (e.text()) {
                         case "动作":
                         case "科幻":
                         case "爱情":
@@ -224,7 +223,7 @@ public class WebScraping {
                     }
                 }
             }
-            if(descElement!=null)
+            if (descElement != null)
                 description = descElement.text();
 
         }
@@ -239,7 +238,7 @@ public class WebScraping {
         sb.append("\"language\": \"").append(language).append(comma);
         sb.append("\"genres\": \"").append(genres).append(comma);
         sb.append("\"description\": \"").append(description).append(comma);
-        sb.append("\"href\": \"").append((String)entry.getKey()).append(comma);
+        sb.append("\"href\": \"").append((String) entry.getKey()).append(comma);
         sb.append("\"post_url\": \"").append("http:").append(poster).append("\"}");
         System.out.println(title);
     }
@@ -248,11 +247,10 @@ public class WebScraping {
      * This method write the message to a json file.
      * The file is stored in database.
      */
-    public void generateJson(){
+    public void generateJson() {
         File file = new File("src/resources/json/movieMessage/movieMessage.json");
         try (Writer w = new OutputStreamWriter(new FileOutputStream(file), "UTF-8");
-             PrintWriter out = new PrintWriter(w)) 
-        {
+             PrintWriter out = new PrintWriter(w)) {
             Map<String, String> URL_Title = scrapeMovieLinks();
             StringBuilder sb = new StringBuilder();
             sb.append("{\n");
@@ -277,7 +275,7 @@ public class WebScraping {
         }
     }
 
-    public void updateMovieDataBase(){
+    public void updateMovieDataBase() {
         type.put("动作", 1);
         type.put("喜剧", 2);
         type.put("悬疑", 3);
@@ -287,16 +285,16 @@ public class WebScraping {
         type.put("战争", 7);
         type.put("犯罪", 8);
         type.put("情色", 9);
-        type.put("家庭",10);
-        type.put("爱情",11);
-        type.put("传记",12);
-        ArrayList<Movie> newmovies = new ArrayList<>();
+        type.put("家庭", 10);
+        type.put("爱情", 11);
+        type.put("传记", 12);
+        ArrayList<Movie> newMovies = new ArrayList<>();
         for (int i = 1; i < 40; i++) {
             JSONObject tempt = JsonLoader.getJsonValue("movieMessage/movieMessage", Integer.toString(i));
 //            System.out.println(tempt);
             try {
                 assert tempt != null;
-                newmovies.add(new Movie(
+                newMovies.add(new Movie(
                         i,
                         tempt.getString("title_cn"),
                         tempt.getString("title_en"),
@@ -310,7 +308,7 @@ public class WebScraping {
                 e.printStackTrace();
             }
         }
-        updateMovies(newmovies);
+        updateMovies(newMovies);
     }
 
 }
