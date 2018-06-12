@@ -10,14 +10,14 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.io.PrintWriter;
+import java.util.*;
 import java.util.logging.Level;
 
 
-class WebScraping {
+public class WebScraping {
 
     /**
      * @author 黄珂邈
@@ -38,6 +38,7 @@ class WebScraping {
      */
     public ArrayList<String> addAllMoives() throws IOException {
         //construct a web client
+        System.out.println("Constructing a new web client...");
         String url = "https://www.ku6.com/detail/72";
         WebClient webClient = new WebClient(BrowserVersion.CHROME);
         //ignore the log
@@ -51,16 +52,20 @@ class WebScraping {
         webClient.getOptions().setThrowExceptionOnScriptError(false);
         webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);
         webClient.getOptions().setTimeout(5000);
+        System.out.println("Done.\nLoading for JavaScript...");
         HtmlPage rootPage = webClient.getPage(url);
         //set the runtime for JS
         webClient.waitForBackgroundJavaScript(5000);
         String html = rootPage.asXml();
         Document document = Jsoup.parse(html);
+        System.out.println("Done.\nGetting movie urls...");
         ArrayList<String> urls = new ArrayList<>();
         Element container = document.getElementById("video-container");
         Elements links = container.select("a[href]");
-        for (Element e: links) {
-            urls.add("https://www.ku6.com"+e.attr("href"));
+        Element temp;
+        for (int i=0;i<links.size();i+=2) {
+            temp = links.get(i);
+            urls.add("https://www.ku6.com"+temp.attr("href"));
         }
         return urls;
     }
@@ -104,9 +109,11 @@ class WebScraping {
                             + URLEncoder.encode(link_str.substring(index),"UTF-8").replace("+","%20");
 
                     URL_Title.put(encodeStr,title);
+                    break;
                 }
             }
         }
+        System.out.println("Done.\nScraping movie messages...");
         return URL_Title;
     }
 
@@ -226,5 +233,34 @@ class WebScraping {
         sb.append("\"description\": \"").append(description).append(comma);
         sb.append("\"href\": \"").append((String)entry.getKey()).append(comma);
         sb.append("\"post_url\": \"").append("http:").append(poster).append("\"}");
+        System.out.println(title);
     }
+    
+    public void generateJson(){
+        try (PrintWriter out = new PrintWriter("src/resources/json/movieMessage/movieMessage.json")) {
+            Map<String, String> URL_Title = scrapeMovieLinks();
+            StringBuilder sb = new StringBuilder();
+            sb.append("{\n");
+            Set<Map.Entry<String, String>> set = URL_Title.entrySet();
+            Iterator<Map.Entry<String, String>> iterator = set.iterator();
+            int setSize = set.size();
+            for (int i = 1; i < setSize; i++) {
+                sb.append("\"").append(i).append("\":");
+                scrapeMessage(iterator.next(), sb);
+                sb.append(",\n");
+            }
+            Map.Entry entry = iterator.next();
+            sb.append("\"").append(setSize).append("\":");
+            scrapeMessage(entry, sb);
+            System.out.println("Done.\nWeb scraping successfully finished.");
+            sb.append("\n}\n");
+            out.print(sb);
+        } catch (FileNotFoundException e) {
+            System.out.println("Sorry, json file does not found.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    
 }
