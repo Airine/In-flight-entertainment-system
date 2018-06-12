@@ -295,6 +295,7 @@ public class WebScraping {
 //            System.out.println(tempt);
             try {
                 assert tempt != null;
+                if (DataLoader.getMoviesByTitle(tempt.getString("title_cn")).size()==0)
                 newMovies.add(new Movie(
                         i,
                         tempt.getString("title_cn"),

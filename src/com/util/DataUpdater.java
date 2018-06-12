@@ -67,7 +67,13 @@ public class DataUpdater {
                 movie.getPost_href()+"'" +
                 ");" +
                 "commit;";
-        runSQLstatement(connection, sql);
+        try {
+            runSQLstatement(connection, sql);
+        } catch (Exception e){
+            e.printStackTrace();
+            System.err.println("Movie update failed.");
+        }
+
     }
 
     /**
@@ -139,8 +145,13 @@ public class DataUpdater {
         }
         Movie movie = new Movie(1, "本地电影\n"+title, title, "2018-6-13", "英语", 13, href, "resources/moviePoster/default.png");
         MainApp.mainMovies.add(movie);
+        System.err.println(movie);
 //        DataLoader.movies.add(movie);
-        updateMovie(movie);
+        try {
+            updateMovie(movie);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 

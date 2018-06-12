@@ -1,9 +1,11 @@
 package com.view;
 
+import com.MainApp;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.JFXSlider;
+import com.model.Movie;
 import com.util.DataUpdater;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -266,6 +268,9 @@ public class PlayerBarController {
                 playerPageController.initPlayerBar();
                 playerPageController.mediaPlayer.setAutoPlay(true);
                 playerPageController.getSkip().setVisible(false);
+                for (Movie m: MainApp.mainMovies) {
+                    if (localMovieURL.contains(m.getHref())) return;
+                }
                 DataUpdater.insertLocalMovie(localMovieURL);
             } else {
                 hasChooser = false;

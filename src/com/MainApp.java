@@ -5,6 +5,7 @@ import com.model.MovieType;
 import com.model.User;
 import com.util.DataUpdater;
 import com.util.JsonLoader;
+import com.view.HomePageController;
 import com.view.LoginController;
 import com.view.PlayerPageController;
 import com.view.RootLayoutController;
@@ -13,6 +14,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -38,6 +41,7 @@ public class MainApp extends Application {
     public static PlayerPageController player;
     public static boolean huiyuan=false;
     public static boolean Admin=false;
+    public static String language = "cn";
 
     private LoginController controller;
     private RootLayoutController rootLayoutController;
@@ -197,6 +201,19 @@ public class MainApp extends Application {
     public void changeLanguage(String language){
         rootLayoutController.loadLanguage(language);
         controller.loadLanguage(language);
+        MainApp.language = language;
+        FlowPane flowPane = new FlowPane();
+        for (MovieType movieType : mainMovieTypes) {
+            try {
+                StackPane sort = (language.equals("cn"))? movieType.getMovieSortItem_cn() : movieType.getMovieSortItem_en();
+                movieType.handleClick(rootLayoutController.homePageController.HomeScrollPane,
+                        rootLayoutController.homePageController.back);
+                flowPane.getChildren().add(sort);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        rootLayoutController.homePageController.changeFlowContent(flowPane);
     }
 
 
