@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static com.util.DataLoader.getUser;
+import static com.util.DataLoader.loadUsers;
 import static com.util.SQLiteJDBC.connectToDB;
 import static com.util.SQLiteJDBC.runSQLstatement;
 
@@ -21,8 +23,23 @@ public class DataUpdater {
         }
     }
 
-    public static void updateUser(User user){
+    public static void main(String args[]){
+        loadUsers();
+        User tempt = getUser("aaron");
+        assert tempt != null;
+        tempt.setNickName("Tian");
+        updateUser(tempt);
+    }
 
+    public static void updateUser(User user){
+        Connection connection = connectToDB();
+        String sql = "UPDATE `user`" +
+                "SET `nick_name` = '" + user.getNickName() + "'," +
+                "`status` = '" + user.getStatus() + "'," +
+                "`icon_url` = '" + user.getIconUrl() + "'" +
+                "WHERE `user_id` = '" + user.getId()+"';" +
+                "commit;";
+        runSQLstatement(connection,sql);
     }
 
     public static void updateMovies(ArrayList<Movie> movies){
@@ -70,6 +87,25 @@ public class DataUpdater {
         }
     }
 
+    public static void deleteMovie(Movie movie){
+        Connection connection = connectToDB();
+        System.out.println("Delete Collection relation to the movie...");
+        String deleteCollection = "DELETE FROM `star_relations` where `movie_id` = ";
+        try {
+            runSQLstatement(connection, deleteCollection + movie.getMovie_id() + ";");
+            System.out.println("DELETE Collection relation successfully.");
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        System.out.println("Delete Movie from database...");
+        String deleteMovie = "DELETE FROM `movie` where `movie_id` = ";
+        try {
+            runSQLstatement(connection, deleteMovie + movie.getMovie_id() + ";");
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
     public static void insertLocalMovie(String url){
         String title = "";
         String href = "";
@@ -89,16 +125,16 @@ public class DataUpdater {
         updateMovie(movie);
     }
 
-    public static void main(String args[]){
-        String url = "file:/Users/aaron/Documents/GitHub/In-flight-entertainment-system/src/resources/sakai/A-Funny-Thing-Happened-Official-Trailer-1-Michael-Crawford-M.mp4";
-        String parttern = "(\\S*\\/)(\\S*)(\\.mp4)";
-        Pattern r = Pattern.compile(parttern);
-        Matcher m = r.matcher(url);
-        if (m.find()){
-            System.out.println(m.group(0).substring(5,m.group(0).length()));
-            System.out.println(m.group(2));
-        } else{
-            System.out.println("No match!");
-        }
-    }
+//    public static void main(String args[]){
+//        String url = "file:/Users/aaron/Documents/GitHub/In-flight-entertainment-system/src/resources/sakai/A-Funny-Thing-Happened-Official-Trailer-1-Michael-Crawford-M.mp4";
+//        String parttern = "(\\S*\\/)(\\S*)(\\.mp4)";
+//        Pattern r = Pattern.compile(parttern);
+//        Matcher m = r.matcher(url);
+//        if (m.find()){
+//            System.out.println(m.group(0).substring(5,m.group(0).length()));
+//            System.out.println(m.group(2));
+//        } else{
+//            System.out.println("No match!");
+//        }
+//    }
 }

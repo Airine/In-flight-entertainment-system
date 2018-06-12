@@ -21,13 +21,13 @@ public class DataLoader {
             "Action",
             "Comedy",
             "Mystery",
-            "Cartoon",
+            "Plot",
             "Sci-Fi",
             "Horror",
             "War",
             "Crime",
             "Erotic",
-            "Disaster",
+            "Family",
             "Romance",
             "Biography",
             "Local"
@@ -48,8 +48,13 @@ public class DataLoader {
                 String name = rs.getString("user_name");
                 String pw = rs.getString("user_password");
                 int setting = rs.getInt("user_setting");
+                String nickName = rs.getString("nick_name");
+                int ifVIP = rs.getInt("if_VIP");
+                int ifAdmin = rs.getInt("if_Admin");
+                String status = rs.getString("status");
+                String icon_url = rs.getString("icon_url");
                 // 输出数据
-                User u = new User(id,name,pw,setting);
+                User u = new User(id,name,nickName,pw,setting,ifVIP,ifAdmin,status,icon_url);
                 tempt.add(u);
             }
 
@@ -146,9 +151,10 @@ public class DataLoader {
                 int movie_id = rs.getInt("movie_id");
                 if (user.getId() == user_id){
                     Movie tempt = getMovie(movie_id);
-                    assert tempt != null;
-                    tempt.setStar(true);
-                    starMovies.add(tempt);
+                    if (tempt != null) {
+                        tempt.setStar(true);
+                        starMovies.add(tempt);
+                    }
                 }
             }
 

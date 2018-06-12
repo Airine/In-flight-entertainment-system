@@ -87,12 +87,29 @@ public class DrawerContentController {
                 "-fx-background-repeat: no-repeat;" +
                 "-fx-background-size: 100% 100%;");
         initToggle();//初始化他的监听拖动
+        username.textProperty().addListener((observable, oldValue, newValue) -> {
+            rootLayoutController.editController.getTextname().setText(newValue);
+        });
+        usersign.textProperty().addListener((observable, oldValue, newValue) -> {
+            rootLayoutController.editController.getTextsign().setText(newValue);
+        });
+    }
+
+    public void setUser(){
+        changNameAndSign(MainApp.mainUser.getNickName(), MainApp.mainUser.getStatus());
+        changeUserImage(MainApp.mainUser.getIconUrl());
     }
 
     public void changNameAndSign(String name,String sign){
         username.setText(name);
         usersign.setText(sign);
     }
+
+    public void setNameAndSign(String name, String sign){
+        MainApp.mainUser.setNickName(name);
+        MainApp.mainUser.setStatus(sign);
+    }
+
     public void changeUserImage(String url){
         user_icon.setStyle("-fx-background-image: url(\"" + url + "\");" +
                 "-fx-background-position: center;" +
