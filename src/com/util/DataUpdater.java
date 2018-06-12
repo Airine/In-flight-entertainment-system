@@ -125,6 +125,19 @@ public class DataUpdater {
         updateMovie(movie);
     }
 
+    public static User insertUser(String user_nameText, String user_pwText) {
+        Connection connection = connectToDB();
+        String sql = "INSERT INTO `user`(`user_name`,`user_password`)" +
+                "values('"+
+                user_nameText +"', '" +
+                user_pwText +"'" +
+                ");" +
+                "commit;";
+        runSQLstatement(connection, sql);
+        loadUsers();
+        return getUser(user_nameText);
+    }
+
 //    public static void main(String args[]){
 //        String url = "file:/Users/aaron/Documents/GitHub/In-flight-entertainment-system/src/resources/sakai/A-Funny-Thing-Happened-Official-Trailer-1-Michael-Crawford-M.mp4";
 //        String parttern = "(\\S*\\/)(\\S*)(\\.mp4)";
