@@ -26,6 +26,10 @@ import static com.util.DataLoader.loadMovieTypes;
 import static com.util.DataLoader.loadMovies;
 import static javafx.animation.Interpolator.EASE_BOTH;
 
+/**
+ * @author 田闰心
+ * the class is the model of the movies which display in the view page
+ */
 public class MovieItem extends StackPane {
 
     private Movie movie;
@@ -43,6 +47,11 @@ public class MovieItem extends StackPane {
     private boolean ifClick = false;
 //    private boolean ifCollect = false;
 
+    /**
+     * <h>Constructor</h>
+     * @param movie The movie object
+     * @param title the title of the movie
+     */
     public MovieItem(Movie movie, String title){
 //        this.movie = new Movie(movie);
         this.movie = movie;
@@ -113,7 +122,10 @@ public class MovieItem extends StackPane {
 
         this.setStyle("-fx-padding: 20px 0px 0px 20px;");
     }
-    
+
+    /**
+     * The method is to initialize the deletion button
+     */
     private void initDeleteButton(){
         deletebutton = new JFXButton();
 
@@ -138,6 +150,9 @@ public class MovieItem extends StackPane {
         });
     }
 
+    /**
+     * This method is to initialize the main button at the bottom
+     */
     private void initMainButton(){
 
         button.setButtonType(JFXButton.ButtonType.RAISED);
@@ -171,6 +186,10 @@ public class MovieItem extends StackPane {
 
     }
 
+    /**
+     * This method is to initialize the playing button and set turning 
+     * @param videoUrl The movie url
+     */
     private void initPlayButton(String videoUrl){
 
         playbutton.setButtonType(JFXButton.ButtonType.RAISED);
@@ -203,6 +222,9 @@ public class MovieItem extends StackPane {
 
     }
 
+    /**
+     * This method is to initialize the button which can make the movies to be the favourite ones
+     */
     private void initCollectionButton(){
 
         collectionbutton.setButtonType(JFXButton.ButtonType.RAISED);
@@ -244,6 +266,11 @@ public class MovieItem extends StackPane {
     }
 
 
+    /**
+     * 
+     * @param i the id of the color type
+     * @return the color with right format
+     */
     private String getDefaultColor(int i) {
         String color;
         switch (i) {
