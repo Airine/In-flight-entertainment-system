@@ -29,8 +29,8 @@
       <Label fx:id="version" layoutX="29.0" layoutY="159.0" prefHeight="29.0" prefWidth="116.0" text="当前版本" />
       <Label alignment="CENTER" layoutX="191.0" layoutY="159.0" prefHeight="29.0" prefWidth="100.0" text="1.0" />
       <Label fx:id="version1" layoutX="29.0" layoutY="204.0" prefHeight="29.0" prefWidth="116.0" text="检查新版本" />
-      <Label fx:id="version11" layoutX="29.0" layoutY="242.0" prefHeight="29.0" prefWidth="116.0" text="工作室" />
-      <Label alignment="CENTER" layoutX="191.0" layoutY="242.0" prefHeight="29.0" prefWidth="100.0" text="荔园九栋701" />
+      <Label fx:id="workshop" layoutX="29.0" layoutY="242.0" prefHeight="29.0" prefWidth="116.0" text="工作室" />
+      <Label fx:id="workplace" alignment="CENTER" layoutX="191.0" layoutY="242.0" prefHeight="29.0" prefWidth="100.0" text="荔园九栋701" />
       <StackPane fx:id="stackpane" layoutX="81.0" layoutY="193.0" prefHeight="89.0" prefWidth="198.0" visible="false" />
    </children>
 </AnchorPane>

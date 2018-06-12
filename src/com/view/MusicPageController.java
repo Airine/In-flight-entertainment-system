@@ -3,6 +3,7 @@ package com.view;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXSlider;
 import com.jfoenix.controls.JFXToggleButton;
+import com.util.JsonLoader;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -10,6 +11,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 
@@ -179,6 +182,16 @@ public class MusicPageController {
             }
         });
         
+    }
+    public void loadLanguage(String language) {
+        JSONObject jsonObject = JsonLoader.getJsonValue(language,"money");
+        try {
+            assert jsonObject != null;
+            LoopPlayback.setText(jsonObject.getString("loop"));
+
+        } catch (JSONException | NullPointerException e){
+            e.printStackTrace();
+        }
     }
     private void updateValues() {
         if (MusicPlayTime != null && musicSlider != null && MusicVolume != null) {
