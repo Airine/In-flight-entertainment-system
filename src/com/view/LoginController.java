@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.model.User;
+import com.util.DataUpdater;
 import com.util.JsonLoader;
 import javafx.fxml.FXML;
 import javafx.scene.input.InputMethodEvent;
@@ -19,7 +20,11 @@ import static com.MainApp.mainUser;
 import static com.util.DataLoader.getUser;
 import static com.util.DataLoader.loadStarRelation;
 
-
+/* *  this use to control login in .
+ * @author PennaLia
+ * @date 2018/6/12 23:42
+ * @version Player Version 1.0
+ */
 public class LoginController {
     public JFXTextField user_name;
     public JFXPasswordField user_pw;
@@ -65,6 +70,7 @@ public class LoginController {
     public  void setCloseAction(){
         dialogStage.setOnCloseRequest(windowEvent -> {
             mainApp.setOpenLogin(false);
+            mainApp.setLogin(false);
         });
     }
 
@@ -72,6 +78,7 @@ public class LoginController {
     public void handleClose(){
         dialogStage.close();
         mainApp.setOpenLogin(false);
+        mainApp.setLogin(false);
     }
 
     public void pressLoginButton(MouseEvent mouseEvent) {
@@ -81,7 +88,12 @@ public class LoginController {
     public void releaseLoginButton(MouseEvent mouseEvent) {
         login.setButtonType(JFXButton.ButtonType.RAISED);
     }
-
+    /* *  this use to verify if  username and password are matched.
+     * @author PennaLia
+     * @date 2018/6/12 23:42
+     * @param
+     * @return
+     */
     public void clickLoginButton(MouseEvent mouseEvent) {
         String user_nameText = user_name.getText();
         String user_pwText = user_pw.getText();
@@ -124,7 +136,12 @@ public class LoginController {
         user_pw_warning.setText("");
     }
 
-
+    /* *  this used to listen the username text field .
+     * @author PennaLia
+     * @date 2018/6/12 23:43
+     * @param
+     * @return
+     */
     public void getUsernameTyped(KeyEvent keyEvent) {
         String input = user_name.getText()+keyEvent.getCharacter();
 //        System.err.println(input);
@@ -143,7 +160,16 @@ public class LoginController {
         user_pw_warning.setText("");
     }
 
+    /* *  this used to sign a new account.
+     * @author PennaLia
+     * @date 2018/6/12 23:43
+     * @param
+     * @return
+     */
     public void clickSignButton(MouseEvent mouseEvent) {
-
+        String user_nameText = user_name.getText();
+        String user_pwText = user_pw.getText();
+        mainUser = DataUpdater.insertUser(user_nameText, user_pwText);
+        dialogStage.close();
     }
 }

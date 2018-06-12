@@ -15,7 +15,11 @@ import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import org.json.JSONException;
 import org.json.JSONObject;
-
+/* *  this is the drawer contreoller.
+ * @author PennaLia
+ * @date 2018/6/12 23:45
+ * @version Player Version 1.0
+ */
 public class DrawerContentController {
     public JFXButton vip;
     public JFXButton star;
@@ -117,6 +121,12 @@ public class DrawerContentController {
                 "-fx-background-size: 100% 100%;");
     }
 
+    /* *  be huiyuan .
+     * @author PennaLia
+     * @date 2018/6/12 23:47
+     * @param
+     * @return
+     */
     @FXML
     public void beHuiyuan(){
         if (MainApp.mainUser!=null)
@@ -155,6 +165,13 @@ public class DrawerContentController {
         rootLayoutController.homePageNotSee();//主界面不可见
         rootLayoutController.setSettingPane(rootLayoutController.timing);
     }
+
+    /* *  collection your movies.
+     * @author PennaLia
+     * @date 2018/6/12 23:45
+     * @param
+     * @return
+     */
     @FXML
     private void handleCollection(){
         rootLayoutController.getDrawer().close();
@@ -191,6 +208,12 @@ public class DrawerContentController {
         rootLayoutController.getMainApp().login();
     }
 
+    /* *  dadd a listener of toggle .
+     * @author PennaLia
+     * @date 2018/6/12 23:46
+     * @param
+     * @return
+     */
     private void initToggle(){
         night.selectedProperty().addListener((observable, oldValue, newValue) -> {
 
