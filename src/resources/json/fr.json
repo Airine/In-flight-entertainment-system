@@ -1,0 +1,79 @@
+{
+    "loginDialog": {
+        "username": "Nom d'utilisateur:",
+        "password": "Password:",
+        "login": "Atterrissage",
+        "sign": "Inscription"
+    },
+
+    "theme": {
+        "title": "Sujet",
+        "upBar": "Couleur supérieure",
+        "leftBar": "Couleur principale latérale",
+        "leftBarUp": "Couleur latérale",
+        "button": "Confirmez le changement"
+    },
+
+    "money": {
+        "label1": "Abonnement",
+        "label2": "Thème personnalisé",
+        "label3": "Plus de vidéos",
+        "label4": "Service clientèle privé",
+        "label5": "Méthode de paiement",
+        "pay": "Confirmation",
+        "vip1": "Privilège d'adhésion",
+        "month": "10$/Mensuel"
+
+    },
+
+    "about": {
+        "title": "Joueurs",
+        "comment": "Examen",
+        "commentTo": "Évaluation pour les développeurs",
+        "checkVersion": "Vérification",
+        "version": "Version actuelle",
+        "version1":"Vérifiez la nouvelle version",
+        "workshop":"Adresse de travail",
+        "workplace":"Gion-9-701"
+    },
+
+    "edit": {
+        "name": "Noms",
+        "ps": "Signé",
+        "confirm": "Confirmez la modification",
+        "modify1": "Modifier les informations",
+        "userimage":"Avatar",
+        "choosefile":"Sélectionnez le fichier"
+    },
+
+    "drawer": {
+        "vip": "Mettre à niveau",
+        "star": "Ma collection",
+        "timing": "Temporisé",
+        "theme": "Thème de personnalité",
+        "night": "Mode nuit",
+        "about": "À propos de nous"
+    },
+
+    "timing":{
+        "title":"Temporisé",
+        "closetime":"Temps",
+        "commit":"Confirmation"
+    },
+
+    "music":{
+        "loop":"Cycle unique"
+    },
+
+    "setting":{
+        "title":"Paramètres",
+        "lan":"Langue",
+        "scrap":"Crawler",
+        "scrapbutton":"Mis à",
+        "connect":"Lié",
+        "setdefault":"Définir par défaut",
+        "sure":"Confirmation"
+    }
+
+
+}
