@@ -7,24 +7,16 @@ import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import com.model.Movie;
 import com.model.MovieType;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeTableColumn;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.util.Callback;
 
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import static com.MainApp.mainMovieTypes;
@@ -89,7 +81,7 @@ public class MovieTableViewController {
                     System.out.println(tempt);
                     try {
                         MainApp.player.mediaPlayer.stop();
-                        MainApp.player.advertismentPlayer.stop();
+                        MainApp.player.advertisementPlayer.stop();
                         MainApp.player.getRootLayoutController().seePlaypage();
                         MainApp.player.getSpinner().setVisible(true);
                         MainApp.player.setPlayerWithBar(new Media(tempt.getHref()));
