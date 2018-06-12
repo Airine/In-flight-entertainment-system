@@ -24,8 +24,8 @@ public class LoginController {
     public JFXTextField user_name;
     public JFXPasswordField user_pw;
 
-    public JFXButton Login;
-    public JFXButton Sign;
+    public JFXButton login;
+    public JFXButton sign;
     public Text user_name_warning;
     public Text user_pw_warning;
     private Stage dialogStage;
@@ -47,8 +47,8 @@ public class LoginController {
         JSONObject jsonObject = JsonLoader.getJsonValue(language,"loginDialog");
         try {
             assert jsonObject != null;
-            Login.setText(jsonObject.getString("login"));
-            Sign.setText(jsonObject.getString("sign"));
+            login.setText(jsonObject.getString("login"));
+            sign.setText(jsonObject.getString("sign"));
             user_name.setPromptText(jsonObject.getString("username"));
             user_pw.setPromptText(jsonObject.getString("password"));
         } catch (JSONException | NullPointerException e){
@@ -75,11 +75,11 @@ public class LoginController {
     }
 
     public void pressLoginButton(MouseEvent mouseEvent) {
-        Login.setButtonType(JFXButton.ButtonType.FLAT);
+        login.setButtonType(JFXButton.ButtonType.FLAT);
     }
 
     public void releaseLoginButton(MouseEvent mouseEvent) {
-        Login.setButtonType(JFXButton.ButtonType.RAISED);
+        login.setButtonType(JFXButton.ButtonType.RAISED);
     }
 
     public void clickLoginButton(MouseEvent mouseEvent) {
@@ -101,11 +101,11 @@ public class LoginController {
 
 
     public void pressSignButton(MouseEvent mouseEvent) {
-        Sign.setButtonType(JFXButton.ButtonType.FLAT);
+        sign.setButtonType(JFXButton.ButtonType.FLAT);
     }
 
     public void releaseSignButton(MouseEvent mouseEvent) {
-        Sign.setButtonType(JFXButton.ButtonType.RAISED);
+        sign.setButtonType(JFXButton.ButtonType.RAISED);
     }
 
     public void getUsernameChanged(InputMethodEvent inputMethodEvent) {
@@ -122,12 +122,12 @@ public class LoginController {
         String input = user_name.getText()+keyEvent.getCharacter();
 //        System.err.println(input);
         if(getUser(input) != null) {
-            Sign.setButtonType(JFXButton.ButtonType.FLAT);
-            Sign.setDisable(true);
+            sign.setButtonType(JFXButton.ButtonType.FLAT);
+            sign.setDisable(true);
 //            user_name_warning.setText("Username exists");
         } else {
-            Sign.setButtonType(JFXButton.ButtonType.RAISED);
-            Sign.setDisable(false);
+            sign.setButtonType(JFXButton.ButtonType.RAISED);
+            sign.setDisable(false);
             user_name_warning.setText("");
         }
     }

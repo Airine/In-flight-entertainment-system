@@ -173,8 +173,8 @@ public class DrawerContentController {
                 e.printStackTrace();
             }
         }
-        rootLayoutController.HomePageController.changeFlowContent(flowPane);
-        rootLayoutController.HomePageController.back.setVisible(true);
+        rootLayoutController.homePageController.changeFlowContent(flowPane);
+        rootLayoutController.homePageController.back.setVisible(true);
 
     }
     @FXML

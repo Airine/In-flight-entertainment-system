@@ -107,6 +107,13 @@ public class EditController {
         if(imageURL!=null)
             rootLayoutController.getDrawerContentController().changeUserImage(imageURL);
     }
+
+    /* *  this is use to choose file from your computer.
+     * @author PennaLia
+     * @date 2018/6/12 21:57
+     * @param
+     * @return
+     */
     @FXML
     public void handleChooseFile() throws MalformedURLException {
         FileChooser fc = new FileChooser();
@@ -143,6 +150,12 @@ public class EditController {
         );
     }
 
+    /* * this is used to load language from json,
+     * @author PennaLia
+     * @date 2018/6/12 21:57
+     * @param
+     * @return
+     */
     public void loadLanguage(String language) {
         JSONObject jsonObject = JsonLoader.getJsonValue(language,"edit");
         try {

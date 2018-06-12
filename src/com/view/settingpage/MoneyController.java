@@ -15,10 +15,12 @@ import javafx.scene.text.Text;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
+/* *  this class is used for money page controller .
+ * @author PennaLia
+ * @date 2018/6/12 21:59
+ * @version Player Version 1.0
+ */
 public class MoneyController {
-
-
 
     public Label label1;
     public Label label2;
@@ -44,20 +46,25 @@ public class MoneyController {
 
     @FXML
     private Label vip;
-
-
-
-    private boolean payWay;
+    //the warning information.
+    String WaringTitle="祝贺";
+    String WaringMessage="恭喜你喜提会员";
+    String WaringButton="知道了";
     private RootLayoutController rootLayoutController;
     public void setRootLayoutController(RootLayoutController rootLayoutController){
         this.rootLayoutController=rootLayoutController;
     }
+
     public AnchorPane getMoneyuppane(){
         return  moneyuppane;
     }
-    String WaringTitle="祝贺";
-    String WaringMessage="恭喜你喜提会员";
-    String WaringButton="知道了";
+
+    /* *  this used to handle be hui yuan ,that you are be a huiyuan of our product if you pay money,
+     * @author PennaLia
+     * @date 2018/6/12 22:00
+     * @param
+     * @return
+     */
     @FXML
     public void handleBeHuiYuan(){
         rootLayoutController.getDrawerContentController().beHuiyuan();
@@ -78,6 +85,12 @@ public class MoneyController {
 
     }
 
+    /* *  this is used for load language
+     * @author PennaLia
+     * @date 2018/6/12 22:01
+     * @param  language means different language .
+     * @return
+     */
     public void loadLanguage(String language) {
         JSONObject jsonObject = JsonLoader.getJsonValue(language,"money");
         try {
@@ -95,6 +108,12 @@ public class MoneyController {
             e.printStackTrace();
         }
     }
+    /* *  this used for set warning text .
+     * @author PennaLia
+     * @date 2018/6/12 22:01
+     * @param
+     * @return
+     */
     public void setWaringText(String language){
         if (language.equals("cn")){
             WaringTitle="祝贺";

@@ -18,19 +18,20 @@ import org.json.JSONObject;
 import static com.util.DataLoader.loadMovieTypes;
 import static com.util.DataLoader.loadMovies;
 
-
+/* *  this is used to control setting page .
+ * @author PennaLia
+ * @date 2018/6/12 22:03
+ * @version Player Version 1.0
+ */
 public class SettingPageController {
     @FXML
     private JFXComboBox<Label> langComBoix;
-
 
     @FXML
     private AnchorPane settinguppane;
 
     @FXML
     private Label title;
-
-
 
     @FXML
     private Label language1;
@@ -65,8 +66,14 @@ public class SettingPageController {
     private void initialize(){
         initCombox();
     }
-    private void initCombox(){
 
+    /* *  set different language for the app.
+     * @author PennaLia
+     * @date 2018/6/12 22:03
+     * @param
+     * @return
+     */
+    private void initCombox(){
         langComBoix.getItems().addAll(chinese,english,français);
         langComBoix.setEditable(false);
         langComBoix.setPromptText("选择语言");
@@ -93,6 +100,12 @@ public class SettingPageController {
 
     }
 
+    /* *  to scrap movie from web.
+     * @author PennaLia
+     * @date 2018/6/12 22:05
+     * @param
+     * @return
+     */
     @FXML
     private void handleWebScraping(){
         com.util.WebScraping webScraping = new WebScraping();
@@ -102,6 +115,13 @@ public class SettingPageController {
         MainApp.mainMovieTypes = loadMovieTypes("en");
     }
 
+
+    /* *  load language from json.
+     * @author PennaLia
+     * @date 2018/6/12 22:04
+     * @param
+     * @return
+     */
     public void loadLanguage(String language) {
         JSONObject jsonObject = JsonLoader.getJsonValue(language,"setting");
         try {
