@@ -151,9 +151,10 @@ public class DataLoader {
                 int movie_id = rs.getInt("movie_id");
                 if (user.getId() == user_id){
                     Movie tempt = getMovie(movie_id);
-                    assert tempt != null;
-                    tempt.setStar(true);
-                    starMovies.add(tempt);
+                    if (tempt != null) {
+                        tempt.setStar(true);
+                        starMovies.add(tempt);
+                    }
                 }
             }
 

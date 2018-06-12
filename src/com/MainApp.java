@@ -121,7 +121,6 @@ public class MainApp extends Application {
     public static void main(String[] args) {
         loadUsers();
         mainMovies = loadMovies();
-        // "cn" -> mainUser.language;
         mainMovieTypes = loadMovieTypes("en");
 
         launch(args);

@@ -6,6 +6,7 @@ import com.jfoenix.controls.JFXNodesList;
 import com.jfoenix.effects.JFXDepthManager;
 import com.jfoenix.svg.SVGGlyph;
 import com.model.Movie;
+import com.util.DataUpdater;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -21,6 +22,8 @@ import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
 import static com.MainApp.starMovies;
+import static com.util.DataLoader.loadMovieTypes;
+import static com.util.DataLoader.loadMovies;
 import static javafx.animation.Interpolator.EASE_BOTH;
 
 public class MovieItem extends StackPane {
@@ -74,20 +77,27 @@ public class MovieItem extends StackPane {
 
         initCollectionButton();
 
-        JFXButton jfxButton = new JFXButton();
+        JFXButton deleteButton = new JFXButton();
 
-        jfxButton.setButtonType(JFXButton.ButtonType.RAISED);
-        jfxButton.setStyle("-fx-background-radius: 40;-fx-background-color: " + getDefaultColor((int) ((Math.random() * 12) % 12)));
-        jfxButton.setPrefSize(40, 40);
-        jfxButton.setRipplerFill(Color.valueOf(getDefaultColor(13)));
-        jfxButton.setScaleX(0);
-        jfxButton.setScaleY(0);
+        deleteButton.setButtonType(JFXButton.ButtonType.RAISED);
+        deleteButton.setStyle("-fx-background-radius: 40;-fx-background-color: " + getDefaultColor((int) ((Math.random() * 12) % 12)));
+        deleteButton.setPrefSize(40, 40);
+        deleteButton.setRipplerFill(Color.valueOf(getDefaultColor(13)));
+        deleteButton.setScaleX(0);
+        deleteButton.setScaleY(0);
         SVGGlyph add_graph = new SVGGlyph(-1,
                 "test",
                 "M320 544z m505.6-236.8c0-19.2 12.8-32 32-32s32 12.8 32 32v544c0 25.6-12.8 51.2-32 70.4-19.2 19.2-44.8 25.6-70.4 25.6h-544c-25.6 0-51.2-12.8-70.4-32-19.2-19.2-32-44.8-32-70.4V307.2c0-19.2 12.8-32 32-32s32 12.8 32 32v544c0 12.8 6.4 19.2 12.8 32 0 6.4 12.8 12.8 25.6 12.8h544c12.8 0 19.2-6.4 25.6-12.8 6.4-6.4 12.8-19.2 12.8-32v-544zM480 332.8v454.4c0 19.2 12.8 32 32 32s32-12.8 32-32V332.8c0-19.2-12.8-32-32-32s-32 12.8-32 32z m-160 0v454.4c0 19.2 12.8 32 32 32s32-12.8 32-32V332.8c0-19.2-12.8-32-32-32s-32 12.8-32 32z m326.4 0v454.4c0 19.2 12.8 32 32 32s32-12.8 32-32V332.8c0-19.2-12.8-32-32-32s-32 12.8-32 32zM96 211.2c-19.2 0-32-12.8-32-32s12.8-32 32-32h243.2l70.4-70.4c6.4-6.4 12.8-6.4 19.2-6.4h166.4c6.4 0 19.2 6.4 25.6 12.8l64 64H928c19.2 0 32 12.8 32 32s-12.8 32-32 32H672c-6.4 0-12.8 0-19.2-6.4l-70.4-70.4H441.6l-64 64c-6.4 6.4-19.2 12.8-25.6 12.8H96z",
                 Color.WHITE);
         add_graph.setSize(20, 20);
-        jfxButton.setGraphic(add_graph);
+        deleteButton.setGraphic(add_graph);
+        deleteButton.setOnMouseClicked(event -> {
+            DataUpdater.deleteMovie(movie);
+            starMovies.remove(movie);
+            MainApp.mainMovies = loadMovies();
+            MainApp.mainMovieTypes = loadMovieTypes("en");
+            this.setVisible(false);
+        });
 
         //create nodelist
         JFXNodesList nodesList=new JFXNodesList();
@@ -95,7 +105,7 @@ public class MovieItem extends StackPane {
         nodesList.addAnimatedNode(button);
         nodesList.addAnimatedNode(playbutton);
         nodesList.addAnimatedNode(collectionbutton);
-        nodesList.addAnimatedNode(jfxButton);
+        nodesList.addAnimatedNode(deleteButton);
 
         //set nodeilist height
         nodesList.translateYProperty().bind(Bindings.createDoubleBinding(() ->
