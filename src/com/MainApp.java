@@ -102,6 +102,7 @@ public class MainApp extends Application {
                 controller.setCloseAction();
                 dialogStage.initStyle(StageStyle.TRANSPARENT);//隐藏窗口
                 dialogStage.showAndWait();//只能用户主动关闭
+                rootLayoutController.getDrawerContentController().setUser();
 
             }
         }catch (Exception e){
@@ -111,6 +112,8 @@ public class MainApp extends Application {
 
     public void closeWindows(){
         DataUpdater.writeBackCollection();
+        if (mainUser!=null)
+            DataUpdater.updateUser(mainUser);
         System.out.println("Write Back Compelete.");
         primaryStage.close();
     }
@@ -120,8 +123,7 @@ public class MainApp extends Application {
         mainMovies = loadMovies();
         // "cn" -> mainUser.language;
         mainMovieTypes = loadMovieTypes("en");
-//        mainUser = getUser("aaron");
-//        loadStarRelation();
+
         launch(args);
     }
 

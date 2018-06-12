@@ -1,5 +1,6 @@
 package com.view.settingpage;
 
+import com.MainApp;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
@@ -56,6 +57,7 @@ public class EditController {
     String WaringMessage="你没有选择任何文件";
     String WaringButton="我知道了";
 
+
     public void setRootLayoutController(RootLayoutController rootLayoutController){
         this.rootLayoutController=rootLayoutController;
     }
@@ -77,9 +79,10 @@ public class EditController {
     }
     @FXML
     public void handleEdit(){
-        rootLayoutController.getDrawerContentController().changNameAndSign(
+        rootLayoutController.getDrawerContentController().setNameAndSign(
                 textname.getText(),textsign.getText()
         );
+        rootLayoutController.getDrawerContentController().setUser();
         if(imageURL!=null)
             rootLayoutController.getDrawerContentController().changeUserImage(imageURL);
     }
@@ -90,6 +93,8 @@ public class EditController {
         File seletedFile =fc.showOpenDialog(null);
         if(seletedFile!=null){
             imageURL=seletedFile.toURI().toURL().toExternalForm();//加载出文件的路径
+            if (MainApp.mainUser!=null)
+                MainApp.mainUser.setIconUrl(imageURL);
         }else {
             stackpane.setVisible(true);
             JFXDialogLayout content = new JFXDialogLayout();

@@ -22,7 +22,14 @@ public class DataUpdater {
     }
 
     public static void updateUser(User user){
-
+        Connection connection = connectToDB();
+        String sql = "UPDATE `user`" +
+                "SET `nick_name` = " + user.getNickName() + "," +
+                "`status` = " + user.getStatus() + "," +
+                "`icon_url` = " + user.getIconUrl() +
+                "WHERE _rowid_ = " + user.getId()+";" +
+                "commit;";
+        runSQLstatement(connection,sql);
     }
 
     public static void updateMovies(ArrayList<Movie> movies){
