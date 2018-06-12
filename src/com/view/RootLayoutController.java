@@ -23,22 +23,22 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 
 public class RootLayoutController {
-//主平面，暂时没什么用
+     //main pane. the bigger pane.
     @FXML
     private AnchorPane mainPane;
-    //导航栏
+    //the bar
     @FXML
     private AnchorPane mainBar;
-    //搜索栏
+    //search box
     @FXML
     private HBox searchbox;
-    //搜索栏的文本
+    //search text field
     @FXML
     private JFXTextField searchfeild;
     @FXML
-    private StackPane stackpane;//关闭的对话窗口
+    private StackPane stackpane;//dialog pane.
 
-    //这是三根下划线
+    //three line to indicate the current page.
     @FXML
     private Line homeline;
 
@@ -47,39 +47,40 @@ public class RootLayoutController {
 
     @FXML
     private Line musicline;
-//主界面
+
+    //homepage for place movies
     @FXML
     private AnchorPane homepage;
-//抽屉的开关
+    //button to open or close drawer
     @FXML
     private JFXHamburger hamburger;
-//抽屉
+    //drawer
     @FXML
     private JFXDrawer drawer;
-//设置界面
+    //setting pane
     @FXML
     private AnchorPane SettingPane;
-
+    //search pane
     @FXML
-    private AnchorPane searchpane;//搜索的平面
-
-
-    private MainApp mainApp; //和主应用连接
+    private AnchorPane searchpane;
+    // the mainapp
+    private MainApp mainApp;
+    // hamburger transition
     private HamburgerNextArrowBasicTransition transition;
 
-    //抽屉栏
+    //box used to place drawer
     private VBox box;
-    //三个界面，放电影的，播放音乐的，播放视频的，要提前加载
+    //three main page
     public AnchorPane homeP, musicP, playerP;
-    //三个界面的控制器
+    //three main page controller
     public MusicPageController musicPageController;
     public HomePageController HomePageController;
     public PlayerPageController playerPageController;
 
-    //几个设置界面
+    //setting pane
     public AnchorPane setting,aboutus,theme,money,timing,edit;
-    public FlowPane collection;//收藏界面
-    //设置界面的控制器
+    public FlowPane collection;//collection pane.
+    //setting pane controller
     SettingPageController settingPageController;
     AboutUsController aboutUsController;
     ThemeController themeController;
@@ -88,13 +89,20 @@ public class RootLayoutController {
     CollectionController collectionController;
     EditController editController;
     DrawerContentController drawerContentController;
-    //搜索界面的controler
+    //search ontroler
     MovieTableViewController movieTableViewController;
 
+    //information about waring text.
     String WaringTitle="程序即将自动关闭";
     String WaringMessage="程序会在10s内自动关闭";
     String WaringButton="我不想要关闭";
-    
+
+    /* *  this is used to load different language.
+     * @author PennaLia
+     * @date 2018/6/12 18:53
+     * @param  language  the language that will want to change.
+     * @return
+     */
     public void loadLanguage(String language){
         settingPageController.loadLanguage(language);
         aboutUsController.loadLanguage(language);
@@ -106,13 +114,11 @@ public class RootLayoutController {
         movieTableViewController.loadLanguage(language);
         musicPageController.loadLanguage(language);
         setWaringText(language);
+
     }
 
 
-    /**
-     * 设置主应用，连接到主界面
-     * @param app
-     */
+
     public void setMainApp(MainApp app) {
         mainApp = app;
     }
@@ -131,7 +137,7 @@ public class RootLayoutController {
         return movieTableViewController;
     }
 
-    public VBox getVBox(){return box;}
+
     public JFXDrawer getDrawer(){return drawer;}
     public DrawerContentController getDrawerContentController(){return drawerContentController;}
    /* *  用来替换主界面，当想切换哪个界面的时候就把界面赋值给homepage
@@ -155,23 +161,25 @@ public class RootLayoutController {
 
     public void setSettingVisible() {
         getSettingPane().setVisible(true);
-    }//让设置界面可见
+    }
 
     public void homePageNotSee() {
         homepage.setVisible(false);
-    }//让主界面可见
+    }
     public void homePageSee() {
         homepage.setVisible(true);
-    }//让主界面不可见
+    }
 
     public AnchorPane getHomepage() {
         return homepage;
-    }//返回主界面
+    }
     public AnchorPane getSettingPane() {
         return SettingPane;
     }
 
-    public AnchorPane getMainBar(){return  mainBar;}
+    public AnchorPane getMainBar(){
+        return  mainBar;
+    }
     public void searchPaneVisible(boolean a){
         searchpane.setVisible(a);
     }
@@ -427,6 +435,12 @@ public class RootLayoutController {
             e.printStackTrace();
         }
     }
+    /* *  init the search tree used for search.
+     * @author PennaLia
+     * @date 2018/6/12 18:43
+     * @param
+     * @return
+     */
     public void initSearchTree(){
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -513,7 +527,12 @@ public class RootLayoutController {
         mainApp.closeWindows();
     }
 
-
+    /* *  when you click enter it will search.
+     * @author PennaLia
+     * @date 2018/6/12 18:44
+     * @param
+     * @return
+     */
     @FXML
     private void handleSearch(KeyEvent event){
         KeyCode kc= event.getCode();
@@ -567,7 +586,12 @@ public class RootLayoutController {
             now=DefaultCSS;
         }
     }
-
+    /* *  this will change theme to theme1.
+     * @author PennaLia
+     * @date 2018/6/12 18:44
+     * @param
+     * @return
+     */
     public void ToTheme1(){
         ObservableList<String> styleSheets = mainPane.getStylesheets();
         styleSheets.clear();
@@ -576,6 +600,12 @@ public class RootLayoutController {
             now=Theme1;
         }
     }
+    /* *  this will change theme to theme2.
+     * @author PennaLia
+     * @date 2018/6/12 18:45
+     * @param
+     * @return
+     */
     public void ToTheme2(){
         ObservableList<String> styleSheets = mainPane.getStylesheets();
         styleSheets.clear();
@@ -584,6 +614,12 @@ public class RootLayoutController {
             now=Theme2;
         }
     }
+    /* *  this will change theme to theme3
+     * @author PennaLia
+     * @date 2018/6/12 18:45
+     * @param
+     * @return
+     */
     public void ToTheme3(){
         ObservableList<String> styleSheets = mainPane.getStylesheets();
         styleSheets.clear();
@@ -632,6 +668,12 @@ public class RootLayoutController {
         dialog.show();
     }
 
+    /* *  set warning message for diffenet language.
+     * @author PennaLia
+     * @date 2018/6/12 18:45
+     * @param
+     * @return
+     */
     public void setWaringText(String language){
         if (language.equals("cn")){
             WaringTitle="程序即将自动关闭";

@@ -2,14 +2,18 @@ package com.view.settingpage;
 
 import com.MainApp;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXListView;
+import com.util.JsonLoader;
 import com.util.WebScraping;
 import com.view.RootLayoutController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.StringConverter;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import static com.util.DataLoader.loadMovieTypes;
 import static com.util.DataLoader.loadMovies;
@@ -22,6 +26,29 @@ public class SettingPageController {
 
     @FXML
     private AnchorPane settinguppane;
+
+    @FXML
+    private Label title;
+
+
+
+    @FXML
+    private Label language1;
+
+    @FXML
+    private Label scrap;
+
+    @FXML
+    private Label connect;
+
+    @FXML
+    private JFXCheckBox setdefault;
+
+    @FXML
+    private JFXButton sure;
+
+    @FXML
+    private JFXButton webScrapingButton;
     private RootLayoutController rootLayoutController;
     public void setRootLayoutController(RootLayoutController rootLayoutController){
         this.rootLayoutController=rootLayoutController;
@@ -56,11 +83,11 @@ public class SettingPageController {
         //选择box做什么
         langComBoix.valueProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue.getText().equals("中文"))
-                System.out.println("中文");
+                rootLayoutController.getMainApp().changeLanguage("cn");
             if(newValue.getText().equals("English"))
-                System.out.println("英语");
+                rootLayoutController.getMainApp().changeLanguage("en");
             if(newValue.getText().equals("Français"))
-                System.out.println("法语");
+                rootLayoutController.getMainApp().changeLanguage("fr");
         });
 
 
@@ -74,7 +101,20 @@ public class SettingPageController {
         MainApp.mainMovies = loadMovies();
         MainApp.mainMovieTypes = loadMovieTypes("en");
     }
-    
+
     public void loadLanguage(String language) {
+        JSONObject jsonObject = JsonLoader.getJsonValue(language,"setting");
+        try {
+            assert jsonObject != null;
+            title.setText(jsonObject.getString("title"));
+            language1.setText(jsonObject.getString("lan"));
+            scrap.setText(jsonObject.getString("scrap"));
+            webScrapingButton.setText(jsonObject.getString("scrapbutton"));
+            connect.setText(jsonObject.getString("connect"));
+            setdefault.setText(jsonObject.getString("setdefault"));
+            sure.setText(jsonObject.getString("sure"));
+        } catch (JSONException | NullPointerException e){
+            e.printStackTrace();
+        }
     }
 }

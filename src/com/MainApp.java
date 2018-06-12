@@ -35,6 +35,7 @@ public class MainApp extends Application {
     RootLayoutController rootLayoutController;
     private Stage primaryStage;
     private AnchorPane rootLayout;
+    AnchorPane Loginpage;
     private Boolean login=false,openLogin=false ;//判断是否已经登陆过，如果已经打开登陆窗口，或者已经登陆，就不能再打开登陆窗口
    //get 和 set
     public AnchorPane getRootLayout(){return  rootLayout;}
@@ -59,6 +60,7 @@ public class MainApp extends Application {
         this.primaryStage.setResizable(false);//不能改变窗口大小
         this.primaryStage.getIcons().add(new Image("resources/plane.png"));
         initRootLayout();
+        initLogin();
     }
     private void initRootLayout(){
         try {
@@ -80,24 +82,28 @@ public class MainApp extends Application {
         }
     }
 
-
+    public void initLogin(){
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class
+                    .getResource("view/Login.fxml"));
+            Loginpage = (AnchorPane) loader.load();
+            controller = loader.getController();
+            controller.setMainApp(this);
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
     public void login(){
         try {
             if(!login && !openLogin) {
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(MainApp.class
-                        .getResource("view/Login.fxml"));
-                AnchorPane page = (AnchorPane) loader.load();
-
                 Stage dialogStage = new Stage();
                 openLogin=true; //打开了窗口就不能再打开了
                 dialogStage.setTitle("Login");
                 dialogStage.setResizable(false);
                 dialogStage.initOwner(primaryStage);
-                Scene scene = new Scene(page);
+                Scene scene = new Scene(Loginpage);
                 dialogStage.setScene(scene);
-                controller = loader.getController();
-                controller.setMainApp(this);
                 controller.setDialogStage(dialogStage);
                 controller.setCloseAction();
                 dialogStage.initStyle(StageStyle.TRANSPARENT);//隐藏窗口
@@ -128,8 +134,8 @@ public class MainApp extends Application {
 
 
     public void changeLanguage(String language){
-        controller.loadLanguage(language);
         rootLayoutController.loadLanguage(language);
+        controller.loadLanguage(language);
     }
 
 

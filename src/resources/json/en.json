@@ -2,14 +2,13 @@
     "loginDialog": {
         "username": "Username:",
         "password": "Password:",
-
         "login": "Log in",
         "sign": "Sign in"
     },
 
     "theme": {
         "title": "Theme",
-        "upBar": "main navigation bar color",
+        "upBar": "Main navigation bar color",
         "leftBar": "left Navigation bar1 color",
         "leftBarUp": "left Navigation bar2 color",
         "button": "Commit"
@@ -22,34 +21,57 @@
         "label4": "Customer service",
         "label5": "Terms of payment",
         "pay": "Pay",
+        "vip1": "VIP",
         "month": "10$/Per Month"
     },
 
     "about": {
         "title": "Sustech Player",
         "comment": "Commit",
-        "commentTo": "Comment",
+        "commentTo": "Comment to developer",
         "checkVersion": "Check for updates",
-        "version": "Current Versions"
+        "version": "Current Versions",
+        "version1":"Check new Version",
+        "workshop":"Workshop",
+        "workplace":"Leechee hill 9-701"
     },
 
     "edit": {
         "name": "Username",
         "ps": "Signatures",
         "confirm": "Commit",
-        "modify1": "Edit"
+        "modify1": "Edit",
+        "userimage":"UserImage",
+        "choosefile":"Choose file"
     },
 
     "drawer": {
-        "vip": " Purchase VIP",
+        "vip": "Purchase VIP",
         "star": "Favorites",
         "timing": "Timer PowerOff",
         "theme": "Theme",
-        "nightLabel": "Night mode",
+        "night": "Night mode",
         "about": "About us"
+    },
 
+    "timing":{
+        "title":"On time close",
+        "closetime":"Close time",
+        "commit":"Confirm"
+    },
+
+    "music":{
+        "loop":"Single cycle"
+    },
+
+    "setting":{
+        "title":"Setting",
+        "lan":"Language",
+        "scrap":"Scarp",
+        "scrapbutton":"Update",
+        "connect":"Connection",
+        "setdefault":"Set it as default player",
+        "sure":"Confirm"
     }
-
-
 
 }
