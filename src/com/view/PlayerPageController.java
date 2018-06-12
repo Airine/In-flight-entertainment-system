@@ -163,7 +163,7 @@ public class PlayerPageController {
     public void setPlayerWithBar(Media media){
         advertisementPlayer.play();
         Bar.setDisable(true);
-        if(rootLayoutController.getMainApp().huiyuan)
+        if(MainApp.huiyuan)
             skip.setVisible(true);
         spinner.setVisible(false);
         mediaPlayer = new MediaPlayer(media);

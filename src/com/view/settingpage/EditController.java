@@ -81,10 +81,16 @@ public class EditController {
     }
     @FXML
     public void handleEdit(){
-        rootLayoutController.getDrawerContentController().setNameAndSign(
+        if (MainApp.mainUser!=null) {
+            rootLayoutController.getDrawerContentController().setNameAndSign(
+                    textname.getText(), textsign.getText()
+            );
+            rootLayoutController.getDrawerContentController().setUser();
+        }
+        rootLayoutController.getDrawerContentController().changNameAndSign(
                 textname.getText(),textsign.getText()
         );
-        rootLayoutController.getDrawerContentController().setUser();
+
         if(imageURL!=null)
             rootLayoutController.getDrawerContentController().changeUserImage(imageURL);
     }

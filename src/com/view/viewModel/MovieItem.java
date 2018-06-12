@@ -37,6 +37,8 @@ public class MovieItem extends StackPane {
     private JFXButton playbutton = new JFXButton();
 
     private JFXButton collectionbutton = new JFXButton();
+    
+    private JFXButton deletebutton = new JFXButton();
 
     private boolean ifClick = false;
 //    private boolean ifCollect = false;
@@ -77,35 +79,16 @@ public class MovieItem extends StackPane {
 
         initCollectionButton();
 
-        JFXButton deleteButton = new JFXButton();
-
-        deleteButton.setButtonType(JFXButton.ButtonType.RAISED);
-        deleteButton.setStyle("-fx-background-radius: 40;-fx-background-color: " + getDefaultColor((int) ((Math.random() * 12) % 12)));
-        deleteButton.setPrefSize(40, 40);
-        deleteButton.setRipplerFill(Color.valueOf(getDefaultColor(13)));
-        deleteButton.setScaleX(0);
-        deleteButton.setScaleY(0);
-        SVGGlyph add_graph = new SVGGlyph(-1,
-                "test",
-                "M320 544z m505.6-236.8c0-19.2 12.8-32 32-32s32 12.8 32 32v544c0 25.6-12.8 51.2-32 70.4-19.2 19.2-44.8 25.6-70.4 25.6h-544c-25.6 0-51.2-12.8-70.4-32-19.2-19.2-32-44.8-32-70.4V307.2c0-19.2 12.8-32 32-32s32 12.8 32 32v544c0 12.8 6.4 19.2 12.8 32 0 6.4 12.8 12.8 25.6 12.8h544c12.8 0 19.2-6.4 25.6-12.8 6.4-6.4 12.8-19.2 12.8-32v-544zM480 332.8v454.4c0 19.2 12.8 32 32 32s32-12.8 32-32V332.8c0-19.2-12.8-32-32-32s-32 12.8-32 32z m-160 0v454.4c0 19.2 12.8 32 32 32s32-12.8 32-32V332.8c0-19.2-12.8-32-32-32s-32 12.8-32 32z m326.4 0v454.4c0 19.2 12.8 32 32 32s32-12.8 32-32V332.8c0-19.2-12.8-32-32-32s-32 12.8-32 32zM96 211.2c-19.2 0-32-12.8-32-32s12.8-32 32-32h243.2l70.4-70.4c6.4-6.4 12.8-6.4 19.2-6.4h166.4c6.4 0 19.2 6.4 25.6 12.8l64 64H928c19.2 0 32 12.8 32 32s-12.8 32-32 32H672c-6.4 0-12.8 0-19.2-6.4l-70.4-70.4H441.6l-64 64c-6.4 6.4-19.2 12.8-25.6 12.8H96z",
-                Color.WHITE);
-        add_graph.setSize(20, 20);
-        deleteButton.setGraphic(add_graph);
-        deleteButton.setOnMouseClicked(event -> {
-            DataUpdater.deleteMovie(movie);
-            starMovies.remove(movie);
-            MainApp.mainMovies = loadMovies();
-            MainApp.mainMovieTypes = loadMovieTypes("en");
-            this.setVisible(false);
-        });
-
+        initDeleteButton();
+        
         //create nodelist
         JFXNodesList nodesList=new JFXNodesList();
         //add button to nodelist
         nodesList.addAnimatedNode(button);
         nodesList.addAnimatedNode(playbutton);
         nodesList.addAnimatedNode(collectionbutton);
-        nodesList.addAnimatedNode(deleteButton);
+        if (MainApp.Admin)
+            nodesList.addAnimatedNode(deletebutton);
 
         //set nodeilist height
         nodesList.translateYProperty().bind(Bindings.createDoubleBinding(() ->
@@ -129,6 +112,30 @@ public class MovieItem extends StackPane {
         this.getChildren().addAll(content, nodesList);
 
         this.setStyle("-fx-padding: 20px 0px 0px 20px;");
+    }
+    
+    private void initDeleteButton(){
+        deletebutton = new JFXButton();
+
+        deletebutton.setButtonType(JFXButton.ButtonType.RAISED);
+        deletebutton.setStyle("-fx-background-radius: 40;-fx-background-color: " + getDefaultColor((int) ((Math.random() * 12) % 12)));
+        deletebutton.setPrefSize(40, 40);
+        deletebutton.setRipplerFill(Color.valueOf(getDefaultColor(13)));
+        deletebutton.setScaleX(0);
+        deletebutton.setScaleY(0);
+        SVGGlyph add_graph = new SVGGlyph(-1,
+                "test",
+                "M320 544z m505.6-236.8c0-19.2 12.8-32 32-32s32 12.8 32 32v544c0 25.6-12.8 51.2-32 70.4-19.2 19.2-44.8 25.6-70.4 25.6h-544c-25.6 0-51.2-12.8-70.4-32-19.2-19.2-32-44.8-32-70.4V307.2c0-19.2 12.8-32 32-32s32 12.8 32 32v544c0 12.8 6.4 19.2 12.8 32 0 6.4 12.8 12.8 25.6 12.8h544c12.8 0 19.2-6.4 25.6-12.8 6.4-6.4 12.8-19.2 12.8-32v-544zM480 332.8v454.4c0 19.2 12.8 32 32 32s32-12.8 32-32V332.8c0-19.2-12.8-32-32-32s-32 12.8-32 32z m-160 0v454.4c0 19.2 12.8 32 32 32s32-12.8 32-32V332.8c0-19.2-12.8-32-32-32s-32 12.8-32 32z m326.4 0v454.4c0 19.2 12.8 32 32 32s32-12.8 32-32V332.8c0-19.2-12.8-32-32-32s-32 12.8-32 32zM96 211.2c-19.2 0-32-12.8-32-32s12.8-32 32-32h243.2l70.4-70.4c6.4-6.4 12.8-6.4 19.2-6.4h166.4c6.4 0 19.2 6.4 25.6 12.8l64 64H928c19.2 0 32 12.8 32 32s-12.8 32-32 32H672c-6.4 0-12.8 0-19.2-6.4l-70.4-70.4H441.6l-64 64c-6.4 6.4-19.2 12.8-25.6 12.8H96z",
+                Color.WHITE);
+        add_graph.setSize(20, 20);
+        deletebutton.setGraphic(add_graph);
+        deletebutton.setOnMouseClicked(event -> {
+            DataUpdater.deleteMovie(movie);
+            starMovies.remove(movie);
+            MainApp.mainMovies = loadMovies();
+            MainApp.mainMovieTypes = loadMovieTypes("en");
+            this.setVisible(false);
+        });
     }
 
     private void initMainButton(){

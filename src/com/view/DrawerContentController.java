@@ -119,8 +119,10 @@ public class DrawerContentController {
 
     @FXML
     public void beHuiyuan(){
+        if (MainApp.mainUser!=null)
+            MainApp.mainUser.setIfVIP(1);
         huiyuan.setImage(new Image("resources/icon/truehuiyuan.png"));
-        rootLayoutController.getMainApp().huiyuan=true;
+        MainApp.huiyuan =true;
     }
 
     @FXML
