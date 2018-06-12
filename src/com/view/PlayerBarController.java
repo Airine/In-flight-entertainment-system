@@ -20,6 +20,7 @@ import java.io.File;
 import java.net.MalformedURLException;
 
 /**
+ * @author 黄珂邈
  * Controller of the media player bar
  * It is connected to the player page
  * 
@@ -46,8 +47,6 @@ public class PlayerBarController {
      * Connect to the controller of upper level
      * @author PennaLia
      * @date 2018/6/2 19:03
-     * @param
-     * @return
      */
     public void setPlayPageController(PlayerPageController Controller){
         this.playerPageController=Controller;
@@ -57,8 +56,6 @@ public class PlayerBarController {
      * Set the images 
      * @author PennaLia
      * @date 2018/6/2 19:03
-     * @param
-     * @return
      */
     @FXML
     private void initialize(){
@@ -70,7 +67,6 @@ public class PlayerBarController {
     /* *  
      * @author PennaLia
      * @date 2018/6/2 19:03
-     * @param
      * @return
      */
     @FXML
@@ -225,8 +221,8 @@ public class PlayerBarController {
     }
 
     
-    
     private boolean hasChooser = false;
+    
     /**
      * This method is to make user able to choose local movie trailers
      * to display instead of seeing movies from sites
@@ -273,7 +269,7 @@ public class PlayerBarController {
 
     /**
      * initially show the movie trailers
-     * only .mp4 file
+     * only the .mp4 files
      * @param fileChooser
      */
     private static void configureFileChooser(final FileChooser fileChooser) {
