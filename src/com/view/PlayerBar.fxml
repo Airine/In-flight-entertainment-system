@@ -21,7 +21,7 @@
          </image>
       </ImageView>
       <JFXSlider fx:id="volume" layoutX="524.0" layoutY="17.0" onMousePressed="#handleClickVolumeBar" prefHeight="14.0" prefWidth="76.0" AnchorPane.bottomAnchor="17.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="17.0" />
-      <ImageView fx:id="PlayOrStop" fitHeight="28.0" fitWidth="28.0" layoutX="18.0" layoutY="10.0" onMouseClicked="#handlePlayOrStop" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="294.0" AnchorPane.topAnchor="10.0">
+      <ImageView fx:id="PlayOrPause" fitHeight="28.0" fitWidth="28.0" layoutX="18.0" layoutY="10.0" onMouseClicked="#handlePlayOrPause" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="294.0" AnchorPane.topAnchor="10.0">
          <image>
             <Image url="@../../resources/icon/vediostop.png" />
          </image>
