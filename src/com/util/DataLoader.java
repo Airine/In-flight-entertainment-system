@@ -174,7 +174,7 @@ public class DataLoader {
     }
 
     public static Movie getMovie(int id){
-        List<Movie> tempt = movies.stream()
+        List<Movie> tempt = MainApp.mainMovies.stream()
                             .filter(movie -> movie.getMovie_id() == id)
                             .collect(Collectors.toList());
         if (tempt.size()!=1) return null;
@@ -182,7 +182,7 @@ public class DataLoader {
     }
 
     public static List<Movie> getMoviesByType(String movie_type){
-        return movies.stream()
+        return MainApp.mainMovies.stream()
                 .filter(movie -> types[movie.getType()].equals(movie_type))
                 .collect(Collectors.toList());
     }

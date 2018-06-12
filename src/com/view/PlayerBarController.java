@@ -209,6 +209,7 @@ public class PlayerBarController {
                 playerPageController.initPlayerBar();
                 playerPageController.mediaPlayer.setAutoPlay(true);
                 playerPageController.getSkip().setVisible(false);
+                DataUpdater.insertLocalMovie(localMovieURL);
             } else {
                 playerPageController.getWarningPane().setVisible(true);
                 JFXDialogLayout content = new JFXDialogLayout();
@@ -228,7 +229,7 @@ public class PlayerBarController {
     }
     private static void configureFileChooser(final FileChooser fileChooser) {
         fileChooser.setTitle("View Videos");
-        fileChooser.setInitialDirectory(new File(System.getProperty("user.dir")+"/src/resources/movie_trailers/"));
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.dir")+"/src/resources/sakai/"));
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("MP4", "*.mp4"));
     }
 }

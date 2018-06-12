@@ -3,10 +3,8 @@ package com.util;
 import com.MainApp;
 import com.model.Movie;
 import com.model.User;
-import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 
 import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -72,7 +70,7 @@ public class DataUpdater {
         }
     }
 
-    public static Movie insertLocalMovie(String url){
+    public static void insertLocalMovie(String url){
         String title = "";
         String href = "";
 //        String url = "file:/Users/aaron/Documents/GitHub/In-flight-entertainment-system/src/resources/sakai/A-Funny-Thing-Happened-Official-Trailer-1-Michael-Crawford-M.mp4";
@@ -85,9 +83,10 @@ public class DataUpdater {
         } else{
             System.out.println("No match!");
         }
-        Movie movie = new Movie(1, "本地电影", title, "2018-6-13", "英语", 13, href, "resources/moviePoster/default.png");
+        Movie movie = new Movie(1, "本地电影\n"+title, title, "2018-6-13", "英语", 13, href, "resources/moviePoster/default.png");
+        MainApp.mainMovies.add(movie);
+//        DataLoader.movies.add(movie);
         updateMovie(movie);
-        return movie;
     }
 
     public static void main(String args[]){

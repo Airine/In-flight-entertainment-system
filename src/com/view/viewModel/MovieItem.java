@@ -170,7 +170,9 @@ public class MovieItem extends StackPane {
                 MainApp.player.advertismentPlayer.stop();
                 MainApp.player.getRootLayoutController().seePlaypage();
                 MainApp.player.getSpinner().setVisible(true);
-                MainApp.player.setPlayerWithBar(new Media(videoUrl));
+                String local = "";
+                if (movie.getType() == 13) local = "file:";
+                MainApp.player.setPlayerWithBar(new Media(local+videoUrl));
             } catch (Exception e) {
                 e.printStackTrace();
             }
