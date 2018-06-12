@@ -2,7 +2,14 @@ package com.model;
 
 import java.util.Objects;
 
+/**
+ *<h>
+ *     User
+ *</h>
+ * <p>the objects of the users</p>
+ */
 public class User {
+    
     private int id;
     private String name;
     private String nickName;
@@ -12,15 +19,29 @@ public class User {
     private int ifAdmin;
     private String status;
     private String iconUrl;
-
-
-    public User(){
+    
+    public User() {
 
     }
 
+    /**
+     * <h>
+     *     Constructor
+     * </h>
+     * @author 田闰心
+     * @param id the unique id of the user
+     * @param name the account name of the user
+     * @param nickName the nick name of the user 
+     * @param password the password
+     * @param setting the setting id in the database
+     * @param ifVIP whether it is VIP
+     * @param ifAdmin whether it is the administrator
+     * @param signature the personal signature below the icon
+     * @param iconUrl the url of the user icon
+     */
     public User(int id, String name, String nickName,
                 String password, int setting,
-                int ifVIP, int ifAdmin, String status,
+                int ifVIP, int ifAdmin, String signature,
                 String iconUrl) {
         setId(id);
         setName(name);
@@ -29,7 +50,7 @@ public class User {
         setNickName(nickName);
         setIfVIP(ifVIP);
         setIfAdmin(ifAdmin);
-        setStatus(status);
+        setStatus(signature);
         setIconUrl(iconUrl);
     }
 
@@ -74,7 +95,7 @@ public class User {
     }
 
 
-    public boolean verifyPassword(String password){
+    public boolean verifyPassword(String password) {
         return (Objects.equals(this.password, password));
     }
 

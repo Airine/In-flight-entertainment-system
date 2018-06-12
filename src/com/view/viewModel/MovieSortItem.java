@@ -24,7 +24,9 @@ import java.util.Random;
 import static com.MainApp.mainMovieTypes;
 import static javafx.animation.Interpolator.EASE_BOTH;
 
-
+/**
+ * 
+ */
 public class MovieSortItem extends StackPane {
 
     private static final double width = 200;
@@ -62,14 +64,6 @@ public class MovieSortItem extends StackPane {
 
         this.getChildren().addAll(content);
         this.setStyle("-fx-padding: 15px 0px 0px 15px;");
-    }
-
-    private void addMovie(Movie movie){
-
-    }
-
-    private void addMovies(List<Movie> movies){
-
     }
 
     public JFXButton getButton() {

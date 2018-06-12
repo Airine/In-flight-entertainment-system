@@ -14,17 +14,18 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.logging.Level;
 
 import static com.util.DataUpdater.updateMovies;
 
-
+/**<h>Web Scraping</h>
+ * @author 黄珂邈
+ * This class is to scrape the movie data from websites
+ */
 public class WebScraping {
 
-    private static Map<String, Integer> type = new HashMap<String, Integer>();
-
+    private static Map<String, Integer> type = new HashMap<>();
 
     /**
      * @return The array list of the player page urls from
@@ -42,7 +43,7 @@ public class WebScraping {
      * https://www.ku6.com/detail/72
      * </a>
      */
-    public ArrayList<String> addAllMoives() throws IOException {
+    private ArrayList<String> addAllMoives() throws IOException {
         //construct a web client
         System.out.println("Constructing a new web client...");
         String url = "https://www.ku6.com/detail/72";
@@ -88,7 +89,7 @@ public class WebScraping {
      * They can be directly load by media in javafx.
      * </p>
      */
-    public Map<String, String> scrapeMovieLinks() throws IOException {
+    private Map<String, String> scrapeMovieLinks() throws IOException {
         ArrayList<String> urls = addAllMoives();
         Map<String, String> URL_Title = new HashMap<>();
         String link_str, title;
@@ -139,7 +140,7 @@ public class WebScraping {
      * The results will be stored in StringBuilder for json file.
      * </p>
      */
-    public void scrapeMessage(Map.Entry entry, StringBuilder sb) throws IOException {
+    private void scrapeMessage(Map.Entry entry, StringBuilder sb) throws IOException {
         String title = (String) entry.getValue();
         String url = "https://v.qq.com/x/search/?q=" + URLEncoder.encode(title + "电影", "UTF-8");
         Document doc = Jsoup.connect(url).timeout(10000).get();

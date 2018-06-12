@@ -15,6 +15,10 @@ import static com.util.DataLoader.loadUsers;
 import static com.util.SQLiteJDBC.connectToDB;
 import static com.util.SQLiteJDBC.runSQLstatement;
 
+/**
+ * <h>DataUpdater</h>
+ * <p>This class is to update all the information in database</p>
+ */
 public class DataUpdater {
 
     public static void updateUsers(ArrayList<User> users){
@@ -22,15 +26,7 @@ public class DataUpdater {
             updateUser(user);
         }
     }
-
-    public static void main(String args[]){
-        loadUsers();
-        User tempt = getUser("aaron");
-        assert tempt != null;
-        tempt.setNickName("Tian");
-        updateUser(tempt);
-    }
-
+    
     public static void updateUser(User user){
         Connection connection = connectToDB();
         String sql = "UPDATE `user`" +
@@ -42,13 +38,21 @@ public class DataUpdater {
         runSQLstatement(connection,sql);
     }
 
-    public static void updateMovies(ArrayList<Movie> movies){
-        for (Movie movie:movies) {
+    /**
+     * This method is to update the movies
+     * @param movieArrayList the list of all the movies
+     */
+    static void updateMovies(ArrayList<Movie> movieArrayList){
+        for (Movie movie:movieArrayList) {
             updateMovie(movie);
         }
     }
 
-    public static void updateMovie(Movie movie){
+    /**
+     * This method is to update the information of movies
+     * @param movie The movie which will be changed
+     */
+    private static void updateMovie(Movie movie){
         Connection connection = connectToDB();
         String sql = "INSERT INTO `movie`(`title_cn`,`title_en`,`year`,`language`,`type`,`href`,`post_href`)" +
                 "values('"+
@@ -64,6 +68,9 @@ public class DataUpdater {
         runSQLstatement(connection, sql);
     }
 
+    /**
+     * The method is to return the favourite movies which has been chosen to the database.
+     */
     public static void writeBackCollection(){
         Connection connection = connectToDB();
         User user = MainApp.mainUser;
@@ -87,6 +94,10 @@ public class DataUpdater {
         }
     }
 
+    /**
+     * This method is to delete the movies in database
+     * @param movie Movie object
+     */
     public static void deleteMovie(Movie movie){
         Connection connection = connectToDB();
         System.out.println("Delete Collection relation to the movie...");
@@ -106,12 +117,17 @@ public class DataUpdater {
         }
     }
 
+    /**
+     * @author 田闰心
+     * This method is to insert movies using regular expression to judge the string
+     * @param url The url of the local movie file with .mp4 extension
+     */
     public static void insertLocalMovie(String url){
         String title = "";
         String href = "";
 //        String url = "file:/Users/aaron/Documents/GitHub/In-flight-entertainment-system/src/resources/sakai/A-Funny-Thing-Happened-Official-Trailer-1-Michael-Crawford-M.mp4";
-        String parttern = "(\\S*\\/)(\\S*)(\\.mp4)";
-        Pattern r = Pattern.compile(parttern);
+        String pattern = "(\\S*\\/)(\\S*)(\\.mp4)";
+        Pattern r = Pattern.compile(pattern);
         Matcher m = r.matcher(url);
         if (m.find()){
             href = m.group(0).substring(5,m.group(0).length());
@@ -124,17 +140,5 @@ public class DataUpdater {
 //        DataLoader.movies.add(movie);
         updateMovie(movie);
     }
-
-//    public static void main(String args[]){
-//        String url = "file:/Users/aaron/Documents/GitHub/In-flight-entertainment-system/src/resources/sakai/A-Funny-Thing-Happened-Official-Trailer-1-Michael-Crawford-M.mp4";
-//        String parttern = "(\\S*\\/)(\\S*)(\\.mp4)";
-//        Pattern r = Pattern.compile(parttern);
-//        Matcher m = r.matcher(url);
-//        if (m.find()){
-//            System.out.println(m.group(0).substring(5,m.group(0).length()));
-//            System.out.println(m.group(2));
-//        } else{
-//            System.out.println("No match!");
-//        }
-//    }
+    
 }

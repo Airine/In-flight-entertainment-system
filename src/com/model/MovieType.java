@@ -11,6 +11,11 @@ import java.util.List;
 
 import static com.util.DataLoader.getMoviesByType;
 
+/**
+ * @author 田闰心
+ * <h>MovieType</h>
+ * <p>The types of movies</p>
+ */
 public class MovieType {
 
     private int type_id;
@@ -27,6 +32,13 @@ public class MovieType {
 
     }
 
+    /**
+     * <h>Constructor of MovieType</h>
+     * @param type_id the id of types
+     * @param type_cn the Chinese name of the types
+     * @param type_en the English name of the types
+     * @param language the language type
+     */
     public MovieType(int type_id, String type_cn, String type_en,
                      String language){
         setType_id(type_id);
@@ -36,13 +48,16 @@ public class MovieType {
         initMovies(language);
     }
 
+    /**
+     * <h>Initialization</h>
+     * <p>Initialization of the movie list</p>
+     * @param language the type of language
+     */
     private void initMovies(String language) {
         movies = getMoviesByType(type_en);
         for (Movie movie:movies) {
             try{
-//                StackPane movieItem = movie.getMi_cn();
                 movie.initMI();
-//                StackPane movieItem = movie.getMi_cn();
                 StackPane movieItem = (language.equals("cn"))? movie.getMi_cn() : movie.getMi_en();
                 flowPane.getChildren().add(movieItem);
             } catch (Exception e) {
@@ -51,6 +66,10 @@ public class MovieType {
         }
     }
 
+    /**
+     * <h>Initialization</h>
+     * <p>Initialization of the movie items shown in the view page</p>
+     */
     private void initMovieSortItem() {
         setMovieSortItem_cn(new MovieSortItem("cn", type_en));
         setMovieSortItem_en(new MovieSortItem("en", type_en));
@@ -112,7 +131,14 @@ public class MovieType {
         this.flowPane = flowPane;
     }
 
-    // 这个地方没写好
+    /**
+     * <h>Handle the Click Event</h>
+     * <p>When clicking the movie type big button, 
+     * we enter a new movie page which contains movies of that genre</p>
+     * @author 田闰心
+     * @param homeScrollPane
+     * @param button
+     */
     public void handleClick(JFXScrollPane homeScrollPane, JFXButton button) {
         movieSortItem_cn.getButton().setOnMouseClicked(event -> {
             button.setVisible(true);
