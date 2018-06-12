@@ -10,12 +10,16 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import org.json.JSONException;
 import org.json.JSONObject;
-
+/* *   this is the about us controller calss to control everything in about us
+ * @author PennaLia
+ * @date 2018/6/12 20:43
+ * @version Player Version 1.0
+ */
 public class AboutUsController {
+    //the pane for a new dialog
     @FXML
     private StackPane stackpane;
-
-
+    // the component
     public Label title;
     public JFXButton comment;
     public Label commentTo;
@@ -25,30 +29,46 @@ public class AboutUsController {
     private Label version1;
     @FXML
     private AnchorPane aboutusuppane;
-
     @FXML
     private JFXChipView<?> pingjia;
     @FXML
     private Label workshop;
-
     @FXML
     private Label workplace;
-    public AnchorPane getAboutusuppane(){
-        return aboutusuppane;
-    }
+
+    //waring message
     String WaringTitle="当前版本";
     String WaringMessage="当前已经是最新版本";
     String WaringButton="我知道了";
 
+    //the rootlayoutcontroller used to connect other pane.
     private RootLayoutController rootLayoutController;
+
+    //get and set method
+    public AnchorPane getAboutusuppane(){
+        return aboutusuppane;
+    }
+
     public void setRootLayoutController(RootLayoutController rootLayoutController){
         this.rootLayoutController=rootLayoutController;
     }
-
+    /* *  used to initialize something in the beginning.
+     * @author PennaLia
+     * @date 2018/6/12 20:47
+     * @param
+     * @return
+     */
     @FXML
     private void initialize() {
         initPingJia();
     }
+
+    /* *  set different language for waringtext message.
+     * @author PennaLia
+     * @date 2018/6/12 20:48
+     * @param
+     * @return
+     */
     public void setWaringText(String language){
         if (language.equals("cn")){
             WaringTitle="当前版本";
@@ -65,7 +85,12 @@ public class AboutUsController {
         }
     }
 
-
+    /* *  when you  click update, it will check the application version .
+     * @author PennaLia
+     * @date 2018/6/12 20:48
+     * @param
+     * @return
+     */
     @FXML
     public void handleCheckUpdata(){
         stackpane.setVisible(true);
@@ -81,11 +106,23 @@ public class AboutUsController {
         content.setActions(button);
         dialog.show();
     }
+
+    /* *  connect the comment to sql.
+     * @author PennaLia
+     * @date 2018/6/12 20:49
+     * @param
+     * @return
+     */
     @FXML
     public void handleCommitComment(){
 
     }
-
+    /* *  change the language.
+     * @author PennaLia
+     * @date 2018/6/12 20:49
+     * @param  language indicate which language we want to use.
+     * @return
+     */
     public void loadLanguage(String language) {
         JSONObject jsonObject = JsonLoader.getJsonValue(language,"about");
         try {
@@ -103,7 +140,12 @@ public class AboutUsController {
             e.printStackTrace();
         }
     }
-
+    /* *  change the button text size.
+     * @author PennaLia
+     * @date 2018/6/12 20:50
+     * @param
+     * @return
+     */
     public void initPingJia(){
         pingjia.setStyle("-fx-font-size:17px;");
     }
