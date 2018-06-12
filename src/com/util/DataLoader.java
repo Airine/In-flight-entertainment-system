@@ -196,6 +196,12 @@ public class DataLoader {
                 .collect(Collectors.toList());
     }
 
+    public static List<Movie> getMoviesByTitle(String movie_title) {
+        return MainApp.mainMovies.stream()
+                .filter(movie -> movie.getTitle_cn().equals(movie_title))
+                .collect(Collectors.toList());
+    }
+
     private static void setUsers(List<User> users) {
         DataLoader.users = users;
     }

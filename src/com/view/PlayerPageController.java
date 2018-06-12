@@ -64,10 +64,12 @@ public class PlayerPageController {
         advertisementPlayer.stop();
         mediaView.setMediaPlayer(mediaPlayer);
         if(mediaPlayer.getStatus()!=MediaPlayer.Status.READY){
+            mediaPlayer.setAutoPlay(true);
             spinner.setVisible(true);
         }
         else {
             advertisementPlayer.stop();
+            mediaPlayer.play();
             mediaView.setMediaPlayer(mediaPlayer);
             Bar.setDisable(false);
         }
