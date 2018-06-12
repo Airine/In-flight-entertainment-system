@@ -66,8 +66,8 @@
       <AnchorPane fx:id="homepage" layoutX="10.0" layoutY="54.0" prefHeight="436.0" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="44.0" />
       <JFXDrawer fx:id="drawer" defaultDrawerSize="280.0" layoutX="0.0" layoutY="44.0" prefHeight="436.0" prefWidth="280.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="360.0" AnchorPane.topAnchor="44.0" />
       <AnchorPane fx:id="SettingPane" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="280.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="44.0" />
-      <AnchorPane fx:id="searchpane" prefHeight="232.0" prefWidth="586.0" visible="false" AnchorPane.leftAnchor="31.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="44.0" />
+      <AnchorPane fx:id="searchpane" prefHeight="181.0" prefWidth="586.0" visible="false" AnchorPane.leftAnchor="31.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="44.0" />
       <StackPane fx:id="stackpane" layoutX="200.0" layoutY="176.0" prefHeight="133.0" prefWidth="258.0" visible="false" />
-      <AnchorPane fx:id="keyboard" layoutX="68.0" layoutY="337.0" prefHeight="143.0" prefWidth="521.0" style="-fx-background-color: white;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="51.0" />
+      <AnchorPane fx:id="keyboard" layoutX="14.0" layoutY="337.0" prefHeight="143.0" prefWidth="607.0" style="-fx-background-color: #A9A9A9;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
    </children>
 </AnchorPane>

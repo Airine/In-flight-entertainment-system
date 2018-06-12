@@ -16,7 +16,7 @@ import javafx.event.EventType;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
+import com.jfoenix.controls.JFXButton;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.input.KeyCode;
@@ -25,6 +25,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.PolygonBuilder;
+
+import java.sql.BatchUpdateException;
 
 public class VirtualKeyboard {
     private final VBox root;
@@ -37,13 +39,15 @@ public class VirtualKeyboard {
      *               in the Scene containing this keyboard.
      */
     public VirtualKeyboard(ReadOnlyObjectProperty<Node> target) {
-        this.root = new VBox(5);
+
+        this.root = new VBox(2);
+        this.root.setPrefHeight(100);
         root.setPadding(new Insets(10));
         root.getStyleClass().add("virtual-keyboard");
 
         final Modifiers modifiers = new Modifiers();
 
-        // Data for regular buttons; split into rows
+        // Data for regular JFXButtons; split into rows
         final String[][] unshifted = new String[][]{
                 {"`", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "="},
                 {"q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "[", "]", "\\"},
@@ -69,43 +73,43 @@ public class VirtualKeyboard {
                 {KeyCode.Z, KeyCode.X, KeyCode.C, KeyCode.V, KeyCode.B, KeyCode.N,
                         KeyCode.M, KeyCode.COMMA, KeyCode.PERIOD, KeyCode.SLASH}};
 
-        // non-regular buttons (don't respond to Shift)
-        final Button escape = createNonshiftableButton("Esc", KeyCode.ESCAPE, modifiers, target);
-        final Button backspace = createNonshiftableButton("Backspace", KeyCode.BACK_SPACE, modifiers, target);
-        final Button delete = createNonshiftableButton("Del", KeyCode.DELETE, modifiers, target);
-        final Button enter = createNonshiftableButton("Enter", KeyCode.ENTER, modifiers, target);
-        final Button tab = createNonshiftableButton("Tab", KeyCode.TAB, modifiers, target);
+        // non-regular JFXButtons (don't respond to Shift)
+        final JFXButton escape = createNonshiftableJFXButton("Esc", KeyCode.ESCAPE, modifiers, target);
+        final JFXButton backspace = createNonshiftableJFXButton("Backspace", KeyCode.BACK_SPACE, modifiers, target);
+        final JFXButton delete = createNonshiftableJFXButton("Del", KeyCode.DELETE, modifiers, target);
+        final JFXButton enter = createNonshiftableJFXButton("Enter", KeyCode.ENTER, modifiers, target);
+        final JFXButton tab = createNonshiftableJFXButton("Tab", KeyCode.TAB, modifiers, target);
 
         // Cursor keys, with graphic instead of text
-        final Button cursorLeft = createCursorKey(KeyCode.LEFT, modifiers, target, 15.0, 5.0, 15.0, 15.0, 5.0, 10.0);
-        final Button cursorRight = createCursorKey(KeyCode.RIGHT, modifiers, target, 5.0, 5.0, 5.0, 15.0, 15.0, 10.0);
-        final Button cursorUp = createCursorKey(KeyCode.UP, modifiers, target, 10.0, 0.0, 15.0, 10.0, 5.0, 10.0);
-        final Button cursorDown = createCursorKey(KeyCode.DOWN, modifiers, target, 10.0, 10.0, 15.0, 0.0, 5.0, 0.0);
+        final JFXButton cursorLeft = createCursorKey(KeyCode.LEFT, modifiers, target, 15.0, 5.0, 15.0, 15.0, 5.0, 10.0);
+        final JFXButton cursorRight = createCursorKey(KeyCode.RIGHT, modifiers, target, 5.0, 5.0, 5.0, 15.0, 15.0, 10.0);
+        final JFXButton cursorUp = createCursorKey(KeyCode.UP, modifiers, target, 10.0, 0.0, 15.0, 10.0, 5.0, 10.0);
+        final JFXButton cursorDown = createCursorKey(KeyCode.DOWN, modifiers, target, 10.0, 10.0, 15.0, 0.0, 5.0, 0.0);
         final VBox cursorUpDown = new VBox(2);
         cursorUpDown.getChildren().addAll(cursorUp, cursorDown);
 
-        // "Extras" to go at the left or right end of each row of buttons.
-        final Node[][] extraLeftButtons = new Node[][]{{escape}, {tab}, {modifiers.capsLockKey()}, {modifiers.shiftKey()}};
-        final Node[][] extraRightButtons = new Node[][]{{backspace}, {delete}, {enter}, {modifiers.secondShiftKey()}};
+        // "Extras" to go at the left or right end of each row of JFXButtons.
+        final Node[][] extraLeftJFXButtons = new Node[][]{{escape}, {tab}, {modifiers.capsLockKey()}, {modifiers.shiftKey()}};
+        final Node[][] extraRightJFXButtons = new Node[][]{{backspace}, {delete}, {enter}, {modifiers.secondShiftKey()}};
 
         // build layout
         for (int row = 0; row < unshifted.length; row++) {
-            HBox hbox = new HBox(5);
+            HBox hbox = new HBox(3);
             hbox.setAlignment(Pos.CENTER);
             root.getChildren().add(hbox);
 
-            hbox.getChildren().addAll(extraLeftButtons[row]);
+            hbox.getChildren().addAll(extraLeftJFXButtons[row]);
             for (int k = 0; k < unshifted[row].length; k++) {
-                hbox.getChildren().add(createShiftableButton(unshifted[row][k], shifted[row][k], codes[row][k], modifiers, target));
+                hbox.getChildren().add(createShiftableJFXButton(unshifted[row][k], shifted[row][k], codes[row][k], modifiers, target));
             }
-            hbox.getChildren().addAll(extraRightButtons[row]);
+            hbox.getChildren().addAll(extraRightJFXButtons[row]);
         }
 
-        final Button spaceBar = createNonshiftableButton(" ", KeyCode.SPACE, modifiers, target);
+        final JFXButton spaceBar = createNonshiftableJFXButton(" ", KeyCode.SPACE, modifiers, target);
         spaceBar.setMaxWidth(Double.POSITIVE_INFINITY);
         HBox.setHgrow(spaceBar, Priority.ALWAYS);
 
-        final HBox bottomRow = new HBox(5);
+        final HBox bottomRow = new HBox(3);
         bottomRow.setAlignment(Pos.CENTER);
         bottomRow.getChildren().addAll(modifiers.ctrlKey(), modifiers.altKey(),
                 modifiers.metaKey(), spaceBar, cursorLeft, cursorUpDown, cursorRight);
@@ -121,7 +125,7 @@ public class VirtualKeyboard {
 
     /**
      * Visual component displaying this keyboard. The returned node has a style class of "virtual-keyboard".
-     * Buttons in the view have a style class of "virtual-keyboard-button".
+     * JFXButtons in the view have a style class of "virtual-keyboard-JFXButton".
      *
      * @return a view of the keyboard.
      */
@@ -129,37 +133,37 @@ public class VirtualKeyboard {
         return root;
     }
 
-    // Creates a "regular" button that has an unshifted and shifted value
-    private Button createShiftableButton(final String unshifted, final String shifted,
+    // Creates a "regular" JFXButton that has an unshifted and shifted value
+    private JFXButton createShiftableJFXButton(final String unshifted, final String shifted,
                                          final KeyCode code, Modifiers modifiers, final ReadOnlyObjectProperty<Node> target) {
         final ReadOnlyBooleanProperty letter = new SimpleBooleanProperty(unshifted.length() == 1 && Character.isLetter(unshifted.charAt(0)));
         final StringBinding text =
                 Bindings.when(modifiers.shiftDown().or(modifiers.capsLockOn().and(letter)))
                         .then(shifted)
                         .otherwise(unshifted);
-        Button button = createButton(text, code, modifiers, target);
-        return button;
+        JFXButton JFXButton = createJFXButton(text, code, modifiers, target);
+        return JFXButton;
     }
 
-    // Creates a button with fixed text not responding to Shift
-    private Button createNonshiftableButton(final String text, final KeyCode code, final Modifiers modifiers, final ReadOnlyObjectProperty<Node> target) {
+    // Creates a JFXButton with fixed text not responding to Shift
+    private JFXButton createNonshiftableJFXButton(final String text, final KeyCode code, final Modifiers modifiers, final ReadOnlyObjectProperty<Node> target) {
         StringProperty textProperty = new SimpleStringProperty(text);
-        Button button = createButton(textProperty, code, modifiers, target);
-        return button;
+        JFXButton JFXButton = createJFXButton(textProperty, code, modifiers, target);
+        return JFXButton;
     }
 
-    // Creates a button with mutable text, and registers listener with it
-    private Button createButton(final ObservableStringValue text, final KeyCode code, final Modifiers modifiers, final ReadOnlyObjectProperty<Node> target) {
-        final Button button = new Button();
-        button.textProperty().bind(text);
+    // Creates a JFXButton with mutable text, and registers listener with it
+    private JFXButton createJFXButton(final ObservableStringValue text, final KeyCode code, final Modifiers modifiers, final ReadOnlyObjectProperty<Node> target) {
+        final JFXButton JFXButton = new JFXButton();
+        JFXButton.textProperty().bind(text);
 
         // Important not to grab the focus from the target:
-        button.setFocusTraversable(false);
+        JFXButton.setFocusTraversable(false);
 
         // Add a style class for css:
-        button.getStyleClass().add("virtual-keyboard-button");
+        JFXButton.getStyleClass().add("virtual-keyboard-JFXButton");
 
-        button.setOnAction(event -> {
+        JFXButton.setOnAction(event -> {
             final Node targetNode;
             if (target != null) {
                 targetNode = target.get();
@@ -174,18 +178,18 @@ public class VirtualKeyboard {
                 } else {
                     character = KeyEvent.CHAR_UNDEFINED;
                 }
-                final KeyEvent keyPressEvent = createKeyEvent(button, targetNode, KeyEvent.KEY_PRESSED, character, code, modifiers);
+                final KeyEvent keyPressEvent = createKeyEvent(JFXButton, targetNode, KeyEvent.KEY_PRESSED, character, code, modifiers);
                 targetNode.fireEvent(keyPressEvent);
-                final KeyEvent keyReleasedEvent = createKeyEvent(button, targetNode, KeyEvent.KEY_RELEASED, character, code, modifiers);
+                final KeyEvent keyReleasedEvent = createKeyEvent(JFXButton, targetNode, KeyEvent.KEY_RELEASED, character, code, modifiers);
                 targetNode.fireEvent(keyReleasedEvent);
                 if (!character.equals(KeyEvent.CHAR_UNDEFINED)) {
-                    final KeyEvent keyTypedEvent = createKeyEvent(button, targetNode, KeyEvent.KEY_TYPED, character, code, modifiers);
+                    final KeyEvent keyTypedEvent = createKeyEvent(JFXButton, targetNode, KeyEvent.KEY_TYPED, character, code, modifiers);
                     targetNode.fireEvent(keyTypedEvent);
                 }
                 modifiers.releaseKeys();
             }
         });
-        return button;
+        return JFXButton;
     }
 
     // Utility method to create a KeyEvent from the Modifiers
@@ -198,16 +202,16 @@ public class VirtualKeyboard {
     }
 
     // Utility method for creating cursor keys:
-    private Button createCursorKey(KeyCode code, Modifiers modifiers, ReadOnlyObjectProperty<Node> target, Double... points) {
-        Button button = createNonshiftableButton("", code, modifiers, target);
+    private JFXButton createCursorKey(KeyCode code, Modifiers modifiers, ReadOnlyObjectProperty<Node> target, Double... points) {
+        JFXButton JFXButton = createNonshiftableJFXButton("", code, modifiers, target);
         final Node graphic = PolygonBuilder.create().points(points).build();
         graphic.setStyle("-fx-fill: -fx-mark-color;");
-        button.setGraphic(graphic);
-        button.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
-        return button;
+        JFXButton.setGraphic(graphic);
+        JFXButton.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+        return JFXButton;
     }
 
-    // Convenience class to bundle together the modifier keys and their selected state
+//     Convenience class to bundle together the modifier keys and their selected state
     private static class Modifiers {
         private final ToggleButton shift;
         private final ToggleButton shift2;
@@ -223,7 +227,12 @@ public class VirtualKeyboard {
             this.alt = createToggle("Alt");
             this.meta = createToggle("Meta");
             this.capsLock = createToggle("Caps");
-
+            this.shift.setVisible(false);
+            this.shift2.setVisible(false);
+            this.ctrl.setVisible(false);
+            this.alt.setVisible(false);
+            this.meta.setVisible(false);
+            this.capsLock.setVisible(false);
             shift2.selectedProperty().bindBidirectional(shift.selectedProperty());
         }
 
