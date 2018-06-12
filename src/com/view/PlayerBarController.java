@@ -1,6 +1,5 @@
 package com.view;
 
-import com.MainApp;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
@@ -12,7 +11,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaView;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.util.Duration;
@@ -20,6 +18,11 @@ import javafx.util.Duration;
 import java.io.File;
 import java.net.MalformedURLException;
 
+/**
+ * Controller of the media player bar
+ * It is connected to the player page
+ * 
+ */
 public class PlayerBarController {
     @FXML
     private JFXSlider TimeBar;
@@ -37,22 +40,25 @@ public class PlayerBarController {
     private Image stop;
     private Image play;
     public String localMovieURL = null;
-/* *  连接上一层的playpage
- * @author PennaLia
- * @date 2018/6/2 19:03
- * @param
- * @return
- */
+    
+    /* *  
+     * Connect to the controller of upper level
+     * @author PennaLia
+     * @date 2018/6/2 19:03
+     * @param
+     * @return
+     */
     public void setPlayPageController(PlayerPageController Controller){
         this.playerPageController=Controller;
     }
     
-/* *  初始化设置
- * @author PennaLia
- * @date 2018/6/2 19:03
- * @param
- * @return
- */
+    /* *
+     * Set the images 
+     * @author PennaLia
+     * @date 2018/6/2 19:03
+     * @param
+     * @return
+     */
     @FXML
     private void initialize(){
         stop=new Image("resources/icon/vediostop.png");
@@ -60,7 +66,7 @@ public class PlayerBarController {
         PlayOrStop.setImage(play);
     }
 
-    /* *  用于设置播放按钮和暂停按钮。一开始是默认播放的.
+    /* *  
      * @author PennaLia
      * @date 2018/6/2 19:03
      * @param
@@ -85,7 +91,20 @@ public class PlayerBarController {
     private boolean stopRequested = false;
     private Duration duration;
     FileChooser fc;
-    
+
+    /**
+     * This method link the media player with the control bar
+     * <h>
+     *     MediaPlayer Controlling
+     * </h>
+     * <p>
+     *     Add listener to the media to make it play repeatedly.
+     *     Show the media current play time with the total time.
+     *     Change the media progress and volume as soon as dragging the sliders
+     * </p>
+     *
+     * @param player the media player which will be controlled
+     */
     public void controlPlayer(MediaPlayer player) {
         this.mp = player;
 
@@ -106,11 +125,14 @@ public class PlayerBarController {
             duration = player.getMedia().getDuration();
             updateValues();
             playerPageController.getSpinner().setVisible(false);
-            if (playerPageController.advertismentPlayer.getStatus()==MediaPlayer.Status.STOPPED){
+            if (playerPageController.advertisementPlayer.getStatus()==MediaPlayer.Status.STOPPED){
                 playerPageController.getBar().setDisable(false);
+                playerPageController.mediaView.setMediaPlayer(playerPageController.mediaPlayer);
+                playerPageController.mediaPlayer.setAutoPlay(true);
             }
         });
         
+        // make the video able to play many times
         player.setCycleCount(MediaPlayer.INDEFINITE);
         
         player.setOnEndOfMedia(() -> {
@@ -151,6 +173,15 @@ public class PlayerBarController {
         }
     }
 
+    /**
+     * @author 黄珂邈
+     * 
+     * This method changes the time into 0:00:00 / 0:00:00 format
+     * 
+     * @param elapsed the current time of the media with duration format
+     * @param duration the total time of the media with duration format
+     * @return
+     */
     static String formatTime(Duration elapsed, Duration duration) {
         int intElapsed = (int) Math.floor(elapsed.toSeconds());
         int elapsedHours = intElapsed / (60 * 60);
@@ -192,23 +223,35 @@ public class PlayerBarController {
         }
     }
 
+    
+    
+    private boolean hasChooser = false;
+    /**
+     * This method is to make user able to choose local movie trailers
+     * to display instead of seeing movies from sites
+     * We control the file chooser to be single.
+     *
+     * @throws MalformedURLException
+     */
     @FXML
     public void handle_local_movies() throws MalformedURLException {
-        if(fc==null) {
+        if(!hasChooser) {
             fc = new FileChooser();
+            hasChooser = true;
             configureFileChooser(fc);
             File seletedFile = fc.showOpenDialog(null);
             if (seletedFile != null) {
-                localMovieURL = seletedFile.toURI().toURL().toExternalForm();//加载出文件的路径
+                hasChooser = false;
+                localMovieURL = seletedFile.toURI().toURL().toExternalForm();
                 playerPageController.getSpinner().setVisible(false);
                 playerPageController.mediaPlayer = new MediaPlayer(new Media(localMovieURL));
                 playerPageController.mediaView.setMediaPlayer(playerPageController.mediaPlayer);
                 playerPageController.setMoviePane();
-                playerPageController.setPlayMovie();
                 playerPageController.initPlayerBar();
                 playerPageController.mediaPlayer.setAutoPlay(true);
                 playerPageController.getSkip().setVisible(false);
             } else {
+                hasChooser = false;
                 playerPageController.getWarningPane().setVisible(true);
                 JFXDialogLayout content = new JFXDialogLayout();
                 content.setHeading(new Text("Wrong"));
@@ -225,6 +268,12 @@ public class PlayerBarController {
             }
         }
     }
+
+    /**
+     * initially show the movie trailers
+     * only .mp4 file
+     * @param fileChooser
+     */
     private static void configureFileChooser(final FileChooser fileChooser) {
         fileChooser.setTitle("View Videos");
         fileChooser.setInitialDirectory(new File(System.getProperty("user.dir")+"/src/resources/movie_trailers/"));

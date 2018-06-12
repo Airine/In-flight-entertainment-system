@@ -17,8 +17,6 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaView;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
@@ -137,7 +135,7 @@ public class MovieItem extends StackPane {
         playbutton.setOnMouseClicked(event -> {
             try {
                 MainApp.player.mediaPlayer.stop();
-                MainApp.player.advertismentPlayer.stop();
+                MainApp.player.advertisementPlayer.stop();
                 MainApp.player.getRootLayoutController().seePlaypage();
                 MainApp.player.getSpinner().setVisible(true);
                 MainApp.player.setPlayerWithBar(new Media(videoUrl));
