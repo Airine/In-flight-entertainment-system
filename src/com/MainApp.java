@@ -22,17 +22,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.util.DataLoader.*;
+
 /* *  this is mainapp to control all , and store the primary stage .
  * @author PennaLia
  * @date 2018/6/12 23:35
  * @version Player Version 1.0
  */
+
 public class MainApp extends Application {
 
     public static User mainUser;
     public static List<Movie> mainMovies;
     public static List<MovieType> mainMovieTypes;
-    public static List<Movie> starMovies = new ArrayList<>();
+    public static List<Movie> starMovies;
     public static PlayerPageController player;
     public static boolean huiyuan=false;
     public static boolean Admin=false;
@@ -61,6 +63,13 @@ public class MainApp extends Application {
 
     public Stage getPrimaryStage() { return primaryStage; }
 
+    public static PlayerPageController getPlayer() {
+        return player;
+    }
+
+    public static void setPlayer(PlayerPageController player) {
+        MainApp.player = player;
+    }
 
     /* *  star the application.
      * @author PennaLia
@@ -78,6 +87,7 @@ public class MainApp extends Application {
         this.primaryStage.getIcons().add(new Image("resources/plane.png"));
         initRootLayout();
         initLogin();
+        starMovies=new ArrayList<>();
     }
     /* *  init the rootlayout page.
      * @author PennaLia

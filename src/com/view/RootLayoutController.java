@@ -292,7 +292,7 @@ public class RootLayoutController {
                     .getResource("view/PlayerPage.fxml"));
             playerP = loader.load();
             playerPageController = loader.getController();
-            MainApp.player = playerPageController;
+            MainApp.setPlayer(playerPageController);
             playerPageController.setRootLayoutController(this);
         } catch (IOException e) {
             e.printStackTrace();
@@ -564,7 +564,7 @@ public class RootLayoutController {
      * @param
      * @return
      */
-    public void ToNight(){
+    public void toNight(){
         ObservableList<String> styleSheets = mainPane.getStylesheets();
         styleSheets.clear();
         if(!styleSheets.contains(DarkCSS)) {
@@ -577,7 +577,7 @@ public class RootLayoutController {
      * @param
      * @return
      */
-    public void ToDefault(){
+    public void toDefault(){
         ObservableList<String> styleSheets = mainPane.getStylesheets();
         styleSheets.clear();
         if(!styleSheets.contains(DefaultCSS)) {
@@ -591,7 +591,7 @@ public class RootLayoutController {
      * @param
      * @return
      */
-    public void ToTheme1(){
+    public void toTheme1(){
         ObservableList<String> styleSheets = mainPane.getStylesheets();
         styleSheets.clear();
         if(!styleSheets.contains(Theme1)) {
@@ -605,7 +605,7 @@ public class RootLayoutController {
      * @param
      * @return
      */
-    public void ToTheme2(){
+    public void toTheme2(){
         ObservableList<String> styleSheets = mainPane.getStylesheets();
         styleSheets.clear();
         if(!styleSheets.contains(Theme2)) {
@@ -619,7 +619,7 @@ public class RootLayoutController {
      * @param
      * @return
      */
-    public void ToTheme3(){
+    public void toTheme3(){
         ObservableList<String> styleSheets = mainPane.getStylesheets();
         styleSheets.clear();
         if(!styleSheets.contains(Theme3)) {
@@ -673,7 +673,7 @@ public class RootLayoutController {
      * @param
      * @return
      */
-    public void setWaringText(String language){
+    private void setWaringText(String language){
         if (language.equals("cn")){
             WaringTitle="程序即将自动关闭";
             WaringMessage="程序会在10s内自动关闭";
