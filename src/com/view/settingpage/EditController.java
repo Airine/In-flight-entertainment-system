@@ -24,6 +24,11 @@ import java.io.File;
 import java.net.MalformedURLException;
 
 
+/* *  this class means to edit every user information, for example user name , user sign, and user image.
+ * @author PennaLia
+ * @date 2018/6/12 21:10
+ * @version Player Version 1.0
+ */
 public class EditController {
     @FXML
     private JFXButton choosefile;
@@ -45,25 +50,33 @@ public class EditController {
     private StackPane stackpane;
     @FXML
     private Label userimage;
-
+    //user image URL
     String imageURL;
+    //root controller.
+    private RootLayoutController rootLayoutController;
+    //warning message .
+    String WaringTitle="警告";
+    String WaringMessage="你没有选择任何文件";
+    String WaringButton="我知道了";
 
+    // get and set method.
     public JFXTextField getTextname(){return  textname;}
     public JFXTextField getTextsign(){return  textsign;}
     public AnchorPane getEdituppane(){
         return edituppane;
     }
-    private RootLayoutController rootLayoutController;
-
-    String WaringTitle="警告";
-    String WaringMessage="你没有选择任何文件";
-    String WaringButton="我知道了";
 
 
     public void setRootLayoutController(RootLayoutController rootLayoutController){
         this.rootLayoutController=rootLayoutController;
     }
 
+    /* *  this is used to set different language waring text
+     * @author PennaLia
+     * @date 2018/6/12 21:13
+     * @param  language language that we used.
+     * @return
+     */
     public void setWaringText(String language){
         if (language.equals("cn")){
             WaringTitle="警告";
@@ -79,6 +92,12 @@ public class EditController {
             WaringButton="Je sais";
         }
     }
+    /* *  confirm edit and change your sign and user name or user
+     * @author PennaLia
+     * @date 2018/6/12 21:14
+     * @param
+     * @return
+     */
     @FXML
     public void handleEdit(){
         rootLayoutController.getDrawerContentController().setNameAndSign(
