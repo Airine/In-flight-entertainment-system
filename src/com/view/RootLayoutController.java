@@ -22,6 +22,11 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 
+/* * this is a controller for the root, that initialize and contain all other controller.
+ * @author PennaLia
+ * @date 2018/6/12 20:33
+ * @version Player Version 1.0
+ */
 public class RootLayoutController {
      //main pane. the bigger pane.
     @FXML
@@ -111,7 +116,6 @@ public class RootLayoutController {
         timingController.loadLanguage(language);
         editController.loadLanguage(language);
         drawerContentController.loadLanguage(language);
-        movieTableViewController.loadLanguage(language);
         musicPageController.loadLanguage(language);
         setWaringText(language);
 

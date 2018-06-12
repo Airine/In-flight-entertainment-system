@@ -22,6 +22,11 @@ import java.util.stream.Collectors;
 import static com.MainApp.mainMovieTypes;
 import static com.MainApp.mainMovies;
 
+/* * this is a class that used to control search view that used for search movies.
+ * @author PennaLia
+ * @date 2018/6/12 20:31
+ * @version Player Version 1.0
+ */
 public class MovieTableViewController {
     @FXML
     private JFXTreeTableView<treeMovie> treetable;
@@ -40,6 +45,12 @@ public class MovieTableViewController {
         return tableColumn;
     }
 
+    /* *  this is used to initialize the movie table tree, add some column.
+     * @author PennaLia
+     * @date 2018/6/12 20:15
+     * @param
+     * @return
+     */
     @FXML
     private void initialize(){
 
@@ -94,15 +105,25 @@ public class MovieTableViewController {
         });
 
     }
-
+    /* *  if you click it , the searchpane pane will not visible.
+     * @author PennaLia
+     * @date 2018/6/12 20:15
+     * @param
+     * @return
+     */
     @FXML
     public void handleBack(){
         rootLayoutController.searchPaneVisible(false);
     }
 
-    public void loadLanguage(String language) {
-    }
 
+
+    /* *  this class is uesd to made movies class be search in the search tree.
+     * @author PennaLia
+     * @date 2018/6/12 20:14
+     * @param
+     * @return
+     */
     class treeMovie extends RecursiveTreeObject<treeMovie> {
         StringProperty title;
         StringProperty type;
@@ -124,6 +145,12 @@ public class MovieTableViewController {
         }
     }
 
+    /* *  this is used to add the text listener, if text value include the vlaue of movies, the movies will show in the search tree
+     * @author PennaLia
+     * @date 2018/6/12 20:12
+     * @param
+     * @return
+     */
     public void addTextListen(){
         rootLayoutController.getSearchFeild().textProperty().addListener(new ChangeListener<String>() {
             @Override
