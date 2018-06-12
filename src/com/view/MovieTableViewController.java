@@ -103,7 +103,7 @@ public class MovieTableViewController {
     public void loadLanguage(String language) {
     }
 
-    class treeMovie extends RecursiveTreeObject<treeMovie> {
+    static class treeMovie extends RecursiveTreeObject<treeMovie> {
         StringProperty title;
         StringProperty type;
         StringProperty language;

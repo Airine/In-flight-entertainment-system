@@ -13,9 +13,8 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.logging.Level;
 
@@ -137,7 +136,7 @@ public class WebScraping {
      *     (There is no English title on ku6)
      *     The results will be stored in StringBuilder for json file.
      * </p>
-     * 
+     *
      * @param entry The entry which contains urls and titles. 
      * @param sb The StringBuilder which will append information.
      * @throws IOException
@@ -196,6 +195,7 @@ public class WebScraping {
                             break;
                         case "上映时间:":
                             release = e.selectFirst("span.type_txt").text();
+                            break;
                         default:
                             break;
                     }
@@ -207,9 +207,9 @@ public class WebScraping {
                         case "动作":
                         case "科幻":
                         case "爱情":
-                        case "悬疑":    
+                        case "悬疑":
                         case "犯罪":
-                        case "战争":    
+                        case "战争":
                         case "传记":
                         case "家庭":
                         case "喜剧":
@@ -219,7 +219,7 @@ public class WebScraping {
                         case "惊悚":
                             genres = "恐怖"; // here we change one type name
                             break A;
-                        default:  
+                        default:
                             break;
                     }
                 }
@@ -249,7 +249,10 @@ public class WebScraping {
      * The file is stored in database.
      */
     public void generateJson(){
-        try (PrintWriter out = new PrintWriter("src/resources/json/movieMessage/movieMessage.json")) {
+        File file = new File("src/resources/json/movieMessage/movieMessage.json");
+        try (Writer w = new OutputStreamWriter(new FileOutputStream(file), "UTF-8");
+             PrintWriter out = new PrintWriter(w)) 
+        {
             Map<String, String> URL_Title = scrapeMovieLinks();
             StringBuilder sb = new StringBuilder();
             sb.append("{\n");
@@ -289,7 +292,7 @@ public class WebScraping {
         type.put("传记",12);
         ArrayList<Movie> newmovies = new ArrayList<>();
         for (int i = 1; i < 40; i++) {
-            JSONObject tempt = JsonLoader.getJsonValue("movieMessage/movieMessage", (new Integer(i)).toString());
+            JSONObject tempt = JsonLoader.getJsonValue("movieMessage/movieMessage", Integer.toString(i));
 //            System.out.println(tempt);
             try {
                 assert tempt != null;
@@ -309,5 +312,5 @@ public class WebScraping {
         }
         updateMovies(newmovies);
     }
-    
+
 }
