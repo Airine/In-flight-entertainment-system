@@ -3,11 +3,13 @@ package com.view;
 import com.MainApp;
 import com.jfoenix.controls.*;
 import com.jfoenix.transitions.hamburger.HamburgerNextArrowBasicTransition;
+import com.util.VirtualKeyboard;
 import com.view.settingpage.*;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
@@ -63,6 +65,9 @@ public class RootLayoutController {
     //search pane
     @FXML
     private AnchorPane searchpane;
+    //key board.
+    @FXML
+    private AnchorPane keyboard;
     // the mainapp
     private MainApp mainApp;
     // hamburger transition
@@ -91,6 +96,8 @@ public class RootLayoutController {
     DrawerContentController drawerContentController;
     //search ontroler
     MovieTableViewController movieTableViewController;
+
+
 
     //information about waring text.
     String WaringTitle="程序即将自动关闭";
@@ -161,7 +168,7 @@ public class RootLayoutController {
     public void setSettingVisible() {
         getSettingPane().setVisible(true);
     }
-
+    public void setKeyboardVisible(boolean b){keyboard.setVisible(b);}
     public void homePageNotSee() {
         homepage.setVisible(false);
     }
@@ -211,6 +218,7 @@ public class RootLayoutController {
             initEdit();
             initSearchTree();
             initCollection();
+            initKeyboard();
             now=DefaultCSS;
 
         } catch (Exception e) {
@@ -218,6 +226,11 @@ public class RootLayoutController {
         }
     }
 
+    public void initKeyboard(){
+        VirtualKeyboard board=new VirtualKeyboard();
+        keyboard.getChildren().add(board.view());
+
+    }
 
     /* *  init draer.
      * @author PennaLia
@@ -548,6 +561,7 @@ public class RootLayoutController {
     @FXML
     private void handleSearchClick(){
             searchPaneVisible(true);
+            keyboard.setVisible(true);
     }
 
 

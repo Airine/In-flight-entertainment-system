@@ -114,6 +114,7 @@ public class MovieTableViewController {
     @FXML
     public void handleBack(){
         rootLayoutController.searchPaneVisible(false);
+        rootLayoutController.setKeyboardVisible(false);
     }
 
 
@@ -159,8 +160,10 @@ public class MovieTableViewController {
                 treetable.setPredicate(userTreeItem -> {
                     if(newValue.length()>0)//这个别删，是检测文本大于0自动打开搜索框，不点回车了
                         rootLayoutController.searchPaneVisible(true);
-                    else
+                    else {
                         rootLayoutController.searchPaneVisible(false);
+                        rootLayoutController.setKeyboardVisible(false);
+                    }
                     //这个是监听如果值里面有这个，就搜索返回
                     return (userTreeItem.getValue().title.getValue().contains(newValue)
                             || userTreeItem.getValue().type.getValue().contains(newValue)

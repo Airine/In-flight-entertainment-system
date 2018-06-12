@@ -6,10 +6,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-
-<AnchorPane prefHeight="324.0" prefWidth="577.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.MovieTableViewController">
+<AnchorPane prefHeight="230.0" prefWidth="577.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.view.MovieTableViewController">
    <children>
-      <Pane fx:id="back" onMouseClicked="#handleBack" prefHeight="22.0" prefWidth="577.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="302.0" AnchorPane.topAnchor="0.0">
+      <Pane fx:id="back" onMouseClicked="#handleBack" prefHeight="27.0" prefWidth="577.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="203.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="277.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -18,6 +17,6 @@
             </ImageView>
          </children>
       </Pane>
-      <JFXTreeTableView fx:id="treetable" layoutY="-14.0" prefHeight="330.0" prefWidth="473.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="22.0" />
+      <JFXTreeTableView fx:id="treetable" layoutY="25.0" prefHeight="229.0" prefWidth="577.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0" />
    </children>
 </AnchorPane>
