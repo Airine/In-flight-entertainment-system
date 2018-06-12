@@ -58,12 +58,19 @@ public class ThemeController {
     private JFXColorPicker upbar;
 
     private RootLayoutController rootLayoutController;
+
     public void setRootLayoutController(RootLayoutController rootLayoutController){
         this.rootLayoutController=rootLayoutController;
     }
-    public JFXColorPicker getLeftbar(){return  leftbar;}
-    public JFXColorPicker getUpbar(){return  upbar;}
-    public JFXColorPicker getLeftbarUp() {return leftbarUp; }
+    public JFXColorPicker getLeftbar(){
+        return  leftbar;
+    }
+    public JFXColorPicker getUpbar(){
+        return  upbar;
+    }
+    public JFXColorPicker getLeftbarUp(){
+        return leftbarUp;
+    }
 
     public AnchorPane getThemeuppane() {
         return themeuppane;
@@ -71,7 +78,12 @@ public class ThemeController {
     String WaringTitle="你没有开通这个功能";
     String WaringMessage="这个问题你充钱就能解决";
     String WaringButton="行";
-
+    /* *  this is used to set waring text for different language.
+     * @author PennaLia
+     * @date 2018/6/12 10:27
+     * @param
+     * @return
+     */
     public void setWaringText(String language){
         if (language.equals("cn")){
             WaringTitle="你没有开通这个功能";
@@ -87,26 +99,64 @@ public class ThemeController {
             WaringButton="Bon";
         }
     }
+    /* *   initialize everything.
+     * @author PennaLia
+     * @date 2018/6/12 10:31
+     * @param
+     * @return
+     */
     @FXML
     private void initialize(){
 
     }
+
+    /* *  this is used for changing the theme to default.
+     * @author PennaLia
+     * @date 2018/6/12 10:29
+     * @param
+     * @return
+     */
     @FXML
     private void handlrToDefault(){
         rootLayoutController.ToDefault();
     }
+    /* *  this is used for changing the theme to theme1.
+     * @author PennaLia
+     * @date 2018/6/12 10:30
+     * @param
+     * @return
+     */
     @FXML
     private void handleTheme1(){
         rootLayoutController.ToTheme1();
     }
+    /* *  this is used for changing the theme to theme2.
+     * @author PennaLia
+     * @date 2018/6/12 10:30
+     * @param
+     * @return
+     */
     @FXML
     private void handleTheme2(){
         rootLayoutController.ToTheme2();
     }
+    /* *  this is used for changing the theme to theme3.
+     * @author PennaLia
+     * @date 2018/6/12 10:30
+     * @param
+     * @return
+     */
     @FXML
     private void handleTheme3(){
         rootLayoutController.ToTheme3();
     }
+
+    /* *  after you click that, it will change the theme color.
+     * @author PennaLia
+     * @date 2018/6/12 10:28
+     * @param
+     * @return
+     */
     public void handleOk() {
         if (!rootLayoutController.getMainApp().huiyuan) {
             stackpane.setVisible(true);
@@ -145,7 +195,12 @@ public class ThemeController {
             e.printStackTrace();
         }
     }
-
+    /* *  whenever the pane of we want to change changing its color, the color picker will change it text value.
+     * @author PennaLia
+     * @date 2018/6/12 10:28
+     * @param
+     * @return
+     */
     public void bindColorPicker() {
         Pane UserBackPane=rootLayoutController.getDrawerContentController().getUserBackPane();
        UserBackPane.backgroundProperty().addListener((observable, oldValue, newValue) -> {

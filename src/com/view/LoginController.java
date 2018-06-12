@@ -68,6 +68,12 @@ public class LoginController {
         });
     }
 
+    /* *  close the login stage.
+     * @author PennaLia
+     * @date 2018/6/12 10:24
+     * @param
+     * @return
+     */
     @FXML
     public void handleClose(){
         dialogStage.close();

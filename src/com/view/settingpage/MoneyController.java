@@ -55,6 +55,13 @@ public class MoneyController {
     String WaringTitle="祝贺";
     String WaringMessage="恭喜你喜提会员";
     String WaringButton="知道了";
+
+    /* *  if you can pay for our product, you can get the vip.
+     * @author PennaLia
+     * @date 2018/6/12 10:34
+     * @param
+     * @return
+     */
     @FXML
     public void handleBeHuiYuan(){
         rootLayoutController.getDrawerContentController().beHuiyuan();
@@ -90,6 +97,12 @@ public class MoneyController {
             e.printStackTrace();
         }
     }
+    /* *  this is used to set waring text for different language.
+     * @author PennaLia
+     * @date 2018/6/12 10:35
+     * @param
+     * @return
+     */
     public void setWaringText(String language){
         if (language.equals("cn")){
             WaringTitle="祝贺";

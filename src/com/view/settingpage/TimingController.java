@@ -48,6 +48,12 @@ public class TimingController {
     public AnchorPane getTiminguppane() {
         return timinguppane;
     }
+    /* *  this is used for set warning text for different language.
+     * @author PennaLia
+     * @date 2018/6/12 10:25
+     * @param
+     * @return
+     */
     public void setWaringText(String language){
         if (language.equals("cn")){
             WaringTitle="不可以哦";
@@ -64,6 +70,12 @@ public class TimingController {
         }
     }
 
+    /* *  this method give a timeline to handle the timing close.
+     * @author PennaLia
+     * @date 2018/6/12 10:25
+     * @param
+     * @return
+     */
     @FXML
     public void handleTimingClose(){
         if(choosedata.getValue()==null||chosetime.getValue()==null){

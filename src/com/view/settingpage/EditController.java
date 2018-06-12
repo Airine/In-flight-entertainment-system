@@ -60,6 +60,12 @@ public class EditController {
         this.rootLayoutController=rootLayoutController;
     }
 
+    /* *  this is used to set warning text for different language.
+     * @author PennaLia
+     * @date 2018/6/12 10:35
+     * @param
+     * @return
+     */
     public void setWaringText(String language){
         if (language.equals("cn")){
             WaringTitle="警告";
@@ -75,6 +81,12 @@ public class EditController {
             WaringButton="Je sais";
         }
     }
+    /* *  when you clicked that, you can change the information of user.
+     * @author PennaLia
+     * @date 2018/6/12 10:36
+     * @param
+     * @return
+     */
     @FXML
     public void handleEdit(){
         rootLayoutController.getDrawerContentController().changNameAndSign(
@@ -83,6 +95,12 @@ public class EditController {
         if(imageURL!=null)
             rootLayoutController.getDrawerContentController().changeUserImage(imageURL);
     }
+    /* *  choose file from your computer to replace your image.
+     * @author PennaLia
+     * @date 2018/6/12 10:37
+     * @param
+     * @return
+     */
     @FXML
     public void handleChooseFile() throws MalformedURLException {
         FileChooser fc = new FileChooser();

@@ -43,6 +43,13 @@ public class AboutUsController {
     private void initialize() {
         initPingJia();
     }
+
+    /* *  this is used to set warning text for different language.
+     * @author PennaLia
+     * @date 2018/6/12 10:38
+     * @param
+     * @return
+     */
     public void setWaringText(String language){
         if (language.equals("cn")){
             WaringTitle="当前版本";
@@ -59,7 +66,12 @@ public class AboutUsController {
         }
     }
 
-
+    /* *  this used to check the version .
+     * @author PennaLia
+     * @date 2018/6/12 10:39
+     * @param
+     * @return
+     */
     @FXML
     public void handleCheckUpdata(){
         stackpane.setVisible(true);
@@ -75,6 +87,12 @@ public class AboutUsController {
         content.setActions(button);
         dialog.show();
     }
+    /* *  this is used for commit you comment.
+     * @author PennaLia
+     * @date 2018/6/12 10:39
+     * @param
+     * @return
+     */
     @FXML
     public void handleCommitComment(){
 
@@ -94,7 +112,12 @@ public class AboutUsController {
             e.printStackTrace();
         }
     }
-
+    /* *  this is used to set the text size of PingJia.
+     * @author PennaLia
+     * @date 2018/6/12 10:40
+     * @param
+     * @return
+     */
     public void initPingJia(){
         pingjia.setStyle("-fx-font-size:17px;");
     }

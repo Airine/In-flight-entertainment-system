@@ -130,24 +130,20 @@ public class RootLayoutController {
         return movieTableViewController;
     }
 
-    public VBox getVBox(){return box;}
-    public JFXDrawer getDrawer(){return drawer;}
-    public DrawerContentController getDrawerContentController(){return drawerContentController;}
-   /* *  用来替换主界面，当想切换哪个界面的时候就把界面赋值给homepage
-    * @author PennaLia
-    * @date 2018/6/5 14:18
-    * @param
-    * @return
-    */
+    public VBox getVBox(){
+        return box;
+    }
+    public JFXDrawer getDrawer(){
+        return drawer;
+    }
+    public DrawerContentController getDrawerContentController(){
+        return drawerContentController;
+    }
+
     public void setHomePage(AnchorPane page) {
         homepage.getChildren().setAll(page);
     }
-    /* *  用来替换设置界面
-     * @author PennaLia
-     * @date 2018/6/5 14:19
-     * @param
-     * @return
-     */
+
     public void setSettingPane(AnchorPane pane) {
         SettingPane.getChildren().setAll(pane);
     }
@@ -187,8 +183,7 @@ public class RootLayoutController {
         try {
             transition = new HamburgerNextArrowBasicTransition(hamburger);
             transition.setRate(-1);
-
-            //加载
+           //加载
             initDrawerContent();
             initHomePage();
             //只是预加载
@@ -425,6 +420,12 @@ public class RootLayoutController {
             e.printStackTrace();
         }
     }
+    /* *  this is init Search Tree that can search movies.
+     * @author PennaLia
+     * @date 2018/6/12 10:18
+     * @param
+     * @return
+     */
     public void initSearchTree(){
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -511,7 +512,12 @@ public class RootLayoutController {
         mainApp.closeWindows();
     }
 
-
+    /* *  this is handle search when you click enter
+     * @author PennaLia
+     * @date 2018/6/12 10:22
+     * @param
+     * @return
+     */
     @FXML
     private void handleSearch(KeyEvent event){
         KeyCode kc= event.getCode();
@@ -565,7 +571,12 @@ public class RootLayoutController {
             now=DefaultCSS;
         }
     }
-
+    /* *  change to theme1.
+     * @author PennaLia
+     * @date 2018/6/12 10:21
+     * @param
+     * @return
+     */
     public void ToTheme1(){
         ObservableList<String> styleSheets = mainPane.getStylesheets();
         styleSheets.clear();
@@ -574,6 +585,12 @@ public class RootLayoutController {
             now=Theme1;
         }
     }
+    /* *  change to theme2.
+     * @author PennaLia
+     * @date 2018/6/12 10:21
+     * @param
+     * @return
+     */
     public void ToTheme2(){
         ObservableList<String> styleSheets = mainPane.getStylesheets();
         styleSheets.clear();
@@ -582,6 +599,12 @@ public class RootLayoutController {
             now=Theme2;
         }
     }
+    /* *  change to theme3.
+     * @author PennaLia
+     * @date 2018/6/12 10:21
+     * @param []
+     * @return void
+     */
     public void ToTheme3(){
         ObservableList<String> styleSheets = mainPane.getStylesheets();
         styleSheets.clear();
@@ -629,7 +652,12 @@ public class RootLayoutController {
         content.setActions(button);
         dialog.show();
     }
-
+    /* *  this is used to set waring text for different language.
+     * @author PennaLia
+     * @date 2018/6/12 10:20
+     * @param
+     * @return
+     */
     public void setWaringText(String language){
         if (language.equals("cn")){
             WaringTitle="程序即将自动关闭";

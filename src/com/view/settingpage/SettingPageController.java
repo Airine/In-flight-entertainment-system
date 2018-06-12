@@ -33,8 +33,14 @@ public class SettingPageController {
     private void initialize(){
         initCombox();
     }
-    private void initCombox(){
 
+    /* *  init the Combox for changing language.
+     * @author PennaLia
+     * @date 2018/6/12 10:33
+     * @param
+     * @return
+     */
+    private void initCombox(){
         langComBoix.getItems().addAll(chinese,english,français);
         langComBoix.setEditable(false);
         langComBoix.setPromptText("选择语言");
