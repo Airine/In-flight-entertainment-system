@@ -24,6 +24,6 @@
       <Label layoutX="35.0" layoutY="315.0" prefHeight="34.0" prefWidth="94.0" text="关联" />
       <JFXCheckBox layoutX="163.0" layoutY="320.0" prefHeight="24.0" prefWidth="187.0" text="将此软件设为默认播放软件" />
       <JFXButton layoutX="126.0" layoutY="384.0" prefHeight="34.0" prefWidth="110.0" styleClass="surebutton" text="确定" />
-      <JFXButton fx:id="webScrapingButton" layoutX="163.0" layoutY="260.0" onMouseClicked="#handleWebScraping" prefHeight="34.0" prefWidth="110.0" styleClass="surebutton" text="开始" />
+      <JFXButton fx:id="webScrapingButton" layoutX="163.0" layoutY="260.0" onMouseClicked="#handleWebScraping" prefHeight="34.0" prefWidth="110.0" styleClass="surebutton" text="开始更新" />
    </children>
 </AnchorPane>
