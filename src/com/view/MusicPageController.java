@@ -16,8 +16,11 @@ import java.io.File;
 import static com.view.PlayerBarController.formatTime;
 
 /**
- * @author Huang Kemiao
- * @
+ * @author 黄珂邈
+ * <h>
+ *     The Controller of the Music Playing
+ * </h>
+ * @see PlayerBarController
  */
 public class MusicPageController {
     @FXML
@@ -84,6 +87,12 @@ public class MusicPageController {
         }
     }
 
+    /**
+     * We only use local songs.
+     * The songs are in order and they are stored in file list.
+     * We can switch songs by pressing the button.
+     * 
+     */
     @FXML
     private void nextSong(){
        if(musicIndex>=musicList.length-1){

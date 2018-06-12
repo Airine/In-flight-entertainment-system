@@ -5,6 +5,11 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * @author 黄珂邈
+ * This class is to generate json file which contains the movie messages.
+ * The json file will directly store in database
+ */
 public class Test {
 
     public static void main(String[] args) throws IOException {
