@@ -29,7 +29,8 @@ public class DataLoader {
             "Erotic",
             "Disaster",
             "Romance",
-            "Biography"
+            "Biography",
+            "Local"
     };
 
 
