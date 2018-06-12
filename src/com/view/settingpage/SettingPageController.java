@@ -3,6 +3,7 @@ package com.view.settingpage;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXListView;
+import com.util.WebScraping;
 import com.view.RootLayoutController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -50,17 +51,23 @@ public class SettingPageController {
         });
         //选择box做什么
         langComBoix.valueProperty().addListener((observable, oldValue, newValue) -> {
-            if(newValue.getText()=="中文")
+            if(newValue.getText().equals("中文"))
                 System.out.println("中文");
-            if(newValue.getText()=="English")
+            if(newValue.getText().equals("English"))
                 System.out.println("英语");
-            if(newValue.getText()=="Français")
+            if(newValue.getText().equals("Français"))
                 System.out.println("法语");
         });
 
 
     }
 
+    @FXML
+    private void handleWebScraping(){
+        com.util.WebScraping webScraping = new WebScraping();
+        webScraping.generateJson();
+    }
+    
     public void loadLanguage(String language) {
     }
 }
