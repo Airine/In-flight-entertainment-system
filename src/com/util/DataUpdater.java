@@ -33,9 +33,11 @@ public class DataUpdater {
 
     public static void updateUser(User user){
         Connection connection = connectToDB();
+        int VIP = (MainApp.huiyuan) ? 1 : 0;
         String sql = "UPDATE `user`" +
                 "SET `nick_name` = '" + user.getNickName() + "'," +
                 "`status` = '" + user.getStatus() + "'," +
+                "`if_VIP` = '" + VIP + "'," +
                 "`icon_url` = '" + user.getIconUrl() + "'" +
                 "WHERE `user_id` = '" + user.getId()+"';" +
                 "commit;";
