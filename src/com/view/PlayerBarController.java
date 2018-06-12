@@ -258,6 +258,7 @@ public class PlayerBarController {
             if (seletedFile != null) {
                 hasChooser = false;
                 localMovieURL = seletedFile.toURI().toURL().toExternalForm();
+                playerPageController.mediaPlayer.stop();
                 playerPageController.getSpinner().setVisible(false);
                 playerPageController.mediaPlayer = new MediaPlayer(new Media(localMovieURL));
                 playerPageController.mediaView.setMediaPlayer(playerPageController.mediaPlayer);
