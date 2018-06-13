@@ -29,7 +29,7 @@
         "title": "Sustech Player",
         "comment": "Commit",
         "commentTo": "Comment to developer",
-        "checkVersion": "Check for updates",
+        "checkVersion": "Check updates",
         "version": "Current Versions",
         "version1":"Check new Version",
         "workshop":"Workshop",
@@ -48,14 +48,14 @@
     "drawer": {
         "vip": "Purchase VIP",
         "star": "Favorites",
-        "timing": "Timer PowerOff",
+        "timing": "Scheduled Shutdown",
         "theme": "Theme",
         "night": "Night mode",
         "about": "About us"
     },
 
     "timing":{
-        "title":"On time close",
+        "title":"Scheduled Shutdown",
         "closetime":"Close time",
         "commit":"Confirm"
     },
