@@ -59,7 +59,13 @@ public class MusicPageController {
     public void setMusicTitle(String music){
         musicTitle.setText(music);
     }
-    
+
+    /* *  initialize everything.
+     * @author PennaLia
+     * @date 2018/6/13 10:27
+     * @param
+     * @return
+     */
     @FXML
     private void initialize(){
         String folder = getClass().getResource("/resources/music/").getPath();
@@ -74,7 +80,13 @@ public class MusicPageController {
         else
             setMusicTitle(fileName.substring(index+2,fileName.length()-4));
     }
-    
+
+    /* *  handle music status to decide  what should we do
+     * @author PennaLia
+     * @date 2018/6/13 10:27
+     * @param
+     * @return
+     */
     @FXML
     private void handleMusic(){
         MediaPlayer.Status status = currentPlayer.getStatus();
@@ -89,12 +101,23 @@ public class MusicPageController {
             currentPlayer.pause();
         }
     }
-
+    /* *  when you click music bar, it will change the music state.
+     * @author PennaLia
+     * @date 2018/6/13 10:28
+     * @param
+     * @return
+     */
     @FXML
     private void handleClickMusicBar(){
         currentPlayer.seek(duration.multiply(musicSlider.getValue() / 100.0));
     }
-    
+
+    /* *  click music volume it will change its volume.
+     * @author PennaLia
+     * @date 2018/6/13 10:29
+     * @param
+     * @return
+     */
     @FXML
     private void handleClickMusicVolume(){
         currentPlayer.setVolume(MusicVolume.getValue() / 100.0);
@@ -140,7 +163,13 @@ public class MusicPageController {
             currentPlayer.play();
         }
     }
-    
+
+    /* *  to control music.
+     * @author PennaLia
+     * @date 2018/6/13 10:29
+     * @param
+     * @return
+     */
     public void controlMusic(MediaPlayer player){
         currentPlayer = player;
         player.currentTimeProperty().addListener(ov -> updateValues());
@@ -193,6 +222,12 @@ public class MusicPageController {
         });
         
     }
+    /* *  to load langugae from json.
+     * @author PennaLia
+     * @date 2018/6/13 10:30
+     * @param
+     * @return
+     */
     public void loadLanguage(String language) {
         JSONObject jsonObject = JsonLoader.getJsonValue(language,"music");
         try {
@@ -202,6 +237,12 @@ public class MusicPageController {
             e.printStackTrace();
         }
     }
+    /* *  updates the music values.
+     * @author PennaLia
+     * @date 2018/6/13 10:30
+     * @param
+     * @return
+     */
     private void updateValues() {
         if (MusicPlayTime != null && musicSlider != null && MusicVolume != null) {
             Platform.runLater(() -> {

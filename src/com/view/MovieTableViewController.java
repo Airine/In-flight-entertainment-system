@@ -28,6 +28,7 @@ import static com.MainApp.mainMovies;
  * @version Player Version 1.0
  */
 public class MovieTableViewController {
+    //used for search movies
     @FXML
     private JFXTreeTableView<treeMovie> treetable;
 

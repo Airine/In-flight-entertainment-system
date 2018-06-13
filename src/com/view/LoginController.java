@@ -48,6 +48,12 @@ public class LoginController {
     private void initialize(){
     }
 
+    /* *  load language file from json.
+     * @author PennaLia
+     * @date 2018/6/13 10:18
+     * @param
+     * @return
+     */
     public void loadLanguage(String language){
         JSONObject jsonObject = JsonLoader.getJsonValue(language,"loginDialog");
         try {
@@ -74,6 +80,12 @@ public class LoginController {
         });
     }
 
+    /* *  for close the login page .
+     * @author PennaLia
+     * @date 2018/6/13 10:18
+     * @param
+     * @return
+     */
     @FXML
     public void handleClose(){
         dialogStage.close();
@@ -118,18 +130,29 @@ public class LoginController {
         }
     }
 
-
+    /* *  when you click the button, it will be flat.
+     * @author PennaLia
+     * @date 2018/6/13 10:18
+     * @param
+     * @return
+     */
     public void pressSignButton(MouseEvent mouseEvent) {
         sign.setButtonType(JFXButton.ButtonType.FLAT);
     }
 
+    /* *  when you release button , it will be raised.
+     * @author PennaLia
+     * @date 2018/6/13 10:19
+     * @param
+     * @return
+     */
     public void releaseSignButton(MouseEvent mouseEvent) {
         sign.setButtonType(JFXButton.ButtonType.RAISED);
     }
 
     public void getUsernameChanged(InputMethodEvent inputMethodEvent) {
         String input = user_name.getText();
-//        System.err.println(input);
+
     }
 
     public void getPwChanged(InputMethodEvent inputMethodEvent) {

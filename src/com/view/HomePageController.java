@@ -45,6 +45,12 @@ public class HomePageController {
         this.rootLayoutController = rootLayoutController;
     }
 
+    /* *  used for add moviesortitem to the homapage.
+     * @author PennaLia
+     * @date 2018/6/13 10:21
+     * @param
+     * @return
+     */
     public void addMovieSortItem(){
         for (MovieType movieType : mainMovieTypes) {
             try {
@@ -57,6 +63,12 @@ public class HomePageController {
         }
     }
 
+        /* *  initialize everything.
+         * @author PennaLia
+         * @date 2018/6/13 10:21
+         * @param
+         * @return
+         */
     @FXML
     private void initialize(){
         addMovieSortItem();
@@ -87,7 +99,12 @@ public class HomePageController {
 
     }
 
-
+        /* *  change the page content for other page.
+         * @author PennaLia
+         * @date 2018/6/13 10:21
+         * @param
+         * @return
+         */
         public void changeFlowContent(FlowPane flowPane){
         HomeScrollPane.setContent(flowPane);
         }
