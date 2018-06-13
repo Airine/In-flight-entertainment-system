@@ -317,11 +317,6 @@ public class WebScraping {
         }
         //123
         updateMovies(newMovies);
-        //123
-        //iwiwioaos
-        ///????
-        //uuu
-        //wtf
         
     }
 }
