@@ -315,14 +315,10 @@ public class WebScraping {
                 e.printStackTrace();
             }
         }
+        //123
         updateMovies(newMovies);
         //123
         //iwiwioaos
-        //123
-        //12312312
-        //123123
-        /**
-         * 1231233
-         */
+        
     }
 }
