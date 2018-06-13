@@ -47,16 +47,17 @@ public class MoneyController {
     @FXML
     private Label vip;
     //the warning information.
-    String WaringTitle="祝贺";
-    String WaringMessage="恭喜你喜提会员";
-    String WaringButton="知道了";
+    String WaringTitle = "祝贺";
+    String WaringMessage = "恭喜你喜提会员";
+    String WaringButton = "知道了";
     private RootLayoutController rootLayoutController;
-    public void setRootLayoutController(RootLayoutController rootLayoutController){
-        this.rootLayoutController=rootLayoutController;
+
+    public void setRootLayoutController(RootLayoutController rootLayoutController) {
+        this.rootLayoutController = rootLayoutController;
     }
 
-    public AnchorPane getMoneyuppane(){
-        return  moneyuppane;
+    public AnchorPane getMoneyuppane() {
+        return moneyuppane;
     }
 
     /* *  this used to handle be hui yuan ,that you are be a huiyuan of our product if you pay money,
@@ -66,7 +67,7 @@ public class MoneyController {
      * @return
      */
     @FXML
-    public void handleBeHuiYuan(){
+    public void handleBeHuiYuan() {
         rootLayoutController.getDrawerContentController().beHuiyuan();
         stackpane.setVisible(true);
         JFXDialogLayout content = new JFXDialogLayout();
@@ -92,7 +93,7 @@ public class MoneyController {
      * @return
      */
     public void loadLanguage(String language) {
-        JSONObject jsonObject = JsonLoader.getJsonValue(language,"money");
+        JSONObject jsonObject = JsonLoader.getJsonValue(language, "money");
         try {
             assert jsonObject != null;
             label1.setText(jsonObject.getString("label1"));
@@ -104,32 +105,32 @@ public class MoneyController {
             month.setText(jsonObject.getString("month"));
             vip.setText(jsonObject.getString("vip1"));
             setWaringText(language);
-        } catch (JSONException | NullPointerException e){
+        } catch (JSONException | NullPointerException e) {
             e.printStackTrace();
         }
     }
+
     /* *  this used for set warning text .
      * @author PennaLia
      * @date 2018/6/12 22:01
      * @param
      * @return
      */
-    public void setWaringText(String language){
-        if (language.equals("cn")){
-            WaringTitle="祝贺";
-            WaringMessage="恭喜你喜提会员";
-            WaringButton="知道了";
-        }else if(language.equals("en")){
-            WaringTitle="Congratulations";
-            WaringMessage="You are VIP now";
-            WaringButton="OK, I konw";
-        }else if(language.equals("fr")){
-            WaringTitle="Félicitations";
-            WaringMessage="Vous êtes maintenant notre membre";
-            WaringButton="Je sais";
+    public void setWaringText(String language) {
+        if (language.equals("cn")) {
+            WaringTitle = "祝贺";
+            WaringMessage = "恭喜你喜提会员";
+            WaringButton = "知道了";
+        } else if (language.equals("en")) {
+            WaringTitle = "Congratulations";
+            WaringMessage = "You are VIP now";
+            WaringButton = "OK, I konw";
+        } else if (language.equals("fr")) {
+            WaringTitle = "Félicitations";
+            WaringMessage = "Vous êtes maintenant notre membre";
+            WaringButton = "Je sais";
         }
     }
-
 
 
 }

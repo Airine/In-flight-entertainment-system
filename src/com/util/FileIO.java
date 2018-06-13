@@ -14,8 +14,9 @@ public class FileIO {
 
     /**
      * This method is to execute the loading
+     *
      * @param fileName the file name of the json file
-     * @return 
+     * @return
      */
     public static String getDataFromFile(String fileName) {
 

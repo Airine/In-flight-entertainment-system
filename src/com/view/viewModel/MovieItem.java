@@ -41,7 +41,7 @@ public class MovieItem extends StackPane {
     private JFXButton playbutton = new JFXButton();
 
     private JFXButton collectionbutton = new JFXButton();
-    
+
     private JFXButton deletebutton = new JFXButton();
 
     private boolean ifClick = false;
@@ -49,10 +49,11 @@ public class MovieItem extends StackPane {
 
     /**
      * <h>Constructor</h>
+     *
      * @param movie The movie object
      * @param title the title of the movie
      */
-    public MovieItem(Movie movie, String title){
+    public MovieItem(Movie movie, String title) {
 //        this.movie = new Movie(movie);
         this.movie = movie;
 //        pram_movie = movie;
@@ -89,9 +90,9 @@ public class MovieItem extends StackPane {
         initCollectionButton();
 
         initDeleteButton();
-        
+
         //create nodelist
-        JFXNodesList nodesList=new JFXNodesList();
+        JFXNodesList nodesList = new JFXNodesList();
         //add button to nodelist
         nodesList.addAnimatedNode(button);
         nodesList.addAnimatedNode(playbutton);
@@ -101,7 +102,7 @@ public class MovieItem extends StackPane {
 
         //set nodeilist height
         nodesList.translateYProperty().bind(Bindings.createDoubleBinding(() ->
-                header.getBoundsInParent().getHeight() - nodesList.getHeight() / 2,
+                        header.getBoundsInParent().getHeight() - nodesList.getHeight() / 2,
                 header.boundsInParentProperty(), nodesList.heightProperty()));
         nodesList.setSpacing(20d);
         nodesList.setRotate(180);
@@ -126,7 +127,7 @@ public class MovieItem extends StackPane {
     /**
      * The method is to initialize the deletion button
      */
-    private void initDeleteButton(){
+    private void initDeleteButton() {
         deletebutton = new JFXButton();
 
         deletebutton.setButtonType(JFXButton.ButtonType.RAISED);
@@ -153,7 +154,7 @@ public class MovieItem extends StackPane {
     /**
      * This method is to initialize the main button at the bottom
      */
-    private void initMainButton(){
+    private void initMainButton() {
 
         button.setButtonType(JFXButton.ButtonType.RAISED);
         button.setStyle("-fx-background-radius: 40;-fx-background-color: " + getDefaultColor((int) ((Math.random() * 12) % 12)));
@@ -176,7 +177,7 @@ public class MovieItem extends StackPane {
         button.setGraphic(add_graph);
 
         button.setOnMouseClicked(event -> {
-            if(!ifClick) {
+            if (!ifClick) {
                 button.setGraphic(minus_graph);
             } else {
                 button.setGraphic(add_graph);
@@ -187,10 +188,11 @@ public class MovieItem extends StackPane {
     }
 
     /**
-     * This method is to initialize the playing button and set turning 
+     * This method is to initialize the playing button and set turning
+     *
      * @param videoUrl The movie url
      */
-    private void initPlayButton(String videoUrl){
+    private void initPlayButton(String videoUrl) {
 
         playbutton.setButtonType(JFXButton.ButtonType.RAISED);
         playbutton.setStyle("-fx-background-radius: 40;-fx-background-color: " + getDefaultColor((int) ((Math.random() * 12) % 12)));
@@ -206,7 +208,7 @@ public class MovieItem extends StackPane {
                 MainApp.player.getSpinner().setVisible(true);
                 String local = "";
                 if (movie.getType() == 13) local = "file:";
-                MainApp.player.setPlayerWithBar(new Media(local+videoUrl));
+                MainApp.player.setPlayerWithBar(new Media(local + videoUrl));
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -225,7 +227,7 @@ public class MovieItem extends StackPane {
     /**
      * This method is to initialize the button which can make the movies to be the favourite ones
      */
-    private void initCollectionButton(){
+    private void initCollectionButton() {
 
         collectionbutton.setButtonType(JFXButton.ButtonType.RAISED);
         collectionbutton.setStyle("-fx-background-radius: 40;-fx-background-color: " + getDefaultColor((int) ((Math.random() * 12) % 12)));
@@ -256,7 +258,7 @@ public class MovieItem extends StackPane {
             if (movie.isStar()) {
                 collectionbutton.setGraphic(collection);
                 starMovies.remove(movie);
-            } else{
+            } else {
                 collectionbutton.setGraphic(collection_fill);
                 starMovies.add(movie);
             }
@@ -267,7 +269,6 @@ public class MovieItem extends StackPane {
 
 
     /**
-     * 
      * @param i the id of the color type
      * @return the color with right format
      */

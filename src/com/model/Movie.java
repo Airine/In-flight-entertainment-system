@@ -38,7 +38,7 @@ public class Movie {
     /**
      * setter of star
      *
-     * @param star the boolean status 
+     * @param star the boolean status
      */
     public void setStar(boolean star) {
         this.star = star;

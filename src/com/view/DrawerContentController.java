@@ -15,6 +15,7 @@ import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 /* *  this is the drawer contreoller.
  * @author PennaLia
  * @date 2018/6/12 23:45
@@ -60,26 +61,28 @@ public class DrawerContentController {
     @FXML
     private Label nightLabel;
 
-    private boolean clicked =false;
-    private boolean Tonight=false;
-    private  RootLayoutController rootLayoutController;
+    private boolean clicked = false;
+    private boolean Tonight = false;
+    private RootLayoutController rootLayoutController;
 
-    public void setRootLayoutController(RootLayoutController rootLayoutController){
-        this.rootLayoutController=rootLayoutController;
+    public void setRootLayoutController(RootLayoutController rootLayoutController) {
+        this.rootLayoutController = rootLayoutController;
     }
 
-    public String getUserName(){
+    public String getUserName() {
         return username.getText();
     }
-    public String getUserSign(){
+
+    public String getUserSign() {
         return usersign.getText();
     }
 
 
-    public Pane getUserBackPane(){
+    public Pane getUserBackPane() {
         return UserBackPane;
     }
-    public Pane getUserBackUpPane(){
+
+    public Pane getUserBackUpPane() {
         return UserBackUpPane;
     }
 
@@ -90,7 +93,7 @@ public class DrawerContentController {
      * @return
      */
     @FXML
-    public void initialize(){
+    public void initialize() {
         String url = "resources/user_icon/shiyuan.png";
         user_icon.setStyle("-fx-background-image: url(\"" + url + "\");" +
                 "-fx-background-position: center;" +
@@ -111,7 +114,7 @@ public class DrawerContentController {
      * @param
      * @return
      */
-    public void setUser(){
+    public void setUser() {
         changNameAndSign(MainApp.mainUser.getNickName(), MainApp.mainUser.getStatus());
         changeUserImage(MainApp.mainUser.getIconUrl());
     }
@@ -122,17 +125,18 @@ public class DrawerContentController {
      * @param  name is the user name , sign is the user sign.
      * @return
      */
-    public void changNameAndSign(String name,String sign){
+    public void changNameAndSign(String name, String sign) {
         username.setText(name);
         usersign.setText(sign);
     }
+
     /* * set main user name and sign.
      * @author PennaLia
      * @date 2018/6/13 10:24
      * @param
      * @return
      */
-    public void setNameAndSign(String name, String sign){
+    public void setNameAndSign(String name, String sign) {
         MainApp.mainUser.setNickName(name);
         MainApp.mainUser.setStatus(sign);
     }
@@ -143,7 +147,7 @@ public class DrawerContentController {
      * @param
      * @return
      */
-    public void changeUserImage(String url){
+    public void changeUserImage(String url) {
         user_icon.setStyle("-fx-background-image: url(\"" + url + "\");" +
                 "-fx-background-position: center;" +
                 "-fx-background-repeat: no-repeat;" +
@@ -157,12 +161,13 @@ public class DrawerContentController {
      * @return
      */
     @FXML
-    public void beHuiyuan(){
-        if (MainApp.mainUser!=null)
+    public void beHuiyuan() {
+        if (MainApp.mainUser != null)
             MainApp.mainUser.setIfVIP(1);
         huiyuan.setImage(new Image("resources/icon/truehuiyuan.png"));
-        MainApp.huiyuan =true;
+        MainApp.huiyuan = true;
     }
+
     /* *  show setting  page.
      * @author PennaLia
      * @date 2018/6/13 10:25
@@ -170,11 +175,12 @@ public class DrawerContentController {
      * @return
      */
     @FXML
-    private void handleSetting(){
+    private void handleSetting() {
         rootLayoutController.setSettingVisible();//设置界面可见
         rootLayoutController.homePageNotSee();//主界面不可见
-       rootLayoutController.setSettingPane(rootLayoutController.setting);
+        rootLayoutController.setSettingPane(rootLayoutController.setting);
     }
+
     /* *  show about us page ,
      * @author PennaLia
      * @date 2018/6/13 10:25
@@ -182,11 +188,12 @@ public class DrawerContentController {
      * @return
      */
     @FXML
-    private void handleAboutus(){
+    private void handleAboutus() {
         rootLayoutController.setSettingVisible();//设置界面可见
         rootLayoutController.homePageNotSee();//主界面不可见
         rootLayoutController.setSettingPane(rootLayoutController.aboutus);
     }
+
     /* *  show theme page.
      * @author PennaLia
      * @date 2018/6/13 10:25
@@ -194,11 +201,12 @@ public class DrawerContentController {
      * @return
      */
     @FXML
-    private void handleTheme(){
+    private void handleTheme() {
         rootLayoutController.setSettingVisible();//设置界面可见
         rootLayoutController.homePageNotSee();//主界面不可见
         rootLayoutController.setSettingPane(rootLayoutController.theme);
     }
+
     /* *  show moeny page .
      * @author PennaLia
      * @date 2018/6/13 10:26
@@ -206,11 +214,12 @@ public class DrawerContentController {
      * @return
      */
     @FXML
-    private void handleMoney(){
+    private void handleMoney() {
         rootLayoutController.setSettingVisible();//设置界面可见
         rootLayoutController.homePageNotSee();//主界面不可见
         rootLayoutController.setSettingPane(rootLayoutController.money);
     }
+
     /* *  show timing close page.
      * @author PennaLia
      * @date 2018/6/13 10:26
@@ -218,7 +227,7 @@ public class DrawerContentController {
      * @return
      */
     @FXML
-    private void handleTiming(){
+    private void handleTiming() {
         rootLayoutController.setSettingVisible();//设置界面可见
         rootLayoutController.homePageNotSee();//主界面不可见
         rootLayoutController.setSettingPane(rootLayoutController.timing);
@@ -231,7 +240,7 @@ public class DrawerContentController {
      * @return
      */
     @FXML
-    private void handleCollection(){
+    private void handleCollection() {
         rootLayoutController.getDrawer().close();
         rootLayoutController.getDrawer().setVisible(false);
         rootLayoutController.seeHomepage();
@@ -239,8 +248,8 @@ public class DrawerContentController {
         rootLayoutController.getSettingPane().setVisible(false);
         FlowPane flowPane = rootLayoutController.collectionController.getMycollection();
         flowPane = new FlowPane();
-        for (Movie movie: MainApp.starMovies) {
-            try{
+        for (Movie movie : MainApp.starMovies) {
+            try {
 //                StackPane movieItem = movie.getMi_cn();
                 movie.initMI();
                 StackPane movieItem = movie.getMi_cn();
@@ -254,6 +263,7 @@ public class DrawerContentController {
         rootLayoutController.homePageController.back.setVisible(true);
 
     }
+
     /* * to show the edit page .
      * @author PennaLia
      * @date 2018/6/13 10:24
@@ -261,7 +271,7 @@ public class DrawerContentController {
      * @return
      */
     @FXML
-    private void handleEdit(){
+    private void handleEdit() {
         rootLayoutController.setSettingVisible();//设置界面可见
         rootLayoutController.homePageNotSee();//主界面不可见
         rootLayoutController.setSettingPane(rootLayoutController.edit);
@@ -284,19 +294,19 @@ public class DrawerContentController {
      * @param
      * @return
      */
-    private void initToggle(){
+    private void initToggle() {
         night.selectedProperty().addListener((observable, oldValue, newValue) -> {
 
-            if(night.isSelected()){
+            if (night.isSelected()) {
                 rootLayoutController.toNight();
-            }else{
-                if(rootLayoutController.now.equals(rootLayoutController.DefaultCSS)){
+            } else {
+                if (rootLayoutController.now.equals(rootLayoutController.DefaultCSS)) {
                     rootLayoutController.toDefault();
-                }else if(rootLayoutController.now.equals(rootLayoutController.Theme1)){
+                } else if (rootLayoutController.now.equals(rootLayoutController.Theme1)) {
                     rootLayoutController.toTheme1();
-                }else if(rootLayoutController.now.equals(rootLayoutController.Theme2)){
+                } else if (rootLayoutController.now.equals(rootLayoutController.Theme2)) {
                     rootLayoutController.toTheme2();
-                }else if(rootLayoutController.now.equals(rootLayoutController.Theme3)){
+                } else if (rootLayoutController.now.equals(rootLayoutController.Theme3)) {
                     rootLayoutController.toTheme3();
                 }
 
@@ -305,28 +315,27 @@ public class DrawerContentController {
     }
 
 
-
     @FXML
     private void handlebutton1() {
-        AnchorPane homepage= rootLayoutController.getHomepage();
-        JFXFillTransition transition=new JFXFillTransition();
+        AnchorPane homepage = rootLayoutController.getHomepage();
+        JFXFillTransition transition = new JFXFillTransition();
         transition.setDuration(Duration.millis(5000));
         transition.setRegion(homepage);
-        if(!clicked){
+        if (!clicked) {
             transition.setFromValue(Color.WHITE);
             transition.setToValue(Color.BLACK);
             transition.play();
-            clicked=true;
-        }else {
+            clicked = true;
+        } else {
             transition.setFromValue(Color.PINK);
             transition.setToValue(Color.WHITE);
             transition.play();
-            clicked=false;
+            clicked = false;
         }
     }
 
     public void loadLanguage(String language) {
-        JSONObject jsonObject = JsonLoader.getJsonValue(language,"drawer");
+        JSONObject jsonObject = JsonLoader.getJsonValue(language, "drawer");
         try {
             assert jsonObject != null;
             vip.setText(jsonObject.getString("vip"));
@@ -336,7 +345,7 @@ public class DrawerContentController {
             nightLabel.setText(jsonObject.getString("night"));
             about.setText(jsonObject.getString("about"));
 
-        } catch (JSONException | NullPointerException e){
+        } catch (JSONException | NullPointerException e) {
             e.printStackTrace();
         }
     }

@@ -55,21 +55,23 @@ public class SettingPageController {
     @FXML
     private JFXButton webScrapingButton;
     private RootLayoutController rootLayoutController;
-    public void setRootLayoutController(RootLayoutController rootLayoutController){
-        this.rootLayoutController=rootLayoutController;
-    }
-    public AnchorPane getSettinguppane(){
-        return  settinguppane;
+
+    public void setRootLayoutController(RootLayoutController rootLayoutController) {
+        this.rootLayoutController = rootLayoutController;
     }
 
-    Label chinese=new Label("中文");
-    Label english=new Label("English");
-    Label français=new Label("Français");
+    public AnchorPane getSettinguppane() {
+        return settinguppane;
+    }
+
+    Label chinese = new Label("中文");
+    Label english = new Label("English");
+    Label français = new Label("Français");
 
     @FXML
-    private void initialize(){
+    private void initialize() {
         initCombox();
-        if (MainApp.mainUser==null || MainApp.mainUser.getIfAdmin()!=1){
+        if (MainApp.mainUser == null || MainApp.mainUser.getIfAdmin() != 1) {
             webScrapingButton.setDisable(true);
         }
     }
@@ -80,15 +82,16 @@ public class SettingPageController {
      * @param
      * @return
      */
-    private void initCombox(){
-        langComBoix.getItems().addAll(chinese,english,français);
+    private void initCombox() {
+        langComBoix.getItems().addAll(chinese, english, français);
         langComBoix.setEditable(false);
         langComBoix.setPromptText("选择语言");
         langComBoix.setConverter(new StringConverter<Label>() {
             @Override
             public String toString(Label object) {
-                return object==null? "" : object.getText();
+                return object == null ? "" : object.getText();
             }
+
             @Override
             public Label fromString(String string) {
                 return new Label(string);
@@ -96,11 +99,11 @@ public class SettingPageController {
         });
         //选择box做什么
         langComBoix.valueProperty().addListener((observable, oldValue, newValue) -> {
-            if(newValue.getText().equals("中文"))
+            if (newValue.getText().equals("中文"))
                 rootLayoutController.getMainApp().changeLanguage("cn");
-            if(newValue.getText().equals("English"))
+            if (newValue.getText().equals("English"))
                 rootLayoutController.getMainApp().changeLanguage("en");
-            if(newValue.getText().equals("Français"))
+            if (newValue.getText().equals("Français"))
                 rootLayoutController.getMainApp().changeLanguage("fr");
         });
 
@@ -114,7 +117,7 @@ public class SettingPageController {
      * @return
      */
     @FXML
-    private void handleWebScraping(){
+    private void handleWebScraping() {
         com.util.WebScraping webScraping = new WebScraping();
         webScraping.generateJson();
         webScraping.updateMovieDataBase();
@@ -130,7 +133,7 @@ public class SettingPageController {
      * @return
      */
     public void loadLanguage(String language) {
-        JSONObject jsonObject = JsonLoader.getJsonValue(language,"setting");
+        JSONObject jsonObject = JsonLoader.getJsonValue(language, "setting");
         try {
             assert jsonObject != null;
             title.setText(jsonObject.getString("title"));
@@ -140,7 +143,7 @@ public class SettingPageController {
             connect.setText(jsonObject.getString("connect"));
             setdefault.setText(jsonObject.getString("setdefault"));
             sure.setText(jsonObject.getString("sure"));
-        } catch (JSONException | NullPointerException e){
+        } catch (JSONException | NullPointerException e) {
             e.printStackTrace();
         }
     }

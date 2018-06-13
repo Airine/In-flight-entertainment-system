@@ -25,7 +25,7 @@ import java.io.IOException;
  * @version Player Version 1.0
  */
 public class RootLayoutController {
-     //main pane. the bigger pane.
+    //main pane. the bigger pane.
     @FXML
     private AnchorPane mainPane;
     //the bar
@@ -83,7 +83,7 @@ public class RootLayoutController {
     public PlayerPageController playerPageController;
 
     //setting pane
-    public AnchorPane setting,aboutus,theme,money,timing,edit;
+    public AnchorPane setting, aboutus, theme, money, timing, edit;
     public FlowPane collection;//collection pane.
     //setting pane controller
     SettingPageController settingPageController;
@@ -98,11 +98,10 @@ public class RootLayoutController {
     MovieTableViewController movieTableViewController;
 
 
-
     //information about waring text.
-    String WaringTitle="程序即将自动关闭";
-    String WaringMessage="程序会在10s内自动关闭";
-    String WaringButton="我不想要关闭";
+    String WaringTitle = "程序即将自动关闭";
+    String WaringMessage = "程序会在10s内自动关闭";
+    String WaringButton = "我不想要关闭";
 
     /* *  this is used to load different language.
      * @author PennaLia
@@ -110,7 +109,7 @@ public class RootLayoutController {
      * @param  language  the language that will want to change.
      * @return
      */
-    public void loadLanguage(String language){
+    public void loadLanguage(String language) {
         settingPageController.loadLanguage(language);
         aboutUsController.loadLanguage(language);
         themeController.loadLanguage(language);
@@ -124,7 +123,6 @@ public class RootLayoutController {
     }
 
 
-
     public void setMainApp(MainApp app) {
         mainApp = app;
     }
@@ -132,10 +130,12 @@ public class RootLayoutController {
     public MainApp getMainApp() {
         return mainApp;
     }
+
     public void setVBox(VBox box) {
         this.box = box;
     }
-    public JFXTextField getSearchFeild(){
+
+    public JFXTextField getSearchFeild() {
         return searchfeild;
     }
 
@@ -144,17 +144,24 @@ public class RootLayoutController {
     }
 
 
-    public JFXDrawer getDrawer(){return drawer;}
-    public DrawerContentController getDrawerContentController(){return drawerContentController;}
-   /* *  用来替换主界面，当想切换哪个界面的时候就把界面赋值给homepage
-    * @author PennaLia
-    * @date 2018/6/5 14:18
-    * @param
-    * @return
-    */
+    public JFXDrawer getDrawer() {
+        return drawer;
+    }
+
+    public DrawerContentController getDrawerContentController() {
+        return drawerContentController;
+    }
+
+    /* *  用来替换主界面，当想切换哪个界面的时候就把界面赋值给homepage
+     * @author PennaLia
+     * @date 2018/6/5 14:18
+     * @param
+     * @return
+     */
     public void setHomePage(AnchorPane page) {
         homepage.getChildren().setAll(page);
     }
+
     /* *  用来替换设置界面
      * @author PennaLia
      * @date 2018/6/5 14:19
@@ -168,10 +175,15 @@ public class RootLayoutController {
     public void setSettingVisible() {
         getSettingPane().setVisible(true);
     }
-    public void setKeyboardVisible(boolean b){keyboard.setVisible(b);}
+
+    public void setKeyboardVisible(boolean b) {
+        keyboard.setVisible(b);
+    }
+
     public void homePageNotSee() {
         homepage.setVisible(false);
     }
+
     public void homePageSee() {
         homepage.setVisible(true);
     }
@@ -179,24 +191,26 @@ public class RootLayoutController {
     public AnchorPane getHomepage() {
         return homepage;
     }
+
     public AnchorPane getSettingPane() {
         return SettingPane;
     }
 
-    public AnchorPane getMainBar(){
-        return  mainBar;
+    public AnchorPane getMainBar() {
+        return mainBar;
     }
-    public void searchPaneVisible(boolean a){
+
+    public void searchPaneVisible(boolean a) {
         searchpane.setVisible(a);
     }
 
 
     /* *  initi all
-      * @author PennaLia
-      * @date 2018/6/5 14:20
-      * @param
-      * @return
-      */
+     * @author PennaLia
+     * @date 2018/6/5 14:20
+     * @param
+     * @return
+     */
     @FXML
     private void initialize() {
         try {
@@ -219,15 +233,15 @@ public class RootLayoutController {
             initSearchTree();
             initCollection();
             initKeyboard();
-            now=DefaultCSS;
+            now = DefaultCSS;
 
         } catch (Exception e) {
             e.getStackTrace();
         }
     }
 
-    public void initKeyboard(){
-        VirtualKeyboard board=new VirtualKeyboard();
+    public void initKeyboard() {
+        VirtualKeyboard board = new VirtualKeyboard();
         keyboard.getChildren().add(board.view());
 
     }
@@ -265,7 +279,7 @@ public class RootLayoutController {
             loader.setLocation(MainApp.class
                     .getResource("view/HomePage.fxml"));
             homeP = loader.load();
-             homePageController = loader.getController();
+            homePageController = loader.getController();
             homePageController.setRootLayoutController(this);
             setHomePage(homeP);
             homeline.setVisible(true);//一开始就是可见的
@@ -273,6 +287,7 @@ public class RootLayoutController {
             e.printStackTrace();
         }
     }
+
     /* * initi music page .
      * @author PennaLia
      * @date 2018/6/5 14:22
@@ -285,7 +300,7 @@ public class RootLayoutController {
             loader.setLocation(MainApp.class
                     .getResource("view/MusicPage.fxml"));
             musicP = loader.load();
-             musicPageController = loader.getController();
+            musicPageController = loader.getController();
             musicPageController.setRootLayoutController(this);
         } catch (IOException e) {
             e.printStackTrace();
@@ -311,6 +326,7 @@ public class RootLayoutController {
             e.printStackTrace();
         }
     }
+
     /* *  init setting page.
      * @author PennaLia
      * @date 2018/6/5 14:22
@@ -329,13 +345,14 @@ public class RootLayoutController {
             e.printStackTrace();
         }
     }
+
     /* *  init aboutus page.
      * @author PennaLia
      * @date 2018/6/10 17:59
      * @param
      * @return
      */
-    public void initAboutUs(){
+    public void initAboutUs() {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class
@@ -348,19 +365,20 @@ public class RootLayoutController {
             e.printStackTrace();
         }
     }
+
     /* *  init theme page.
      * @author PennaLia
      * @date 2018/6/10 17:59
      * @param
      * @return
      */
-    public void initTheme(){
+    public void initTheme() {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class
                     .getResource("view/settingpage/Theme.fxml"));
             theme = loader.load();
-            themeController= loader.getController();
+            themeController = loader.getController();
             themeController.setRootLayoutController(this);
             //这边要想办法得到部件的颜色信息
             themeController.getLeftbarUp().setValue(Color.web("#F08080"));
@@ -371,19 +389,20 @@ public class RootLayoutController {
             e.printStackTrace();
         }
     }
+
     /* *  init money page.
      * @author PennaLia
      * @date 2018/6/10 17:59
      * @param
      * @return
      */
-    public void initMoney(){
+    public void initMoney() {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class
                     .getResource("view/settingpage/Money.fxml"));
-            money= loader.load();
-            moneyController= loader.getController();
+            money = loader.load();
+            moneyController = loader.getController();
             moneyController.setRootLayoutController(this);
         } catch (IOException e) {
             e.printStackTrace();
@@ -396,77 +415,81 @@ public class RootLayoutController {
      * @param
      * @return
      */
-    public void initTiming(){
+    public void initTiming() {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class
                     .getResource("view/settingpage/Timing.fxml"));
-            timing= loader.load();
-            timingController= loader.getController();
+            timing = loader.load();
+            timingController = loader.getController();
             timingController.setRootLayoutController(this);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     /* *  initial collection page.
      * @author PennaLia
      * @date 2018/6/10 17:58
      * @param
      * @return
      */
-    public void initCollection(){
+    public void initCollection() {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class
                     .getResource("view/settingpage/Collection.fxml"));
-            collection= loader.load();
-            collectionController= loader.getController();
+            collection = loader.load();
+            collectionController = loader.getController();
             collectionController.setRootLayoutController(this);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     /* *  initial edit page.
      * @author PennaLia
      * @date 2018/6/10 17:57
      * @param
      * @return
      */
-    public void initEdit(){
+    public void initEdit() {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class
                     .getResource("view/settingpage/Edit.fxml"));
-            edit= loader.load();
-            editController= loader.getController();
+            edit = loader.load();
+            editController = loader.getController();
             editController.setRootLayoutController(this);
             //界面初始化用户信息
-        editController.getTextname().setText(this.getDrawerContentController().getUserName());
-        editController.getTextsign().setText(this.getDrawerContentController().getUserSign());
+            editController.getTextname().setText(this.getDrawerContentController().getUserName());
+            editController.getTextsign().setText(this.getDrawerContentController().getUserSign());
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     /* *  init the search tree used for search.
      * @author PennaLia
      * @date 2018/6/12 18:43
      * @param
      * @return
      */
-    public void initSearchTree(){
+    public void initSearchTree() {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class
                     .getResource("view/MovieTableView.fxml"));
-            AnchorPane pane= loader.load();
+            AnchorPane pane = loader.load();
             searchpane.getChildren().addAll(pane);
-            movieTableViewController= loader.getController();
+            movieTableViewController = loader.getController();
             movieTableViewController.setRootLayoutController(this);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     /* *  this is use to open drawer.
      * @author PennaLia
      * @date 2018/6/5 14:24
@@ -501,6 +524,7 @@ public class RootLayoutController {
         playline.setVisible(false);
         homeline.setVisible(true);
     }
+
     /* *  see the line in playpage..
      * @author PennaLia
      * @date 2018/6/5 14:25
@@ -515,6 +539,7 @@ public class RootLayoutController {
         homeline.setVisible(false);
 
     }
+
     /* *  see the line in musicpage.
      * @author PennaLia
      * @date 2018/6/5 14:25
@@ -528,6 +553,7 @@ public class RootLayoutController {
         playline.setVisible(false);
         homeline.setVisible(false);
     }
+
     /* * close the windows
      * @author PennaLia
      * @date 2018/6/5 14:26
@@ -546,12 +572,13 @@ public class RootLayoutController {
      * @return
      */
     @FXML
-    private void handleSearch(KeyEvent event){
-        KeyCode kc= event.getCode();
-        if (kc==(KeyCode.ENTER)){
+    private void handleSearch(KeyEvent event) {
+        KeyCode kc = event.getCode();
+        if (kc == (KeyCode.ENTER)) {
             searchPaneVisible(true);
         }
     }
+
     /* *  this is used for hanlde search
      * @author PennaLia
      * @date 2018/6/10 17:54
@@ -559,86 +586,90 @@ public class RootLayoutController {
      * @return
      */
     @FXML
-    private void handleSearchClick(){
-            searchPaneVisible(true);
-            keyboard.setVisible(true);
+    private void handleSearchClick() {
+        searchPaneVisible(true);
+        keyboard.setVisible(true);
     }
-
 
 
     public String DarkCSS = this.getClass().getResource("DarkTheme.css").toExternalForm(),
             DefaultCSS = this.getClass().getResource("DefaultTheme.css").toExternalForm(),
-            Theme1= this.getClass().getResource("Theme1.css").toExternalForm(),
-            Theme2=this.getClass().getResource("Theme2.css").toExternalForm(),
-            Theme3=this.getClass().getResource("Theme3.css").toExternalForm();
+            Theme1 = this.getClass().getResource("Theme1.css").toExternalForm(),
+            Theme2 = this.getClass().getResource("Theme2.css").toExternalForm(),
+            Theme3 = this.getClass().getResource("Theme3.css").toExternalForm();
     public String now;
+
     /* * this set the theme to night
      * @author PennaLia
      * @date 2018/6/10 17:48
      * @param
      * @return
      */
-    public void toNight(){
+    public void toNight() {
         ObservableList<String> styleSheets = mainPane.getStylesheets();
         styleSheets.clear();
-        if(!styleSheets.contains(DarkCSS)) {
+        if (!styleSheets.contains(DarkCSS)) {
             styleSheets.add(DarkCSS);
         }
     }
+
     /* *  this set theme to default.
      * @author PennaLia
      * @date 2018/6/10 17:48
      * @param
      * @return
      */
-    public void toDefault(){
+    public void toDefault() {
         ObservableList<String> styleSheets = mainPane.getStylesheets();
         styleSheets.clear();
-        if(!styleSheets.contains(DefaultCSS)) {
+        if (!styleSheets.contains(DefaultCSS)) {
             styleSheets.add(DefaultCSS);
-            now=DefaultCSS;
+            now = DefaultCSS;
         }
     }
+
     /* *  this will change theme to theme1.
      * @author PennaLia
      * @date 2018/6/12 18:44
      * @param
      * @return
      */
-    public void toTheme1(){
+    public void toTheme1() {
         ObservableList<String> styleSheets = mainPane.getStylesheets();
         styleSheets.clear();
-        if(!styleSheets.contains(Theme1)) {
+        if (!styleSheets.contains(Theme1)) {
             styleSheets.add(Theme1);
-            now=Theme1;
+            now = Theme1;
         }
     }
+
     /* *  this will change theme to theme2.
      * @author PennaLia
      * @date 2018/6/12 18:45
      * @param
      * @return
      */
-    public void toTheme2(){
+    public void toTheme2() {
         ObservableList<String> styleSheets = mainPane.getStylesheets();
         styleSheets.clear();
-        if(!styleSheets.contains(Theme2)) {
+        if (!styleSheets.contains(Theme2)) {
             styleSheets.add(Theme2);
-            now=Theme2;
+            now = Theme2;
         }
     }
+
     /* *  this will change theme to theme3
      * @author PennaLia
      * @date 2018/6/12 18:45
      * @param
      * @return
      */
-    public void toTheme3(){
+    public void toTheme3() {
         ObservableList<String> styleSheets = mainPane.getStylesheets();
         styleSheets.clear();
-        if(!styleSheets.contains(Theme3)) {
+        if (!styleSheets.contains(Theme3)) {
             styleSheets.add(Theme3);
-            now=Theme3;
+            now = Theme3;
         }
     }
 
@@ -648,23 +679,24 @@ public class RootLayoutController {
      * @param
      * @return
      */
-    public void changeLeftColor(String color){
-        drawerContentController.getUserBackPane().setStyle("-fx-background-color:"+"#"+color);
-        aboutUsController.getAboutusuppane().setStyle("-fx-background-color:"+"#"+color);
-        editController.getEdituppane().setStyle("-fx-background-color:"+"#"+color);
-        moneyController.getMoneyuppane().setStyle("-fx-background-color:"+"#"+color);
-        settingPageController.getSettinguppane().setStyle("-fx-background-color:"+"#"+color);
-        themeController.getThemeuppane().setStyle("-fx-background-color:"+"#"+color);
-        timingController.getTiminguppane().setStyle("-fx-background-color:"+"#"+color);
-        musicPageController.getMusicPane().setStyle("-fx-background-color:"+"#"+color);
+    public void changeLeftColor(String color) {
+        drawerContentController.getUserBackPane().setStyle("-fx-background-color:" + "#" + color);
+        aboutUsController.getAboutusuppane().setStyle("-fx-background-color:" + "#" + color);
+        editController.getEdituppane().setStyle("-fx-background-color:" + "#" + color);
+        moneyController.getMoneyuppane().setStyle("-fx-background-color:" + "#" + color);
+        settingPageController.getSettinguppane().setStyle("-fx-background-color:" + "#" + color);
+        themeController.getThemeuppane().setStyle("-fx-background-color:" + "#" + color);
+        timingController.getTiminguppane().setStyle("-fx-background-color:" + "#" + color);
+        musicPageController.getMusicPane().setStyle("-fx-background-color:" + "#" + color);
     }
+
     /* *  this is use for close app automatically
      * @author PennaLia
      * @date 2018/6/10 17:49
      * @param
      * @return
      */
-    public void timerOutClose(){
+    public void timerOutClose() {
         stackpane.setVisible(true);
         JFXDialogLayout content = new JFXDialogLayout();
         content.setHeading(new Text(WaringTitle));
@@ -674,7 +706,7 @@ public class RootLayoutController {
         button.setOnAction(event -> {
             stackpane.setVisible(false);
             timingController.timer.stop();
-            timingController.waitForClose=false;
+            timingController.waitForClose = false;
             dialog.close();
         });
         content.setActions(button);
@@ -687,24 +719,21 @@ public class RootLayoutController {
      * @param
      * @return
      */
-    private void setWaringText(String language){
-        if (language.equals("cn")){
-            WaringTitle="程序即将自动关闭";
-            WaringMessage="程序会在10s内自动关闭";
-            WaringButton="我不想要关闭";
-        }else if(language.equals("en")){
-            WaringTitle="It will automatically close soon";
-            WaringMessage="The program will automatically shut down within 10s";
-            WaringButton="I don't want to close it";
-        }else if(language.equals("fr")){
-            WaringTitle="Le programme s'éteindra automatiquement";
-            WaringMessage="Le programme s'éteindra automatiquement dans les 10s";
-            WaringButton="Je ne veux pas fermer";
+    private void setWaringText(String language) {
+        if (language.equals("cn")) {
+            WaringTitle = "程序即将自动关闭";
+            WaringMessage = "程序会在10s内自动关闭";
+            WaringButton = "我不想要关闭";
+        } else if (language.equals("en")) {
+            WaringTitle = "It will automatically close soon";
+            WaringMessage = "The program will automatically shut down within 10s";
+            WaringButton = "I don't want to close it";
+        } else if (language.equals("fr")) {
+            WaringTitle = "Le programme s'éteindra automatiquement";
+            WaringMessage = "Le programme s'éteindra automatiquement dans les 10s";
+            WaringButton = "Je ne veux pas fermer";
         }
     }
-
-
-
 
 
 }

@@ -55,20 +55,26 @@ public class EditController {
     //root controller.
     private RootLayoutController rootLayoutController;
     //warning message .
-    String WaringTitle="警告";
-    String WaringMessage="你没有选择任何文件";
-    String WaringButton="我知道了";
+    String WaringTitle = "警告";
+    String WaringMessage = "你没有选择任何文件";
+    String WaringButton = "我知道了";
 
     // get and set method.
-    public JFXTextField getTextname(){return  textname;}
-    public JFXTextField getTextsign(){return  textsign;}
-    public AnchorPane getEdituppane(){
+    public JFXTextField getTextname() {
+        return textname;
+    }
+
+    public JFXTextField getTextsign() {
+        return textsign;
+    }
+
+    public AnchorPane getEdituppane() {
         return edituppane;
     }
 
 
-    public void setRootLayoutController(RootLayoutController rootLayoutController){
-        this.rootLayoutController=rootLayoutController;
+    public void setRootLayoutController(RootLayoutController rootLayoutController) {
+        this.rootLayoutController = rootLayoutController;
     }
 
     /* *  this is used to set different language waring text
@@ -77,21 +83,22 @@ public class EditController {
      * @param  language language that we used.
      * @return
      */
-    public void setWaringText(String language){
-        if (language.equals("cn")){
-            WaringTitle="警告";
-            WaringMessage="你没有选择任何文件";
-            WaringButton="我知道了";
-        }else if(language.equals("en")){
-            WaringTitle="Waring";
-            WaringMessage="You did not choose any file";
-            WaringButton="OK, I konw";
-        }else if(language.equals("fr")){
-            WaringTitle="Avertissement";
-            WaringMessage="Vous n'avez sélectionné aucun fichier";
-            WaringButton="Je sais";
+    public void setWaringText(String language) {
+        if (language.equals("cn")) {
+            WaringTitle = "警告";
+            WaringMessage = "你没有选择任何文件";
+            WaringButton = "我知道了";
+        } else if (language.equals("en")) {
+            WaringTitle = "Waring";
+            WaringMessage = "You did not choose any file";
+            WaringButton = "OK, I konw";
+        } else if (language.equals("fr")) {
+            WaringTitle = "Avertissement";
+            WaringMessage = "Vous n'avez sélectionné aucun fichier";
+            WaringButton = "Je sais";
         }
     }
+
     /* *  confirm edit and change your sign and user name or user
      * @author PennaLia
      * @date 2018/6/12 21:14
@@ -99,18 +106,18 @@ public class EditController {
      * @return
      */
     @FXML
-    public void handleEdit(){
-        if (MainApp.mainUser!=null) {
+    public void handleEdit() {
+        if (MainApp.mainUser != null) {
             rootLayoutController.getDrawerContentController().setNameAndSign(
                     textname.getText(), textsign.getText()
             );
             rootLayoutController.getDrawerContentController().setUser();
         }
         rootLayoutController.getDrawerContentController().changNameAndSign(
-                textname.getText(),textsign.getText()
+                textname.getText(), textsign.getText()
         );
 
-        if(imageURL!=null)
+        if (imageURL != null)
             rootLayoutController.getDrawerContentController().changeUserImage(imageURL);
     }
 
@@ -124,12 +131,12 @@ public class EditController {
     public void handleChooseFile() throws MalformedURLException {
         FileChooser fc = new FileChooser();
         configureFileChooser(fc);
-        File seletedFile =fc.showOpenDialog(null);
-        if(seletedFile!=null){
-            imageURL=seletedFile.toURI().toURL().toExternalForm();//加载出文件的路径
-            if (MainApp.mainUser!=null)
+        File seletedFile = fc.showOpenDialog(null);
+        if (seletedFile != null) {
+            imageURL = seletedFile.toURI().toURL().toExternalForm();//加载出文件的路径
+            if (MainApp.mainUser != null)
                 MainApp.mainUser.setIconUrl(imageURL);
-        }else {
+        } else {
             stackpane.setVisible(true);
             JFXDialogLayout content = new JFXDialogLayout();
             content.setHeading(new Text(WaringTitle));
@@ -148,7 +155,7 @@ public class EditController {
 
     private static void configureFileChooser(final FileChooser fileChooser) {
         fileChooser.setTitle("View Pictures");
-        fileChooser.setInitialDirectory(new File(System.getProperty("user.dir")+"/src/resources/user_icon"));
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.dir") + "/src/resources/user_icon"));
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("All Files", "*.*"),
                 new FileChooser.ExtensionFilter("JPG", "*.jpg"),
@@ -163,7 +170,7 @@ public class EditController {
      * @return
      */
     public void loadLanguage(String language) {
-        JSONObject jsonObject = JsonLoader.getJsonValue(language,"edit");
+        JSONObject jsonObject = JsonLoader.getJsonValue(language, "edit");
         try {
             assert jsonObject != null;
             name.setText(jsonObject.getString("name"));
@@ -173,7 +180,7 @@ public class EditController {
             userimage.setText(jsonObject.getString("userimage"));
             choosefile.setText(jsonObject.getString("choosefile"));
             setWaringText(language);
-        } catch (JSONException | NullPointerException e){
+        } catch (JSONException | NullPointerException e) {
             e.printStackTrace();
         }
     }

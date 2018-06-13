@@ -3,13 +3,13 @@ package com.model;
 import java.util.Objects;
 
 /**
- *<h>
- *     User
- *</h>
+ * <h>
+ * User
+ * </h>
  * <p>the objects of the users</p>
  */
 public class User {
-    
+
     private int id;
     private String name;
     private String nickName;
@@ -19,25 +19,26 @@ public class User {
     private int ifAdmin;
     private String status;
     private String iconUrl;
-    
+
     public User() {
 
     }
 
     /**
      * <h>
-     *     Constructor
+     * Constructor
      * </h>
-     * @author 田闰心
-     * @param id the unique id of the user
-     * @param name the account name of the user
-     * @param nickName the nick name of the user 
-     * @param password the password
-     * @param setting the setting id in the database
-     * @param ifVIP whether it is VIP
-     * @param ifAdmin whether it is the administrator
+     *
+     * @param id        the unique id of the user
+     * @param name      the account name of the user
+     * @param nickName  the nick name of the user
+     * @param password  the password
+     * @param setting   the setting id in the database
+     * @param ifVIP     whether it is VIP
+     * @param ifAdmin   whether it is the administrator
      * @param signature the personal signature below the icon
-     * @param iconUrl the url of the user icon
+     * @param iconUrl   the url of the user icon
+     * @author 田闰心
      */
     public User(int id, String name, String nickName,
                 String password, int setting,

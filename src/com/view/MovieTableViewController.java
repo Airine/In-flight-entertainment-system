@@ -33,15 +33,17 @@ public class MovieTableViewController {
     private JFXTreeTableView<treeMovie> treetable;
 
     private RootLayoutController rootLayoutController;
-    public void setRootLayoutController(RootLayoutController rootLayoutController){
-        this.rootLayoutController=rootLayoutController;
-    }
-    public JFXTreeTableView getTreeTabla(){
-        return  treetable;
+
+    public void setRootLayoutController(RootLayoutController rootLayoutController) {
+        this.rootLayoutController = rootLayoutController;
     }
 
-    private JFXTreeTableColumn<treeMovie, String> initTreeColum(String tableName, int width){
-        JFXTreeTableColumn<treeMovie,String> tableColumn =new JFXTreeTableColumn<>(tableName);
+    public JFXTreeTableView getTreeTabla() {
+        return treetable;
+    }
+
+    private JFXTreeTableColumn<treeMovie, String> initTreeColum(String tableName, int width) {
+        JFXTreeTableColumn<treeMovie, String> tableColumn = new JFXTreeTableColumn<>(tableName);
         tableColumn.setPrefWidth(width);
         return tableColumn;
     }
@@ -53,42 +55,42 @@ public class MovieTableViewController {
      * @return
      */
     @FXML
-    private void initialize(){
+    private void initialize() {
 
         // Title Column
-        JFXTreeTableColumn<treeMovie,String> title = initTreeColum("Title",200);
+        JFXTreeTableColumn<treeMovie, String> title = initTreeColum("Title", 200);
         title.setCellValueFactory(param -> param.getValue().getValue().title);
 
         // Movie Type Column
-        JFXTreeTableColumn<treeMovie,String> type = initTreeColum("Type", 100);
-        type.setCellValueFactory(param ->  param.getValue().getValue().type);
+        JFXTreeTableColumn<treeMovie, String> type = initTreeColum("Type", 100);
+        type.setCellValueFactory(param -> param.getValue().getValue().type);
 
         // Movie Type Column
-        JFXTreeTableColumn<treeMovie,String> language = initTreeColum("Language", 140);
+        JFXTreeTableColumn<treeMovie, String> language = initTreeColum("Language", 140);
         language.setCellValueFactory(param -> param.getValue().getValue().language);
 
         // Year Column
-        JFXTreeTableColumn<treeMovie,String> year = initTreeColum("Year", 121);
+        JFXTreeTableColumn<treeMovie, String> year = initTreeColum("Year", 121);
         year.setCellValueFactory(param -> param.getValue().getValue().year);
 
         //被搜索的对象
         ObservableList<treeMovie> treeMovies = FXCollections.observableArrayList();
 //        treeMovies.add(new treeMovie("penna",18));
 //        treeMovies.add(new treeMovie("Araon",19));
-        for (Movie m:mainMovies) {
+        for (Movie m : mainMovies) {
             treeMovies.add(new treeMovie(m));
         }
         // TODO: 2018/6/11  批量添加 movie 到TreeView
-        TreeItem<treeMovie> root =new RecursiveTreeItem<treeMovie>(treeMovies,RecursiveTreeObject::getChildren);
+        TreeItem<treeMovie> root = new RecursiveTreeItem<treeMovie>(treeMovies, RecursiveTreeObject::getChildren);
         treetable.getColumns().addAll(title, type, language, year);
         treetable.setRoot(root);
         treetable.setShowRoot(false);
 
         //鼠标双击事件
         treetable.setOnMouseClicked(event -> {
-            if(event.getClickCount()==2){
-                TreeItem<treeMovie> item=treetable.getSelectionModel().getSelectedItem();
-                if (item!=null) {
+            if (event.getClickCount() == 2) {
+                TreeItem<treeMovie> item = treetable.getSelectionModel().getSelectedItem();
+                if (item != null) {
                     Movie tempt = item.getValue().movie;
                     System.out.println(tempt);
                     try {
@@ -106,6 +108,7 @@ public class MovieTableViewController {
         });
 
     }
+
     /* *  if you click it , the searchpane pane will not visible.
      * @author PennaLia
      * @date 2018/6/12 20:15
@@ -113,12 +116,10 @@ public class MovieTableViewController {
      * @return
      */
     @FXML
-    public void handleBack(){
+    public void handleBack() {
         rootLayoutController.searchPaneVisible(false);
         rootLayoutController.setKeyboardVisible(false);
     }
-
-
 
 
     /* *  this class is uesd to made movies class be search in the search tree.
@@ -133,15 +134,16 @@ public class MovieTableViewController {
         StringProperty language;
         StringProperty year;
         Movie movie;
-        private treeMovie(Movie movie){
+
+        private treeMovie(Movie movie) {
             this.movie = movie;
-            this.title = new SimpleStringProperty(movie.getTitle_cn()+"\n"+movie.getTitle_en());
+            this.title = new SimpleStringProperty(movie.getTitle_cn() + "\n" + movie.getTitle_en());
             MovieType type = mainMovieTypes.stream()
-                    .filter(movieType -> movieType.getType_id()==movie.getType())
+                    .filter(movieType -> movieType.getType_id() == movie.getType())
                     .collect(Collectors.toList())
                     .get(0);
             String tab = "            ";
-            this.type = new SimpleStringProperty(type.getType_cn()+"\n"+type.getType_en());
+            this.type = new SimpleStringProperty(type.getType_cn() + "\n" + type.getType_en());
             String tempt = tab + movie.getLanguage();
             this.language = new SimpleStringProperty(tempt);
             this.year = new SimpleStringProperty(movie.getYear());
@@ -154,12 +156,12 @@ public class MovieTableViewController {
      * @param
      * @return
      */
-    public void addTextListen(){
+    public void addTextListen() {
         rootLayoutController.getSearchFeild().textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 treetable.setPredicate(userTreeItem -> {
-                    if(newValue.length()>0)//这个别删，是检测文本大于0自动打开搜索框，不点回车了
+                    if (newValue.length() > 0)//这个别删，是检测文本大于0自动打开搜索框，不点回车了
                         rootLayoutController.searchPaneVisible(true);
                     else {
                         rootLayoutController.searchPaneVisible(false);

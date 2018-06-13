@@ -10,6 +10,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 /* *   this is the about us controller calss to control everything in about us
  * @author PennaLia
  * @date 2018/6/12 20:43
@@ -37,21 +38,22 @@ public class AboutUsController {
     private Label workplace;
 
     //waring message
-    String WaringTitle="当前版本";
-    String WaringMessage="当前已经是最新版本";
-    String WaringButton="我知道了";
+    String WaringTitle = "当前版本";
+    String WaringMessage = "当前已经是最新版本";
+    String WaringButton = "我知道了";
 
     //the rootlayoutcontroller used to connect other pane.
     private RootLayoutController rootLayoutController;
 
     //get and set method
-    public AnchorPane getAboutusuppane(){
+    public AnchorPane getAboutusuppane() {
         return aboutusuppane;
     }
 
-    public void setRootLayoutController(RootLayoutController rootLayoutController){
-        this.rootLayoutController=rootLayoutController;
+    public void setRootLayoutController(RootLayoutController rootLayoutController) {
+        this.rootLayoutController = rootLayoutController;
     }
+
     /* *  used to initialize something in the beginning.
      * @author PennaLia
      * @date 2018/6/12 20:47
@@ -69,19 +71,19 @@ public class AboutUsController {
      * @param
      * @return
      */
-    public void setWaringText(String language){
-        if (language.equals("cn")){
-            WaringTitle="当前版本";
-            WaringMessage="当前已经是最新版本";
-            WaringButton="我知道了";
-        }else if(language.equals("en")){
-            WaringTitle="Current version";
-            WaringMessage="Currently is the latest version";
-            WaringButton="OK, I konw";
-        }else if(language.equals("fr")){
-            WaringTitle="Version actuelle";
-            WaringMessage="Actuellement la dernière version";
-            WaringButton="Je sais";
+    public void setWaringText(String language) {
+        if (language.equals("cn")) {
+            WaringTitle = "当前版本";
+            WaringMessage = "当前已经是最新版本";
+            WaringButton = "我知道了";
+        } else if (language.equals("en")) {
+            WaringTitle = "Current version";
+            WaringMessage = "Currently is the latest version";
+            WaringButton = "OK, I konw";
+        } else if (language.equals("fr")) {
+            WaringTitle = "Version actuelle";
+            WaringMessage = "Actuellement la dernière version";
+            WaringButton = "Je sais";
         }
     }
 
@@ -92,7 +94,7 @@ public class AboutUsController {
      * @return
      */
     @FXML
-    public void handleCheckUpdata(){
+    public void handleCheckUpdata() {
         stackpane.setVisible(true);
         JFXDialogLayout content = new JFXDialogLayout();
         content.setHeading(new Text(WaringTitle));
@@ -114,9 +116,10 @@ public class AboutUsController {
      * @return
      */
     @FXML
-    public void handleCommitComment(){
+    public void handleCommitComment() {
 
     }
+
     /* *  change the language.
      * @author PennaLia
      * @date 2018/6/12 20:49
@@ -124,7 +127,7 @@ public class AboutUsController {
      * @return
      */
     public void loadLanguage(String language) {
-        JSONObject jsonObject = JsonLoader.getJsonValue(language,"about");
+        JSONObject jsonObject = JsonLoader.getJsonValue(language, "about");
         try {
             assert jsonObject != null;
             title.setText(jsonObject.getString("title"));
@@ -136,17 +139,18 @@ public class AboutUsController {
             workshop.setText(jsonObject.getString("workshop"));
             workplace.setText(jsonObject.getString("workplace"));
             setWaringText(language);
-        } catch (JSONException | NullPointerException e){
+        } catch (JSONException | NullPointerException e) {
             e.printStackTrace();
         }
     }
+
     /* *  change the button text size.
      * @author PennaLia
      * @date 2018/6/12 20:50
      * @param
      * @return
      */
-    public void initPingJia(){
+    public void initPingJia() {
         pingjia.setStyle("-fx-font-size:17px;");
     }
 }

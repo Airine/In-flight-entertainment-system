@@ -28,19 +28,20 @@ public class MovieType {
     private List<Movie> movies = new ArrayList<>();
 
 
-    public MovieType(){
+    public MovieType() {
 
     }
 
     /**
      * <h>Constructor of MovieType</h>
-     * @param type_id the id of types
-     * @param type_cn the Chinese name of the types
-     * @param type_en the English name of the types
+     *
+     * @param type_id  the id of types
+     * @param type_cn  the Chinese name of the types
+     * @param type_en  the English name of the types
      * @param language the language type
      */
     public MovieType(int type_id, String type_cn, String type_en,
-                     String language){
+                     String language) {
         setType_id(type_id);
         setType_cn(type_cn);
         setType_en(type_en);
@@ -51,14 +52,15 @@ public class MovieType {
     /**
      * <h>Initialization</h>
      * <p>Initialization of the movie list</p>
+     *
      * @param language the type of language
      */
     private void initMovies(String language) {
         movies = getMoviesByType(type_en);
-        for (Movie movie:movies) {
-            try{
+        for (Movie movie : movies) {
+            try {
                 movie.initMI();
-                StackPane movieItem = (language.equals("cn"))? movie.getMi_cn() : movie.getMi_en();
+                StackPane movieItem = (language.equals("cn")) ? movie.getMi_cn() : movie.getMi_en();
                 flowPane.getChildren().add(movieItem);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -133,11 +135,12 @@ public class MovieType {
 
     /**
      * <h>Handle the Click Event</h>
-     * <p>When clicking the movie type big button, 
+     * <p>When clicking the movie type big button,
      * we enter a new movie page which contains movies of that genre</p>
-     * @author 田闰心
+     *
      * @param homeScrollPane
      * @param button
+     * @author 田闰心
      */
     public void handleClick(JFXScrollPane homeScrollPane, JFXButton button) {
         movieSortItem_cn.getButton().setOnMouseClicked(event -> {

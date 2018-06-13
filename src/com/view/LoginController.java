@@ -35,17 +35,24 @@ public class LoginController {
     public Text user_pw_warning;
     private Stage dialogStage;
     private MainApp mainApp;
-    public void setMainApp(MainApp mainApp){this.mainApp=mainApp;}
-    public void setDialogStage(Stage dialogStage){
-        this.dialogStage=dialogStage;
+
+    public void setMainApp(MainApp mainApp) {
+        this.mainApp = mainApp;
     }
-    public Stage getDialogStage() { return dialogStage; }
+
+    public void setDialogStage(Stage dialogStage) {
+        this.dialogStage = dialogStage;
+    }
+
+    public Stage getDialogStage() {
+        return dialogStage;
+    }
 
     @FXML
     private JFXButton close;
 
     @FXML
-    private void initialize(){
+    private void initialize() {
     }
 
     /* *  load language file from json.
@@ -54,15 +61,15 @@ public class LoginController {
      * @param
      * @return
      */
-    public void loadLanguage(String language){
-        JSONObject jsonObject = JsonLoader.getJsonValue(language,"loginDialog");
+    public void loadLanguage(String language) {
+        JSONObject jsonObject = JsonLoader.getJsonValue(language, "loginDialog");
         try {
             assert jsonObject != null;
             login.setText(jsonObject.getString("login"));
             sign.setText(jsonObject.getString("sign"));
             user_name.setPromptText(jsonObject.getString("username"));
             user_pw.setPromptText(jsonObject.getString("password"));
-        } catch (JSONException | NullPointerException e){
+        } catch (JSONException | NullPointerException e) {
             e.printStackTrace();
         }
     }
@@ -73,7 +80,7 @@ public class LoginController {
      * @param
      * @return
      */
-    public  void setCloseAction(){
+    public void setCloseAction() {
         dialogStage.setOnCloseRequest(windowEvent -> {
             mainApp.setOpenLogin(false);
             mainApp.setLogin(false);
@@ -87,7 +94,7 @@ public class LoginController {
      * @return
      */
     @FXML
-    public void handleClose(){
+    public void handleClose() {
         dialogStage.close();
         mainApp.setOpenLogin(false);
         mainApp.setLogin(false);
@@ -100,6 +107,7 @@ public class LoginController {
     public void releaseLoginButton(MouseEvent mouseEvent) {
         login.setButtonType(JFXButton.ButtonType.RAISED);
     }
+
     /* *  this use to verify if  username and password are matched.
      * @author PennaLia
      * @date 2018/6/12 23:42
@@ -110,19 +118,19 @@ public class LoginController {
         String user_nameText = user_name.getText();
         String user_pwText = user_pw.getText();
         User user = getUser(user_nameText);
-        if(user==null){
+        if (user == null) {
             user_name_warning.setText("Username not exists");
         } else {
-            if (!user.verifyPassword(user_pwText)){
+            if (!user.verifyPassword(user_pwText)) {
                 user_pw_warning.setText("Wrong password");
             } else {
                 dialogStage.close();
                 mainUser = user;
                 loadStarRelation();
-                if (mainUser.getIfVIP() == 1){
+                if (mainUser.getIfVIP() == 1) {
                     mainApp.getRootLayoutController().getDrawerContentController().beHuiyuan();
                 }
-                if (mainUser.getIfAdmin() == 1){
+                if (mainUser.getIfAdmin() == 1) {
                     MainApp.Admin = true;
                     mainApp.getRootLayoutController().settingPageController.getWebScrapingButton().setDisable(false);
                 }
@@ -166,9 +174,9 @@ public class LoginController {
      * @return
      */
     public void getUsernameTyped(KeyEvent keyEvent) {
-        String input = user_name.getText()+keyEvent.getCharacter();
+        String input = user_name.getText() + keyEvent.getCharacter();
 //        System.err.println(input);
-        if(getUser(input) != null) {
+        if (getUser(input) != null) {
             sign.setButtonType(JFXButton.ButtonType.FLAT);
             sign.setDisable(true);
 //            user_name_warning.setText("Username exists");

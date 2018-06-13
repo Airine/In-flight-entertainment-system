@@ -39,8 +39,8 @@ public class MainApp extends Application {
     public static List<MovieType> mainMovieTypes;
     public static List<Movie> starMovies;
     public static PlayerPageController player;
-    public static boolean huiyuan=false;
-    public static boolean Admin=false;
+    public static boolean huiyuan = false;
+    public static boolean Admin = false;
     public static String language = "cn";
 
     private LoginController controller;
@@ -48,24 +48,36 @@ public class MainApp extends Application {
     private Stage primaryStage;
     private AnchorPane rootLayout;
     private AnchorPane Loginpage;
-    private Boolean login=false,openLogin=false ;//判断是否已经登陆过，如果已经打开登陆窗口，或者已经登陆，就不能再打开登陆窗口
-   //get and  set method .
-    public AnchorPane getRootLayout(){return  rootLayout;}
+    private Boolean login = false, openLogin = false;//判断是否已经登陆过，如果已经打开登陆窗口，或者已经登陆，就不能再打开登陆窗口
+
+    //get and  set method .
+    public AnchorPane getRootLayout() {
+        return rootLayout;
+    }
 
     public RootLayoutController getRootLayoutController() {
         return rootLayoutController;
     }
 
-    public boolean getLogin(){return login;}
-    public boolean getOpenLogin(){return openLogin;}
+    public boolean getLogin() {
+        return login;
+    }
+
+    public boolean getOpenLogin() {
+        return openLogin;
+    }
+
     public void setLogin(Boolean login) {
         this.login = login;
     }
+
     public void setOpenLogin(Boolean openLogin) {
         this.openLogin = openLogin;
     }
 
-    public Stage getPrimaryStage() { return primaryStage; }
+    public Stage getPrimaryStage() {
+        return primaryStage;
+    }
 
     public static PlayerPageController getPlayer() {
         return player;
@@ -91,15 +103,16 @@ public class MainApp extends Application {
         this.primaryStage.getIcons().add(new Image("resources/plane.png"));
         initRootLayout();
         initLogin();
-        starMovies=new ArrayList<>();
+        starMovies = new ArrayList<>();
     }
+
     /* *  init the rootlayout page.
      * @author PennaLia
      * @date 2018/6/12 23:36
      * @param
      * @return
      */
-    private void initRootLayout(){
+    private void initRootLayout() {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class
@@ -109,22 +122,23 @@ public class MainApp extends Application {
             primaryStage.setScene(scene);
 
             //连接controller
-            rootLayoutController=loader.getController();
+            rootLayoutController = loader.getController();
             rootLayoutController.setMainApp(this);
             rootLayoutController.getMovieTableViewController().addTextListen();
             primaryStage.show();
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
             System.out.print(e.getMessage());
         }
     }
+
     /* *  init the login page.
      * @author PennaLia
      * @date 2018/6/12 23:36
      * @param
      * @return
      */
-    private void initLogin(){
+    private void initLogin() {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class
@@ -132,7 +146,7 @@ public class MainApp extends Application {
             Loginpage = (AnchorPane) loader.load();
             controller = loader.getController();
             controller.setMainApp(this);
-        }catch(IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -143,11 +157,11 @@ public class MainApp extends Application {
      * @param
      * @return
      */
-    public void login(){
+    public void login() {
         try {
-            if(!login && !openLogin) {
+            if (!login && !openLogin) {
                 Stage dialogStage = new Stage();
-                openLogin=true; //打开了窗口就不能再打开了
+                openLogin = true; //打开了窗口就不能再打开了
                 dialogStage.setTitle("login");
                 dialogStage.setResizable(false);
                 dialogStage.initOwner(primaryStage);
@@ -160,7 +174,7 @@ public class MainApp extends Application {
                 rootLayoutController.getDrawerContentController().setUser();
 
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.getStackTrace();
         }
     }
@@ -171,13 +185,14 @@ public class MainApp extends Application {
      * @param
      * @return
      */
-    public void closeWindows(){
+    public void closeWindows() {
         DataUpdater.writeBackCollection();
-        if (mainUser!=null)
+        if (mainUser != null)
             DataUpdater.updateUser(mainUser);
         System.out.println("Write Back Compelete.");
         primaryStage.close();
     }
+
     /* *  the main method .
      * @author PennaLia
      * @date 2018/6/12 23:37
@@ -198,18 +213,18 @@ public class MainApp extends Application {
      * @param
      * @return
      */
-    public void changeLanguage(String language){
+    public void changeLanguage(String language) {
         rootLayoutController.loadLanguage(language);
         controller.loadLanguage(language);
         MainApp.language = language;
         FlowPane flowPane = new FlowPane();
         for (MovieType movieType : mainMovieTypes) {
             try {
-                StackPane sort = (language.equals("cn"))? movieType.getMovieSortItem_cn() : movieType.getMovieSortItem_en();
+                StackPane sort = (language.equals("cn")) ? movieType.getMovieSortItem_cn() : movieType.getMovieSortItem_en();
                 movieType.handleClick(rootLayoutController.homePageController.HomeScrollPane,
                         rootLayoutController.homePageController.back);
                 flowPane.getChildren().add(sort);
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }

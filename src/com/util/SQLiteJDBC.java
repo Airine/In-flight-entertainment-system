@@ -5,6 +5,7 @@ import java.sql.*;
 /**
  * <h>SQLiteJDBC</h>
  * <p>JDBC for SQlite</p>
+ *
  * @author 田闰心
  */
 public class SQLiteJDBC {
@@ -13,7 +14,8 @@ public class SQLiteJDBC {
     private static final String DB_URL = "jdbc:sqlite:src/resources/sqlite-database/sqliteDB.db";
 
     /**
-     * The main method 
+     * The main method
+     *
      * @param args arguments
      */
     public static void main(String args[]) {
@@ -64,7 +66,8 @@ public class SQLiteJDBC {
 
     /**
      * Run the sql statement without the result
-     * @param connection 
+     *
+     * @param connection
      * @param sql
      */
     public static void runSQLstatement(Connection connection, String sql) {
@@ -81,8 +84,9 @@ public class SQLiteJDBC {
 
     /**
      * This method is to run the query with feedback
+     *
      * @param connection the connection to database
-     * @param sql the string of the sql statement
+     * @param sql        the string of the sql statement
      * @return The result of sql query
      */
     public static ResultSet runSQLquery(Connection connection, String sql) {

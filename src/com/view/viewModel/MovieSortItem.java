@@ -11,8 +11,8 @@ public class MovieSortItem extends StackPane {
 
     private JFXButton button;
 
-    public MovieSortItem(String language, String type){
-        String url = "resources/movie_type/"+language+"/"+type+".png";
+    public MovieSortItem(String language, String type) {
+        String url = "resources/movie_type/" + language + "/" + type + ".png";
         this.setPrefWidth(width);
         this.setPrefHeight(height);
 
@@ -21,13 +21,13 @@ public class MovieSortItem extends StackPane {
         // create content
         JFXButton button = new JFXButton("");
         button.setButtonType(JFXButton.ButtonType.RAISED);
-        button.setPrefSize(2*width, 2*height);
+        button.setPrefSize(2 * width, 2 * height);
         button.setStyle(
                 "-fx-background-radius: 5;" +
-                "-fx-background-image: url(\"" + url + "\");" +
-                "-fx-background-position: center;" +
-                "-fx-background-repeat: no-repeat;" +
-                "-fx-background-size: 100% 100%;"
+                        "-fx-background-image: url(\"" + url + "\");" +
+                        "-fx-background-position: center;" +
+                        "-fx-background-repeat: no-repeat;" +
+                        "-fx-background-size: 100% 100%;"
         );
 
         VBox.setVgrow(button, Priority.ALWAYS);

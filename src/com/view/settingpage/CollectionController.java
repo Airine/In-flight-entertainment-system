@@ -16,10 +16,12 @@ public class CollectionController {
     //this is roolayout controller that connect everything.
     private RootLayoutController rootLayoutController;
 
-    public FlowPane getMycollection(){return mycollection;}
+    public FlowPane getMycollection() {
+        return mycollection;
+    }
 
-    public void setRootLayoutController(RootLayoutController rootLayoutController){
-        this.rootLayoutController=rootLayoutController;
+    public void setRootLayoutController(RootLayoutController rootLayoutController) {
+        this.rootLayoutController = rootLayoutController;
     }
 
 

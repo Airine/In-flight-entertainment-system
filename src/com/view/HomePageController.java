@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import static com.MainApp.mainMovieTypes;
 import static com.MainApp.mainMovies;
 import static javafx.scene.layout.StackPane.setAlignment;
+
 /* *  this is the controller of homepage.
  * @author PennaLia
  * @date 2018/6/12 23:45
@@ -37,7 +38,7 @@ public class HomePageController {
     @FXML
     public FlowPane flowpane;
 
-    public JFXButton back =new JFXButton();
+    public JFXButton back = new JFXButton();
     ImageView imageView;
     RootLayoutController rootLayoutController;
 
@@ -51,35 +52,36 @@ public class HomePageController {
      * @param
      * @return
      */
-    public void addMovieSortItem(){
+    public void addMovieSortItem() {
         for (MovieType movieType : mainMovieTypes) {
             try {
                 StackPane sort = movieType.getMovieSortItem_cn();
                 movieType.handleClick(HomeScrollPane, back);
                 flowpane.getChildren().add(sort);
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }
 
-        /* *  initialize everything.
-         * @author PennaLia
-         * @date 2018/6/13 10:21
-         * @param
-         * @return
-         */
+    /* *  initialize everything.
+     * @author PennaLia
+     * @date 2018/6/13 10:21
+     * @param
+     * @return
+     */
     @FXML
-    private void initialize(){
+    private void initialize() {
         addMovieSortItem();
         HomeScrollPane.setContent(flowpane);
         HomeScrollPane.setStyle("-fx-border-color: transparent;");
         //封面图
-        imageView=new ImageView("resources/moviepage2.png");
+        imageView = new ImageView("resources/moviepage2.png");
         imageView.setFitWidth(640);
         imageView.setFitHeight(192);
-        back.setPrefSize(35,35);
-        back.setMinHeight(20);back.setMinWidth(20);
+        back.setPrefSize(35, 35);
+        back.setMinHeight(20);
+        back.setMinWidth(20);
         back.setStyle("-fx-background-color:transparent;" +
                 "-fx-background-radius: 50%;");
         SVGGlyph glyph = new SVGGlyph(-1,
@@ -99,15 +101,15 @@ public class HomePageController {
 
     }
 
-        /* *  change the page content for other page.
-         * @author PennaLia
-         * @date 2018/6/13 10:21
-         * @param
-         * @return
-         */
-        public void changeFlowContent(FlowPane flowPane){
+    /* *  change the page content for other page.
+     * @author PennaLia
+     * @date 2018/6/13 10:21
+     * @param
+     * @return
+     */
+    public void changeFlowContent(FlowPane flowPane) {
         HomeScrollPane.setContent(flowPane);
-        }
+    }
 }
 
 

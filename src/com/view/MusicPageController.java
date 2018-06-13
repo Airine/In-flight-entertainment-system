@@ -21,7 +21,7 @@ import static com.view.PlayerBarController.formatTime;
 /**
  * @author 黄珂邈
  * <h>
- *     The Controller of the Music Playing
+ * The Controller of the Music Playing
  * </h>
  * @see PlayerBarController
  */
@@ -40,23 +40,25 @@ public class MusicPageController {
     private Label MusicPlayTime;
     @FXML
     private JFXToggleButton LoopPlayback;
-    
+
     private File[] musicList;
-    
+
     private MediaPlayer currentPlayer;
-    
+
     private int musicIndex;
     private boolean stopRequested = false;
     private Duration duration;
-    private  RootLayoutController rootLayoutController;
-    public void setRootLayoutController(RootLayoutController rootLayoutController){
-        this.rootLayoutController=rootLayoutController;
+    private RootLayoutController rootLayoutController;
+
+    public void setRootLayoutController(RootLayoutController rootLayoutController) {
+        this.rootLayoutController = rootLayoutController;
     }
 
     public AnchorPane getMusicPane() {
         return musicPane;
     }
-    public void setMusicTitle(String music){
+
+    public void setMusicTitle(String music) {
         musicTitle.setText(music);
     }
 
@@ -67,7 +69,7 @@ public class MusicPageController {
      * @return
      */
     @FXML
-    private void initialize(){
+    private void initialize() {
         String folder = getClass().getResource("/resources/music/").getPath();
         musicList = new File(folder).listFiles();
         musicIndex = 0;
@@ -75,10 +77,10 @@ public class MusicPageController {
         controlMusic(new MediaPlayer(new Media(musicList[musicIndex].toURI().toString())));
         String fileName = musicList[musicIndex].getName();
         int index = fileName.lastIndexOf("-");
-        if (index==-1)
-            setMusicTitle(fileName.substring(0,fileName.length()-4));
+        if (index == -1)
+            setMusicTitle(fileName.substring(0, fileName.length() - 4));
         else
-            setMusicTitle(fileName.substring(index+2,fileName.length()-4));
+            setMusicTitle(fileName.substring(index + 2, fileName.length() - 4));
     }
 
     /* *  handle music status to decide  what should we do
@@ -88,7 +90,7 @@ public class MusicPageController {
      * @return
      */
     @FXML
-    private void handleMusic(){
+    private void handleMusic() {
         MediaPlayer.Status status = currentPlayer.getStatus();
         if (status == MediaPlayer.Status.UNKNOWN || status == MediaPlayer.Status.HALTED) {
             return;
@@ -101,6 +103,7 @@ public class MusicPageController {
             currentPlayer.pause();
         }
     }
+
     /* *  when you click music bar, it will change the music state.
      * @author PennaLia
      * @date 2018/6/13 10:28
@@ -108,7 +111,7 @@ public class MusicPageController {
      * @return
      */
     @FXML
-    private void handleClickMusicBar(){
+    private void handleClickMusicBar() {
         currentPlayer.seek(duration.multiply(musicSlider.getValue() / 100.0));
     }
 
@@ -119,47 +122,45 @@ public class MusicPageController {
      * @return
      */
     @FXML
-    private void handleClickMusicVolume(){
+    private void handleClickMusicVolume() {
         currentPlayer.setVolume(MusicVolume.getValue() / 100.0);
     }
-    
+
     /**
      * We only use local songs.
      * The songs are in order and they are stored in file list.
      * We can switch songs by pressing the button.
-     * 
      */
     @FXML
-    private void nextSong(){
-       if(musicIndex>=musicList.length-1){
-           System.out.println("This is already the last song.");
-       }
-       else{
-           currentPlayer.stop();
-           controlMusic(new MediaPlayer(new Media(musicList[++musicIndex].toURI().toString())));
-           String fileName = musicList[musicIndex].getName();
-           int index = fileName.lastIndexOf("-");
-           if (index==-1) 
-               setMusicTitle(fileName.substring(0,fileName.length()-4));
-           else
-               setMusicTitle(fileName.substring(index+2,fileName.length()-4));
-           currentPlayer.play();
-       }
-    }
-    @FXML
-    private void previousSong(){
-        if(musicIndex<=0){
-            System.out.println("This is already the first song.");
+    private void nextSong() {
+        if (musicIndex >= musicList.length - 1) {
+            System.out.println("This is already the last song.");
+        } else {
+            currentPlayer.stop();
+            controlMusic(new MediaPlayer(new Media(musicList[++musicIndex].toURI().toString())));
+            String fileName = musicList[musicIndex].getName();
+            int index = fileName.lastIndexOf("-");
+            if (index == -1)
+                setMusicTitle(fileName.substring(0, fileName.length() - 4));
+            else
+                setMusicTitle(fileName.substring(index + 2, fileName.length() - 4));
+            currentPlayer.play();
         }
-        else{
+    }
+
+    @FXML
+    private void previousSong() {
+        if (musicIndex <= 0) {
+            System.out.println("This is already the first song.");
+        } else {
             currentPlayer.stop();
             controlMusic(new MediaPlayer(new Media(musicList[--musicIndex].toURI().toString())));
             String fileName = musicList[musicIndex].getName();
             int index = fileName.lastIndexOf("-");
-            if (index==-1)
-                setMusicTitle(fileName.substring(0,fileName.length()-4));
+            if (index == -1)
+                setMusicTitle(fileName.substring(0, fileName.length() - 4));
             else
-                setMusicTitle(fileName.substring(index+2,fileName.length()-4));
+                setMusicTitle(fileName.substring(index + 2, fileName.length() - 4));
             currentPlayer.play();
         }
     }
@@ -170,7 +171,7 @@ public class MusicPageController {
      * @param
      * @return
      */
-    public void controlMusic(MediaPlayer player){
+    public void controlMusic(MediaPlayer player) {
         currentPlayer = player;
         player.currentTimeProperty().addListener(ov -> updateValues());
         player.setOnPlaying(() -> {
@@ -208,20 +209,20 @@ public class MusicPageController {
             currentPlayer.seek(currentPlayer.getStartTime());
             currentPlayer.pause();
         });
-        
-        LoopPlayback.selectedProperty().addListener((observable, oldValue, newValue) ->{
-            if (!LoopPlayback.isSelected()){
+
+        LoopPlayback.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!LoopPlayback.isSelected()) {
                 currentPlayer.setOnEndOfMedia(() -> {
                     currentPlayer.seek(currentPlayer.getStartTime());
                     currentPlayer.pause();
                 });
-            }
-            else{
+            } else {
                 currentPlayer.setOnEndOfMedia(() -> currentPlayer.seek(currentPlayer.getStartTime()));
             }
         });
-        
+
     }
+
     /* *  to load langugae from json.
      * @author PennaLia
      * @date 2018/6/13 10:30
@@ -229,14 +230,15 @@ public class MusicPageController {
      * @return
      */
     public void loadLanguage(String language) {
-        JSONObject jsonObject = JsonLoader.getJsonValue(language,"music");
+        JSONObject jsonObject = JsonLoader.getJsonValue(language, "music");
         try {
             assert jsonObject != null;
             LoopPlayback.setText(jsonObject.getString("loop"));
-        } catch (JSONException | NullPointerException e){
+        } catch (JSONException | NullPointerException e) {
             e.printStackTrace();
         }
     }
+
     /* *  updates the music values.
      * @author PennaLia
      * @date 2018/6/13 10:30
