@@ -83,6 +83,12 @@ public class DrawerContentController {
         return UserBackUpPane;
     }
 
+    /* *  initialize user default icon , and every  component.
+     * @author PennaLia
+     * @date 2018/6/13 10:22
+     * @param
+     * @return
+     */
     @FXML
     public void initialize(){
         String url = "resources/user_icon/shiyuan.png";
@@ -99,21 +105,44 @@ public class DrawerContentController {
         });
     }
 
+    /* *  used to set user.
+     * @author PennaLia
+     * @date 2018/6/13 10:23
+     * @param
+     * @return
+     */
     public void setUser(){
         changNameAndSign(MainApp.mainUser.getNickName(), MainApp.mainUser.getStatus());
         changeUserImage(MainApp.mainUser.getIconUrl());
     }
 
+    /* *  change user name and sign.
+     * @author PennaLia
+     * @date 2018/6/13 10:23
+     * @param  name is the user name , sign is the user sign.
+     * @return
+     */
     public void changNameAndSign(String name,String sign){
         username.setText(name);
         usersign.setText(sign);
     }
-
+    /* * set main user name and sign.
+     * @author PennaLia
+     * @date 2018/6/13 10:24
+     * @param
+     * @return
+     */
     public void setNameAndSign(String name, String sign){
         MainApp.mainUser.setNickName(name);
         MainApp.mainUser.setStatus(sign);
     }
 
+    /* *  change the user image .
+     * @author PennaLia
+     * @date 2018/6/13 10:24
+     * @param
+     * @return
+     */
     public void changeUserImage(String url){
         user_icon.setStyle("-fx-background-image: url(\"" + url + "\");" +
                 "-fx-background-position: center;" +
@@ -134,31 +163,60 @@ public class DrawerContentController {
         huiyuan.setImage(new Image("resources/icon/truehuiyuan.png"));
         MainApp.huiyuan =true;
     }
-
+    /* *  show setting  page.
+     * @author PennaLia
+     * @date 2018/6/13 10:25
+     * @param
+     * @return
+     */
     @FXML
     private void handleSetting(){
         rootLayoutController.setSettingVisible();//设置界面可见
         rootLayoutController.homePageNotSee();//主界面不可见
        rootLayoutController.setSettingPane(rootLayoutController.setting);
     }
+    /* *  show about us page ,
+     * @author PennaLia
+     * @date 2018/6/13 10:25
+     * @param
+     * @return
+     */
     @FXML
     private void handleAboutus(){
         rootLayoutController.setSettingVisible();//设置界面可见
         rootLayoutController.homePageNotSee();//主界面不可见
         rootLayoutController.setSettingPane(rootLayoutController.aboutus);
     }
+    /* *  show theme page.
+     * @author PennaLia
+     * @date 2018/6/13 10:25
+     * @param
+     * @return
+     */
     @FXML
     private void handleTheme(){
         rootLayoutController.setSettingVisible();//设置界面可见
         rootLayoutController.homePageNotSee();//主界面不可见
         rootLayoutController.setSettingPane(rootLayoutController.theme);
     }
+    /* *  show moeny page .
+     * @author PennaLia
+     * @date 2018/6/13 10:26
+     * @param
+     * @return
+     */
     @FXML
     private void handleMoney(){
         rootLayoutController.setSettingVisible();//设置界面可见
         rootLayoutController.homePageNotSee();//主界面不可见
         rootLayoutController.setSettingPane(rootLayoutController.money);
     }
+    /* *  show timing close page.
+     * @author PennaLia
+     * @date 2018/6/13 10:26
+     * @param
+     * @return
+     */
     @FXML
     private void handleTiming(){
         rootLayoutController.setSettingVisible();//设置界面可见
@@ -196,6 +254,12 @@ public class DrawerContentController {
         rootLayoutController.homePageController.back.setVisible(true);
 
     }
+    /* * to show the edit page .
+     * @author PennaLia
+     * @date 2018/6/13 10:24
+     * @param
+     * @return
+     */
     @FXML
     private void handleEdit(){
         rootLayoutController.setSettingVisible();//设置界面可见
@@ -203,6 +267,12 @@ public class DrawerContentController {
         rootLayoutController.setSettingPane(rootLayoutController.edit);
     }
 
+    /* *  to show the login windows.
+     * @author PennaLia
+     * @date 2018/6/13 10:25
+     * @param
+     * @return
+     */
     @FXML
     private void handleLogin() {
         rootLayoutController.getMainApp().login();
