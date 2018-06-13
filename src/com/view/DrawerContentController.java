@@ -300,7 +300,7 @@ public class DrawerContentController {
             if (night.isSelected()) {
                 rootLayoutController.toNight();
             } else {
-                if (rootLayoutController.now.equals(rootLayoutController.DefaultCSS)) {
+                if (rootLayoutController.now.equals(rootLayoutController.defaultCSS)) {
                     rootLayoutController.toDefault();
                 } else if (rootLayoutController.now.equals(rootLayoutController.Theme1)) {
                     rootLayoutController.toTheme1();
