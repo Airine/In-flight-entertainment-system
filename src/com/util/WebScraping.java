@@ -315,11 +315,6 @@ public class WebScraping {
                 e.printStackTrace();
             }
         }
-        //123
-        ///
-        //bibib
-        //wewewe
         updateMovies(newMovies);
-        
     }
 }
