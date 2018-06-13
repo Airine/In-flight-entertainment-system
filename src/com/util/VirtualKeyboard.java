@@ -9,8 +9,6 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableStringValue;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.event.EventTarget;
 import javafx.event.EventType;
 import javafx.geometry.Insets;
@@ -25,8 +23,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.PolygonBuilder;
-
-import java.sql.BatchUpdateException;
 
 public class VirtualKeyboard {
     private final VBox root;
@@ -135,7 +131,7 @@ public class VirtualKeyboard {
 
     // Creates a "regular" JFXButton that has an unshifted and shifted value
     private JFXButton createShiftableJFXButton(final String unshifted, final String shifted,
-                                         final KeyCode code, Modifiers modifiers, final ReadOnlyObjectProperty<Node> target) {
+                                               final KeyCode code, Modifiers modifiers, final ReadOnlyObjectProperty<Node> target) {
         final ReadOnlyBooleanProperty letter = new SimpleBooleanProperty(unshifted.length() == 1 && Character.isLetter(unshifted.charAt(0)));
         final StringBinding text =
                 Bindings.when(modifiers.shiftDown().or(modifiers.capsLockOn().and(letter)))
@@ -192,7 +188,18 @@ public class VirtualKeyboard {
         return JFXButton;
     }
 
-    // Utility method to create a KeyEvent from the Modifiers
+
+    /**
+     * Utility method to create a KeyEvent from the Modifiers
+     *
+     * @param source
+     * @param target
+     * @param eventType
+     * @param character
+     * @param code
+     * @param modifiers
+     * @return
+     */
     private KeyEvent createKeyEvent(Object source, EventTarget target,
                                     EventType<KeyEvent> eventType, String character, KeyCode code,
                                     Modifiers modifiers) {
@@ -211,7 +218,7 @@ public class VirtualKeyboard {
         return JFXButton;
     }
 
-//     Convenience class to bundle together the modifier keys and their selected state
+    //     Convenience class to bundle together the modifier keys and their selected state
     private static class Modifiers {
         private final ToggleButton shift;
         private final ToggleButton shift2;
