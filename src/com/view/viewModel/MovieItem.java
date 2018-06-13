@@ -97,7 +97,7 @@ public class MovieItem extends StackPane {
         nodesList.addAnimatedNode(button);
         nodesList.addAnimatedNode(playbutton);
         nodesList.addAnimatedNode(collectionbutton);
-        if (MainApp.Admin)
+        if (MainApp.admin)
             nodesList.addAnimatedNode(deletebutton);
 
         //set nodeilist height

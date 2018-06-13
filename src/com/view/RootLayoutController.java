@@ -9,7 +9,6 @@ import com.view.settingpage.*;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
@@ -61,7 +60,7 @@ public class RootLayoutController {
     private JFXDrawer drawer;
     //setting pane
     @FXML
-    private AnchorPane SettingPane;
+    private AnchorPane settingPane;
     //search pane
     @FXML
     private AnchorPane searchpane;
@@ -99,9 +98,9 @@ public class RootLayoutController {
 
 
     //information about waring text.
-    String WaringTitle = "程序即将自动关闭";
-    String WaringMessage = "程序会在10s内自动关闭";
-    String WaringButton = "我不想要关闭";
+    String waringTitle = "程序即将自动关闭";
+    String waringMessage = "程序会在10s内自动关闭";
+    String waringButton = "我不想要关闭";
 
     /* *  this is used to load different language.
      * @author PennaLia
@@ -169,7 +168,7 @@ public class RootLayoutController {
      * @return
      */
     public void setSettingPane(AnchorPane pane) {
-        SettingPane.getChildren().setAll(pane);
+        settingPane.getChildren().setAll(pane);
     }
 
     public void setSettingVisible() {
@@ -193,7 +192,7 @@ public class RootLayoutController {
     }
 
     public AnchorPane getSettingPane() {
-        return SettingPane;
+        return settingPane;
     }
 
     public AnchorPane getMainBar() {
@@ -233,7 +232,7 @@ public class RootLayoutController {
             initSearchTree();
             initCollection();
             initKeyboard();
-            now = DefaultCSS;
+            now = defaultCSS;
 
         } catch (Exception e) {
             e.getStackTrace();
@@ -593,7 +592,7 @@ public class RootLayoutController {
 
 
     public String DarkCSS = this.getClass().getResource("DarkTheme.css").toExternalForm(),
-            DefaultCSS = this.getClass().getResource("DefaultTheme.css").toExternalForm(),
+            defaultCSS = this.getClass().getResource("DefaultTheme.css").toExternalForm(),
             Theme1 = this.getClass().getResource("Theme1.css").toExternalForm(),
             Theme2 = this.getClass().getResource("Theme2.css").toExternalForm(),
             Theme3 = this.getClass().getResource("Theme3.css").toExternalForm();
@@ -622,9 +621,9 @@ public class RootLayoutController {
     public void toDefault() {
         ObservableList<String> styleSheets = mainPane.getStylesheets();
         styleSheets.clear();
-        if (!styleSheets.contains(DefaultCSS)) {
-            styleSheets.add(DefaultCSS);
-            now = DefaultCSS;
+        if (!styleSheets.contains(defaultCSS)) {
+            styleSheets.add(defaultCSS);
+            now = defaultCSS;
         }
     }
 
@@ -699,10 +698,10 @@ public class RootLayoutController {
     public void timerOutClose() {
         stackpane.setVisible(true);
         JFXDialogLayout content = new JFXDialogLayout();
-        content.setHeading(new Text(WaringTitle));
-        content.setBody(new Text(WaringMessage));
+        content.setHeading(new Text(waringTitle));
+        content.setBody(new Text(waringMessage));
         JFXDialog dialog = new JFXDialog(stackpane, content, JFXDialog.DialogTransition.CENTER);
-        JFXButton button = new JFXButton(WaringButton);
+        JFXButton button = new JFXButton(waringButton);
         button.setOnAction(event -> {
             stackpane.setVisible(false);
             timingController.timer.stop();
@@ -721,17 +720,17 @@ public class RootLayoutController {
      */
     private void setWaringText(String language) {
         if (language.equals("cn")) {
-            WaringTitle = "程序即将自动关闭";
-            WaringMessage = "程序会在10s内自动关闭";
-            WaringButton = "我不想要关闭";
+            waringTitle = "程序即将自动关闭";
+            waringMessage = "程序会在10s内自动关闭";
+            waringButton = "我不想要关闭";
         } else if (language.equals("en")) {
-            WaringTitle = "It will automatically close soon";
-            WaringMessage = "The program will automatically shut down within 10s";
-            WaringButton = "I don't want to close it";
+            waringTitle = "It will automatically close soon";
+            waringMessage = "The program will automatically shut down within 10s";
+            waringButton = "I don't want to close it";
         } else if (language.equals("fr")) {
-            WaringTitle = "Le programme s'éteindra automatiquement";
-            WaringMessage = "Le programme s'éteindra automatiquement dans les 10s";
-            WaringButton = "Je ne veux pas fermer";
+            waringTitle = "Le programme s'éteindra automatiquement";
+            waringMessage = "Le programme s'éteindra automatiquement dans les 10s";
+            waringButton = "Je ne veux pas fermer";
         }
     }
 

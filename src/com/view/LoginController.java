@@ -131,7 +131,7 @@ public class LoginController {
                     mainApp.getRootLayoutController().getDrawerContentController().beHuiyuan();
                 }
                 if (mainUser.getIfAdmin() == 1) {
-                    MainApp.Admin = true;
+                    MainApp.admin = true;
                     mainApp.getRootLayoutController().settingPageController.getWebScrapingButton().setDisable(false);
                 }
             }

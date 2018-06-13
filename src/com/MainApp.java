@@ -4,8 +4,6 @@ import com.model.Movie;
 import com.model.MovieType;
 import com.model.User;
 import com.util.DataUpdater;
-import com.util.JsonLoader;
-import com.view.HomePageController;
 import com.view.LoginController;
 import com.view.PlayerPageController;
 import com.view.RootLayoutController;
@@ -16,7 +14,6 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -40,7 +37,7 @@ public class MainApp extends Application {
     public static List<Movie> starMovies;
     public static PlayerPageController player;
     public static boolean huiyuan = false;
-    public static boolean Admin = false;
+    public static boolean admin = false;
     public static String language = "cn";
 
     private LoginController controller;
@@ -221,7 +218,7 @@ public class MainApp extends Application {
         for (MovieType movieType : mainMovieTypes) {
             try {
                 StackPane sort = (language.equals("cn")) ? movieType.getMovieSortItem_cn() : movieType.getMovieSortItem_en();
-                movieType.handleClick(rootLayoutController.homePageController.HomeScrollPane,
+                movieType.handleClick(rootLayoutController.homePageController.homeScrollPane,
                         rootLayoutController.homePageController.back);
                 flowPane.getChildren().add(sort);
             } catch (Exception e) {
