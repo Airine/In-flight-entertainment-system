@@ -19,7 +19,9 @@ import java.util.logging.Level;
 
 import static com.util.DataUpdater.updateMovies;
 
-/**<h>Web Scraping</h>
+/**
+ * <h>Web Scraping</h>
+ *
  * @author 黄珂邈
  * This class is to scrape the movie data from websites
  */
@@ -246,7 +248,7 @@ public class WebScraping {
 
     /**
      * This method write the message to a json file.
-     * The file is stored in database.
+     * The file will be stored in database.
      */
     public void generateJson() {
         File file = new File("src/resources/json/movieMessage/movieMessage.json");
@@ -276,6 +278,10 @@ public class WebScraping {
         }
     }
 
+    /**
+     * This method is to insert movies into database
+     * bu using jsonLoader
+     */
     public void updateMovieDataBase() {
         type.put("动作", 1);
         type.put("喜剧", 2);
@@ -292,20 +298,19 @@ public class WebScraping {
         ArrayList<Movie> newMovies = new ArrayList<>();
         for (int i = 1; i < 40; i++) {
             JSONObject tempt = JsonLoader.getJsonValue("movieMessage/movieMessage", Integer.toString(i));
-//            System.out.println(tempt);
             try {
                 assert tempt != null;
-                if (DataLoader.getMoviesByTitle(tempt.getString("title_cn")).size()==0)
-                newMovies.add(new Movie(
-                        i,
-                        tempt.getString("title_cn"),
-                        tempt.getString("title_en"),
-                        tempt.getString("release_time"),
-                        tempt.getString("language"),
-                        type.get(tempt.getString("genres")),
-                        tempt.getString("href"),
-                        tempt.getString("post_url")
-                ));
+                if (DataLoader.getMoviesByTitle(tempt.getString("title_cn")).size() == 0)
+                    newMovies.add(new Movie(
+                            i,
+                            tempt.getString("title_cn"),
+                            tempt.getString("title_en"),
+                            tempt.getString("release_time"),
+                            tempt.getString("language"),
+                            type.get(tempt.getString("genres")),
+                            tempt.getString("href"),
+                            tempt.getString("post_url")
+                    ));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
