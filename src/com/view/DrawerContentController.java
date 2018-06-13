@@ -246,7 +246,7 @@ public class DrawerContentController {
         rootLayoutController.seeHomepage();
         rootLayoutController.homePageSee();
         rootLayoutController.getSettingPane().setVisible(false);
-        FlowPane flowPane = rootLayoutController.collectionController.getMycollection();
+        FlowPane flowPane;
         flowPane = new FlowPane();
         for (Movie movie : MainApp.starMovies) {
             try {
@@ -315,7 +315,7 @@ public class DrawerContentController {
     }
 
 
-    @FXML
+/*    @FXML
     private void handlebutton1() {
         AnchorPane homepage = rootLayoutController.getHomepage();
         JFXFillTransition transition = new JFXFillTransition();
@@ -332,7 +332,7 @@ public class DrawerContentController {
             transition.play();
             clicked = false;
         }
-    }
+    }*/
 
     public void loadLanguage(String language) {
         JSONObject jsonObject = JsonLoader.getJsonValue(language, "drawer");
