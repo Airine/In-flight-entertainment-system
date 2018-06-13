@@ -315,6 +315,6 @@ public class WebScraping {
                 e.printStackTrace();
             }
         }
-        updateMovies(newMovies);
+        updateMovies(newMovies);//123
     }
 }
