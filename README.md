@@ -8,7 +8,7 @@ In-flight-entertainment-system 航空娱乐系统
 - 主界面:   
 ![主界面不见了](https://github.com/Airine/In-flight-entertainment-system/blob/master/readme_src/main.gif)
 - 视频播放界面:  
-![视频界面不见了](https://github.com/Airine/In-flight-entertainment-system/blob/master/readme_src/vedio.gif)
+![视频界面不见了](https://github.com/Airine/In-flight-entertainment-system/blob/master/readme_src/video.gif)
 - 音乐播放界面:  
 ![音乐界面不见了](https://github.com/Airine/In-flight-entertainment-system/blob/master/readme_src/music.gif)
 - 个性化边栏:  
