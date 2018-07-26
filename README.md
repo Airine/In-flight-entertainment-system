@@ -22,7 +22,7 @@ In-flight-entertainment-system 航空娱乐系统
 
 - 虚拟键盘与触控滑动
 
-###原理说明
+### 原理说明
 
 
 ### 下载安装
