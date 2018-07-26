@@ -36,6 +36,14 @@ public class DataLoader {
             "Local"
     };
 
+    public DataLoader(){
+        new Super().o();
+        new Super().j();
+    }
+
+    public void DataLoader(){
+
+    }
 
     public static void loadUsers() {
         Connection connection = connectToDB();

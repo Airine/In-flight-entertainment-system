@@ -48,7 +48,6 @@ public class Movie {
     private FlowPane detailsPane_en;
 
     public Movie() {
-
     }
 
     public Movie(int movie_id, String title_cn, String title_en,
