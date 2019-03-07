@@ -1,4 +1,4 @@
-In-flight-entertainment-system 航空娱乐系统
+In-flight-entertainment-system 航空影视娱乐系统
 -------------
 
 >项目背景: 此项目为2018年春季 SUSTech Java2(CS209) 课程的小组项目  
@@ -23,11 +23,11 @@ In-flight-entertainment-system 航空娱乐系统
 - 虚拟键盘与触控滑动
 
 ### 原理说明
-(待补充)
+前端界面大部分利用Javafx组件完成，代码框架使用观察者模式，数据库使用sqlite
 
 ### 下载安装
 
-这不是个Android项目,目前仅支持intellij IDE导入项目的方法测试使用。  
+这不是个Android项目，目前仅支持intellij IDEA导入项目的方法测试使用。  
 >下个版本将完成项目打包
 
 ### 使用方法
